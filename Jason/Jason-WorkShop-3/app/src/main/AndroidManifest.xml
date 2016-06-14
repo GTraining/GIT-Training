@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/heart_pulse"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -16,7 +16,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.CustomClock" />
-        <!-- <activity android:name=".View.VLogin.LoginActivity"></activity> -->
         <activity android:name=".View.NewUser_CreateData"
             android:theme="@style/Theme2"></activity>
     </application>

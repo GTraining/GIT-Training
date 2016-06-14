@@ -1,12 +1,9 @@
-package com.example.jason.jason_workshop_3.Presenter;
-
-import android.os.Handler;
+package com.example.jason.jason_workshop_3.Presenter.PresentCustomClock;
 
 import com.example.jason.jason_workshop_3.Model.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockTime;
 import com.example.jason.jason_workshop_3.View.CustomClock;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

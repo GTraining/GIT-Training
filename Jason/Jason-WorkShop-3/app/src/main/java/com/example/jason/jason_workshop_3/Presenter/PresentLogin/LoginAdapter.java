@@ -1,15 +1,11 @@
-package com.example.jason.jason_workshop_3.Presenter.PLogin;
+package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Model.UserData.CheckLogin;
 import com.example.jason.jason_workshop_3.Model.UserData.User;
-import com.example.jason.jason_workshop_3.Model.UserData.UserDatabase;
-import com.example.jason.jason_workshop_3.View.CustomClock;
 import com.example.jason.jason_workshop_3.View.VLogin.LoginActivity;
 
 /**

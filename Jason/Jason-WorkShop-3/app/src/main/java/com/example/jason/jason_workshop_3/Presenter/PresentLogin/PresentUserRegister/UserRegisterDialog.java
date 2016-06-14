@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Presenter.PLogin.RegisterDialogMessage;
+package com.example.jason.jason_workshop_3.Presenter.PresentLogin.PresentUserRegister;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -11,13 +11,14 @@ import com.example.jason.jason_workshop_3.Dialog.OnDismissListener;
 import com.example.jason.jason_workshop_3.Dialog.ViewHolder;
 import com.example.jason.jason_workshop_3.Model.UserData.CheckLogin;
 import com.example.jason.jason_workshop_3.Model.UserData.User;
-import com.example.jason.jason_workshop_3.Presenter.PLogin.UserMangement;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserMangement;
+import com.example.jason.jason_workshop_3.Presenter.PresentDialogMessage.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
 
 /**
  * Created by jason on 13/06/2016.
  */
-public class UserRegisterDialog implements UserRegisterDialogImpl {
+public class UserRegisterDialog implements UserRegisterDialogImpl, DialogMessagaImpl {
     private Context mContext;
     private EditText editText_username, editText_password, editText_cfpassword;
     private String Username, password, cf_password;

@@ -1,18 +1,21 @@
 package com.example.jason.jason_workshop_3.Model.UserData;
 
+import android.widget.Switch;
+
 /**
  * Created by jason on 13/06/2016.
  */
 public class UserHealth {
     public String Username;
-    public String Name;
     public String age;
+    public String sex;
     public double Height;
     public double Weight;
 
-    public UserHealth(String name, String age, double height, double weight) {
-        Name = name;
+    public UserHealth(String username, String age, String sex, double height, double weight) {
+        Username = username;
         this.age = age;
+        this.sex = sex;
         Height = height;
         Weight = weight;
     }
@@ -25,13 +28,6 @@ public class UserHealth {
         Username = username;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
 
     public String getAge() {
         return age;
@@ -39,6 +35,14 @@ public class UserHealth {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public double getHeight() {
@@ -57,10 +61,16 @@ public class UserHealth {
         Weight = weight;
     }
 
-    public String getUserBMI(){
+    public double convertBMI(){
         double BMI = getWeight()/(getHeight()*getHeight());
-        if (BMI<18.5) return "Leanness";
-        if (BMI > 18.5 && BMI < 24) return "Normal";
-        else return "Fat";
+        return BMI;
+    }
+    public String getBMI(double BMI){
+        String _BMI ="";
+        if (BMI < 18.5) _BMI = "UnderWeight";
+        else if (BMI < 24.9) _BMI = "Normal Weight";
+        else if (BMI < 29.9) _BMI = "OverWeight";
+        else _BMI = "Obesity";
+        return _BMI;
     }
 }

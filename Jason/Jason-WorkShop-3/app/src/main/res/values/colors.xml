@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#030303</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="dialogplus_card_shadow">#D4D4D4</color>
+    <color name="dialogplus_black_overlay">#60c9c9c9</color>
+    <color name="main_color">#5d8497</color>
+</resources>

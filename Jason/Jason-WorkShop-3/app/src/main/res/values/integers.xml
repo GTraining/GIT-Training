@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="document_lines" type="integer">4</item>
+    <item name="default_document_page_size" type="integer">6</item>
+    <integer name="dialogplus_animation_default_duration">300</integer>
+</resources>
+

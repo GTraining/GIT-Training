@@ -5,11 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Model.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockTime;
-import com.example.jason.jason_workshop_3.Presenter.PresenterClockAdapter;
+import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
 import com.example.jason.jason_workshop_3.R;
 
 public class CustomClock extends AppCompatActivity implements CustomClockImpl{

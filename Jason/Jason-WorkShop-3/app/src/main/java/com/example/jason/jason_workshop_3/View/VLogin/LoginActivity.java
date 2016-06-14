@@ -8,8 +8,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.jason.jason_workshop_3.Presenter.PLogin.RegisterDialogMessage.UserRegisterDialog;
-import com.example.jason.jason_workshop_3.Presenter.PLogin.LoginAdapter;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.PresentUserRegister.UserRegisterDialog;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.LoginAdapter;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.CustomClock;
 import com.example.jason.jason_workshop_3.View.NewUser_CreateData;

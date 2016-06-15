@@ -2,10 +2,10 @@ package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
 
 import android.content.Context;
 
-import com.example.jason.jason_workshop_3.Model.UserData.CheckLogin;
-import com.example.jason.jason_workshop_3.Model.UserData.User;
-import com.example.jason.jason_workshop_3.Model.UserData.UserDatabase;
-import com.example.jason.jason_workshop_3.Model.UserData.UserManagementImpl;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
+import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
+import com.example.jason.jason_workshop_3.Model.UserModel.Interface.UserManagementImpl;
 
 /**
  * Created by jason on 13/06/2016.
@@ -40,7 +40,7 @@ public class UserMangement implements UserManagementImpl {
     }
 
     @Override
-    public CheckLogin checkExisting(String username) {
+    public UserCheckInfo checkExisting(String username) {
         return mUserDatabase.checkUser(username);
     }
 }

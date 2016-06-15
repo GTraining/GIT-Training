@@ -4,9 +4,9 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Model.UserData.CheckLogin;
-import com.example.jason.jason_workshop_3.Model.UserData.User;
-import com.example.jason.jason_workshop_3.View.VLogin.LoginActivity;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
+import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 
 /**
  * Created by jason on 13/06/2016.
@@ -16,7 +16,7 @@ public class LoginAdapter implements LoginImpl{
     private User mUser;
     private UserMangement mUserManagement;
     private LoginActivity mView;
-    private CheckLogin mCheckLogin;
+    private UserCheckInfo mCheckLogin;
 
     public LoginAdapter(LoginActivity mViews) {
         this.mView = mViews;

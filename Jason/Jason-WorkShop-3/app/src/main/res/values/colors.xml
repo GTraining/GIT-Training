@@ -4,6 +4,17 @@
     <color name="colorPrimaryDark">#030303</color>
     <color name="colorAccent">#ffffff</color>
     <color name="dialogplus_card_shadow">#D4D4D4</color>
-    <color name="dialogplus_black_overlay">#60c9c9c9</color>
+    <color name="dialogplus_black_overlay">#66000000</color>
     <color name="main_color">#5d8497</color>
+    <color name="none_color">#005d8497</color>
+    <color name="button_none_color_false">#00FFFFFF</color>
+    <color name="button_none_color_true">#22FFFFFF</color>
+    <color name="fitness">#22FFFFFF</color>
+    <color name="food">#33FFFFFF</color>
+    <color name="water">#11FFFFFF</color>
+    <color name="blend_black">#11000000</color>
+    <color name="login_main">#30839f</color>
+    <color name="login_main_blend">#6630839f</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_overlap">#99FFFFFF</color>
 </resources>

@@ -4,15 +4,15 @@ import android.content.Context;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Dialog.DialogPlus;
-import com.example.jason.jason_workshop_3.Dialog.GridHolder;
-import com.example.jason.jason_workshop_3.Dialog.Holder;
-import com.example.jason.jason_workshop_3.Dialog.OnDismissListener;
-import com.example.jason.jason_workshop_3.Dialog.ViewHolder;
-import com.example.jason.jason_workshop_3.Model.UserData.CheckLogin;
-import com.example.jason.jason_workshop_3.Model.UserData.User;
+import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
+import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
+import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
+import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
+import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserMangement;
-import com.example.jason.jason_workshop_3.Presenter.PresentDialogMessage.DialogMessagaImpl;
+import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
 
 /**
@@ -77,7 +77,7 @@ public class UserRegisterDialog implements UserRegisterDialogImpl, DialogMessaga
             editText_cfpassword.setText("");
         }
         else {
-            CheckLogin mCheckLogin = mUserMangement.checkExisting(Username);
+            UserCheckInfo mCheckLogin = mUserMangement.checkExisting(Username);
             if (!mCheckLogin.isExisted()){
                 mUserMangement.createUser(new User(Username, password));
                 dialog.dismiss();
@@ -91,7 +91,7 @@ public class UserRegisterDialog implements UserRegisterDialogImpl, DialogMessaga
     }
 
     @Override
-    public void DismissDialog() {
+    public void dismissDialog() {
         dialog.dismiss();
     }
 

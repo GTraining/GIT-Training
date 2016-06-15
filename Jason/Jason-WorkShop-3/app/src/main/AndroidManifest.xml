@@ -8,16 +8,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.VLogin.LoginActivity">
+        <activity android:name=".View.LoginView.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.CustomClock" />
-        <activity android:name=".View.NewUser_CreateData"
-            android:theme="@style/Theme2"></activity>
+        <activity android:name=".View.CustomClockView.CustomClock" />
+        <activity
+            android:name=".View.MainView.NewUser_CreateData"
+            android:theme="@style/Theme2" />
+        <activity android:name=".View.MainView.FitnessScheduleActivity" />
+        <activity android:name=".View.MainView.WaterDrinkingActivity" />
+        <activity android:name=".View.MainView.DietActivity"></activity>
     </application>
 
 </manifest>

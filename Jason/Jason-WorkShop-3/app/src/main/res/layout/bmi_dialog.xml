@@ -238,11 +238,12 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:background="#FFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <Button
+                        android:background="@drawable/background_click_main"
                         android:textColor="#455663"
-                        android:background="#FFF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Let's Improve health"

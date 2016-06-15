@@ -1,8 +1,8 @@
 package com.example.jason.jason_workshop_3.Presenter.PresentCustomClock;
 
-import com.example.jason.jason_workshop_3.Model.ClockDate;
-import com.example.jason.jason_workshop_3.Model.ClockTime;
-import com.example.jason.jason_workshop_3.View.CustomClock;
+import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
+import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
+import com.example.jason.jason_workshop_3.View.CustomClockView.CustomClock;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -6,7 +6,7 @@
     android:background="#55efebe3"
     android:orientation="vertical"
     style="@style/Theme2"
-    tools:context=".View.NewUser_CreateData">
+    tools:context=".View.MainView.NewUser_CreateData">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -23,7 +23,7 @@
 
         <RelativeLayout
             android:background="@drawable/background_click_main"
-            android:onClick="onclickCloseDialog"
+            android:onClick="onclickCloseActivity"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -47,7 +47,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -113,64 +113,6 @@
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>
-            </LinearLayout><LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginBottom="2dp">
-                <RelativeLayout
-                    android:layout_marginRight="2dp"
-                    android:background="#FFF"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Sex"
-                        android:textColor="#55445460"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
-                </RelativeLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <RelativeLayout
-                        android:layout_marginRight="1dp"
-                        android:background="#FFF"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-                        <CheckBox
-                            android:onClick="checkMale"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Male"
-                            android:textColor="#55445460"
-                            android:id="@+id/checkBox_male"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_marginLeft="1dp"
-                        android:background="#FFF"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-                        <CheckBox
-                            android:onClick="checkFemale"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Female"
-                            android:textColor="#55445460"
-                            android:id="@+id/checkBox_female"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true" />
-                    </RelativeLayout>
-
-                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -207,7 +149,7 @@
                         android:ems="10"
                         android:background="@null"
                         android:textColor="#445460"
-                        android:hint="Your weight"
+                        android:hint="Ex: 60.5"
                         android:textColorHint="#22445460"
                         android:id="@+id/editText_weight"
                         android:layout_centerVertical="true"
@@ -249,7 +191,7 @@
                         android:ems="10"
                         android:background="@null"
                         android:textColor="#445460"
-                        android:hint="Your height"
+                        android:hint="Ex: 1.75"
                         android:textColorHint="#22445460"
                         android:id="@+id/editText_height"
                         android:layout_centerVertical="true"
@@ -261,17 +203,22 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.2">
+            android:layout_weight="1">
+            <RelativeLayout
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <Button
-
+                    android:background="@drawable/background_click_main"
+                    android:onClick="checkBMI"
                     android:layout_marginRight="1dp"
-                    android:background="#FFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Check BMI"
                     android:textStyle="bold"
                     android:textColor="#445460"
                     android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:orientation="vertical"

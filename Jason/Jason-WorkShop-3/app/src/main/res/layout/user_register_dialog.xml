@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:background="#55efebe3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/Theme2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,7 +100,7 @@
                     android:hint="Username"
                     android:inputType="textPersonName"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColorHint="#66445460"
+                    android:textColorHint="#33445460"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_username"
@@ -120,7 +121,7 @@
                     android:inputType="textPassword"
                     android:hint="Password"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColorHint="#66445460"
+                    android:textColorHint="#33445460"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_password"
@@ -140,7 +141,7 @@
                     android:textColor="#445460"
                     android:hint="Confirm Password"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColorHint="#66445460"
+                    android:textColorHint="#33445460"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,16 +155,16 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
-                    android:onClick="onclickSignUp"
+                    android:background="#f5f4f0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <Button
+                        android:background="@drawable/background_click_main"
                         android:onClick="onclickSignUp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sign Up"
-                        android:background="#f5f4f0"
                         android:textColor="#445460"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />

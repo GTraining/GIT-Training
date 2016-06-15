@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_color"
-    tools:context=".MainActivity">
+    android:background="@color/login_main"
+    tools:context=".View.MainView.MainActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,6 +21,8 @@
                 android:layout_height="50dp">
 
                 <RelativeLayout
+                    android:background="@drawable/button_none_color_click"
+                    android:onClick="HomeBackClick"
                     android:layout_width="50dp"
                     android:layout_height="match_parent">
 
@@ -41,14 +43,16 @@
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
                 <RelativeLayout
+                    android:background="@drawable/background_click_main"
+                    android:onClick="onclickOpenSetting"
                     android:layout_alignParentRight="true"
                     android:layout_width="50dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="50dp">
 
                     <ImageView
                         android:background="@drawable/settings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>
@@ -255,18 +259,21 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="#11FFFFFF"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true">
             <LinearLayout
+                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <RelativeLayout
-                    android:background="#22FFFFFF"
+                    android:onClick="OpenFitnessSchedule"
+                    android:background="@drawable/background_click_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -288,7 +295,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Fitness"
+                                android:text="FITNESS"
                                 android:textColor="#FFFFFF"
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
@@ -296,7 +303,8 @@
                     </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
-                    android:background="#33FFFFFF"
+                    android:onClick="OpenDiet"
+                    android:background="@drawable/background_click_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -318,7 +326,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Food"
+                                android:text="FOOD"
                                 android:textColor="#FFFFFF"
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
@@ -327,12 +335,14 @@
                 </RelativeLayout>
             </LinearLayout>
             <LinearLayout
+                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <RelativeLayout
-                    android:background="#11FFFFFF"
+                    android:onClick="OpenWaterDrinking"
+                    android:background="@drawable/background_click_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -354,7 +364,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Water"
+                                android:text="WATER"
                                 android:textColor="#FFFFFF"
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
@@ -362,7 +372,8 @@
                     </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
-                    android:background="#22FFFFFF"
+                    android:onClick="OpenStatistic"
+                    android:background="@drawable/background_click_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -384,7 +395,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Chart"
+                                android:text="CHART"
                                 android:textColor="#FFFFFF"
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>

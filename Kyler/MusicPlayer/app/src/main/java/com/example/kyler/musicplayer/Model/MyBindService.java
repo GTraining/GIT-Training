@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
 
 import com.example.kyler.musicplayer.R;
@@ -12,7 +13,9 @@ import com.example.kyler.musicplayer.Utils.Helper;
 
 import java.io.IOException;
 
-public class MyBindService extends Service {
+public class MyBindService extends Service implements MediaPlayer.OnCompletionListener{
+    public static String ACTION_MUSIC_COMPLETE = "ACTION_MUSIC_COMPLETE";
+
     String currentPath = "";
     MediaPlayer mediaPlayer;
     IBinder iBinder = new MyBinder();
@@ -23,6 +26,12 @@ public class MyBindService extends Service {
     public void onCreate() {
         super.onCreate();
         mediaPlayer = new MediaPlayer();
+        mediaPlayer.setOnCompletionListener(this);
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+
     }
 
     public class MyBinder extends Binder {
@@ -50,9 +59,17 @@ public class MyBindService extends Service {
         return iBinder;
     }
 
-    public void forwardTo(int seconds){
+    public void forwardTo(long time){
         Log.e("MyBindService","forwardTo");
-        mediaPlayer.seekTo(seconds * 1000);
+        mediaPlayer.seekTo((int) time);
+    }
+
+    public void stopSong(){
+        mediaPlayer.pause();
+    }
+
+    public void resumeSong(){
+        mediaPlayer.start();
     }
 
     public long getCurrent(){
@@ -71,8 +88,14 @@ public class MyBindService extends Service {
 
     @Override
     public void onDestroy() {
-        Log.e("MyBoundService","onDestroy");
+        Log.e("MyBindService","onDestroy");
         super.onDestroy();
         mediaPlayer.release();
+    }
+
+
+
+    public boolean isPlaying(){
+        return mediaPlayer.isPlaying();
     }
 }

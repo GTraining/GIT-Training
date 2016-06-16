@@ -10,14 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.example.kyler.musicplayer.Model.MyService;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongPresenter;
 import com.example.kyler.musicplayer.R;
-import com.example.kyler.musicplayer.View.SongDetail;
+import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.util.ArrayList;
 
@@ -52,7 +51,8 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(getActivity(), SongDetail.class);
+        Intent intent = new Intent(getActivity(), SongDetailActivity.class);
+        intent.putExtra(String.valueOf(R.string.path),songs.get(i).getSongPath());
         startActivity(intent);
     }
 

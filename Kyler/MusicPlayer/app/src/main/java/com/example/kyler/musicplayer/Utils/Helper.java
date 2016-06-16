@@ -17,8 +17,9 @@ public class Helper {
         String author = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR);
         String dur = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
         long duration = Long.parseLong(dur);
+        byte[] image = mmr.getEmbeddedPicture();
         mmr.release();
-        return new Song(title,artist,album,author,duration,path);
+        return new Song(title,artist,album,author,duration,image,path);
     }
 
     public static String millisecondsToTimer(long milliseconds){

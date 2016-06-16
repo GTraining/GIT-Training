@@ -9,17 +9,27 @@ public class Song {
     private String songAlbum;
     private String songAuthor;
     private long songDuration;
+    private byte[] songImage;
     private String songPath;
 
     public Song(){}
 
-    public Song(String songTitle, String songArtist, String songAlbum, String songAuthor, long songDuration, String songPath) {
+    public Song(String songTitle, String songArtist, String songAlbum, String songAuthor, long songDuration, byte[] songImage, String songPath) {
         this.songTitle = songTitle;
         this.songArtist = songArtist;
         this.songAlbum = songAlbum;
         this.songAuthor = songAuthor;
         this.songDuration = songDuration;
+        this.songImage = songImage;
         this.songPath = songPath;
+    }
+
+    public byte[] getSongImage() {
+        return songImage;
+    }
+
+    public void setSongImage(byte[] songImage) {
+        this.songImage = songImage;
     }
 
     public String getSongTitle() {

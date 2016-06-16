@@ -79,7 +79,8 @@ public class ListSongPresenter implements IListSongPresenter {
         String author = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR);
         String dur = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
         long duration = Long.parseLong(dur);
-        return new Song(title,artist,album,author,duration,dataPath);
+        byte[] image = mmr.getEmbeddedPicture();
+        return new Song(title,artist,album,author,duration,image,dataPath);
     }
 
     private void playSongPath(String path){

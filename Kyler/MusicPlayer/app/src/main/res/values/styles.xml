@@ -13,4 +13,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Button" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="colorControlHighlight">@color/backgroundmenupress</item>
+        <item name="colorButtonNormal">@color/backgroundmenu</item>
+    </style>
+
 </resources>

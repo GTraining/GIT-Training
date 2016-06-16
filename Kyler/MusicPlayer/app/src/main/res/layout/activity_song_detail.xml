@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.example.kyler.musicplayer.View.SongDetail">
+    tools:context=".View.SongDetailActivity">
     <ScrollView
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -16,7 +16,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/activity_song_detail_image"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
         <LinearLayout
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -32,10 +39,11 @@
                 android:text="example"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -51,10 +59,11 @@
                 android:text="example"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -70,10 +79,11 @@
                 android:text="example"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -89,7 +99,7 @@
                 android:text="example"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
@@ -105,21 +115,24 @@
             android:weightSum="3"
             android:layout_width="match_parent"
             android:layout_height="50dp">
-            <ImageView
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_timer"
                 android:padding="10dp"
                 android:src="@drawable/timerbutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>
-            <ImageView
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_shuffle"
                 android:padding="10dp"
                 android:src="@drawable/shufflebutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>
-            <ImageView
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_repeat"
                 android:padding="10dp"
                 android:src="@drawable/repeatbutton"
@@ -165,35 +178,40 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:weightSum="5">
-            <ImageView
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_back"
                 android:padding="10dp"
                 android:src="@drawable/backbutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>
-            <ImageView
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_backward"
                 android:padding="10dp"
                 android:src="@drawable/backwardbutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>
-            <ImageView
+            <ImageButton
                 android:id="@+id/activity_song_detail_play"
                 android:padding="10dp"
                 android:src="@drawable/playbutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"/>
-            <ImageView
+                android:layout_height="50dp"
+                android:theme="@style/Button"/>
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_forward"
                 android:padding="10dp"
                 android:src="@drawable/forwardbutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>
-            <ImageView
+            <ImageButton
+                android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_next"
                 android:padding="10dp"
                 android:src="@drawable/nextbutton"

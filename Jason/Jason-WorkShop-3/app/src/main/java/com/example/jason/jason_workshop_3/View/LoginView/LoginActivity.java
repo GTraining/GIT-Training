@@ -9,28 +9,28 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.PresentUserRegister.UserRegisterDialog;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.LoginAdapter;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Login;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.CustomClockView.CustomClock;
-import com.example.jason.jason_workshop_3.View.MainView.NewUser_CreateData;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 /**
  * @author jason
  * Login function
  */
-public class LoginActivity extends AppCompatActivity implements VLoginImpl{
+public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
 
     private EditText editText_username, editText_password;
-    private LoginAdapter mLoginAdapter;
+    private Login mLoginAdapter;
     private UserRegisterDialog mUserRegisterDialog;
     private Context mContext = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.user_login);
         editText_password = (EditText) findViewById(R.id.editText_password);
         editText_username = (EditText) findViewById(R.id.editText_username);
         mUserRegisterDialog = new UserRegisterDialog(mContext);
-        mLoginAdapter = new LoginAdapter(LoginActivity.this);
+        mLoginAdapter = new Login(LoginActivity.this);
     }
 
     @Override
@@ -67,13 +67,13 @@ public class LoginActivity extends AppCompatActivity implements VLoginImpl{
 
     @Override
     public void OpenMainActivity() {
-        Intent mIntent = new Intent(LoginActivity.this, CustomClock.class);
+        Intent mIntent = new Intent(LoginActivity.this, UserMainActivity.class);
         startActivity(mIntent);
     }
 
     @Override
     public void OpenNewUserActivity() {
-        Intent mIntent = new Intent(LoginActivity.this, NewUser_CreateData.class);
+        Intent mIntent = new Intent(LoginActivity.this, UserCheckBMIActivity.class);
         mIntent.putExtra("Username",getUserName());
         startActivity(mIntent);
     }

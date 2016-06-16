@@ -11,7 +11,7 @@ import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserMangement;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
 
@@ -23,10 +23,10 @@ public class UserRegisterDialog implements UserRegisterDialogImpl, DialogMessaga
     private EditText editText_username, editText_password, editText_cfpassword;
     private String Username, password, cf_password;
     DialogPlus dialog;
-    UserMangement mUserMangement;
+    UserManagement mUserMangement;
     public UserRegisterDialog(Context mContext) {
         this.mContext = mContext;
-        mUserMangement = new UserMangement(mContext);
+        mUserMangement = new UserManagement(mContext);
     }
 
     @Override

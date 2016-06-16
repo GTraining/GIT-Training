@@ -7,16 +7,16 @@ import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.CustomClockView.CustomClock;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 /**
  * Created by jason on 15/06/2016.
  */
 public class PresentSettingActionbar implements DialogMessagaImpl {
     private DialogPlus dialogPlus;
-    private CustomClock mView;
+    private UserMainActivity mView;
 
-    public PresentSettingActionbar(CustomClock mView) {
+    public PresentSettingActionbar(UserMainActivity mView) {
         this.mView = mView;
     }
 
@@ -25,7 +25,7 @@ public class PresentSettingActionbar implements DialogMessagaImpl {
         Holder holder;
         switch (holderId) {
             case 1:
-                holder = new ViewHolder(R.layout.settingactionbar);
+                holder = new ViewHolder(R.layout.main_actionbar_setting);
                 break;
             default:
                 holder = new GridHolder(1);

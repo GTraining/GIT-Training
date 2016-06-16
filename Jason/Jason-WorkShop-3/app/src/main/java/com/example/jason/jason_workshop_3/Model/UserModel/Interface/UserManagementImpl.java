@@ -1,6 +1,7 @@
 package com.example.jason.jason_workshop_3.Model.UserModel.Interface;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
 
 /**
@@ -12,4 +13,5 @@ public interface UserManagementImpl {
     void UpdateLogin(String id, String st);
     User getUser(String username);
     UserCheckInfo checkExisting(String username);
+    UserCheckCurrentLogin checkCurrentLogin();
 }

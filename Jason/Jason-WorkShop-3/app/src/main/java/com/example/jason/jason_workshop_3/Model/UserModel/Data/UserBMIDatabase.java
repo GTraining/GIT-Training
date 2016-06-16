@@ -94,6 +94,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
                 userBMIs.add(new UserBMI(Username, c.getString(_height), c.getString(_weight), c.getString(_checktime)));
             }
         }
+        c.close();
         return userBMIs;
     }
 

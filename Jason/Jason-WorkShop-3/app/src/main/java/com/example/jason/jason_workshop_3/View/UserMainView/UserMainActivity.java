@@ -13,10 +13,13 @@ import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresentSettingActionbar;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.LogoutAlertDialog;
+import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIdialog;
+import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.WaterDrinkingActivity;
+import com.example.jason.jason_workshop_3.View.MessageDialog.UserBMIChartBar;
 
 /**
  * @author jason
@@ -31,6 +34,8 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     private ProgressBar progressBar_second, progressBar_minute, progressBar_hour;
     private TextView txv_time, txv_Second, txv_date, txv_month, txv_year, txv_day, txv_AP;
     private PresentSettingActionbar mSettingActionbar;
+    private UserBMIChartBar mUserBMIChartBar;
+    private CheckBMIdialog mCheckBMIdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,31 +107,55 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
     }
-
+    @Override
     public void HomeBackClick(View v){
         onBackPressed();
     }
 
+    @Override
     public void onclickOpenSetting(View v){
         mSettingActionbar.show(1, Gravity.TOP);
     }
 
+    @Override
     public void onClickCloseSetting(View v){
         mSettingActionbar.dismissDialog();
     }
 
-    public void OpenWaterDrinking(View v){
-        Intent mIntent = new Intent(UserMainActivity.this, WaterDrinkingActivity.class);
-        startActivity(mIntent);
+    @Override
+    public void onclickOpenWaterDrinking(View v){
+        doOpenActivity(WaterDrinkingActivity.class);
     }
 
+    @Override
     public void LogoutIntent() {
-        Intent mIntent = new Intent(UserMainActivity.this, LoginActivity.class);
-        startActivity(mIntent);
+        doOpenActivity(LoginActivity.class);
     }
 
-    public void logoutOnclick(View view){
+    @Override
+    public void onclickLogout(View view){
         LogoutAlertDialog mAlertDialog = new LogoutAlertDialog(UserMainActivity.this);
         mAlertDialog.show();
+    }
+
+    public void onclickCheckBMI(View view){
+        mCheckBMIdialog = new CheckBMIdialog(UserMainActivity.this);
+        mCheckBMIdialog.show(1, Gravity.CENTER);
+    }
+
+    public void onclickCheckBMIHistory(View v){
+        mUserBMIChartBar = new UserBMIChartBar(UserMainActivity.this);
+        mUserBMIChartBar.show(1, Gravity.CENTER);
+    }
+
+    @Override
+    public void onclickCloseCheckBMI(View v){
+        mUserBMIChartBar.dismissDialog();
+    }
+
+    @Override
+    public void doOpenActivity(Class mClass){
+        Intent mIntent = new Intent(UserMainActivity.this, mClass);
+        startActivity(mIntent);
     }
 }

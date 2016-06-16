@@ -14,4 +14,5 @@ public interface LoginViewImpl {
     void onclickCloseDialog(View v);
     void OpenMainActivity();
     void OpenNewUserActivity();
+    void resetEditText();
 }

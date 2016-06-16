@@ -341,7 +341,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <RelativeLayout
-                    android:onClick="OpenWaterDrinking"
+                    android:onClick="onclickOpenWaterDrinking"
                     android:background="@drawable/background_click_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

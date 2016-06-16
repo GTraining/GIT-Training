@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.PresentCheckUserHealth;
+import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
+import com.example.jason.jason_workshop_3.View.MessageDialog.UserBMIChartBar;
 import com.example.jason.jason_workshop_3.R;
 
 import java.util.ArrayList;
@@ -19,10 +20,9 @@ import java.util.List;
  * Create new data of User's health
  */
 public class UserCheckBMIActivity extends AppCompatActivity {
-
     private EditText edt_age, edt_weight, edt_height;
     private String _age = "", _height = "", _weight = "";
-    private PresentCheckUserHealth mPresentCheckUserHealth;
+    private CheckBMIResultDialog mPresentCheckUserHealth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +30,7 @@ public class UserCheckBMIActivity extends AppCompatActivity {
         edt_age = (EditText) findViewById(R.id.editText_age);
         edt_weight = (EditText) findViewById(R.id.editText_weight);
         edt_height = (EditText) findViewById(R.id.editText_height);
-        mPresentCheckUserHealth = new PresentCheckUserHealth(this);
+        mPresentCheckUserHealth = new CheckBMIResultDialog(this);
     }
 
 
@@ -45,7 +45,7 @@ public class UserCheckBMIActivity extends AppCompatActivity {
         mPresentCheckUserHealth.startImproveHealth();
     }
 
-    public void checkBMI(View v){
+    public void onclickCheckBMI(View v){
         _height = edt_height.getText().toString();
         _weight = edt_weight.getText().toString();
         _age = edt_age.getText().toString();
@@ -54,11 +54,6 @@ public class UserCheckBMIActivity extends AppCompatActivity {
         else {
             mPresentCheckUserHealth.show(1, Gravity.TOP);
         }
-    }
-
-    public void onclickCloseDialog(View v){
-        resetEditText();
-        mPresentCheckUserHealth.dismissDialog();
     }
 
     public void onclickCloseActivity(View v){
@@ -70,11 +65,5 @@ public class UserCheckBMIActivity extends AppCompatActivity {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
-    }
-
-    public void resetEditText(){
-        edt_age.setText("");
-        edt_weight.setText("");
-        edt_height.setText("");
     }
 }

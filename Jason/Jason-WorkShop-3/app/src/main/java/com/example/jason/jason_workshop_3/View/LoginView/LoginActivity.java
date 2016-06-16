@@ -8,8 +8,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.PresentUserRegister.UserRegisterDialog;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Login;
+import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIdialog;
+import com.example.jason.jason_workshop_3.View.MessageDialog.UserRegisterDialog;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Login;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
@@ -20,7 +21,7 @@ import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
 
     private EditText editText_username, editText_password;
-    private Login mLoginAdapter;
+    private Presenter_Login mLoginAdapter;
     private UserRegisterDialog mUserRegisterDialog;
     private Context mContext = this;
     @Override
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
         editText_password = (EditText) findViewById(R.id.editText_password);
         editText_username = (EditText) findViewById(R.id.editText_username);
         mUserRegisterDialog = new UserRegisterDialog(mContext);
-        mLoginAdapter = new Login(LoginActivity.this);
+        mLoginAdapter = new Presenter_Login(LoginActivity.this);
     }
 
     @Override
@@ -78,9 +79,9 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
         startActivity(mIntent);
     }
 
+    @Override
     public void resetEditText(){
         editText_username.setText("");
         editText_password.setText("");
     }
-
 }

@@ -17,6 +17,7 @@ import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongPresenter;
 import com.example.kyler.musicplayer.R;
+import com.example.kyler.musicplayer.View.SongDetail;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,8 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        listSongPresenter.playSong(songs.get(i).getSongPath());
+        Intent intent = new Intent(getActivity(), SongDetail.class);
+        startActivity(intent);
     }
 
     @Override

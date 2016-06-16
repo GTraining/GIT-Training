@@ -1,6 +1,7 @@
 package com.example.kyler.musicplayer.Model;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
@@ -11,6 +12,12 @@ import com.example.kyler.musicplayer.R;
 import java.io.IOException;
 
 public class MyService extends Service {
+    MyService myservice;
+
+    public MyService getInstance(){
+        return myservice;
+    }
+
     MediaPlayer mMediaPlayer;
 
     public MyService() {

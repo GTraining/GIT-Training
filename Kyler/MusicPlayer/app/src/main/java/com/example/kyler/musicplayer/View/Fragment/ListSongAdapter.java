@@ -54,7 +54,7 @@ public class ListSongAdapter extends BaseAdapter {
             viewHolder = (ListSongViewHolder) view.getTag();
         }
         viewHolder.title.setText(songs.get(i).getSongTitle());
-        viewHolder.artist.setText(songs.get(i).getSongDuration()+"");
+        viewHolder.artist.setText(songs.get(i).getSongArtist());
         return view;
     }
 

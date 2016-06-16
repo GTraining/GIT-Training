@@ -19,7 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service android:name=".Model.MyService"></service>
+
+        <service android:name=".Model.MyService"/>
+
+        <activity android:name=".View.SongDetail">
+        </activity>
+
+        <service
+            android:name=".Model.MyBindService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
     </application>
 
 </manifest>

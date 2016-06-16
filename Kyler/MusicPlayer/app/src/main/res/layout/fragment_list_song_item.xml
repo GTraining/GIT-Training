@@ -25,7 +25,7 @@
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_marginRight="@dimen/text_margin"
         android:text="artist"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textSize="@dimen/text_normal"
         android:textAppearance="?attr/textAppearanceListItem"/>
 </LinearLayout>

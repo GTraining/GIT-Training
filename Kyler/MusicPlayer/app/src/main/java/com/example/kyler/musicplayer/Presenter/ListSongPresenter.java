@@ -46,15 +46,15 @@ public class ListSongPresenter implements IListSongPresenter {
     private ArrayList<Song> getSongs(){
         Cursor mCursor = context.getContentResolver().query(
                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-                new String[] { MediaStore.Audio.Media.DISPLAY_NAME,MediaStore.Audio.Media.DATA }, null, null,
+                new String[] { MediaStore.Audio.Media.DATA }, null, null,
                 "LOWER(" + MediaStore.Audio.Media.TITLE + ") ASC");
 
-        ArrayList<String> songs = new ArrayList<String>();
         ArrayList<String> datas = new ArrayList<String>();
         if (mCursor.moveToFirst()) {
             do {
-                songs.add(mCursor.getString(0));
-                datas.add(mCursor.getString(1));
+                if(mCursor.getString(0).endsWith(".mp3")) {
+                    datas.add(mCursor.getString(0));
+                }
             } while (mCursor.moveToNext());
         }
         mCursor.close();
@@ -64,7 +64,6 @@ public class ListSongPresenter implements IListSongPresenter {
             mmr.setDataSource(datas.get(i));
             result.add(getSongInformation(mmr,datas.get(i)));
         }
-//        Toast.makeText(context,"Meta: "+mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE),Toast.LENGTH_LONG).show();
         return result;
     }
 

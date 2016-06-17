@@ -20,7 +20,7 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:background="@drawable/anchor"
+                    android:background="@drawable/food"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
@@ -30,31 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Guide"
-                    android:textSize="10dp"
-                    android:textColor="@color/Dialog_textcolor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:background="@drawable/background_click_main"
-                android:onClick="onclickCheckBMIHistory"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:background="@drawable/history"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Check BMI History"
+                    android:text="Daily Diet"
                     android:textSize="10dp"
                     android:textColor="@color/Dialog_textcolor"
                     android:layout_alignParentBottom="true"
@@ -75,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Add Alarm"
+                    android:text="Alarm Setting"
                     android:textSize="10dp"
                     android:textColor="@color/Dialog_textcolor"
                     android:layout_alignParentBottom="true"
@@ -103,35 +79,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Add Schedule"
+                    android:text="Fitness Schedule"
                     android:textSize="10dp"
                     android:textColor="@color/Dialog_textcolor"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:background="@drawable/background_click_main"
-                android:onClick="onclickCheckBMI"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageView
-                    android:background="@drawable/account_card_details"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Check BMI"
-                    android:textSize="10dp"
-                    android:textColor="@color/Dialog_textcolor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
-
             </RelativeLayout>
             <RelativeLayout
                 android:onClick="onclickLogout"

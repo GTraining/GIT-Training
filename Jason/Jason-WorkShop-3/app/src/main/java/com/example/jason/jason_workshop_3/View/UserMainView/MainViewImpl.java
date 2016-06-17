@@ -14,11 +14,7 @@ public interface MainViewImpl {
     void setClockRunnable();
     void runClockCount();
     void HomeBackClick(View v);
-    void onclickOpenSetting(View v);
-    void onClickCloseSetting(View v);
-    void onclickOpenWaterDrinking(View v);
     void LogoutIntent();
     void onclickLogout(View v);
     void doOpenActivity(Class mClass);
-    void onclickCloseCheckBMI(View v);
 }

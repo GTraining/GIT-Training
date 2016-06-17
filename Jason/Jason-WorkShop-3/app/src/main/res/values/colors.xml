@@ -17,6 +17,7 @@
     <color name="login_main_blend">#6630839f</color>
     <color name="white">#FFFFFF</color>
     <color name="white_overlap">#99FFFFFF</color>
-    <color name="Dialog_background">#55efebe3</color>
+    <color name="Dialog_background">#efebe3</color>
     <color name="Dialog_textcolor">#445460</color>
+    <color name="main_blend">#99445460</color>
 </resources>

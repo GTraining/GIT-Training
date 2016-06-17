@@ -19,6 +19,7 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurren
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 /**
@@ -30,7 +31,7 @@ public class CheckBMIdialog implements DialogMessagaImpl {
     private Button btn_check;
     private String _age = "", _height = "", _weight = "";
     private DialogPlus dialog;
-    private UserMainActivity mMainActivity;
+    private UserMainActivity mView;
     private UserManagement userManagement;
     private UserBMIDatabase mUserBMIDatabase;
     private UserBMI mUserBMI;
@@ -39,9 +40,9 @@ public class CheckBMIdialog implements DialogMessagaImpl {
     private ClockDate mClockDate;
 
     public CheckBMIdialog(UserMainActivity mainActivity) {
-        this.mMainActivity = mainActivity;
-        userManagement = new UserManagement(mMainActivity);
-        mUserBMIDatabase = new UserBMIDatabase(mMainActivity);
+        this.mView = mainActivity;
+        userManagement = new UserManagement(mView);
+        mUserBMIDatabase = new UserBMIDatabase(mView);
         mUserBMIDatabase.open();
         mClockDate = mCurrentDate.getmClockDate();
         mCurrentLogin = userManagement.checkCurrentLogin();
@@ -67,17 +68,17 @@ public class CheckBMIdialog implements DialogMessagaImpl {
 
     @Override
     public void DialogHandle(Holder holder, int gravity, OnDismissListener dismissListener) {
-        dialog = DialogPlus.newDialog(mMainActivity)
+        dialog = DialogPlus.newDialog(mView)
                 .setContentHolder(holder)
                 .setGravity(gravity)
                 .setOnDismissListener(dismissListener)
                 .setCancelable(true)
                 .create();
+
         edt_age = (EditText) dialog.findViewById(R.id.editText_age);
         edt_weight = (EditText) dialog.findViewById(R.id.editText_weight);
         edt_height = (EditText) dialog.findViewById(R.id.editText_height);
         btn_check = (Button) dialog.findViewById(R.id.button_chcekBMI);
-
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,11 +97,16 @@ public class CheckBMIdialog implements DialogMessagaImpl {
         _weight = edt_weight.getText().toString();
         _age = edt_age.getText().toString();
         if (_height.equals("") || _weight.equals("") || _age.equals(""))
-            Toast.makeText(mMainActivity, "Something are empty!", Toast.LENGTH_LONG).show();
+            Toast.makeText(mView, "Something are empty!", Toast.LENGTH_LONG).show();
         else {
             String date = mClockDate.getDay() + "-" + mClockDate.getMonth() + "-" + mClockDate.getYear();
             mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), _height, _weight, date);
             mUserBMIDatabase.INSERT(mUserBMI);
+            Toast.makeText(mView, "BMI : " + mUserBMI.getBMI() + "\n"
+                    + mUserBMI.convertBMI(mUserBMI.getBMI()), Toast.LENGTH_SHORT).show();
+//            mUserBMIDatabase.close();
+            userManagement.closeDatabase();
+            dismissDialog();
         }
     }
 }

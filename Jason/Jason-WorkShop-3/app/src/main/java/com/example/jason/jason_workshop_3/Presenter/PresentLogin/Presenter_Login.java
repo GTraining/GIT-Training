@@ -71,7 +71,10 @@ public class Presenter_Login implements Presenter_LoginImpl {
                 mCheckLogin = mUserManagement.checkExisting(mUser.getUserName());
                 mUserManagement.UpdateLogin(mCheckLogin.getID(), "on");
                 if (mCheckLogin.getStatus().equals("new")) mView.OpenNewUserActivity();
-                else mView.OpenMainActivity();
+                else{
+                    mUserManagement.closeDatabase();
+                    mView.OpenMainActivity();
+                }
                 mProgressDialog.dismiss();
             }else {
                 Toast.makeText(mView, "Username or Password is incorrect!\n Please try again.", Toast.LENGTH_LONG).show();

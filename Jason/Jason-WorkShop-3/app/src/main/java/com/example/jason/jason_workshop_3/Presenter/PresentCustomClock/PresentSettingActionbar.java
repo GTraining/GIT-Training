@@ -1,5 +1,7 @@
 package com.example.jason.jason_workshop_3.Presenter.PresentCustomClock;
 
+import android.view.Gravity;
+
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
 import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
@@ -7,6 +9,8 @@ import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIdialog;
+import com.example.jason.jason_workshop_3.View.MessageDialog.UserBMIChartBar;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 /**
@@ -15,7 +19,6 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 public class PresentSettingActionbar implements DialogMessagaImpl {
     private DialogPlus dialogPlus;
     private UserMainActivity mView;
-
     public PresentSettingActionbar(UserMainActivity mView) {
         this.mView = mView;
     }

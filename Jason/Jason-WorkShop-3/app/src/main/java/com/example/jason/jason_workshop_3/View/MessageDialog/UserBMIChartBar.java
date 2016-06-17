@@ -72,6 +72,8 @@ public class UserBMIChartBar implements DialogMessagaImpl {
                 .create();
         barChart = (BarChart) dialog.findViewById(R.id.bargraph);
         CreateBarGraph(mUserBMIs);
+        mUserBMIDatabase.close();
+        mUserManagement.closeDatabase();
         dialog.show();
     }
 
@@ -93,6 +95,5 @@ public class UserBMIChartBar implements DialogMessagaImpl {
         BarData barData = new BarData(DateCheck, barDataSet);
         barChart.setData(barData);
         barChart.setDescription("BMI Bar Graph");
-
     }
 }

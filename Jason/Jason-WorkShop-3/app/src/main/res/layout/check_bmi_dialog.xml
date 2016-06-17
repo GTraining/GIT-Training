@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#55efebe3"
+    android:background="#efebe3"
     android:orientation="vertical"
     tools:context=".View.FeatureView.UserCheckBMIActivity">
     <RelativeLayout
@@ -22,7 +22,7 @@
 
         <RelativeLayout
             android:background="@drawable/background_click_main"
-            android:onClick="onclickCloseActivity"
+            android:onClick="onclickCloseCheckBMI"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -46,8 +46,8 @@
         <LinearLayout
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="150dp">

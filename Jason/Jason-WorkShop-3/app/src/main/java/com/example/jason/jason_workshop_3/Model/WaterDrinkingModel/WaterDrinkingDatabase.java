@@ -72,8 +72,14 @@ public class WaterDrinkingDatabase implements WaterDrinkingDatabaseImpl {
             }
         }
         if (check){
+            c.close();
             return db.update(TABLE_DRINK_WATER, cv, COLUMN_ID + "=" + id, null);
-        } else return 0;
+        }
+        else {
+            c.close();
+            return 0;
+        }
+
     }
 
     @Override
@@ -88,6 +94,7 @@ public class WaterDrinkingDatabase implements WaterDrinkingDatabaseImpl {
                 waterCups.add(new WaterCup(Username, c.getString(_amount), c.getString(_date)));
             }
         }
+        c.close();
         return waterCups;
     }
 
@@ -103,6 +110,7 @@ public class WaterDrinkingDatabase implements WaterDrinkingDatabaseImpl {
                 mWaterCup = new WaterCup(c.getString(_username), c.getString(_amount), c.getString(_date));
             }
         }
+        c.close();
         return mWaterCup;
     }
 

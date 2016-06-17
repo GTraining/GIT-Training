@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Model.UserModel.Interface;
+package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
@@ -14,4 +14,5 @@ public interface UserManagementImpl {
     User getUser(String username);
     UserCheckInfo checkExisting(String username);
     UserCheckCurrentLogin checkCurrentLogin();
+    void closeDatabase();
 }

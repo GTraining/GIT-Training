@@ -40,6 +40,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     public CheckBMIResultDialog(UserCheckBMIActivity mView) {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
+        mUserBMIDatabase.open();
         mUsermanagement = new UserManagement(mView);
         mCurrentLogin =  mUsermanagement.checkCurrentLogin();
         ClockDate mClockDate = mCurrentDate.getmClockDate();

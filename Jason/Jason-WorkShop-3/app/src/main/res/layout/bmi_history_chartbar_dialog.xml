@@ -11,7 +11,7 @@
         android:layout_gravity="center_horizontal">
         <RelativeLayout
             android:background="@drawable/background_click_main"
-            android:onClick="onclickCloseCheckBMI"
+            android:onClick="onclickCloseChart"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"

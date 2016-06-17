@@ -6,6 +6,6 @@
     android:thickness="10dp"
     android:useLevel="false">
 
-    <solid android:color="#22FFFFFF" />
+    <solid android:color="@color/Dialog_background" />
 
 </shape>

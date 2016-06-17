@@ -55,11 +55,16 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
         mPresenterClockAdapter = new PresenterClockAdapter(this);
         mSettingActionbar = new PresentSettingActionbar(this);
+        mCheckBMIdialog = new CheckBMIdialog(this);
+
+
         mCountMillisecond = mPresenterClockAdapter.getCountMilliseconds();
         setClockRunnable();
         runClockCount();
     }
 
+
+    //Show current time on custom clock
     @Override
     public void showClock(ClockTime mClockTime) {
         int hour = 0, minute = 0, second = 0;
@@ -76,6 +81,8 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         txv_AP.setText(AM_PM);
         txv_Second.setText(seconds);
     }
+
+    //Show current date on custom clock
     @Override
     public void showDate(ClockDate mClockDate) {
         txv_day.setText(mClockDate.getDay_of_Week());
@@ -84,6 +91,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         txv_year.setText(mClockDate.getYear());
     }
 
+    //Set Runnable for customclock
     @Override
     public void setClockRunnable() {
         mRunnable = new Runnable() {
@@ -112,47 +120,56 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         onBackPressed();
     }
 
-    @Override
-    public void onclickOpenSetting(View v){
-        mSettingActionbar.show(1, Gravity.TOP);
-    }
-
-    @Override
-    public void onClickCloseSetting(View v){
-        mSettingActionbar.dismissDialog();
-    }
-
-    @Override
-    public void onclickOpenWaterDrinking(View v){
-        doOpenActivity(WaterDrinkingActivity.class);
-    }
-
+    // Start activity Login after run logout function
     @Override
     public void LogoutIntent() {
         doOpenActivity(LoginActivity.class);
     }
 
+    // Open Logout dialog
     @Override
     public void onclickLogout(View view){
         LogoutAlertDialog mAlertDialog = new LogoutAlertDialog(UserMainActivity.this);
         mAlertDialog.show();
     }
 
+    // Open setting actionbar
+    public void onclickOpenSetting(View v){
+        mSettingActionbar.show(1, Gravity.TOP);
+    }
+
+    // Close setting actionbar
+    public void onClickCloseSetting(View v){
+        mSettingActionbar.dismissDialog();
+    }
+
+    // Open Water Management Activity
+    public void onclickDailyDrink(View v){
+        doOpenActivity(WaterDrinkingActivity.class);
+    }
+
+    // Open Check BMI dialog
     public void onclickCheckBMI(View view){
-        mCheckBMIdialog = new CheckBMIdialog(UserMainActivity.this);
         mCheckBMIdialog.show(1, Gravity.CENTER);
     }
 
-    public void onclickCheckBMIHistory(View v){
-        mUserBMIChartBar = new UserBMIChartBar(UserMainActivity.this);
+    //Close Check BMI dialog
+    public void onclickCloseCheckBMI(View v){
+        mCheckBMIdialog.dismissDialog();
+    }
+
+    //Open history's check BMI Chart dialog
+    public void onclickBMIChart(View v){
+        mUserBMIChartBar = new UserBMIChartBar(this);
         mUserBMIChartBar.show(1, Gravity.CENTER);
     }
 
-    @Override
-    public void onclickCloseCheckBMI(View v){
+    //Close history's check BMI Chart dialog
+    public void onclickCloseChart(View v){
         mUserBMIChartBar.dismissDialog();
     }
 
+    //Start new activity
     @Override
     public void doOpenActivity(Class mClass){
         Intent mIntent = new Intent(UserMainActivity.this, mClass);

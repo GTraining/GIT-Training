@@ -77,8 +77,12 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
             }
         }
         if (check){
+            c.close();
             return db.update(TABLE_USER_HEALTH, cv, COLUMN_ID + "=" + id, null);
-        } else return 0;
+        } else {
+            c.close();
+            return 0;
+        }
     }
 
     @Override

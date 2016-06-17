@@ -6,7 +6,6 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurren
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
-import com.example.jason.jason_workshop_3.Model.UserModel.Interface.UserManagementImpl;
 
 /**
  * Created by jason on 13/06/2016.
@@ -49,6 +48,11 @@ public class UserManagement implements UserManagementImpl {
     @Override
     public UserCheckCurrentLogin checkCurrentLogin() {
         return mUserDatabase.CheckCurrentLogin();
+    }
+
+    @Override
+    public void closeDatabase() {
+        mUserDatabase.close();
     }
 
 

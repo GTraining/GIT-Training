@@ -1,5 +1,6 @@
 package com.example.jason.jason_workshop_3.View.FeatureView;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,15 +29,15 @@ public class WaterDrinkingActivity extends AppCompatActivity {
         img_water = (ImageView) findViewById(R.id.imageView_water);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 10));
         mAdapter = new WaterRecyclerViewAdapter(this, cup);
-        txv_cupamount.setText("" + (cup * 40 / 4));
+        txv_cupamount.setText("" + (cup * 30 / 3));
         img_water.getLayoutParams().height = coverheighttodp(cup * 30);
         img_water.requestLayout();
         mRecyclerView.setAdapter(mAdapter);
     }
     public void onclickAddCup(View v){
         if (cup < 10) {
-            cup++;
-            txv_cupamount.setText("" + (cup * 30 / 3));
+            cup ++;
+            txv_cupamount.setText("" + cup * 10);
             img_water.getLayoutParams().height = coverheighttodp(cup * 30);
             img_water.requestLayout();
             mAdapter = new WaterRecyclerViewAdapter(WaterDrinkingActivity.this, cup);

@@ -180,7 +180,7 @@
             android:weightSum="5">
             <ImageButton
                 android:theme="@style/Button"
-                android:id="@+id/activity_song_detail_back"
+                android:id="@+id/activity_song_detail_previous"
                 android:padding="10dp"
                 android:src="@drawable/backbutton"
                 android:layout_weight="1"

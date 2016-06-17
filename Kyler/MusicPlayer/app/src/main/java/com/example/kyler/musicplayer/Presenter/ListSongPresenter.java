@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
 import android.provider.MediaStore;
-import android.widget.Toast;
 
-import com.example.kyler.musicplayer.Model.MyService;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.Fragment.IListSongView;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -34,9 +31,6 @@ public class ListSongPresenter implements IListSongPresenter {
 
     @Override
     public void playSong(String path) {
-        Intent intent = new Intent(context,MyService.class);
-        intent.putExtra(String.valueOf(R.string.path),path);
-        context.startService(intent);
     }
 
     /**
@@ -81,12 +75,6 @@ public class ListSongPresenter implements IListSongPresenter {
         long duration = Long.parseLong(dur);
         byte[] image = mmr.getEmbeddedPicture();
         return new Song(title,artist,album,author,duration,image,dataPath);
-    }
-
-    private void playSongPath(String path){
-        Intent intent = new Intent(context, MyService.class);
-        intent.putExtra("path",path);
-        context.startService(intent);
     }
 
 }

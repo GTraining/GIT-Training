@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -27,6 +29,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     TextView currentTxt, durationTxt, title, artist, album, author;
     SeekBar seekBar;
     ImageView image;
+    LinearLayout background;
 
     boolean timerStatus = false, playStatus = false, shuffleStatus = false;
     int repeatStatus = 0;
@@ -77,6 +80,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         album = (TextView) findViewById(R.id.activity_song_detail_album_txt);
         author = (TextView) findViewById(R.id.activity_song_detail_author_txt);
         seekBar = (SeekBar) findViewById(R.id.activity_song_detail_seek);
+        background = (LinearLayout) findViewById(R.id.activity_song_detail_background);
         seekBar.setProgress(0);
 
         timer.setOnClickListener(this);
@@ -192,9 +196,12 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        currentTime = seekBar.getProgress();
-        currentTxt.setText(Helper.millisecondsToTimer(currentTime));
-
+        if(currentTime == song.getSongDuration()){
+            nextSong();
+        }else {
+            currentTime = seekBar.getProgress();
+            currentTxt.setText(Helper.millisecondsToTimer(currentTime));
+        }
     }
 
     @Override
@@ -228,6 +235,11 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         album.setText(song.getSongAlbum());
         author.setText(song.getSongAuthor());
         durationTxt.setText(Helper.millisecondsToTimer(song.getSongDuration()));
+    }
+
+    @Override
+    public void updateBackground(int resource) {
+        background.setBackgroundResource(resource);
     }
 
 }

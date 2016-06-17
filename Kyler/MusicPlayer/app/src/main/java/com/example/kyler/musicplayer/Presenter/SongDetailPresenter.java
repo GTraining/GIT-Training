@@ -15,6 +15,7 @@ import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.View.ISongDetailView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by kyler on 16/06/2016.
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class SongDetailPresenter implements ISongDetailPresenter{
     private Context context;
     private ISongDetailView detailView;
+    private ArrayList<Integer> backgrounds;
 
     boolean binded = false;
     MyBindService myBindService;
@@ -43,6 +45,11 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     public SongDetailPresenter(Context context, ISongDetailView detailView) {
         this.context = context;
         this.detailView = detailView;
+        backgrounds = new ArrayList<>();
+        backgrounds.add(R.drawable.bg1);
+        backgrounds.add(R.drawable.bg2);
+        backgrounds.add(R.drawable.bg3);
+        backgrounds.add(R.drawable.bg4);
         startService();
     }
 
@@ -95,12 +102,14 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public void playNext() {
+        detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
         myBindService.playNext();
         getSong();
     }
 
     @Override
     public void playPrevious() {
+        detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
         myBindService.playPrevious();
         getSong();
     }

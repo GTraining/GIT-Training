@@ -20,7 +20,7 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:background="@drawable/food"
+                    android:background="@drawable/settings"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
@@ -30,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Daily Diet"
+                    android:text="System Setting"
                     android:textSize="10dp"
                     android:textColor="@color/Dialog_textcolor"
                     android:layout_alignParentBottom="true"
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Fitness Schedule"
+                    android:text="Calendar"
                     android:textSize="10dp"
                     android:textColor="@color/Dialog_textcolor"
                     android:layout_alignParentBottom="true"

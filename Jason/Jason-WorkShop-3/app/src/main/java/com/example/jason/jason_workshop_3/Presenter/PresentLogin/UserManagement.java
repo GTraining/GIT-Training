@@ -55,5 +55,8 @@ public class UserManagement implements UserManagementImpl {
         mUserDatabase.close();
     }
 
-
+    @Override
+    public void UpdateAllLoginStatus() {
+        mUserDatabase.UpdateAllLoginStatus();
+    }
 }

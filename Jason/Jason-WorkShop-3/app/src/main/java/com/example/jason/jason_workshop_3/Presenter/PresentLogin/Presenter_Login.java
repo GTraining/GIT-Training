@@ -21,6 +21,7 @@ public class Presenter_Login implements Presenter_LoginImpl {
     public Presenter_Login(LoginActivity mViews) {
         this.mView = mViews;
         mUserManagement = new UserManagement(mView);
+        mUserManagement.UpdateAllLoginStatus();
     }
 
     @Override

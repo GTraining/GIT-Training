@@ -52,11 +52,11 @@ public class UserBMI {
         return BMI;
     }
     public String convertBMI(float BMI){
-        String _BMI = "Hello";
+        String _BMI = "Do You make sure about your BMI?";
         if (BMI < 18.5) _BMI = "UnderWeight";
         else if (BMI < 24.9) _BMI = "Normal Weight";
         else if (BMI < 29.9) _BMI = "OverWeight";
-        else _BMI = "Obesity";
+        else if (BMI < 50) _BMI = "Obesity";
         return _BMI;
     }
 }

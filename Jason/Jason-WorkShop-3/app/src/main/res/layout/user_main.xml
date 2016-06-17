@@ -456,6 +456,7 @@
                         </RelativeLayout>
                 </RelativeLayout>
                 <RelativeLayout
+                    android:onClick="onclickStatisticChart"
                     android:padding="5dp"
                     android:background="@drawable/background_click_main"
                     android:layout_width="match_parent"

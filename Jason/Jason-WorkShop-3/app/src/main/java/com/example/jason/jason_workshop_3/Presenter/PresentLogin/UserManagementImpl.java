@@ -15,4 +15,5 @@ public interface UserManagementImpl {
     UserCheckInfo checkExisting(String username);
     UserCheckCurrentLogin checkCurrentLogin();
     void closeDatabase();
+    void UpdateAllLoginStatus();
 }

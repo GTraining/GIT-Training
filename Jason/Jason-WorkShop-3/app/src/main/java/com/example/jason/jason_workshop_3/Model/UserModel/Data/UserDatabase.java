@@ -23,8 +23,8 @@ public class UserDatabase {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_PASSWORD = "password";
-    public static final String COLUMN_STATUS = "status";
-    public static final String COLUMN_LOGIN = "login";
+    public static final String COLUMN_USER_STATUS = "status";
+    public static final String COLUMN_LOGIN_STATUS = "login";
     private static Context context;
     static SQLiteDatabase db;
     private OpenHelper openHelper;
@@ -48,23 +48,36 @@ public class UserDatabase {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_USERNAME, us);
         cv.put(COLUMN_PASSWORD, pw);
-        cv.put(COLUMN_STATUS, st);
-        cv.put(COLUMN_LOGIN, login);
+        cv.put(COLUMN_USER_STATUS, st);
+        cv.put(COLUMN_LOGIN_STATUS, login);
         return db.insert(TABLE_USER_LOGIN, null, cv);
     }
 
     public long UpdateStatus(String id, String st){
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_STATUS, st);
+        cv.put(COLUMN_USER_STATUS, st);
         return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
     }
     public long UpdateSLogin(String id, String login){
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_LOGIN, login);
+        cv.put(COLUMN_LOGIN_STATUS, login);
         return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
 
     }
-
+    public long UpdateAllLoginStatus(){
+        String login_status = "off";
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_LOGIN_STATUS, login_status);
+        Cursor c = SetupCursor();
+        int irow = c.getColumnIndex(COLUMN_ID);
+        int login_stt = c.getColumnIndex(COLUMN_LOGIN_STATUS);
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            if (c.getString(login_stt).equals("on")){
+                return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + c.getString(irow), null);
+            }
+        }
+        return 0;
+    }
     public User getUser(String username) {
         Cursor c = SetupCursor();
         User mUser = new User("none", "none");
@@ -87,8 +100,8 @@ public class UserDatabase {
         int iRow = c.getColumnIndex(COLUMN_ID);
         int iUsername = c.getColumnIndex(COLUMN_USERNAME);
         int iPassword = c.getColumnIndex(COLUMN_PASSWORD);
-        int iStatus = c.getColumnIndex(COLUMN_STATUS);
-        int iLogin = c.getColumnIndex(COLUMN_LOGIN);
+        int iStatus = c.getColumnIndex(COLUMN_USER_STATUS);
+        int iLogin = c.getColumnIndex(COLUMN_LOGIN_STATUS);
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             String user = c.getString(iUsername);
             if (user.equals(username)) {
@@ -107,7 +120,7 @@ public class UserDatabase {
         UserCheckCurrentLogin mCheck = new UserCheckCurrentLogin("", "");
         int iUsername = c.getColumnIndex(COLUMN_USERNAME);
         int irow = c.getColumnIndex(COLUMN_ID);
-        int iLogin = c.getColumnIndex(COLUMN_LOGIN);
+        int iLogin = c.getColumnIndex(COLUMN_LOGIN_STATUS);
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             String login = c.getString(iLogin);
             if (login.equals("on")) {
@@ -120,7 +133,7 @@ public class UserDatabase {
 
     }
     public Cursor SetupCursor(){
-        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_STATUS, COLUMN_LOGIN};
+        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_USER_STATUS, COLUMN_LOGIN_STATUS};
         Cursor c = db.query(TABLE_USER_LOGIN, columns, null, null, null, null, null, null);
         return c;
     }
@@ -136,8 +149,8 @@ public class UserDatabase {
                     + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_USERNAME + " TEXT NOT NULL, "
                     + COLUMN_PASSWORD + " TEXT NOT NULL, "
-                    + COLUMN_STATUS + " TEXT NOT NULL, "
-                    + COLUMN_LOGIN + " TEXT NOT NULL);");
+                    + COLUMN_USER_STATUS + " TEXT NOT NULL, "
+                    + COLUMN_LOGIN_STATUS + " TEXT NOT NULL);");
         }
         @Override
         public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {

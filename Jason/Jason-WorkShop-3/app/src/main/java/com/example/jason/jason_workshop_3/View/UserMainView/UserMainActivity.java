@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
@@ -146,6 +147,22 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     // Open Water Management Activity
     public void onclickDailyDrink(View v){
         doOpenActivity(WaterDrinkingActivity.class);
+    }
+
+    // Open Fitness's Schedule Management Activity
+    public void onclickDailyFitness(View v){
+        Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
+    }
+
+    // Open Daily Diet Management Activity
+    public void onclickDailyDiet(View v){
+        Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
+    }
+
+    // Open Statistic Chart Activity
+    public void onclickStatisticChart(View v){
+
+        Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
     }
 
     // Open Check BMI dialog

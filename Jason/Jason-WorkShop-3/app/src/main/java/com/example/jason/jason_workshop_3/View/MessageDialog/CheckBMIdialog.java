@@ -105,7 +105,7 @@ public class CheckBMIdialog implements DialogMessagaImpl {
             Toast.makeText(mView, "BMI : " + mUserBMI.getBMI() + "\n"
                     + mUserBMI.convertBMI(mUserBMI.getBMI()), Toast.LENGTH_SHORT).show();
 //            mUserBMIDatabase.close();
-            userManagement.closeDatabase();
+//            userManagement.closeDatabase();
             dismissDialog();
         }
     }

@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.example.kyler.musicplayer.Model.MyService;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongPresenter;
@@ -52,15 +52,18 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getActivity(), SongDetailActivity.class);
-        intent.putExtra(String.valueOf(R.string.path),songs.get(i).getSongPath());
+        ArrayList<String> arrSongPaths = new ArrayList<>();
+        for(int j=0;j<songs.size();j++){
+            arrSongPaths.add(songs.get(j).getSongPath());
+        }
+        intent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
+        intent.putExtra(String.valueOf(R.string.currentID),i);
         startActivity(intent);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Intent intent = new Intent(getActivity(),MyService.class);
-        getActivity().stopService(intent);
     }
 
     @Override

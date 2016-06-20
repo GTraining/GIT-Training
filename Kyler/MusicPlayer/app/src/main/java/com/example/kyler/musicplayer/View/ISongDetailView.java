@@ -7,5 +7,5 @@ import com.example.kyler.musicplayer.Model.Song;
  */
 public interface ISongDetailView {
     void loadSong(Song song);
-    void update(long time);
+    void updateBackground(int resource);
 }

@@ -10,9 +10,8 @@ public interface LoginViewImpl {
     String getPassword();
     void onClickCheckUser(View view);
     void onClickUserRegister(View view);
-    void onclickSignUp(View v);
-    void onclickCloseDialog(View v);
     void OpenMainActivity();
     void OpenNewUserActivity();
     void resetEditText();
+    void doOpenNewActivity(Class mClass, String mIntent);
 }

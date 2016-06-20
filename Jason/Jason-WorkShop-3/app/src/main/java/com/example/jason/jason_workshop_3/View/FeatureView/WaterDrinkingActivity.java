@@ -1,5 +1,6 @@
 package com.example.jason.jason_workshop_3.View.FeatureView;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.WaterRecyclerViewAdapter;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 public class WaterDrinkingActivity extends AppCompatActivity {
 
@@ -47,5 +49,10 @@ public class WaterDrinkingActivity extends AppCompatActivity {
     public int coverheighttodp(int height){
         int heightdp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, getResources().getDisplayMetrics());
         return heightdp;
+    }
+
+    public void onclickback(View v){
+        Intent mIntent = new Intent(this, UserMainActivity.class);
+        startActivity(mIntent);
     }
 }

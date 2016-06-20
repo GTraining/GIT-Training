@@ -71,7 +71,7 @@ public class CheckBMIdialog implements DialogMessagaImpl {
         dialog = DialogPlus.newDialog(mView)
                 .setContentHolder(holder)
                 .setGravity(gravity)
-                .setOnDismissListener(dismissListener)
+//                .setOnDismissListener(dismissListener)
                 .setCancelable(true)
                 .create();
 

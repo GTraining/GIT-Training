@@ -17,7 +17,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="HELLO"
             android:textStyle="bold"
-            android:textColor="#445460"
+            android:textColor="@color/Dialog_textcolor"
             android:id="@+id/textView_Hello"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />

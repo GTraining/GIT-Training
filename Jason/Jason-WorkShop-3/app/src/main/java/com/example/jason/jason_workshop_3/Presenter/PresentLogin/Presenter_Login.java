@@ -70,8 +70,8 @@ public class Presenter_Login implements Presenter_LoginImpl {
         protected void onPostExecute(Boolean aBoolean) {
             if (aBoolean){
                 mCheckLogin = mUserManagement.checkExisting(mUser.getUserName());
-                mUserManagement.UpdateLogin(mCheckLogin.getID(), "on");
-                if (mCheckLogin.getStatus().equals("new")) mView.OpenNewUserActivity();
+                mUserManagement.UpdateLoginStatus(mCheckLogin.getID(), "on");
+                if (mCheckLogin.getStatus().equals("new_user")) mView.OpenNewUserActivity();
                 else{
                     mUserManagement.closeDatabase();
                     mView.OpenMainActivity();

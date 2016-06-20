@@ -28,7 +28,7 @@ public class LogoutAlertDialog {
                 .setCancelable(false)
                 .setPositiveButton("Yes",new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog,int id) {
-                        mUserMangement.UpdateLogin(mCurrentLogin.getID(), "off");
+                        mUserMangement.UpdateLoginStatus(mCurrentLogin.getID(), "off");
                         mView.LogoutIntent();
                     }
                 })

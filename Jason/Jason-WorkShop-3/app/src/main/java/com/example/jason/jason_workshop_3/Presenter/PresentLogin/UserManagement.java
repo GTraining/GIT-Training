@@ -22,17 +22,17 @@ public class UserManagement implements UserManagementImpl {
 
     @Override
     public void createUser(User user) {
-        mUserDatabase.InsertUSER(user.getUserName(), user.getPassword(), "new", "off");
+        mUserDatabase.InsertUSER(user.getUserName(), user.getPassword(), "new_user", "off");
     }
 
     @Override
-    public void UpdateLogin(String id, String login) {
-        mUserDatabase.UpdateSLogin(id, login);
+    public void UpdateLoginStatus(String id, String login) {
+        mUserDatabase.UpdateLoginStatus(id, login);
     }
 
     @Override
-    public void UpdateStatus(String id, String st) {
-        mUserDatabase.UpdateStatus(id, st);
+    public void UpdateBMI(String id, String st) {
+        mUserDatabase.UpdateBMI(id, st);
     }
 
     @Override

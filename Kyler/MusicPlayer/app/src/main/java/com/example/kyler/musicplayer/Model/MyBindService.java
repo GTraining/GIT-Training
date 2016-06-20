@@ -29,6 +29,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private String songTitle = "";
     private boolean shuffle = false;
     private Random random;
+    private boolean complete = false;
     MediaPlayer mediaPlayer;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
@@ -47,7 +48,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
-
+        complete = true;
     }
 
     @Override
@@ -116,6 +117,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void playSong(){
         mediaPlayer.reset();
+        complete = false;
         try {
             mediaPlayer.setDataSource(songs.get(currentPosition).getSongPath());
             songTitle = songs.get(currentPosition).getSongTitle();
@@ -140,7 +142,12 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public long getCurrent(){
-        return mediaPlayer.getCurrentPosition();
+        long result = 0;
+        if(complete)
+            result = songs.get(currentPosition).getSongDuration();
+        else
+            result = mediaPlayer.getCurrentPosition();
+        return result;
     }
 
     public long getDuration(){

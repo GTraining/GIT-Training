@@ -113,4 +113,14 @@ public class SongDetailPresenter implements ISongDetailPresenter{
         myBindService.playPrevious();
         getSong();
     }
+
+    @Override
+    public long getCurrent() {
+        return myBindService.getCurrent();
+    }
+
+    @Override
+    public long getDuration() {
+        return myBindService.getDuration();
+    }
 }

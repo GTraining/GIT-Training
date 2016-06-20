@@ -1,11 +1,13 @@
 package com.example.kyler.musicplayer.View;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -14,6 +16,7 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.kyler.musicplayer.Model.MyBindService;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.ISongDetailPresenter;
 import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
@@ -41,8 +44,6 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     ArrayList<String> arrSongPaths;
     Handler mHandler;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +56,16 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                detailPresenter.setSongs(arrSongPaths,currentID);
+                if(detailPresenter.isPlaying()){
+                    currentTime = detailPresenter.getCurrent();
+                    detailPresenter.getSong();
+                }else {
+                    detailPresenter.setSongs(arrSongPaths, currentID);
+                }
                 playSong();
                 setStatus();
             }
-        },1000);
+        }, 500);
     }
 
     /**
@@ -285,4 +291,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         background.setBackgroundResource(resource);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

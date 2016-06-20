@@ -115,6 +115,14 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public boolean isPlaying() {
+        if(binded)
+            return myBindService.isPlaying();
+        else
+            return false;
+    }
+
+    @Override
     public long getCurrent() {
         return myBindService.getCurrent();
     }

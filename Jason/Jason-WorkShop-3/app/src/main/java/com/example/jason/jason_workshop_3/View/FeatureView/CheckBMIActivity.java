@@ -1,13 +1,16 @@
 package com.example.jason.jason_workshop_3.View.FeatureView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_CheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
@@ -22,10 +25,12 @@ import java.util.List;
 public class CheckBMIActivity extends AppCompatActivity {
 
     private EditText edt_age, edt_weight, edt_height;
+    private TextView txv_hello;
     private String _age = "", _height = "", _weight = "";
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
     private int intent_number;
+    private Presenter_CheckBMI mPresenter_checkBMI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,10 @@ public class CheckBMIActivity extends AppCompatActivity {
         edt_age = (EditText) findViewById(R.id.editText_age);
         edt_weight = (EditText) findViewById(R.id.editText_weight);
         edt_height = (EditText) findViewById(R.id.editText_height);
+        txv_hello = (TextView) findViewById(R.id.textView_Hello);
         mCheckBMIResultDialog = new CheckBMIResultDialog(this);
+        mPresenter_checkBMI = new Presenter_CheckBMI(this);
+        setHelloUser();
     }
 
 
@@ -46,6 +54,9 @@ public class CheckBMIActivity extends AppCompatActivity {
         return BMI;
     }
 
+    public void setHelloUser(){
+        txv_hello.setText("HELLO" + mPresenter_checkBMI.getCurrenUser());
+    }
     public void startImproveYourHealth(View v){
         mCheckBMIResultDialog.startImproveHealth();
     }

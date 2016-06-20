@@ -5,24 +5,21 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
-import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.Log;
 
 import com.example.kyler.musicplayer.R;
-import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
-    private ArrayList<Song> songs;
+    private ArrayList<Song> songs, shuffleSongs, normalSongs;
     private String currentPath = "";
     private int currentPosition = 0;
     private int NOTIFY_ID = 0;
@@ -108,6 +105,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void setSongs(ArrayList<Song> songs){
         this.songs = songs;
+        this.shuffleSongs = songs;
+        this.normalSongs = songs;
     }
 
     public void seekTo(long time){
@@ -159,21 +158,28 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public void playNext(){
-        if(shuffle){
-            int newSong = currentPosition;
-            while(newSong==currentPosition){
-                newSong=random.nextInt(songs.size());
-            }
-            currentPosition=newSong;
-        }
-        else{
+//        if(shuffle){
+//            int newSong = currentPosition;
+//            while(newSong==currentPosition){
+//                newSong=random.nextInt(songs.size());
+//            }
+//            currentPosition=newSong;
+//        }
+//        else{
             currentPosition++;
             if(currentPosition>=songs.size()) currentPosition=0;
-        }
+//        }
         playSong();
     }
 
     public void setShuffle(boolean shuffle){
+        currentPosition = 0;
+        if(shuffle){
+            Collections.shuffle(shuffleSongs);
+            songs = shuffleSongs;
+        }else{
+            songs = normalSongs;
+        }
         this.shuffle = shuffle;
     }
 

@@ -107,7 +107,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             play.setImageResource(R.drawable.pausebutton);
         }
 
-        if(shuffleStatus){
+        if(!shuffleStatus){
             shuffle.setImageResource(R.drawable.shufflebutton);
         }else{
             shuffle.setImageResource(R.drawable.shuffledisablebutton);

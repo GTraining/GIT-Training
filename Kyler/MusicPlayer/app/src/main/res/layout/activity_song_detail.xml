@@ -139,7 +139,7 @@
                 android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_shuffle"
                 android:padding="10dp"
-                android:src="@drawable/shufflebutton"
+                android:src="@drawable/shuffledisablebutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>

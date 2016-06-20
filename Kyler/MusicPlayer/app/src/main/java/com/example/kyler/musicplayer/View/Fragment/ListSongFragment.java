@@ -58,6 +58,7 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
         }
         intent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
         intent.putExtra(String.valueOf(R.string.currentID),i);
+        Log.e("CurrentID",i+" "+songs.get(i).getSongTitle());
         startActivity(intent);
     }
 

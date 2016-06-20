@@ -84,9 +84,8 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
         dialog.show();
     }
     public void startImproveHealth(){
-        mUsermanagement.UpdateStatus(mCurrentLogin.getID(), "Older");
+        mUsermanagement.UpdateBMI(mCurrentLogin.getID(), mUserBMI.convertBMI(BMI));
         Intent mIntent = new Intent(mView, UserMainActivity.class);
-        mIntent.putExtra("BMI", "" + BMI);
         mView.startActivity(mIntent);
     }
     public void dismissDialog(){

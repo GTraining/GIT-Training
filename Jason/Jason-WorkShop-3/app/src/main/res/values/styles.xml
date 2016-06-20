@@ -3,15 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/Dialog_background</item>
-        <item name="colorPrimaryDark">@color/Dialog_background</item>
-        <item name="colorAccent">@color/main_color</item>
-    </style>
-    <style name="Theme2" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/main_color</item>
-        <item name="colorPrimaryDark">@color/main_color</item>
-        <item name="colorAccent">@color/main_color</item>
+        <item name="colorPrimary">#30839f</item>
+        <item name="colorPrimaryDark">#30839f</item>
+        <item name="colorAccent">@color/login_main</item>
     </style>
 
 </resources>

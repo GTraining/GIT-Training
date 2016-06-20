@@ -20,19 +20,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
-                <RelativeLayout
-                    android:background="@drawable/button_none_color_click"
-                    android:onClick="HomeBackClick"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:background="@drawable/chevron_left_dark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
-                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -280,33 +267,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <RelativeLayout
-                        android:background="@drawable/circle_feature"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="7dp">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/human"/>
-                    </RelativeLayout>
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true">
-                        <TextView
-                            android:textSize="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
+                        android:layout_centerVertical="true">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:background="@drawable/circle_feature"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="7dp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/human"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Daily Fitness"
-                            android:textColor="#885d8497"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
+                            android:layout_alignParentBottom="true">
+                            <TextView
+                                android:textSize="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Daily Fitness"
+                                android:textColor="#885d8497"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"/>
+                        </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
                     android:padding="5dp"
@@ -315,23 +312,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <RelativeLayout
-                        android:background="@drawable/circle_feature"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="7dp">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/food"/>
-                    </RelativeLayout>
+                        android:layout_centerVertical="true">
                         <RelativeLayout
-                            android:layout_alignParentBottom="true"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:background="@drawable/circle_feature"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="7dp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/food"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true">
                             <TextView
                                 android:textSize="10dp"
                                 android:layout_marginTop="5dp"
@@ -342,6 +348,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
                         </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
                     android:padding="5dp"
@@ -350,23 +357,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <RelativeLayout
-                        android:background="@drawable/circle_feature"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="7dp">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/water"/>
-                    </RelativeLayout>
+                        android:layout_centerVertical="true">
                         <RelativeLayout
-                            android:layout_alignParentBottom="true"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:background="@drawable/circle_feature"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="7dp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/water"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true">
                             <TextView
                                 android:textSize="10dp"
                                 android:layout_marginTop="5dp"
@@ -377,6 +393,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
                         </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
             <LinearLayout
@@ -392,33 +409,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <RelativeLayout
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/circle_feature"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/account_card_details"/>
-                    </RelativeLayout>
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true">
-                        <TextView
-                            android:textSize="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
+                        android:layout_centerVertical="true">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:background="@drawable/circle_feature"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/account_card_details"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="BMI Check"
-                            android:textColor="#885d8497"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
+                            android:layout_alignParentBottom="true">
+                            <TextView
+                                android:textSize="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Check BMI"
+                                android:textColor="#885d8497"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"/>
+                        </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
                     android:padding="5dp"
@@ -427,23 +454,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <RelativeLayout
-                        android:background="@drawable/circle_feature"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/chart_bar"/>
-                    </RelativeLayout>
+                        android:layout_centerVertical="true">
                         <RelativeLayout
-                            android:layout_alignParentBottom="true"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:background="@drawable/circle_feature"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/chart_line"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true">
                             <TextView
                                 android:textSize="10dp"
                                 android:layout_marginTop="5dp"
@@ -454,6 +490,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
                         </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
                     android:onClick="onclickStatisticChart"
@@ -462,33 +499,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <RelativeLayout
-                        android:background="@drawable/circle_feature"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="7dp">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/chart_pie"/>
-                    </RelativeLayout>
+                        android:layout_centerVertical="true">
                         <RelativeLayout
-                            android:layout_alignParentBottom="true"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:background="@drawable/circle_feature"
+                                android:layout_centerHorizontal="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="7dp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/chart_pie"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true">
                             <TextView
                                 android:textSize="10dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Statistic"
+                                android:text="Daily Fitness"
                                 android:textColor="#885d8497"
                                 android:layout_centerVertical="true"
                                 android:layout_centerHorizontal="true"/>
                         </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
 

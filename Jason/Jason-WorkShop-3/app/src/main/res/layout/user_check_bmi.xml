@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#55efebe3"
     android:orientation="vertical"
-    style="@style/Theme2"
     tools:context=".View.FeatureView.UserCheckBMIActivity">
     <RelativeLayout
         android:layout_width="match_parent"

@@ -17,8 +17,7 @@
         </activity>
         <activity android:name=".View.UserMainView.UserMainActivity" />
         <activity
-            android:name=".View.FeatureView.UserCheckBMIActivity"
-            android:theme="@style/Theme2" />
+            android:name=".View.FeatureView.UserCheckBMIActivity"/>
         <activity android:name=".View.FeatureView.FitnessScheduleActivity" />
         <activity android:name=".View.FeatureView.WaterDrinkingActivity" />
         <activity android:name=".View.FeatureView.DietActivity" />

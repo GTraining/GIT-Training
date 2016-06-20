@@ -22,9 +22,9 @@ public class LogoutAlertDialog {
 
     public void show(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mView);
-        alertDialogBuilder.setTitle("Log Out!");
+        alertDialogBuilder.setTitle("Warning!");
         alertDialogBuilder
-                .setMessage("Do you want to log out!")
+                .setMessage("Do you want to log out?")
                 .setCancelable(false)
                 .setPositiveButton("Yes",new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog,int id) {

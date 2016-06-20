@@ -13,7 +13,6 @@ public interface MainViewImpl {
     void showDate(ClockDate mClockDate);
     void setClockRunnable();
     void runClockCount();
-    void HomeBackClick(View v);
     void LogoutIntent();
     void onclickLogout(View v);
     void doOpenActivity(Class mClass);

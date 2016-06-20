@@ -116,10 +116,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
     }
-    @Override
-    public void HomeBackClick(View v){
-        onBackPressed();
-    }
 
     // Start activity Login after run logout function
     @Override

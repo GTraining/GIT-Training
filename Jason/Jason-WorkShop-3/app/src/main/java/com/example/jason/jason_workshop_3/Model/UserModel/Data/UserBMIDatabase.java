@@ -68,7 +68,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
         boolean check = false;
         Cursor c = SETUPCURSOR();
         int row = c.getColumnIndex(COLUMN_ID);
-        int Username = c.getColumnIndex(COLUMN_ID);
+        int Username = c.getColumnIndex(COLUMN_USERNAME);
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             if (userBMI.getUSERNAME().equals(c.getString(Username))){
                 id = c.getString(row);
@@ -94,6 +94,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
                 userBMIs.add(new UserBMI(Username, c.getString(_height), c.getString(_weight), c.getString(_checktime)));
             }
         }
+        c.close();
         return userBMIs;
     }
 

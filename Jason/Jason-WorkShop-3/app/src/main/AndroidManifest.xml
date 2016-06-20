@@ -15,13 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.CustomClockView.CustomClock" />
+        <activity android:name=".View.UserMainView.UserMainActivity" />
         <activity
-            android:name=".View.MainView.NewUser_CreateData"
+            android:name=".View.FeatureView.UserCheckBMIActivity"
             android:theme="@style/Theme2" />
-        <activity android:name=".View.MainView.FitnessScheduleActivity" />
-        <activity android:name=".View.MainView.WaterDrinkingActivity" />
-        <activity android:name=".View.MainView.DietActivity"></activity>
+        <activity android:name=".View.FeatureView.FitnessScheduleActivity" />
+        <activity android:name=".View.FeatureView.WaterDrinkingActivity" />
+        <activity android:name=".View.FeatureView.DietActivity"></activity>
     </application>
 
 </manifest>

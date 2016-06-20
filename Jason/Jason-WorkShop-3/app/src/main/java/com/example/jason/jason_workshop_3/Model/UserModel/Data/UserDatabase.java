@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
 
 /**
@@ -51,6 +52,7 @@ public class UserDatabase {
         cv.put(COLUMN_LOGIN, login);
         return db.insert(TABLE_USER_LOGIN, null, cv);
     }
+
     public long UpdateStatus(String id, String st){
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_STATUS, st);
@@ -60,7 +62,9 @@ public class UserDatabase {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_LOGIN, login);
         return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
+
     }
+
     public User getUser(String username) {
         Cursor c = SetupCursor();
         User mUser = new User("none", "none");
@@ -98,7 +102,23 @@ public class UserDatabase {
         c.close();
         return check;
     }
+    public UserCheckCurrentLogin CheckCurrentLogin(){
+        Cursor c = SetupCursor();
+        UserCheckCurrentLogin mCheck = new UserCheckCurrentLogin("", "");
+        int iUsername = c.getColumnIndex(COLUMN_USERNAME);
+        int irow = c.getColumnIndex(COLUMN_ID);
+        int iLogin = c.getColumnIndex(COLUMN_LOGIN);
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            String login = c.getString(iLogin);
+            if (login.equals("on")) {
+                mCheck = new UserCheckCurrentLogin(c.getString(irow), c.getString(iUsername));
+                break;
+            }
+        }
+        c.close();
+        return mCheck;
 
+    }
     public Cursor SetupCursor(){
         String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_STATUS, COLUMN_LOGIN};
         Cursor c = db.query(TABLE_USER_LOGIN, columns, null, null, null, null, null, null);

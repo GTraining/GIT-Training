@@ -14,6 +14,10 @@ import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * I've replaced sign up dialog by sign up activity to solve that bug. On Message dialog, Keyboard can focus to editTexts
+ * so i think this is a easy way, which i can do.
+ */
 
 public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
 

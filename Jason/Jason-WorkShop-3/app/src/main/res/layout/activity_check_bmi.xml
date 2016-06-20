@@ -15,9 +15,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="HELLO"
+            android:text="@string/hello"
             android:textStyle="bold"
-            android:textColor="#445460"
+            android:textColor="@color/Dialog_textcolor"
+            android:id="@+id/textView_Hello"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
@@ -63,6 +64,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2">
             <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2">

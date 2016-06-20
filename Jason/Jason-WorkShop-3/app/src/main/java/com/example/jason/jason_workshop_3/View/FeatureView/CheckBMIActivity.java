@@ -55,7 +55,7 @@ public class CheckBMIActivity extends AppCompatActivity {
     }
 
     public void setHelloUser(){
-        txv_hello.setText("HELLO" + mPresenter_checkBMI.getCurrenUser());
+        txv_hello.setText("Hello: " + mPresenter_checkBMI.getCurrenUser() + "!");
     }
     public void startImproveYourHealth(View v){
         mCheckBMIResultDialog.startImproveHealth();

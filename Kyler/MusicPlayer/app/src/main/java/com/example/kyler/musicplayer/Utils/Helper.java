@@ -11,14 +11,33 @@ public class Helper {
     public static Song getSong(String path){
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
-        String title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-        String artist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-        String album = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
-        String author = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR);
+        String title = "";
+        String artist = "";
+        String album = "";
+        String author = "";
+        if(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE) != null){
+            title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+        }else{
+            title = "no name";
+        }
+        if(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST) != null){
+            artist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+        }else{
+            artist = "not available";
+        }
+        if( mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM) != null){
+            album = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+        }else{
+            album = "not available";
+        }
+        if(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR) != null){
+            author = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR);
+        }else{
+            author = "not available";
+        }
         String dur = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
         long duration = Long.parseLong(dur);
         byte[] image = mmr.getEmbeddedPicture();
-        mmr.release();
         return new Song(title,artist,album,author,duration,image,path);
     }
 

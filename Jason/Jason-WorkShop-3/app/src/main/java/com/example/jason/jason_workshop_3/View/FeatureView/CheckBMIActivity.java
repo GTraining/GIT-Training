@@ -16,6 +16,9 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Like Sign up, I also use activity to replace Check BMI MessageDialog.
+ */
 public class CheckBMIActivity extends AppCompatActivity {
 
     private EditText edt_age, edt_weight, edt_height;

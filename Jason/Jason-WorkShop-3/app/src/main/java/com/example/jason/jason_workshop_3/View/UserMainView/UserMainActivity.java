@@ -14,10 +14,9 @@ import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresentSettingActionbar;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
-import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIdialog;
+import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.WaterDrinkingActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.UserBMIChartBar;
@@ -36,7 +35,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     private TextView txv_time, txv_Second, txv_date, txv_month, txv_year, txv_day, txv_AP;
     private PresentSettingActionbar mSettingActionbar;
     private UserBMIChartBar mUserBMIChartBar;
-    private CheckBMIdialog mCheckBMIdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +54,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
         mPresenterClockAdapter = new PresenterClockAdapter(this);
         mSettingActionbar = new PresentSettingActionbar(this);
-        mCheckBMIdialog = new CheckBMIdialog(this);
 
 
         mCountMillisecond = mPresenterClockAdapter.getCountMilliseconds();
@@ -161,14 +158,12 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
     }
 
-    // Open Check BMI dialog
+    // Open Check BMI activity
     public void onclickCheckBMI(View view){
-        mCheckBMIdialog.show(1, Gravity.CENTER);
-    }
-
-    //Close Check BMI dialog
-    public void onclickCloseCheckBMI(View v){
-        mCheckBMIdialog.dismissDialog();
+        Intent mIntent = new Intent(UserMainActivity.this, CheckBMIActivity.class);
+        mIntent.putExtra("Intent", "2");
+        
+        startActivity(mIntent);
     }
 
     //Open history's check BMI Chart dialog

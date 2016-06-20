@@ -16,12 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.UserMainView.UserMainActivity" />
-        <activity
-            android:name=".View.FeatureView.UserCheckBMIActivity"/>
         <activity android:name=".View.FeatureView.FitnessScheduleActivity" />
         <activity android:name=".View.FeatureView.WaterDrinkingActivity" />
         <activity android:name=".View.FeatureView.DietActivity" />
-        <activity android:name=".View.LoginView.Signup"></activity>
+        <activity android:name=".View.LoginView.SignupActivity" />
+        <activity android:name=".View.FeatureView.CheckBMIActivity"></activity>
     </application>
 
 </manifest>

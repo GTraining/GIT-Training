@@ -16,8 +16,8 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurren
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
-import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     private DialogPlus dialog;
     private List<String> mList;
     private UserBMI mUserBMI;
-    private UserCheckBMIActivity mView;
+    private CheckBMIActivity mView;
     private UserManagement mUsermanagement;
     private UserCheckCurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
@@ -37,7 +37,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     private  String date = "00-00-0000";
     private float BMI = 0;
 
-    public CheckBMIResultDialog(UserCheckBMIActivity mView) {
+    public CheckBMIResultDialog(CheckBMIActivity mView) {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
         mUserBMIDatabase.open();

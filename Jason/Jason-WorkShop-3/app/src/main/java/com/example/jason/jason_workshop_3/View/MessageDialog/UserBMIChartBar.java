@@ -13,7 +13,6 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurren
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;

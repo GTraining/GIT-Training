@@ -1,12 +1,10 @@
 package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
 
-import android.content.Context;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
-import com.example.jason.jason_workshop_3.View.LoginView.Signup;
+import com.example.jason.jason_workshop_3.View.LoginView.SignupActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +15,12 @@ import java.util.List;
 public class Presenter_Signup implements SignupImpl{
 
     private String Username, password, cf_password;
-    private Signup mView;
-    private UserManagement mUserMangement;
+    private SignupActivity mView;
+    private UserManagement mUserManagement;
     private List<String> list = new ArrayList<>();
-    public Presenter_Signup(Signup mView) {
+    public Presenter_Signup(SignupActivity mView) {
         this.mView = mView;
-        mUserMangement = new UserManagement(mView);
+        mUserManagement = new UserManagement(mView);
 
     }
 
@@ -41,9 +39,9 @@ public class Presenter_Signup implements SignupImpl{
             mView.UpdatePasswordEditText();
         }
         else {
-            UserCheckInfo mCheckLogin = mUserMangement.checkExisting(Username);
+            UserCheckInfo mCheckLogin = mUserManagement.checkExisting(Username);
             if (!mCheckLogin.isExisted()){
-                mUserMangement.createUser(new User(Username, password));
+                mUserManagement.createUser(new User(Username, password));
                 mView.OpenNewUserActivity();
             } else {
                 Toast.makeText(mView, "Username is existed!", Toast.LENGTH_LONG).show();

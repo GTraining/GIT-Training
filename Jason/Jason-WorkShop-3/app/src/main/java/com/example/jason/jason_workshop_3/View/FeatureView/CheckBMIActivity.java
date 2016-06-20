@@ -8,29 +8,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
-import com.example.jason.jason_workshop_3.View.MessageDialog.UserBMIChartBar;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
+import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author jason
- * Create new data of User's health
- */
-public class UserCheckBMIActivity extends AppCompatActivity {
+public class CheckBMIActivity extends AppCompatActivity {
+
     private EditText edt_age, edt_weight, edt_height;
     private String _age = "", _height = "", _weight = "";
-    private CheckBMIResultDialog mPresentCheckUserHealth;
+    private CheckBMIResultDialog mCheckBMIResultDialog;
+    private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
+    private int intent_number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_check_bmi);
+        setContentView(R.layout.activity_check_bmi);
+        intent_number = Integer.parseInt(getIntent().getStringExtra("Intent"));
         edt_age = (EditText) findViewById(R.id.editText_age);
         edt_weight = (EditText) findViewById(R.id.editText_weight);
         edt_height = (EditText) findViewById(R.id.editText_height);
-        mPresentCheckUserHealth = new CheckBMIResultDialog(this);
+        mCheckBMIResultDialog = new CheckBMIResultDialog(this);
     }
 
 
@@ -42,7 +44,7 @@ public class UserCheckBMIActivity extends AppCompatActivity {
     }
 
     public void startImproveYourHealth(View v){
-        mPresentCheckUserHealth.startImproveHealth();
+        mCheckBMIResultDialog.startImproveHealth();
     }
 
     public void onclickCheckBMI(View v){
@@ -52,12 +54,17 @@ public class UserCheckBMIActivity extends AppCompatActivity {
         if (_height.equals("") || _weight.equals("") || _age.equals(""))
             Toast.makeText(getApplicationContext(), "Something are empty!", Toast.LENGTH_LONG).show();
         else {
-            mPresentCheckUserHealth.show(1, Gravity.TOP);
+            if (check(Float.parseFloat(_weight) ,Float.parseFloat(_height)))
+                checkBMIAlertDialog.show();
+            else mCheckBMIResultDialog.show(1, Gravity.TOP);
         }
     }
 
     public void onclickCloseActivity(View v){
-        onBackPressed();
+        if (intent_number == 2){
+            Intent mIntent = new Intent(CheckBMIActivity.this, UserMainActivity.class);
+            startActivity(mIntent);
+        }else onBackPressed();
     }
 
     @Override
@@ -66,4 +73,17 @@ public class UserCheckBMIActivity extends AppCompatActivity {
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
     }
+
+    public boolean check(float weight, float height){
+         if (weight > 1000){
+             edt_weight.setText("");
+             return true;
+         }
+        if (height > 300){
+            edt_weight.setText("");
+            return true;
+        }
+        else return false;
+    }
+
 }

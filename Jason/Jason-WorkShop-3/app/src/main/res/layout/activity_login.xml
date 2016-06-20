@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Dialog_background"
+    android:background="#FFF"
     tools:context=".View.LoginView.LoginActivity">
 
     <LinearLayout
@@ -42,7 +42,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:layout_marginBottom="2dp"
-                android:background="#FFFFFF"
+                android:background="#22c2c2c2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -56,7 +56,7 @@
                     android:ems="10"
                     android:hint="Username"
                     android:textColor="#30839f"
-                    android:textColorHint="#2230839f"
+                    android:textColorHint="#c2c2c2"
                     android:id="@+id/editText_username"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -65,7 +65,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:layout_marginBottom="2dp"
-                android:background="#FFFFFF"
+                android:background="#22c2c2c2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -79,7 +79,7 @@
                     android:ems="10"
                     android:hint="Password"
                     android:textColor="#30839f"
-                    android:textColorHint="#2230839f"
+                    android:textColorHint="#c2c2c2"
                     android:id="@+id/editText_password"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />

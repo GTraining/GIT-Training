@@ -13,5 +13,5 @@ public interface LoginViewImpl {
     void OpenMainActivity();
     void OpenNewUserActivity();
     void resetEditText();
-    void doOpenNewActivity(Class mClass, String mIntent);
+    void doOpenNewActivity(Class mClass);
 }

@@ -22,7 +22,7 @@ public class UserManagement implements UserManagementImpl {
 
     @Override
     public void createUser(User user) {
-        mUserDatabase.InsertUSER(user.getUserName(), user.getPassword(), "new_user", "off");
+        mUserDatabase.InsertUSER(user.getUserName(), user.getPassword(), "new_user", "on");
     }
 
     @Override

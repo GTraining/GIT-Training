@@ -1,6 +1,5 @@
 package com.example.jason.jason_workshop_3.View.LoginView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +8,8 @@ import android.widget.EditText;
 
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Login;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
-import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
 /**
  * @author jason
  * Login function
@@ -22,7 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_login);
+        setContentView(R.layout.activity_login);
         editText_password = (EditText) findViewById(R.id.editText_password);
         editText_username = (EditText) findViewById(R.id.editText_username);
         mLoginAdapter = new Presenter_Login(LoginActivity.this);
@@ -46,17 +45,19 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
     @Override
     public void onClickUserRegister(View view) {
         resetEditText();
-        doOpenNewActivity(Signup.class, "");
+        doOpenNewActivity(SignupActivity.class);
     }
 
     @Override
     public void OpenMainActivity() {
-        doOpenNewActivity(UserMainActivity.class, "");
+        doOpenNewActivity(UserMainActivity.class);
     }
 
     @Override
     public void OpenNewUserActivity() {
-        doOpenNewActivity(UserCheckBMIActivity.class, getUserName());
+        Intent mIntent = new Intent(LoginActivity.this, CheckBMIActivity.class);
+        mIntent.putExtra("Intent", "1");
+        startActivity(mIntent);
     }
 
     @Override
@@ -65,9 +66,8 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
         editText_password.setText("");
     }
     @Override
-    public void doOpenNewActivity(Class mClass, String mIntent){
+    public void doOpenNewActivity(Class mClass){
         Intent intent = new Intent(LoginActivity.this, mClass);
-        intent.putExtra("Username",mIntent);
         startActivity(intent);
     }
 }

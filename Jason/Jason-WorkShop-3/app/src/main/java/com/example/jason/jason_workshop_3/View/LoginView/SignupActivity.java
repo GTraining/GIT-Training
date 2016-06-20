@@ -9,12 +9,13 @@ import android.widget.EditText;
 
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Signup;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.UserCheckBMIActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Signup extends AppCompatActivity implements SignUpViewImpl{
+
+public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
 
     private EditText editText_username, editText_password, editText_cfpassword;
     private String Username, password, cf_password;
@@ -41,7 +42,7 @@ public class Signup extends AppCompatActivity implements SignUpViewImpl{
     // back to login activity
     @Override
     public void onclickBack(View v){
-        doOpenNewActivity(LoginActivity.class, "");
+        doOpenNewActivity(LoginActivity.class);
     }
 
     // Sign up
@@ -71,14 +72,15 @@ public class Signup extends AppCompatActivity implements SignUpViewImpl{
     //open new user activity
     @Override
     public void OpenNewUserActivity() {
-        doOpenNewActivity(UserCheckBMIActivity.class, Username);
+        Intent mIntent = new Intent(SignupActivity.this, CheckBMIActivity.class);
+        mIntent.putExtra("Intent", "1");
+        startActivity(mIntent);
     }
 
     //open new new activity
     @Override
-    public void doOpenNewActivity(Class mClass, String mIntent){
-        Intent intent = new Intent(Signup.this, mClass);
-        intent.putExtra("Username",mIntent);
+    public void doOpenNewActivity(Class mClass){
+        Intent intent = new Intent(SignupActivity.this, mClass);
         startActivity(intent);
     }
 }

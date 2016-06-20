@@ -13,5 +13,5 @@ public interface SignUpViewImpl {
     void UpdateAllEditText();
     void UpdatePasswordEditText();
     void OpenNewUserActivity();
-    void doOpenNewActivity(Class mClass, String mIntent);
+    void doOpenNewActivity(Class mClass);
 }

@@ -33,11 +33,13 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     boolean timerStatus = false, playStatus = false, shuffleStatus = false;
     int repeatStatus = 0;
+    int currentID;
     long currentTime = 0;
+    boolean seekbarChanging = false;
     Song song;
     ISongDetailPresenter detailPresenter;
     ArrayList<String> arrSongPaths;
-    int currentID;
+    Handler mHandler;
 
 
 
@@ -50,11 +52,11 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         arrSongPaths = intent.getStringArrayListExtra(String.valueOf(R.string.path));
         currentID = intent.getIntExtra(String.valueOf(R.string.currentID),0);
         detailPresenter = new SongDetailPresenter(getApplicationContext(),this);
-        new Handler().postDelayed(new Runnable() {
+        mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 detailPresenter.setSongs(arrSongPaths,currentID);
-                playStatus=true;
+                playSong();
                 setStatus();
             }
         },1000);
@@ -64,6 +66,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
      * setup view
      */
     private void init(){
+        mHandler = new Handler();
         timer = (ImageButton) findViewById(R.id.activity_song_detail_timer);
         shuffle = (ImageButton) findViewById(R.id.activity_song_detail_shuffle);
         repeat = (ImageButton) findViewById(R.id.activity_song_detail_repeat);
@@ -94,6 +97,9 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         seekBar.setOnSeekBarChangeListener(this);
     }
 
+    /**
+     * change the status of button for events click on it.
+     */
     private void setStatus(){
         if(!playStatus){
             play.setImageResource(R.drawable.playbutton);
@@ -101,7 +107,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             play.setImageResource(R.drawable.pausebutton);
         }
 
-        if(!shuffleStatus){
+        if(shuffleStatus){
             shuffle.setImageResource(R.drawable.shufflebutton);
         }else{
             shuffle.setImageResource(R.drawable.shuffledisablebutton);
@@ -121,21 +127,33 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+    /**
+     * change the play status to decide the status of playing song.
+     */
     private void playSong(){
         playStatus = !playStatus;
         if(playStatus){
             detailPresenter.resumeSong();
+            updateSeekbar();
         }
-        else
+        else {
             detailPresenter.pauseSong();
+        }
     }
 
+    /**
+     * seek the music to the time put in
+     * @param time
+     */
     private void seekTo(long time){
         detailPresenter.seekTo(time);
         seekBar.setProgress((int) time);
         currentTxt.setText(Helper.millisecondsToTimer(time));
     }
 
+    /**
+     * play the next song
+     */
     private void nextSong(){
         playStatus = true;
         detailPresenter.playNext();
@@ -143,12 +161,36 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         seekBar.setProgress(0);
     }
 
+    /**
+     * play previous song
+     */
     private void previousSong(){
         playStatus = true;
         detailPresenter.playPrevious();
         currentTime = 0;
         seekBar.setProgress(0);
     }
+
+    /**
+     * update the current time on seekbar
+     */
+    @Override
+    public void updateSeekbar(){
+        mHandler.post(mUpdateSeekbarRunnable);
+    }
+
+    /**
+     * runnable of update seekbar
+     */
+    private Runnable mUpdateSeekbarRunnable = new Runnable() {
+        @Override
+        public void run() {
+            currentTime = detailPresenter.getCurrent();
+            seekBar.setProgress((int) currentTime);
+            currentTxt.setText(Helper.millisecondsToTimer(currentTime));
+            mHandler.postDelayed(this,100);
+        }
+    };
 
     @Override
     public void onClick(View view) {
@@ -216,6 +258,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         }else {
             seekTo(currentTime);
         }
+        updateSeekbar();
     }
 
     @Override

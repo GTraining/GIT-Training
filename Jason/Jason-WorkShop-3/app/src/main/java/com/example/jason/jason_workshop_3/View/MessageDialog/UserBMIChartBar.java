@@ -25,14 +25,17 @@ import java.util.List;
 
 /**
  * Created by jason on 16/06/2016.
+ * Show chart of User's BMI
  */
 public class UserBMIChartBar implements DialogMessagaImpl {
     DialogPlus dialog;
     private BarChart barChart;
     private ArrayList<BarEntry> barEntries;
     private UserMainActivity mView;
+    //Database contain User's BMI, which was stored when user check BMI.
     private UserBMIDatabase mUserBMIDatabase;
     private List<UserBMI> mUserBMIs = new ArrayList<>();
+    //Database of User, which contain username and password
     private UserManagement mUserManagement;
 
     public UserBMIChartBar(UserMainActivity view) {
@@ -44,6 +47,7 @@ public class UserBMIChartBar implements DialogMessagaImpl {
         mUserBMIs = mUserBMIDatabase.GETLIST(mCurrentLogin.USERNAME);
     }
 
+    //Show chart dialog
     @Override
     public void show(int holderId, int gravity) {
         Holder holder;
@@ -77,11 +81,13 @@ public class UserBMIChartBar implements DialogMessagaImpl {
         dialog.show();
     }
 
+    //Dismiss dialog
     @Override
     public void dismissDialog() {
         dialog.dismiss();
     }
 
+    //Set data for chart to display.
     public void CreateBarGraph(List<UserBMI> userBMIs){
         barEntries = new ArrayList<>();
         List<String> DateCheck = new ArrayList<>();

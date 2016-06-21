@@ -5,16 +5,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
+import android.os.CountDownTimer;
 import android.os.IBinder;
-import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.Log;
-
 import com.example.kyler.musicplayer.R;
-import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.io.IOException;
@@ -26,10 +22,14 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private ArrayList<Song> songs;
     private String currentPath = "";
     private int currentPosition = 0;
+    private int timerTime = 0;
     private String songTitle = "";
     private boolean shuffle = false;
     private Random random;
     private boolean complete = false;
+    private boolean timer = false;
+    private CountDown countDownTimer;
+    private int repeat = 0;
     MediaPlayer mediaPlayer;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
@@ -134,15 +134,12 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public long getCurrent(){
         long result = 0;
-        if(complete)
+        if(complete) {
             result = songs.get(currentPosition).getSongDuration();
-        else
+        } else {
             result = mediaPlayer.getCurrentPosition();
+        }
         return result;
-    }
-
-    public long getDuration(){
-        return mediaPlayer.getDuration();
     }
 
     public Song getSong(){
@@ -191,5 +188,48 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public boolean isPlaying(){
         return mediaPlayer.isPlaying();
+    }
+
+    /**
+     * set time for stoping the music, if the time input == 0, it means the user cancle the timer
+     * @param time
+     */
+    public void setTimer(long time){
+        timer = true;
+        if (time == 0) {
+            timer = false;
+            if (countDownTimer != null) {
+                countDownTimer.cancel();
+                countDownTimer = null;
+            }
+        } else {
+            if(countDownTimer != null) {
+                countDownTimer.cancel();
+            }
+            countDownTimer = new CountDown(time, 1000);
+            countDownTimer.start();
+        }
+    }
+
+    public int getTimerTime(){
+        return timerTime;
+    }
+
+    public class CountDown extends CountDownTimer{
+
+        public CountDown(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long l) {
+            timerTime = (int) l/1000;
+        }
+
+        @Override
+        public void onFinish() {
+            mediaPlayer.stop();
+            ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+        }
     }
 }

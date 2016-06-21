@@ -16,7 +16,8 @@ public interface ISongDetailPresenter {
     void setShuffle(boolean shuffle);
     void playNext();
     void playPrevious();
+    void setTimer(int minute);
     boolean isPlaying();
+    int getTimerTime();
     long getCurrent();
-    long getDuration();
 }

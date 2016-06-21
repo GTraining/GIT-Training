@@ -1,22 +1,21 @@
 package com.example.kyler.musicplayer.View;
 
-import android.app.NotificationManager;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.example.kyler.musicplayer.Model.MyBindService;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.ISongDetailPresenter;
 import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
@@ -33,10 +32,10 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     SeekBar seekBar;
     ImageView image;
     LinearLayout background;
+    Dialog timerDialog;
 
     boolean timerStatus = false, playStatus = false, shuffleStatus = false;
-    int repeatStatus = 0;
-    int currentID;
+    int repeatStatus = 0, currentID, timerTime=0;
     long currentTime = 0;
     boolean seekbarChanging = false;
     Song song;
@@ -91,7 +90,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         seekBar = (SeekBar) findViewById(R.id.activity_song_detail_seek);
         background = (LinearLayout) findViewById(R.id.activity_song_detail_background);
         seekBar.setProgress(0);
-
+        setDialog(0);
         timer.setOnClickListener(this);
         shuffle.setOnClickListener(this);
         repeat.setOnClickListener(this);
@@ -178,11 +177,52 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     }
 
     /**
+     * set Dialog for Timer
+     */
+    private void setDialog(int time){
+        timerDialog = new Dialog(this);
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        timerDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        timerDialog.setContentView(R.layout.song_timer_dialog);
+        timerDialog.getWindow().setLayout(width,height/6);
+        timerDialog.setCancelable(true);
+        SeekBar seekBar = (SeekBar) timerDialog.findViewById(R.id.timer_song_seekbar);
+        final TextView timertxt = (TextView) timerDialog.findViewById(R.id.timer_song_txt);
+        seekBar.setProgress(time);
+        timertxt.setText("Turn off in "+time+" minutes");
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                timerTime = seekBar.getProgress();
+                timertxt.setText("Turn off in "+timerTime+" minutes");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                timerDialog.dismiss();
+                detailPresenter.setTimer(timerTime);
+            }
+        });
+    }
+
+    /**
      * update the current time on seekbar
      */
     @Override
     public void updateSeekbar(){
         mHandler.post(mUpdateSeekbarRunnable);
+    }
+
+    @Override
+    public void stopMusic() {
+        finish();
     }
 
     /**
@@ -198,10 +238,17 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         }
     };
 
+    public void showTimerDialog(){
+        timerTime = detailPresenter.getTimerTime();
+        setDialog(timerTime);
+        timerDialog.show();
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_song_detail_timer:
+                showTimerDialog();
                 break;
             case R.id.activity_song_detail_shuffle:
                 shuffleStatus = !shuffleStatus;

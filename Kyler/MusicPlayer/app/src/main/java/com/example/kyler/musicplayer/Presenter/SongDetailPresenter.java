@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.MediaController;
 
 import com.example.kyler.musicplayer.Model.MyBindService;
 import com.example.kyler.musicplayer.Model.Song;
@@ -115,6 +113,12 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public void setTimer(int minute) {
+        long time = minute * 1000;
+        myBindService.setTimer(time);
+    }
+
+    @Override
     public boolean isPlaying() {
         if(binded)
             return myBindService.isPlaying();
@@ -123,12 +127,14 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public int getTimerTime() {
+        return myBindService.getTimerTime();
+    }
+
+    @Override
     public long getCurrent() {
         return myBindService.getCurrent();
     }
 
-    @Override
-    public long getDuration() {
-        return myBindService.getDuration();
-    }
+
 }

@@ -1,9 +1,13 @@
 package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserSetUpDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserSetUp;
 import com.example.jason.jason_workshop_3.View.LoginView.SignupActivity;
 
 import java.util.ArrayList;
@@ -17,11 +21,14 @@ public class Presenter_Signup implements SignupImpl{
     private String Username, password, cf_password;
     private SignupActivity mView;
     private UserManagement mUserManagement;
+    private UserSetUpDatabase mUserSetUpDatabase;
     private List<String> list = new ArrayList<>();
+    private UserSetUp mUserSetUp;
     public Presenter_Signup(SignupActivity mView) {
         this.mView = mView;
         mUserManagement = new UserManagement(mView);
-
+        mUserSetUpDatabase = new UserSetUpDatabase(mView);
+        mUserSetUpDatabase.open();
     }
 
     @Override
@@ -41,10 +48,9 @@ public class Presenter_Signup implements SignupImpl{
         else {
             UserCheckInfo mCheckLogin = mUserManagement.checkExisting(Username);
             if (!mCheckLogin.isExisted()){
-                mUserManagement.createUser(new User(Username, password));
-
+                mUserSetUp = new UserSetUp(Username, "MONTHLY", "1", "1","1");
+                new LoadNewUser().execute();
                 // Fix Bug ID: JS_010 - Application will be show up Home screen after user sign up successful
-                mView.OpenNewUserActivity();
             } else {
                 Toast.makeText(mView, "Username is existed!", Toast.LENGTH_LONG).show();
                 mView.UpdateAllEditText();
@@ -65,5 +71,30 @@ public class Presenter_Signup implements SignupImpl{
         if (pw.equals(cf_pw)){
             return true;
         }else return false;
+    }
+
+    public class LoadNewUser extends AsyncTask<Void, Void, Void>{
+        ProgressDialog mDialog = new ProgressDialog(mView);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mDialog.setProgress(0);
+            mDialog.setMessage("Setting up......");
+            mDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            mUserManagement.createUser(new User(Username, password));
+            mUserSetUpDatabase.INSERT(mUserSetUp);
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            mView.OpenNewUserActivity();
+            mDialog.dismiss();
+        }
     }
 }

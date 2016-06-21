@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/Dialog_background"
+    android:background="#FFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +11,7 @@
         android:layout_gravity="center_horizontal">
         <RelativeLayout
             android:background="@drawable/background_click_main"
-            android:onClick="onclickCloseChart"
+            android:onClick="onclickBack"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/close"
+                android:background="@drawable/chevron_left_dark"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
@@ -39,6 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <RelativeLayout
+            android:onClick="onclickMonthlyChart"
+            android:background="@drawable/background_click_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -52,6 +54,8 @@
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
         <RelativeLayout
+            android:onClick="onclickQuarterlyChart"
+            android:background="@drawable/background_click_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -65,6 +69,8 @@
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
         <RelativeLayout
+            android:onClick="onclickYearlyChart"
+            android:background="@drawable/background_click_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">

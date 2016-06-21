@@ -28,14 +28,14 @@ public class CheckBMIActivity extends AppCompatActivity {
     private String age = "", height = "", weight = "";
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
-    private int intentNumber;
+    private int intentID;
     private Presenter_CheckBMI mPresenter_checkBMI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_bmi);
-        intentNumber = Integer.parseInt(getIntent().getStringExtra("Intent"));
+        intentID = Integer.parseInt(getIntent().getStringExtra("Intent"));
         edt_age = (EditText) findViewById(R.id.editText_age);
         edt_weight = (EditText) findViewById(R.id.editText_weight);
         edt_height = (EditText) findViewById(R.id.editText_height);
@@ -56,9 +56,6 @@ public class CheckBMIActivity extends AppCompatActivity {
     public void setHelloUser(){
         tvHello.setText("Hello: " + mPresenter_checkBMI.getCurrenUser() + "!");
     }
-    public void startImproveYourHealth(View v){
-        mCheckBMIResultDialog.startImproveHealth();
-    }
 
     public void onclickCheckBMI(View v){
         height = edt_height.getText().toString();
@@ -74,17 +71,19 @@ public class CheckBMIActivity extends AppCompatActivity {
     }
 
     public void onclickCloseActivity(View v){
-        if (intentNumber == 2){
-            Intent mIntent = new Intent(CheckBMIActivity.this, UserMainActivity.class);
-            startActivity(mIntent);
-        }else onBackPressed();
+        onBackPressed();
     }
 
     @Override
     public void onBackPressed() {
+        if (!checkIntentID()){
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
+        } else {
+            Intent mIntent = new Intent(CheckBMIActivity.this, UserMainActivity.class);
+            startActivity(mIntent);
+        }
     }
 
     //Fix Bug ID: JS_016(Set range for input value)
@@ -100,4 +99,10 @@ public class CheckBMIActivity extends AppCompatActivity {
         mCheckBMIResultDialog.dismissDialog();
     }
 
+    public boolean checkIntentID(){
+        if (intentID == 2){
+            return true;
+        }
+        else return false;
+    }
 }

@@ -14,6 +14,7 @@ import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresentSettingActionbar;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
+import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
@@ -34,7 +35,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     private ProgressBar progressBar_second, progressBar_minute, progressBar_hour;
     private TextView txv_time, txv_Second, txv_date, txv_month, txv_year, txv_day, txv_AP;
     private PresentSettingActionbar mSettingActionbar;
-    private UserBMIChartBar mUserBMIChartBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,13 +168,8 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     //Open history's check BMI Chart dialog
     public void onclickBMIChart(View v){
-        mUserBMIChartBar = new UserBMIChartBar(this);
-        mUserBMIChartBar.show(1, Gravity.CENTER);
-    }
-
-    //Close history's check BMI Chart dialog
-    public void onclickCloseChart(View v){
-        mUserBMIChartBar.dismissDialog();
+        Intent mIntent = new Intent(UserMainActivity.this, BMIChartActivity.class);
+        startActivity(mIntent);
     }
 
     //Start new activity

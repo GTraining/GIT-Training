@@ -1,13 +1,12 @@
 package com.example.jason.jason_workshop_3.View.MessageDialog;
 
-import android.widget.EditText;
-
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
 import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
 import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserSetUp;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
@@ -33,6 +32,7 @@ public class UserBMIChartBar implements DialogMessagaImpl {
     private UserBMIDatabase mUserBMIDatabase;
     private List<UserBMI> mUserBMIs = new ArrayList<>();
     private UserManagement mUserManagement;
+    private UserSetUp mSetUp;
 
     public UserBMIChartBar(UserMainActivity view) {
         this.mView = view;

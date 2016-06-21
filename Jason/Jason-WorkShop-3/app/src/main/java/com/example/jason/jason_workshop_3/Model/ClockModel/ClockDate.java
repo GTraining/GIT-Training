@@ -15,6 +15,10 @@ public class ClockDate implements ClockDateImpl{
     public String getMonth() {
         return convertMonth(Month);
     }
+    public String getMonthNumber() {
+        int MM = Integer.parseInt(Month) + 1;
+        return String.valueOf(MM);
+    }
     public String getYear() {
         return Year;
     }

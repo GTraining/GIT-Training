@@ -22,6 +22,9 @@ public class LogoutAlertDialog {
 
     public void show(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mView);
+
+//      Fix Bug ID: JS_012 - (Title should be “Warning” and content should be “Do you want to log out?”)
+
         alertDialogBuilder.setTitle("Warning!");
         alertDialogBuilder
                 .setMessage("Do you want to log out?")

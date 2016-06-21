@@ -20,6 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
+                <!-- Button back 've removed for Bug id JS_013-->
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -157,13 +159,16 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_centerHorizontal="true"
                                                 android:layout_centerVertical="true">
+
+                                                <!-- Change text color for Bug id JS_011-->
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:textAppearance="?android:attr/textAppearanceSmall"
                                                     android:text="Jun"
                                                     android:textSize="7dp"
-                                                    android:textColor="#44000000"
+                                                    android:textColor="#FFF"
                                                     android:id="@+id/textView_month"
                                                     android:layout_gravity="center_horizontal" />
 
@@ -173,7 +178,7 @@
                                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                                     android:text="09"
                                                     android:textSize="15dp"
-                                                    android:textColor="#00fc08"
+                                                    android:textColor="#000"
                                                     android:id="@+id/textView_date"
                                                     android:layout_gravity="center_horizontal" />
 
@@ -183,7 +188,7 @@
                                                     android:textAppearance="?android:attr/textAppearanceSmall"
                                                     android:text="2016"
                                                     android:textSize="7dp"
-                                                    android:textColor="#44000000"
+                                                    android:textColor="#FFF"
                                                     android:id="@+id/textView_year"
                                                     android:layout_gravity="center_horizontal" />
                                             </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.kyler.musicplayer.View;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.NotificationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,5 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else{
             Log.e("Applicant MainActivity", "Error in creating fragment");
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+        super.onDestroy();
     }
 }

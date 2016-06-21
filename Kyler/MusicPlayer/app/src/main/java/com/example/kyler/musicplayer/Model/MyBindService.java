@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
+    public static int NOTIFY_ID = 0;
     private ArrayList<Song> songs;
     private String currentPath = "";
     private int currentPosition = 0;
-    private int NOTIFY_ID = 0;
     private String songTitle = "";
     private boolean shuffle = false;
     private Random random;
@@ -55,25 +55,18 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public void onPrepared(MediaPlayer mediaPlayer) {
         mediaPlayer.start();
         Intent notIntent = new Intent(this, SongDetailActivity.class);
-        notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        notIntent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
+        ArrayList<String> arrSongPaths = new ArrayList<>();
+        for(int j=0;j<songs.size();j++){
+            arrSongPaths.add(songs.get(j).getSongPath());
+        }
+        notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
+        notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
         PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                 notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-//        Notification.Builder builder = new Notification.Builder(this);
-//        builder.setSmallIcon(R.drawable.play)
-//                .setTicker(songTitle)
-//                .setOngoing(true)
-//                .setContentTitle("Playing")
-//                .setContentText(songTitle);
-//        Notification not = builder.build();
-//        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-//        notificationManager.notify(NOTIFY_ID,not);
-        showNotify();
-    }
-
-    private void showNotify(){
         Notification.Builder builder = new Notification.Builder(this);
         builder.setSmallIcon(R.drawable.play)
+                .setContentIntent(pendInt)
                 .setTicker(songTitle)
                 .setOngoing(true)
                 .setContentTitle("Playing")
@@ -129,12 +122,10 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void pauseSong(){
         mediaPlayer.pause();
-        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFY_ID);
     }
 
     public void resumeSong(){
         mediaPlayer.start();
-        showNotify();
     }
 
     public void setCurrentPosition(int currentID){
@@ -188,7 +179,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         Log.e("MyBindService","onUnBind");
         mediaPlayer.stop();
         mediaPlayer.release();
-        return super.onUnbind(intent);
+        return true;
     }
 
     @Override
@@ -197,8 +188,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         super.onDestroy();
         stopForeground(true);
     }
-
-
 
     public boolean isPlaying(){
         return mediaPlayer.isPlaying();

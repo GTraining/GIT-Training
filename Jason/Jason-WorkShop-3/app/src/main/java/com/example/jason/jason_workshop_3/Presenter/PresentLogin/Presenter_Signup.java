@@ -42,6 +42,8 @@ public class Presenter_Signup implements SignupImpl{
             UserCheckInfo mCheckLogin = mUserManagement.checkExisting(Username);
             if (!mCheckLogin.isExisted()){
                 mUserManagement.createUser(new User(Username, password));
+
+                // Fix Bug ID: JS_010 - Application will be show up Home screen after user sign up successful
                 mView.OpenNewUserActivity();
             } else {
                 Toast.makeText(mView, "Username is existed!", Toast.LENGTH_LONG).show();

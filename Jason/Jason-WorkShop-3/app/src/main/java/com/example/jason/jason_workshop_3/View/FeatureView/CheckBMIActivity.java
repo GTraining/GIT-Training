@@ -67,7 +67,7 @@ public class CheckBMIActivity extends AppCompatActivity {
         if (height.equals("") || weight.equals("") || age.equals(""))
             Toast.makeText(getApplicationContext(), "Something are empty!", Toast.LENGTH_LONG).show();
         else {
-            if (check(Float.parseFloat(weight) ,Float.parseFloat(height)))
+            if (check(Float.parseFloat(weight) , Float.parseFloat(height), Integer.parseInt(age)))
                 checkBMIAlertDialog.show();
             else mCheckBMIResultDialog.show(1, Gravity.TOP);
         }
@@ -87,16 +87,17 @@ public class CheckBMIActivity extends AppCompatActivity {
         startActivity(startMain);
     }
 
-    public boolean check(float weight, float height){
-         if (weight > 1000){
-             edt_weight.setText("");
+    //Fix Bug ID: JS_016(Set range for input value)
+    public boolean check(float weight, float height, int age){
+         if (weight > 1000 || height > 300 || age > 200){
              return true;
          }
-        if (height > 300){
-            edt_weight.setText("");
-            return true;
-        }
         else return false;
+    }
+    //Fix Bug ID: JS_018(Crash happens when clicking on “X” button on BMI result page)
+    //Because System can't find event onclickCloseDialog(View v) in this activity
+    public void onclickCloseDialog(View v){
+        mCheckBMIResultDialog.dismissDialog();
     }
 
 }

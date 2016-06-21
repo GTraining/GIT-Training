@@ -1,6 +1,5 @@
 package com.example.jason.jason_workshop_3.View.FeatureView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,22 +24,22 @@ import java.util.List;
 public class CheckBMIActivity extends AppCompatActivity {
 
     private EditText edt_age, edt_weight, edt_height;
-    private TextView txv_hello;
-    private String _age = "", _height = "", _weight = "";
+    private TextView tvHello;
+    private String age = "", height = "", weight = "";
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
-    private int intent_number;
+    private int intentNumber;
     private Presenter_CheckBMI mPresenter_checkBMI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_bmi);
-        intent_number = Integer.parseInt(getIntent().getStringExtra("Intent"));
+        intentNumber = Integer.parseInt(getIntent().getStringExtra("Intent"));
         edt_age = (EditText) findViewById(R.id.editText_age);
         edt_weight = (EditText) findViewById(R.id.editText_weight);
         edt_height = (EditText) findViewById(R.id.editText_height);
-        txv_hello = (TextView) findViewById(R.id.textView_Hello);
+        tvHello = (TextView) findViewById(R.id.textView_Hello);
         mCheckBMIResultDialog = new CheckBMIResultDialog(this);
         mPresenter_checkBMI = new Presenter_CheckBMI(this);
         setHelloUser();
@@ -49,33 +48,33 @@ public class CheckBMIActivity extends AppCompatActivity {
 
     public List<String> getUserHealth(){
         List<String> BMI = new ArrayList<>();
-        BMI.add(_height);
-        BMI.add(_weight);
+        BMI.add(height);
+        BMI.add(weight);
         return BMI;
     }
 
     public void setHelloUser(){
-        txv_hello.setText("Hello: " + mPresenter_checkBMI.getCurrenUser() + "!");
+        tvHello.setText("Hello: " + mPresenter_checkBMI.getCurrenUser() + "!");
     }
     public void startImproveYourHealth(View v){
         mCheckBMIResultDialog.startImproveHealth();
     }
 
     public void onclickCheckBMI(View v){
-        _height = edt_height.getText().toString();
-        _weight = edt_weight.getText().toString();
-        _age = edt_age.getText().toString();
-        if (_height.equals("") || _weight.equals("") || _age.equals(""))
+        height = edt_height.getText().toString();
+        weight = edt_weight.getText().toString();
+        age = edt_age.getText().toString();
+        if (height.equals("") || weight.equals("") || age.equals(""))
             Toast.makeText(getApplicationContext(), "Something are empty!", Toast.LENGTH_LONG).show();
         else {
-            if (check(Float.parseFloat(_weight) ,Float.parseFloat(_height)))
+            if (check(Float.parseFloat(weight) ,Float.parseFloat(height)))
                 checkBMIAlertDialog.show();
             else mCheckBMIResultDialog.show(1, Gravity.TOP);
         }
     }
 
     public void onclickCloseActivity(View v){
-        if (intent_number == 2){
+        if (intentNumber == 2){
             Intent mIntent = new Intent(CheckBMIActivity.this, UserMainActivity.class);
             startActivity(mIntent);
         }else onBackPressed();

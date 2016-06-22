@@ -33,7 +33,4 @@ public class BMIChartActivity extends AppCompatActivity {
     public void onclickYearlyChart(View v){
         presenterBmiChart.showBMIchartbar("YEARLY");
     }
-    public void onclickQuarterlyChart(View v){
-        presenterBmiChart.showBMIchartbar("QUARTERLY");
-    }
 }

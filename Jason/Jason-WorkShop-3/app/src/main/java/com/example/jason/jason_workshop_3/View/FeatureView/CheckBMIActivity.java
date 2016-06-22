@@ -1,5 +1,7 @@
 package com.example.jason.jason_workshop_3.View.FeatureView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_CheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
@@ -64,9 +67,13 @@ public class CheckBMIActivity extends AppCompatActivity {
         if (height.equals("") || weight.equals("") || age.equals(""))
             Toast.makeText(getApplicationContext(), "Something are empty!", Toast.LENGTH_LONG).show();
         else {
-            if (check(Float.parseFloat(weight) , Float.parseFloat(height), Integer.parseInt(age)))
+            if (check(Float.parseFloat(weight) , Float.parseFloat(height), Integer.parseInt(age))) {
                 checkBMIAlertDialog.show();
-            else mCheckBMIResultDialog.show(1, Gravity.TOP);
+            }
+            else {
+                setEmptyEditText();
+                mCheckBMIResultDialog.show(1, Gravity.TOP);
+            }
         }
     }
 
@@ -76,7 +83,7 @@ public class CheckBMIActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (!checkIntentID()){
+        if (checkIntentID() == 1){
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
@@ -99,10 +106,22 @@ public class CheckBMIActivity extends AppCompatActivity {
         mCheckBMIResultDialog.dismissDialog();
     }
 
-    public boolean checkIntentID(){
-        if (intentID == 2){
-            return true;
-        }
-        else return false;
+    public int checkIntentID(){
+        return intentID;
+    }
+
+    public void setEmptyEditText(){
+        edt_weight.setText("");
+        edt_height.setText("");
+        edt_age.setText("");
+    }
+
+    public void setCheckBMIAlarm(){
+        Intent mIntent = new Intent(this, AlarmReceiver.class);
+        mIntent.putExtra("Intent", "Check BMI");
+        mIntent.putExtra("ContentText", "Please Check BMI!");
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, pendingIntent);
     }
 }

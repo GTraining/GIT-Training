@@ -1,10 +1,13 @@
 package com.example.jason.jason_workshop_3.View.MessageDialog;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
 import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
@@ -78,8 +81,12 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
         txv_checkBMI = (TextView) dialog.findViewById(R.id.textView_checkBMI);
         txv_BMI = (TextView) dialog.findViewById(R.id.textView_BMI);
         Button btnImprove = (Button) dialog.findViewById(R.id.button_improve);
-        if (mView.checkIntentID()){
+        mList = mView.getUserHealth();
+        mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0), mList.get(1), date);
+        if (mView.checkIntentID() != 1){
             btnImprove.setVisibility(View.INVISIBLE);
+        } else if (mView.checkIntentID() == 3) {
+            setAlarmCheckBMI();
         }
         btnImprove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +94,14 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
                 startImproveHealth();
             }
         });
-        mList = mView.getUserHealth();
-        mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0),mList.get(1), date);
         BMI = mUserBMI.getBMI();
         txv_checkBMI.setText(mUserBMI.convertBMI(BMI));
         txv_BMI.setText("YOUR BMI: " + BMI);
-        mUserBMIDatabase.INSERT(mUserBMI);
         dialog.show();
     }
     public void startImproveHealth(){
+        setAlarmCheckBMI();
+        mUserBMIDatabase.INSERT(mUserBMI);
         mUsermanagement.UpdateBMI(mCurrentLogin.getID(), mUserBMI.convertBMI(BMI));
         Intent mIntent = new Intent(mView, UserMainActivity.class);
         mView.startActivity(mIntent);
@@ -103,4 +109,10 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     public void dismissDialog(){
         dialog.dismiss();
     }
+
+    public void setAlarmCheckBMI(){
+        mUserBMIDatabase.INSERT(mUserBMI);
+        mView.setCheckBMIAlarm();
+    }
+
 }

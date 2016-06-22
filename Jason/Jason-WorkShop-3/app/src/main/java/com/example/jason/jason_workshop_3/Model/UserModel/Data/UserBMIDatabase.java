@@ -91,9 +91,13 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
         int iweight = c.getColumnIndex(COLUMN_WEIGHT);
         int icheckDate = c.getColumnIndex(COLUMN_CHECKDATE);
         List<UserBMI> userBMIs = new ArrayList<>();
+        userBMIs.add(new UserBMI(Username, "174", "51",  "1/1/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "52",  "1/2/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "53",  "1/3/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "53",  "1/4/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "54",  "1/5/2016"));
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             if (Username.equals(c.getString(iusername))){
-
                 userBMIs.add(new UserBMI(Username, c.getString(iheight), c.getString(iweight), c.getString(icheckDate)));
             }
         }

@@ -25,7 +25,7 @@ public class UserBMI {
     }
 
     public float getHEIGHT() {
-        return Float.parseFloat(HEIGHT)/100;
+        return Float.parseFloat(HEIGHT);
     }
 
     public void setHEIGHT(String HEIGHT) {
@@ -48,7 +48,7 @@ public class UserBMI {
         this.CHECKTIME = CHECKTIME;
     }
     public float getBMI(){
-        float BMI = getWEIGHT()/(getHEIGHT()*getHEIGHT());
+        float BMI = getWEIGHT()/(getHEIGHT()/100*getHEIGHT()/100);
         return BMI;
     }
     public String convertBMI(float BMI){

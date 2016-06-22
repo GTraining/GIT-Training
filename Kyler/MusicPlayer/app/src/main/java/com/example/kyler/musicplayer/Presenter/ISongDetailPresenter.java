@@ -17,6 +17,7 @@ public interface ISongDetailPresenter {
     void playNext();
     void playPrevious();
     void setTimer(int minute);
+    void setRepeat(int repeat);
     boolean isPlaying();
     boolean getTimerComplete();
     int getTimerTime();

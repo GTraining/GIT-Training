@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -50,6 +49,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         arrSongPaths = intent.getStringArrayListExtra(String.valueOf(R.string.path));
         currentID = intent.getIntExtra(String.valueOf(R.string.currentID),0);
+        repeatStatus = intent.getIntExtra(String.valueOf(R.string.repeatStatus),0);
         detailPresenter = new SongDetailPresenter(getApplicationContext(),this);
         mHandler.postDelayed(new Runnable() {
             @Override
@@ -60,6 +60,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 }else {
                     detailPresenter.setSongs(arrSongPaths, currentID);
                 }
+                detailPresenter.setRepeat(repeatStatus);
                 playSong();
                 setStatus();
             }
@@ -248,6 +249,13 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         timerDialog.show();
     }
 
+    private void setRepeat(){
+        repeatStatus++;
+        if(repeatStatus>2) repeatStatus=0;
+        detailPresenter.setRepeat(repeatStatus);
+        setStatus();
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -260,9 +268,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 setStatus();
                 break;
             case R.id.activity_song_detail_repeat:
-                repeatStatus++;
-                if(repeatStatus>2) repeatStatus=0;
-                setStatus();
+                setRepeat();
                 break;
             case R.id.activity_song_detail_previous:
                 previousSong();

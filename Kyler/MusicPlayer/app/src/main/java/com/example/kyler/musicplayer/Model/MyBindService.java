@@ -16,16 +16,17 @@ import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
     public static int NOTIFY_ID = 0;
-    private ArrayList<Song> songs;
+    private ArrayList<Song> songs, shuffleSongs, normalSongs;
     private String currentPath = "";
     private int currentPosition = 0;
     private int timerTime = 0;
-    private String songTitle = "";
     private boolean shuffle = false;
+    private String songTitle = "";
     private Random random;
     private boolean timerComplete = false, complete = false;
     private CountDown countDownTimer;
@@ -63,6 +64,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         }
         notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
         notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
+        notIntent.putExtra(String.valueOf(R.string.repeatStatus),repeat);
         PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                 notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder builder = new Notification.Builder(this);
@@ -91,6 +93,9 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public Song getCurrentSong(){
+        if(currentPosition>2 || currentPosition<0){
+            return songs.get(0);
+        }
         return songs.get(currentPosition);
     }
 
@@ -102,6 +107,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void setSongs(ArrayList<Song> songs){
         this.songs = songs;
+        this.normalSongs = songs;
     }
 
     public void seekTo(long time){
@@ -155,29 +161,76 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         return songs.get(currentPosition);
     }
 
-    public void playNext(){
-        if(shuffle){
-            int newSong = currentPosition;
-            while(newSong==currentPosition){
-                newSong=random.nextInt(songs.size());
-            }
-            currentPosition=newSong;
-        }
-        else{
-            currentPosition++;
-            if(currentPosition>=songs.size()) currentPosition=0;
-        }
-        playSong();
-    }
 
     public void setShuffle(boolean shuffle){
         this.shuffle = shuffle;
+        Song song = songs.get(currentPosition);
+        shuffleSongs = songs;
+        if(shuffle){
+            Collections.shuffle(shuffleSongs);
+            songs = shuffleSongs;
+        }else{
+            songs = normalSongs;
+        }
+        for (int i=0;i<songs.size();i++){
+            if(songs.get(i).getSongPath().equals(song.getSongPath())){
+                currentPosition = i;
+                break;
+            }
+        }
+    }
+
+    public void setRepeat(int repeat){
+        this.repeat = repeat;
+    }
+
+    public void playNext(){
+        switch (repeat){
+            case 0:
+                currentPosition++;
+                if(currentPosition>=songs.size()) {
+                    currentPosition = 0;
+                    shuffleSongs = songs;
+                    if(shuffle){
+                        Collections.shuffle(shuffleSongs);
+                        songs = shuffleSongs;
+                    }else{
+                        songs = normalSongs;
+                    }
+                }
+                playSong();
+                break;
+            case 1:
+                playSong();
+                break;
+            case 2:
+                currentPosition++;
+                if(currentPosition>=songs.size()) {
+                    timerComplete = true;
+                    mediaPlayer.stop();
+                    stopSelf();
+                    ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+                }
+                break;
+        }
     }
 
     public void playPrevious(){
-        currentPosition--;
-        if(currentPosition<0) currentPosition=songs.size()-1;
-        playSong();
+        switch (repeat){
+            case 0:
+                currentPosition--;
+                if(currentPosition>=songs.size()) currentPosition = songs.size()-1;
+                playSong();
+                break;
+            case 1:
+                playSong();
+                break;
+            case 2:
+                currentPosition--;
+                if(currentPosition<0) currentPosition++;
+                playSong();
+                break;
+        }
     }
 
     @Override

@@ -119,6 +119,11 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public void setRepeat(int repeat) {
+        myBindService.setRepeat(repeat);
+    }
+
+    @Override
     public boolean isPlaying() {
         if(binded)
             return myBindService.isPlaying();

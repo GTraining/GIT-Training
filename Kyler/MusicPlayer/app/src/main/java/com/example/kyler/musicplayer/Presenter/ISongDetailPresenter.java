@@ -1,6 +1,5 @@
 package com.example.kyler.musicplayer.Presenter;
 
-import com.example.kyler.musicplayer.Model.Song;
 
 import java.util.ArrayList;
 
@@ -22,4 +21,7 @@ public interface ISongDetailPresenter {
     boolean getTimerComplete();
     int getTimerTime();
     long getCurrent();
+    String getCurrentPath();
+    int getRepeatStatus();
+    boolean getShuffleStatus();
 }

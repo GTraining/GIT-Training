@@ -49,13 +49,14 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         arrSongPaths = intent.getStringArrayListExtra(String.valueOf(R.string.path));
         currentID = intent.getIntExtra(String.valueOf(R.string.currentID),0);
-        repeatStatus = intent.getIntExtra(String.valueOf(R.string.repeatStatus),0);
         detailPresenter = new SongDetailPresenter(getApplicationContext(),this);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(detailPresenter.isPlaying()){
+                if(detailPresenter.isPlaying() && arrSongPaths.get(currentID).equals(detailPresenter.getCurrentPath())){
                     currentTime = detailPresenter.getCurrent();
+                    repeatStatus = detailPresenter.getRepeatStatus();
+                    shuffleStatus = detailPresenter.getShuffleStatus();
                     detailPresenter.getSong();
                 }else {
                     detailPresenter.setSongs(arrSongPaths, currentID);

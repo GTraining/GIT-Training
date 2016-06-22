@@ -92,6 +92,18 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         }
     }
 
+    public String getCurrentPath(){
+        return songs.get(currentPosition).getSongPath();
+    }
+
+    public int getRepeat(){
+        return repeat;
+    }
+
+    public boolean getShuffle(){
+        return shuffle;
+    }
+
     public Song getCurrentSong(){
         if(currentPosition>2 || currentPosition<0){
             return songs.get(0);

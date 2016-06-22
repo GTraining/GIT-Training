@@ -145,4 +145,20 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     public long getCurrent() {
         return myBindService.getCurrent();
     }
+
+    @Override
+    public String getCurrentPath() {
+        return myBindService.getCurrentPath();
+    }
+
+    @Override
+    public int getRepeatStatus() {
+        return myBindService.getRepeat();
+    }
+
+    @Override
+    public boolean getShuffleStatus() {
+        return myBindService.getShuffle();
+    }
+
 }

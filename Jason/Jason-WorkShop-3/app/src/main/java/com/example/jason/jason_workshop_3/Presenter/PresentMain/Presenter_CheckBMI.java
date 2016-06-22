@@ -12,8 +12,8 @@ public class Presenter_CheckBMI {
     private Context mContext;
     private UserManagement userManagement;
 
-    public Presenter_CheckBMI(Context mContext) {
-        this.mContext = mContext;
+    public Presenter_CheckBMI(Context mContexts) {
+        this.mContext = mContexts;
         this.userManagement = new UserManagement(mContext);
     }
 

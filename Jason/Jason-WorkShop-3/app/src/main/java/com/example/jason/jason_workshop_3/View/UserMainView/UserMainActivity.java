@@ -1,6 +1,9 @@
 package com.example.jason.jason_workshop_3.View.UserMainView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,10 +13,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresentSettingActionbar;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
+import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.BMI_ChartManagement;
 import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
@@ -34,7 +40,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     private ProgressBar progressBar_second, progressBar_minute, progressBar_hour;
     private TextView txv_time, txv_Second, txv_date, txv_month, txv_year, txv_day, txv_AP;
     private PresentSettingActionbar mSettingActionbar;
-    private UserBMIChartBar mUserBMIChartBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +59,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
         mPresenterClockAdapter = new PresenterClockAdapter(this);
         mSettingActionbar = new PresentSettingActionbar(this);
-
 
         mCountMillisecond = mPresenterClockAdapter.getCountMilliseconds();
         setClockRunnable();
@@ -168,13 +172,8 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     //Open history's check BMI Chart dialog
     public void onclickBMIChart(View v){
-        mUserBMIChartBar = new UserBMIChartBar(this);
-        mUserBMIChartBar.show(1, Gravity.CENTER);
-    }
-
-    //Close history's check BMI Chart dialog
-    public void onclickCloseChart(View v){
-        mUserBMIChartBar.dismissDialog();
+        Intent mIntent = new Intent(UserMainActivity.this, BMI_ChartManagement.class);
+        startActivity(mIntent);
     }
 
     //Start new activity
@@ -183,4 +182,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         Intent mIntent = new Intent(UserMainActivity.this, mClass);
         startActivity(mIntent);
     }
+
+
 }

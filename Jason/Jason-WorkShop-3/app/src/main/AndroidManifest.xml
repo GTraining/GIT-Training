@@ -20,7 +20,12 @@
         <activity android:name=".View.FeatureView.WaterDrinkingActivity" />
         <activity android:name=".View.FeatureView.DietActivity" />
         <activity android:name=".View.LoginView.SignupActivity" />
-        <activity android:name=".View.FeatureView.CheckBMIActivity"></activity>
+        <activity android:name=".View.FeatureView.CheckBMIActivity" />
+        <activity android:name=".View.FeatureView.BMIChartActivity" />
+
+        <receiver android:name=".Alarm.AlarmReceiver"></receiver>
+
+        <activity android:name=".View.FeatureView.BMI_ChartManagement"></activity>
     </application>
 
 </manifest>

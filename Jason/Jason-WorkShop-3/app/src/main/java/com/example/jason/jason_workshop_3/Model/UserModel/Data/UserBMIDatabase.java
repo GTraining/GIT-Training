@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Interface.UserBMIDatabaseImpl;
 
@@ -27,7 +28,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_HEIGHT = "height";
     public static final String COLUMN_WEIGHT = "weight";
-    public static final String COLUMN_CHECKTIME = "checktime";
+    public static final String COLUMN_CHECKDATE = "checktime";
     private static Context context;
     static SQLiteDatabase db;
     private OpenHelper openHelper;
@@ -54,7 +55,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
         cv.put(COLUMN_USERNAME, userBMI.getUSERNAME());
         cv.put(COLUMN_HEIGHT, userBMI.getHEIGHT());
         cv.put(COLUMN_WEIGHT, userBMI.getWEIGHT());
-        cv.put(COLUMN_CHECKTIME, userBMI.getCHECKTIME());
+        cv.put(COLUMN_CHECKDATE, userBMI.getCHECKTIME());
         return db.insert(TABLE_USER_HEALTH, null, cv);
     }
 
@@ -63,7 +64,6 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_HEIGHT, userBMI.getHEIGHT());
         cv.put(COLUMN_WEIGHT, userBMI.getWEIGHT());
-        cv.put(COLUMN_CHECKTIME, userBMI.getCHECKTIME());
         String id = "0";
         boolean check = false;
         Cursor c = SETUPCURSOR();
@@ -86,14 +86,19 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     @Override
     public List<UserBMI> GETLIST(String Username) {
         Cursor c = SETUPCURSOR();
-        int _username = c.getColumnIndex(COLUMN_USERNAME);
-        int _height = c.getColumnIndex(COLUMN_HEIGHT);
-        int _weight = c.getColumnIndex(COLUMN_WEIGHT);
-        int _checktime = c.getColumnIndex(COLUMN_CHECKTIME);
+        int iusername = c.getColumnIndex(COLUMN_USERNAME);
+        int iheight = c.getColumnIndex(COLUMN_HEIGHT);
+        int iweight = c.getColumnIndex(COLUMN_WEIGHT);
+        int icheckDate = c.getColumnIndex(COLUMN_CHECKDATE);
         List<UserBMI> userBMIs = new ArrayList<>();
+        userBMIs.add(new UserBMI(Username, "174", "51",  "1/1/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "52",  "1/2/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "53",  "1/3/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "53",  "1/4/2016"));
+        userBMIs.add(new UserBMI(Username, "174", "54",  "1/5/2016"));
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            if (Username.equals(c.getString(_username))){
-                userBMIs.add(new UserBMI(Username, c.getString(_height), c.getString(_weight), c.getString(_checktime)));
+            if (Username.equals(c.getString(iusername))){
+                userBMIs.add(new UserBMI(Username, c.getString(iheight), c.getString(iweight), c.getString(icheckDate)));
             }
         }
         c.close();
@@ -101,7 +106,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     }
 
     public Cursor SETUPCURSOR(){
-        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_HEIGHT, COLUMN_WEIGHT, COLUMN_CHECKTIME};
+        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_HEIGHT, COLUMN_WEIGHT, COLUMN_CHECKDATE};
         Cursor c = db.query(TABLE_USER_HEALTH, columns, null, null, null, null, null, null);
         return c;
     }
@@ -118,7 +123,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
                     + COLUMN_USERNAME + " TEXT NOT NULL, "
                     + COLUMN_HEIGHT + " TEXT NOT NULL, "
                     + COLUMN_WEIGHT + " TEXT NOT NULL, "
-                    + COLUMN_CHECKTIME + " TEXT NOT NULL);");
+                    + COLUMN_CHECKDATE + " TEXT NOT NULL);");
         }
         @Override
         public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {

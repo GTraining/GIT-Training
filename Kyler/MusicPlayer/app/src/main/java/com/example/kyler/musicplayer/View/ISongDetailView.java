@@ -9,4 +9,5 @@ public interface ISongDetailView {
     void loadSong(Song song);
     void updateBackground(int resource);
     void updateSeekbar();
+    void stopMusic();
 }

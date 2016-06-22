@@ -5,31 +5,32 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.IBinder;
-import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.Log;
-
 import com.example.kyler.musicplayer.R;
-import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
     public static int NOTIFY_ID = 0;
-    private ArrayList<Song> songs;
+    private ArrayList<Song> songs, shuffleSongs, normalSongs;
     private String currentPath = "";
     private int currentPosition = 0;
-    private String songTitle = "";
+    private int timerTime = 0;
     private boolean shuffle = false;
+    private String songTitle = "";
     private Random random;
-    private boolean complete = false;
+    private boolean timerComplete = false, complete = false;
+    private CountDown countDownTimer;
+    private int repeat = 0;
     MediaPlayer mediaPlayer;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
@@ -54,6 +55,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public void onPrepared(MediaPlayer mediaPlayer) {
         mediaPlayer.start();
+        timerComplete = false;
         Intent notIntent = new Intent(this, SongDetailActivity.class);
         notIntent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
         ArrayList<String> arrSongPaths = new ArrayList<>();
@@ -62,6 +64,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         }
         notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
         notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
+        notIntent.putExtra(String.valueOf(R.string.repeatStatus),repeat);
         PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                 notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder builder = new Notification.Builder(this);
@@ -90,6 +93,9 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public Song getCurrentSong(){
+        if(currentPosition>2 || currentPosition<0){
+            return songs.get(0);
+        }
         return songs.get(currentPosition);
     }
 
@@ -101,6 +107,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void setSongs(ArrayList<Song> songs){
         this.songs = songs;
+        this.normalSongs = songs;
     }
 
     public void seekTo(long time){
@@ -122,6 +129,14 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void pauseSong(){
         mediaPlayer.pause();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!isPlaying()){
+                    ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+                }
+            }
+        },3000);
     }
 
     public void resumeSong(){
@@ -134,44 +149,88 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public long getCurrent(){
         long result = 0;
-        if(complete)
+        if(complete) {
             result = songs.get(currentPosition).getSongDuration();
-        else
+        } else {
             result = mediaPlayer.getCurrentPosition();
+        }
         return result;
-    }
-
-    public long getDuration(){
-        return mediaPlayer.getDuration();
     }
 
     public Song getSong(){
         return songs.get(currentPosition);
     }
 
-    public void playNext(){
-        if(shuffle){
-            int newSong = currentPosition;
-            while(newSong==currentPosition){
-                newSong=random.nextInt(songs.size());
-            }
-            currentPosition=newSong;
-        }
-        else{
-            currentPosition++;
-            if(currentPosition>=songs.size()) currentPosition=0;
-        }
-        playSong();
-    }
 
     public void setShuffle(boolean shuffle){
         this.shuffle = shuffle;
+        Song song = songs.get(currentPosition);
+        shuffleSongs = songs;
+        if(shuffle){
+            Collections.shuffle(shuffleSongs);
+            songs = shuffleSongs;
+        }else{
+            songs = normalSongs;
+        }
+        for (int i=0;i<songs.size();i++){
+            if(songs.get(i).getSongPath().equals(song.getSongPath())){
+                currentPosition = i;
+                break;
+            }
+        }
+    }
+
+    public void setRepeat(int repeat){
+        this.repeat = repeat;
+    }
+
+    public void playNext(){
+        switch (repeat){
+            case 0:
+                currentPosition++;
+                if(currentPosition>=songs.size()) {
+                    currentPosition = 0;
+                    shuffleSongs = songs;
+                    if(shuffle){
+                        Collections.shuffle(shuffleSongs);
+                        songs = shuffleSongs;
+                    }else{
+                        songs = normalSongs;
+                    }
+                }
+                playSong();
+                break;
+            case 1:
+                playSong();
+                break;
+            case 2:
+                currentPosition++;
+                if(currentPosition>=songs.size()) {
+                    timerComplete = true;
+                    mediaPlayer.stop();
+                    stopSelf();
+                    ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+                }
+                break;
+        }
     }
 
     public void playPrevious(){
-        currentPosition--;
-        if(currentPosition<0) currentPosition=songs.size()-1;
-        playSong();
+        switch (repeat){
+            case 0:
+                currentPosition--;
+                if(currentPosition>=songs.size()) currentPosition = songs.size()-1;
+                playSong();
+                break;
+            case 1:
+                playSong();
+                break;
+            case 2:
+                currentPosition--;
+                if(currentPosition<0) currentPosition++;
+                playSong();
+                break;
+        }
     }
 
     @Override
@@ -191,5 +250,63 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public boolean isPlaying(){
         return mediaPlayer.isPlaying();
+    }
+
+    /**
+     * set time for stoping the music, if the time input == 0, it means the user cancle the timer
+     * @param time
+     */
+    public void setTimer(long time){
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+        if (time == 0) {
+            countDownTimer = null;
+            timerTime = 0;
+        } else {
+            timerComplete = false;
+            countDownTimer = new CountDown(time, 60000);
+            if(time == 60000) {
+                timerTime = 1;
+            }
+            countDownTimer.start();
+        }
+    }
+
+    public int getTimerTime(){
+        return timerTime;
+    }
+    public boolean getTimerComplete(){
+        return timerComplete;
+    }
+
+    public class CountDown extends CountDownTimer{
+
+        public CountDown(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long l) {
+            timerTime = (int) ((l + 60000) / 60000);
+
+            //Because of not being called on Tick in last time. Using handle to decrease timerTime
+            if(timerTime == 2){
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        timerTime--;
+                    }
+                },60000);
+            }
+        }
+
+        @Override
+        public void onFinish() {
+            timerComplete = true;
+            timerTime = 0;
+            mediaPlayer.stop();
+            ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+        }
     }
 }

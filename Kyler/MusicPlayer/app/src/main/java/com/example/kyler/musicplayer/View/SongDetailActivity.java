@@ -1,22 +1,20 @@
 package com.example.kyler.musicplayer.View;
 
-import android.app.NotificationManager;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.example.kyler.musicplayer.Model.MyBindService;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.ISongDetailPresenter;
 import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
@@ -33,12 +31,11 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     SeekBar seekBar;
     ImageView image;
     LinearLayout background;
+    Dialog timerDialog;
 
-    boolean timerStatus = false, playStatus = false, shuffleStatus = false;
-    int repeatStatus = 0;
-    int currentID;
+    boolean playStatus = false, shuffleStatus = false;
+    int repeatStatus = 0, currentID, timerTime=0;
     long currentTime = 0;
-    boolean seekbarChanging = false;
     Song song;
     ISongDetailPresenter detailPresenter;
     ArrayList<String> arrSongPaths;
@@ -52,6 +49,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         arrSongPaths = intent.getStringArrayListExtra(String.valueOf(R.string.path));
         currentID = intent.getIntExtra(String.valueOf(R.string.currentID),0);
+        repeatStatus = intent.getIntExtra(String.valueOf(R.string.repeatStatus),0);
         detailPresenter = new SongDetailPresenter(getApplicationContext(),this);
         mHandler.postDelayed(new Runnable() {
             @Override
@@ -62,6 +60,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 }else {
                     detailPresenter.setSongs(arrSongPaths, currentID);
                 }
+                detailPresenter.setRepeat(repeatStatus);
                 playSong();
                 setStatus();
             }
@@ -91,7 +90,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         seekBar = (SeekBar) findViewById(R.id.activity_song_detail_seek);
         background = (LinearLayout) findViewById(R.id.activity_song_detail_background);
         seekBar.setProgress(0);
-
+        setDialog(0);
         timer.setOnClickListener(this);
         shuffle.setOnClickListener(this);
         repeat.setOnClickListener(this);
@@ -178,11 +177,51 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     }
 
     /**
+     * set Dialog for Timer
+     */
+    private void setDialog(int time){
+        timerDialog = new Dialog(this);
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        timerDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        timerDialog.setContentView(R.layout.song_timer_dialog);
+        timerDialog.getWindow().setLayout(width,height/6);
+        timerDialog.setCancelable(true);
+        SeekBar seekBar = (SeekBar) timerDialog.findViewById(R.id.timer_song_seekbar);
+        final TextView timertxt = (TextView) timerDialog.findViewById(R.id.timer_song_txt);
+        seekBar.setProgress(time);
+        timertxt.setText("Turn off in "+time+" minutes");
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                timerTime = seekBar.getProgress();
+                timertxt.setText("Turn off in "+timerTime+" minutes");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                detailPresenter.setTimer(timerTime);
+            }
+        });
+    }
+
+    /**
      * update the current time on seekbar
      */
     @Override
     public void updateSeekbar(){
         mHandler.post(mUpdateSeekbarRunnable);
+    }
+
+    @Override
+    public void stopMusic() {
+        finish();
     }
 
     /**
@@ -194,14 +233,34 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             currentTime = detailPresenter.getCurrent();
             seekBar.setProgress((int) currentTime);
             currentTxt.setText(Helper.millisecondsToTimer(currentTime));
+            if(detailPresenter.getTimerComplete())
+                finish();
             mHandler.postDelayed(this,100);
         }
     };
+
+    public void showTimerDialog(){
+        if(detailPresenter.isPlaying()) {
+            timerTime = detailPresenter.getTimerTime();
+        }else{
+            timerTime = 0;
+        }
+        setDialog(timerTime);
+        timerDialog.show();
+    }
+
+    private void setRepeat(){
+        repeatStatus++;
+        if(repeatStatus>2) repeatStatus=0;
+        detailPresenter.setRepeat(repeatStatus);
+        setStatus();
+    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_song_detail_timer:
+                showTimerDialog();
                 break;
             case R.id.activity_song_detail_shuffle:
                 shuffleStatus = !shuffleStatus;
@@ -209,9 +268,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 setStatus();
                 break;
             case R.id.activity_song_detail_repeat:
-                repeatStatus++;
-                if(repeatStatus>2) repeatStatus=0;
-                setStatus();
+                setRepeat();
                 break;
             case R.id.activity_song_detail_previous:
                 previousSong();

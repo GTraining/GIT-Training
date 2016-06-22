@@ -15,16 +15,17 @@ import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
     public static int NOTIFY_ID = 0;
-    private ArrayList<Song> songs;
+    private ArrayList<Song> songs,shuffleSongs,NormalSongs;
     private String currentPath = "";
     private int currentPosition = 0;
     private int timerTime = 0;
     private String songTitle = "";
-    private boolean shuffle = false;
+        private boolean shuffle = false;
     private Random random;
     private boolean complete = false;
     private boolean timer = false;
@@ -101,6 +102,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void setSongs(ArrayList<Song> songs){
         this.songs = songs;
+        this.shuffleSongs = songs;
+        this.NormalSongs = songs;
     }
 
     public void seekTo(long time){
@@ -155,8 +158,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             currentPosition=newSong;
         }
         else{
-            currentPosition++;
-            if(currentPosition>=songs.size()) currentPosition=0;
+        currentPosition++;
+        if(currentPosition>=songs.size()) currentPosition=0;
         }
         playSong();
     }

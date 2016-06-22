@@ -7,7 +7,7 @@
         android:id="@+id/notification_image"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:src=""/>
+        android:src="@drawable/defaultpic"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

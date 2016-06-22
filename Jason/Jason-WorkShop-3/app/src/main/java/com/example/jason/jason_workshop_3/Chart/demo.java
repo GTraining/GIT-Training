@@ -1,28 +1,19 @@
 package com.example.jason.jason_workshop_3.Chart;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
 import com.example.jason.jason_workshop_3.R;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.realm.implementation.RealmBarData;
-import com.github.mikephil.charting.data.realm.implementation.RealmBarDataSet;
 import com.github.mikephil.charting.data.realm.implementation.RealmLineData;
 import com.github.mikephil.charting.data.realm.implementation.RealmLineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.RealmResults;
 

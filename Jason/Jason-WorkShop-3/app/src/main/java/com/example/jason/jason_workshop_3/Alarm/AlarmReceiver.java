@@ -9,7 +9,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 
 /**
  * Created by jason on 22/06/2016.
@@ -22,7 +22,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Intent myIntent = new Intent();
         String title = intent.getStringExtra("Intent");
         String contentText = intent.getStringExtra("ContentText");
-        myIntent = new Intent(context, CheckBMIActivity.class);
+        myIntent = new Intent(context, MonthlyCheckBMIActivity.class);
         myIntent.putExtra("Intent", "3");
         PendingIntent pIntent = PendingIntent.getActivity(context, 0, myIntent, 0);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);

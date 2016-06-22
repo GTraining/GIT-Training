@@ -8,8 +8,8 @@ import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserSetUp;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_UserManagement;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
@@ -31,15 +31,15 @@ public class UserBMIChartBar implements DialogMessagaImpl {
     private UserMainActivity mView;
     private UserBMIDatabase mUserBMIDatabase;
     private List<UserBMI> mUserBMIs = new ArrayList<>();
-    private UserManagement mUserManagement;
+    private Presenter_UserManagement mUserManagement;
     private UserSetUp mSetUp;
 
     public UserBMIChartBar(UserMainActivity view) {
         this.mView = view;
         mUserBMIDatabase = new UserBMIDatabase(mView);
-        mUserManagement = new UserManagement(mView);
+        mUserManagement = new Presenter_UserManagement(mView);
         mUserBMIDatabase.open();
-        UserCheckCurrentLogin mCurrentLogin = mUserManagement.checkCurrentLogin();
+        CurrentLogin mCurrentLogin = mUserManagement.checkCurrentLogin();
         mUserBMIs = mUserBMIDatabase.GETLIST(mCurrentLogin.USERNAME);
     }
 

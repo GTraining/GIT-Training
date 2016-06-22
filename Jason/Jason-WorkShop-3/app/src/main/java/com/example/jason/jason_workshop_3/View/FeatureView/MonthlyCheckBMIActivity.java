@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_CheckBMI;
+import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_MonthlyCheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * Like Sign up, I also use activity to replace Check BMI MessageDialog.
  */
-public class CheckBMIActivity extends AppCompatActivity {
+public class MonthlyCheckBMIActivity extends AppCompatActivity {
 
     private EditText edt_age, edt_weight, edt_height;
     private TextView tvHello;
@@ -32,7 +33,8 @@ public class CheckBMIActivity extends AppCompatActivity {
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
     private int intentID;
-    private Presenter_CheckBMI mPresenter_checkBMI;
+    private Presenter_MonthlyCheckBMI mPresenter_checkBMI;
+    private RelativeLayout layoutBMIchart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,9 @@ public class CheckBMIActivity extends AppCompatActivity {
         edt_weight = (EditText) findViewById(R.id.editText_weight);
         edt_height = (EditText) findViewById(R.id.editText_height);
         tvHello = (TextView) findViewById(R.id.textView_Hello);
+        layoutBMIchart = (RelativeLayout) findViewById(R.id.layout_bmi_chart);
         mCheckBMIResultDialog = new CheckBMIResultDialog(this);
-        mPresenter_checkBMI = new Presenter_CheckBMI(this);
+        mPresenter_checkBMI = new Presenter_MonthlyCheckBMI(this);
         setHelloUser();
     }
 
@@ -57,7 +60,12 @@ public class CheckBMIActivity extends AppCompatActivity {
     }
 
     public void setHelloUser(){
-        tvHello.setText("Hello: " + mPresenter_checkBMI.getCurrenUser() + "!");
+        if (intentID == 1) {
+            tvHello.setText(mPresenter_checkBMI.setCheckTitle());
+        }else if (intentID == 2){
+            tvHello.setText("CHECK BMI");
+            layoutBMIchart.setVisibility(View.INVISIBLE);
+        }else tvHello.setText("MONTHLY CHECK BMI");
     }
 
     public void onclickCheckBMI(View v){
@@ -83,12 +91,12 @@ public class CheckBMIActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (checkIntentID() == 1){
+        if (intentID == 1){
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
         } else {
-            Intent mIntent = new Intent(CheckBMIActivity.this, UserMainActivity.class);
+            Intent mIntent = new Intent(MonthlyCheckBMIActivity.this, UserMainActivity.class);
             startActivity(mIntent);
         }
     }
@@ -123,5 +131,11 @@ public class CheckBMIActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, pendingIntent);
+    }
+
+    public void onclickstartBMIchart(View v){
+        Intent mIntent = new Intent(this, BMIChartActivity.class);
+        mIntent.putExtra("Intent", "1");
+        startActivity(mIntent);
     }
 }

@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Login;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 /**
  * @author jason
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
 
     @Override
     public void OpenNewUserActivity() {
-        Intent mIntent = new Intent(LoginActivity.this, CheckBMIActivity.class);
+        Intent mIntent = new Intent(LoginActivity.this, MonthlyCheckBMIActivity.class);
         mIntent.putExtra("Intent", "1");
         startActivity(mIntent);
     }
@@ -69,5 +69,11 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
     public void doOpenNewActivity(Class mClass){
         Intent intent = new Intent(LoginActivity.this, mClass);
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startActivity(startMain);
     }
 }

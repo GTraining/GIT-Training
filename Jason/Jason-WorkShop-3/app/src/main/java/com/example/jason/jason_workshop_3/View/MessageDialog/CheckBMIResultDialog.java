@@ -1,13 +1,10 @@
 package com.example.jason.jason_workshop_3.View.MessageDialog;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
 import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
@@ -17,11 +14,11 @@ import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.CurrentDate;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_UserManagement;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 import java.util.List;
@@ -34,19 +31,19 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     private DialogPlus dialog;
     private List<String> mList;
     private UserBMI mUserBMI;
-    private CheckBMIActivity mView;
-    private UserManagement mUsermanagement;
-    private UserCheckCurrentLogin mCurrentLogin;
+    private MonthlyCheckBMIActivity mView;
+    private Presenter_UserManagement mUsermanagement;
+    private CurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
     private CurrentDate mCurrentDate = new CurrentDate();
     private  String date = "00-00-0000";
     private float BMI = 0;
 
-    public CheckBMIResultDialog(CheckBMIActivity mView) {
+    public CheckBMIResultDialog(MonthlyCheckBMIActivity mView) {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
         mUserBMIDatabase.open();
-        mUsermanagement = new UserManagement(mView);
+        mUsermanagement = new Presenter_UserManagement(mView);
         mCurrentLogin =  mUsermanagement.checkCurrentLogin();
         ClockDate mClockDate = mCurrentDate.getmClockDate();
         date = mClockDate.getDay() + "/" + mClockDate.getMonthNumber() + "/" + mClockDate.getYear();

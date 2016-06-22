@@ -1,9 +1,6 @@
 package com.example.jason.jason_workshop_3.View.UserMainView;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,19 +10,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresentSettingActionbar;
 import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
 import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
-import com.example.jason.jason_workshop_3.View.FeatureView.BMI_ChartManagement;
-import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
-import com.example.jason.jason_workshop_3.View.FeatureView.WaterDrinkingActivity;
-import com.example.jason.jason_workshop_3.View.MessageDialog.UserBMIChartBar;
+import com.example.jason.jason_workshop_3.View.FeatureView.DailyDrinkActivity;
 
 /**
  * @author jason
@@ -121,7 +115,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     // Start activity Login after run logout function
     @Override
     public void LogoutIntent() {
-        doOpenActivity(LoginActivity.class);
+        startActivitys(LoginActivity.class, "none");
     }
 
     // Open Logout dialog
@@ -143,7 +137,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     // Open Water Management Activity
     public void onclickDailyDrink(View v){
-        doOpenActivity(WaterDrinkingActivity.class);
+        startActivitys(DailyDrinkActivity.class, "none");
     }
 
     // Open Fitness's Schedule Management Activity
@@ -158,28 +152,24 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     // Open Statistic Chart Activity
     public void onclickStatisticChart(View v){
-
         Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
     }
 
     // Open Check BMI activity
     public void onclickCheckBMI(View view){
-        Intent mIntent = new Intent(UserMainActivity.this, CheckBMIActivity.class);
-        mIntent.putExtra("Intent", "2");
-        
-        startActivity(mIntent);
+        startActivitys(MonthlyCheckBMIActivity.class, "2");
     }
 
     //Open history's check BMI Chart dialog
     public void onclickBMIChart(View v){
-        Intent mIntent = new Intent(UserMainActivity.this, BMI_ChartManagement.class);
-        startActivity(mIntent);
+        startActivitys(BMIChartActivity.class, "none");
     }
 
     //Start new activity
     @Override
-    public void doOpenActivity(Class mClass){
+    public void startActivitys(Class mClass, String intent){
         Intent mIntent = new Intent(UserMainActivity.this, mClass);
+        mIntent.putExtra("Intent", intent);
         startActivity(mIntent);
     }
 

@@ -3,17 +3,14 @@ package com.example.jason.jason_workshop_3.View.MessageDialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
-import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
-import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 
 /**
  * Created by jason on 16/06/2016.
  */
 public class CheckBMIAlertDialog {
-    private CheckBMIActivity mView;
-    public CheckBMIAlertDialog(CheckBMIActivity mView) {
+    private MonthlyCheckBMIActivity mView;
+    public CheckBMIAlertDialog(MonthlyCheckBMIActivity mView) {
         this.mView = mView;
     }
 

@@ -15,5 +15,5 @@ public interface MainViewImpl {
     void runClockCount();
     void LogoutIntent();
     void onclickLogout(View v);
-    void doOpenActivity(Class mClass);
+    void startActivitys(Class mClass, String intent);
 }

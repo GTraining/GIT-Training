@@ -20,13 +20,13 @@ public class Presenter_Signup implements SignupImpl{
 
     private String Username, password, cf_password;
     private SignupActivity mView;
-    private UserManagement mUserManagement;
+    private Presenter_UserManagement mUserManagement;
     private UserSetUpDatabase mUserSetUpDatabase;
     private List<String> list = new ArrayList<>();
     private UserSetUp mUserSetUp;
     public Presenter_Signup(SignupActivity mView) {
         this.mView = mView;
-        mUserManagement = new UserManagement(mView);
+        mUserManagement = new Presenter_UserManagement(mView);
         mUserSetUpDatabase = new UserSetUpDatabase(mView);
         mUserSetUpDatabase.open();
     }

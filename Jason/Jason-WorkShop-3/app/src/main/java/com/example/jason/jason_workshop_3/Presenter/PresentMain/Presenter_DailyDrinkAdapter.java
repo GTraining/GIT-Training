@@ -10,20 +10,20 @@ import android.view.animation.AnimationUtils;
 import com.example.jason.jason_workshop_3.Model.WaterDrinkingModel.WaterDrinkingDatabase;
 import com.example.jason.jason_workshop_3.Model.WaterDrinkingModel.WaterViewHodler;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.WaterDrinkingActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.DailyDrinkActivity;
 
 /**
  * Created by jason on 15/06/2016.
  */
-public class WaterRecyclerViewAdapter extends RecyclerView.Adapter<WaterViewHodler> {
+public class Presenter_DailyDrinkAdapter extends RecyclerView.Adapter<WaterViewHodler> {
 
 //    private List<CupImage> cupImages;
     private WaterDrinkingDatabase mDrinkingDatabase;
-    private WaterDrinkingActivity mView;
+    private DailyDrinkActivity mView;
     private WaterViewHodler mWaterViewHodler;
     private int lastPosition = - 1;
     private int cup;
-    public WaterRecyclerViewAdapter(WaterDrinkingActivity mView, int cup) {
+    public Presenter_DailyDrinkAdapter(DailyDrinkActivity mView, int cup) {
         this.mView = mView;
         this.cup = cup;
         mDrinkingDatabase = new WaterDrinkingDatabase(mView);

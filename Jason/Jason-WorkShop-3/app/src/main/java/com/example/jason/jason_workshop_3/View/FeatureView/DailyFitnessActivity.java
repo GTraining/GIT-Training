@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.jason.jason_workshop_3.R;
 
-public class DietActivity extends AppCompatActivity {
+public class DailyFitnessActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.diet_management);
+        setContentView(R.layout.fitness_schedule_management);
     }
 }

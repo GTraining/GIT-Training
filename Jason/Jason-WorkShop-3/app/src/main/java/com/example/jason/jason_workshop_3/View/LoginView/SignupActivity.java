@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Signup;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.FeatureView.CheckBMIActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +76,7 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
     //open new user activity
     @Override
     public void OpenNewUserActivity() {
-        Intent mIntent = new Intent(SignupActivity.this, CheckBMIActivity.class);
+        Intent mIntent = new Intent(SignupActivity.this, MonthlyCheckBMIActivity.class);
         mIntent.putExtra("Intent", "1");
         startActivity(mIntent);
     }

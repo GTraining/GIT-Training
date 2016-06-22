@@ -34,10 +34,9 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     LinearLayout background;
     Dialog timerDialog;
 
-    boolean timerStatus = false, playStatus = false, shuffleStatus = false;
+    boolean playStatus = false, shuffleStatus = false;
     int repeatStatus = 0, currentID, timerTime=0;
     long currentTime = 0;
-    boolean seekbarChanging = false;
     Song song;
     ISongDetailPresenter detailPresenter;
     ArrayList<String> arrSongPaths;
@@ -206,7 +205,6 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                timerDialog.dismiss();
                 detailPresenter.setTimer(timerTime);
             }
         });
@@ -234,12 +232,18 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             currentTime = detailPresenter.getCurrent();
             seekBar.setProgress((int) currentTime);
             currentTxt.setText(Helper.millisecondsToTimer(currentTime));
+            if(detailPresenter.getTimerComplete())
+                finish();
             mHandler.postDelayed(this,100);
         }
     };
 
     public void showTimerDialog(){
-        timerTime = detailPresenter.getTimerTime();
+        if(detailPresenter.isPlaying()) {
+            timerTime = detailPresenter.getTimerTime();
+        }else{
+            timerTime = 0;
+        }
         setDialog(timerTime);
         timerDialog.show();
     }

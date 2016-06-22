@@ -18,6 +18,7 @@ public interface ISongDetailPresenter {
     void playPrevious();
     void setTimer(int minute);
     boolean isPlaying();
+    boolean getTimerComplete();
     int getTimerTime();
     long getCurrent();
 }

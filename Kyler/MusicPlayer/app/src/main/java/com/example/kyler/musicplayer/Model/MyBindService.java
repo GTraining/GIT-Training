@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import com.example.kyler.musicplayer.R;
@@ -26,8 +27,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private String songTitle = "";
     private boolean shuffle = false;
     private Random random;
-    private boolean complete = false;
-    private boolean timer = false;
+    private boolean timerComplete = false, complete = false;
     private CountDown countDownTimer;
     private int repeat = 0;
     MediaPlayer mediaPlayer;
@@ -54,6 +54,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public void onPrepared(MediaPlayer mediaPlayer) {
         mediaPlayer.start();
+        timerComplete = false;
         Intent notIntent = new Intent(this, SongDetailActivity.class);
         notIntent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
         ArrayList<String> arrSongPaths = new ArrayList<>();
@@ -122,6 +123,14 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void pauseSong(){
         mediaPlayer.pause();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!isPlaying()){
+                    ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+                }
+            }
+        },3000);
     }
 
     public void resumeSong(){
@@ -195,24 +204,27 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
      * @param time
      */
     public void setTimer(long time){
-        timer = true;
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+        }
         if (time == 0) {
-            timer = false;
-            if (countDownTimer != null) {
-                countDownTimer.cancel();
-                countDownTimer = null;
-            }
+            countDownTimer = null;
+            timerTime = 0;
         } else {
-            if(countDownTimer != null) {
-                countDownTimer.cancel();
+            timerComplete = false;
+            countDownTimer = new CountDown(time, 60000);
+            if(time == 60000) {
+                timerTime = 1;
             }
-            countDownTimer = new CountDown(time, 1000);
             countDownTimer.start();
         }
     }
 
     public int getTimerTime(){
         return timerTime;
+    }
+    public boolean getTimerComplete(){
+        return timerComplete;
     }
 
     public class CountDown extends CountDownTimer{
@@ -223,11 +235,23 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
         @Override
         public void onTick(long l) {
-            timerTime = (int) l/1000;
+            timerTime = (int) ((l + 60000) / 60000);
+
+            //Because of not being called on Tick in last time. Using handle to decrease timerTime
+            if(timerTime == 2){
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        timerTime--;
+                    }
+                },60000);
+            }
         }
 
         @Override
         public void onFinish() {
+            timerComplete = true;
+            timerTime = 0;
             mediaPlayer.stop();
             ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
         }

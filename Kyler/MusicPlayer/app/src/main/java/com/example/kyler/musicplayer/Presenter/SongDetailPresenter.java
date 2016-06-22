@@ -114,7 +114,7 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public void setTimer(int minute) {
-        long time = minute * 1000;
+        long time = minute * 60 * 1000;
         myBindService.setTimer(time);
     }
 
@@ -127,6 +127,11 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public boolean getTimerComplete() {
+        return myBindService.getTimerComplete();
+    }
+
+    @Override
     public int getTimerTime() {
         return myBindService.getTimerTime();
     }
@@ -135,6 +140,4 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     public long getCurrent() {
         return myBindService.getCurrent();
     }
-
-
 }

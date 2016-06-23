@@ -42,7 +42,7 @@ public class MusicPlayerNotification {
         notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
         notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
         PendingIntent pendInt = PendingIntent.getActivity(context, 0,
-                notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                notIntent, PendingIntent.FLAG_ONE_SHOT);
 
         RemoteViews remoteViews = getNotificationRemote();
 
@@ -51,8 +51,8 @@ public class MusicPlayerNotification {
                 .setContentIntent(pendInt)
                 .setTicker(songs.get(currentPosition).getSongTitle())
                 .setOngoing(true)
-                .setContentTitle("Playing")
-                .setContentText(songs.get(currentPosition).getSongTitle());
+                .setContentTitle(songs.get(currentPosition).getSongTitle())
+                .setContentText(songs.get(currentPosition).getSongArtist());
         Notification notification = builder.build();
         notification.bigContentView = remoteViews;
         return notification;

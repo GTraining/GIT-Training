@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.kyler.musicplayer.R;
+import com.example.kyler.musicplayer.View.Fragment.ListFavoriteSongFragment;
 import com.example.kyler.musicplayer.View.Fragment.ListSongFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButtonFavoriteSong = (Button) findViewById(R.id.activity_main_bt_favorite_song);
         mButtonFilter = (Button) findViewById(R.id.activity_main_bt_filter);
         mButtonListSong.setOnClickListener(this);
+        mButtonFavoriteSong.setOnClickListener(this);
         openFragment(LISTSONGID);
     }
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openFragment(LISTSONGID);
                 break;
             case R.id.activity_main_bt_favorite_song:
+                openFragment(FAVORITESONGID);
                 break;
             case R.id.activity_main_bt_filter:
                 break;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragment = new ListSongFragment();
                 break;
             case FAVORITESONGID:
+                fragment = new ListFavoriteSongFragment();
                 break;
             case FILTER:
                 break;

@@ -1,14 +1,21 @@
 package com.example.kyler.musicplayer.View.Fragment;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kyler.musicplayer.Model.Database.DatabaseHandler;
 import com.example.kyler.musicplayer.Model.Song;
+import com.example.kyler.musicplayer.Presenter.IListSongAdapterPresenter;
+import com.example.kyler.musicplayer.Presenter.ListSongAdapterPresenter;
 import com.example.kyler.musicplayer.R;
 
 import java.util.ArrayList;
@@ -16,13 +23,17 @@ import java.util.ArrayList;
 /**
  * Created by kyler on 15/06/2016.
  */
-public class ListSongAdapter extends BaseAdapter {
-    Context context;
+public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
+    Activity context;
     ArrayList<Song> songs;
+    private IListSongAdapterPresenter adapterPresenter;
+    private boolean favoriteMode = false;
 
-    public ListSongAdapter(Context context, ArrayList<Song> songs) {
+    public ListSongAdapter(Activity context, ArrayList<Song> songs, boolean favoriteMode) {
         this.context = context;
         this.songs = songs;
+        this.favoriteMode = favoriteMode;
+        adapterPresenter = new ListSongAdapterPresenter(context,this);
     }
 
     @Override
@@ -42,24 +53,56 @@ public class ListSongAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ListSongViewHolder viewHolder;
+        final ListSongViewHolder viewHolder;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.fragment_list_song_item,null);
             viewHolder = new ListSongViewHolder();
             viewHolder.title = (TextView) view.findViewById(R.id.list_song_item_title);
             viewHolder.artist = (TextView) view.findViewById(R.id.list_song_item_artist);
+            viewHolder.favorite = (ImageView) view.findViewById(R.id.list_song_item_favorite);
             view.setTag(viewHolder);
         }else{
             viewHolder = (ListSongViewHolder) view.getTag();
         }
         viewHolder.title.setText(songs.get(i).getSongTitle());
         viewHolder.artist.setText(songs.get(i).getSongArtist());
+        if(adapterPresenter.isFavoriteSong(songs.get(i))){
+            viewHolder.favorite.setImageResource(R.drawable.favoritebutton);
+        }
+        final Song song = songs.get(i);
+        viewHolder.favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(adapterPresenter.isFavoriteSong(song)) {
+                    if(favoriteMode){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setTitle("Do you want to Unfavorite "+song.getSongTitle()+" ?")
+                                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        songs.remove(song);
+                                        notifyDataSetChanged();
+                                        adapterPresenter.unFavoriteSong(song);
+                                    }
+                                }).setNegativeButton("NO",null);
+                        builder.show();
+                    }else{
+                        adapterPresenter.unFavoriteSong(song);
+                        viewHolder.favorite.setImageResource(R.drawable.unfavoritebutton);
+                    }
+                }else{
+                    adapterPresenter.setFavoriteSong(song);
+                    viewHolder.favorite.setImageResource(R.drawable.favoritebutton);
+                }
+            }
+        });
         return view;
     }
 
     public class ListSongViewHolder{
         public TextView title;
         public TextView artist;
+        public ImageView favorite;
     }
 }

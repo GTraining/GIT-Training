@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#55efebe3"
+    android:background="#FFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,38 +26,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="YOUR BMI"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="BODY MASS INDEX"
             android:textStyle="bold"
-            android:textColor="#99c2c2c2"
+            android:textColor="#455663"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/relativeLayout">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="BODY MASS INDEX"
-                    android:textStyle="bold"
-                    android:textColor="#455663"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"/>
-
                 <RelativeLayout
-                    android:padding="10dp"
+                    android:padding="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
@@ -78,7 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RelativeLayout
-                    android:padding="10dp"
+                    android:background="#11000000"
+                    android:padding="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
@@ -111,7 +102,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="0 - 18.5 -> Underweight"
+                                    android:text="0 - 18.5 = Underweight"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -140,7 +131,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="18.5 - 24.9 -> Normal weight"
+                                    android:text="18.5 - 24.9 = Normal weight"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -169,7 +160,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="25 - 29.9 -> Overweight"
+                                    android:text="25 - 29.9 = Overweight"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -198,7 +189,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="BMI of 30 or greater -> Obesity"
+                                    android:text="BMI of 30 or greater = Obesity"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -242,18 +233,28 @@
             </LinearLayout>
         </LinearLayout>
         <RelativeLayout
-            android:background="#455663"
+            android:background="#FFF"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/relativeLayout">
-            <Button
-                android:background="@drawable/button_none_color_click"
-                android:textColor="#FFF"
-                android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
+            <RelativeLayout
+                android:id="@+id/button_improve"
+                android:background="@drawable/circle_image"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Let's Improve health"
-                android:onClick="startImproveYourHealth"/>
+                android:padding="20dp">
+                <Button
+                    android:background="@drawable/circle_button_click_main"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="startImproveYourHealth"
+                    android:textColor="#FFF"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:text="Improve"/>
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

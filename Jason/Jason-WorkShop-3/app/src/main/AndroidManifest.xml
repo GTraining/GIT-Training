@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.LoginView.LoginActivity">
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,11 +16,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.UserMainView.UserMainActivity" />
-        <activity android:name=".View.FeatureView.FitnessScheduleActivity" />
-        <activity android:name=".View.FeatureView.WaterDrinkingActivity" />
-        <activity android:name=".View.FeatureView.DietActivity" />
+        <activity android:name=".View.FeatureView.DailyFitnessActivity" />
+        <activity android:name=".View.FeatureView.DailyDrinkActivity" />
+        <activity android:name=".View.FeatureView.DailyDietActivity" />
         <activity android:name=".View.LoginView.SignupActivity" />
-        <activity android:name=".View.FeatureView.CheckBMIActivity"></activity>
+        <activity android:name=".View.FeatureView.MonthlyCheckBMIActivity" />
+
+        <receiver android:name=".Alarm.AlarmReceiver" />
+
+        <activity android:name=".View.FeatureView.BMIChartActivity" />
+        <activity android:name=".View.LoginView.LoginActivity"></activity>
     </application>
 
 </manifest>

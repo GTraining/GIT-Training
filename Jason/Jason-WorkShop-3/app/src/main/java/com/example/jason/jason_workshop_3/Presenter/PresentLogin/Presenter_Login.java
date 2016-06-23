@@ -14,14 +14,13 @@ import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 public class Presenter_Login implements Presenter_LoginImpl {
 
     private User mUser;
-    private UserManagement mUserManagement;
+    private Presenter_UserManagement mUserManagement;
     private LoginActivity mView;
     private UserCheckInfo mCheckLogin;
 
     public Presenter_Login(LoginActivity mViews) {
         this.mView = mViews;
-        mUserManagement = new UserManagement(mView);
-        mUserManagement.UpdateAllLoginStatus();
+        mUserManagement = new Presenter_UserManagement(mView);
     }
 
     @Override

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
 
 /**
@@ -43,7 +43,6 @@ public class UserDatabase {
         openHelper.close();
     }
 
-
     public long InsertUSER(String us, String pw, String bmi, String login){
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_USERNAME, us);
@@ -63,20 +62,6 @@ public class UserDatabase {
         cv.put(COLUMN_LOGIN_STATUS, login);
         return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
 
-    }
-    public long UpdateAllLoginStatus(){
-        String login_status = "off";
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_LOGIN_STATUS, login_status);
-        Cursor c = SetupCursor();
-        int irow = c.getColumnIndex(COLUMN_ID);
-        int login_stt = c.getColumnIndex(COLUMN_LOGIN_STATUS);
-        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            if (c.getString(login_stt).equals("on")){
-                return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + c.getString(irow), null);
-            }
-        }
-        return 0;
     }
     public User getUser(String username) {
         Cursor c = SetupCursor();
@@ -115,16 +100,16 @@ public class UserDatabase {
         c.close();
         return check;
     }
-    public UserCheckCurrentLogin CheckCurrentLogin(){
+    public CurrentLogin CheckCurrentLogin(){
         Cursor c = SetupCursor();
-        UserCheckCurrentLogin mCheck = new UserCheckCurrentLogin("", "");
+        CurrentLogin mCheck = new CurrentLogin(false, "", "");
         int iUsername = c.getColumnIndex(COLUMN_USERNAME);
         int irow = c.getColumnIndex(COLUMN_ID);
         int iLogin = c.getColumnIndex(COLUMN_LOGIN_STATUS);
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             String login = c.getString(iLogin);
             if (login.equals("on")) {
-                mCheck = new UserCheckCurrentLogin(c.getString(irow), c.getString(iUsername));
+                mCheck = new CurrentLogin(true, c.getString(irow), c.getString(iUsername));
                 break;
             }
         }

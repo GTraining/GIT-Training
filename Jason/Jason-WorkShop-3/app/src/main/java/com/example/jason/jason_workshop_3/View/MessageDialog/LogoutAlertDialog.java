@@ -3,8 +3,8 @@ package com.example.jason.jason_workshop_3.View.MessageDialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckCurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.UserManagement;
+import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
+import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_UserManagement;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 /**
@@ -12,11 +12,11 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
  */
 public class LogoutAlertDialog {
     private UserMainActivity mView;
-    private UserManagement mUserMangement;
-    private UserCheckCurrentLogin mCurrentLogin;
+    private Presenter_UserManagement mUserMangement;
+    private CurrentLogin mCurrentLogin;
     public LogoutAlertDialog(UserMainActivity mView) {
         this.mView = mView;
-        mUserMangement = new UserManagement(mView);
+        mUserMangement = new Presenter_UserManagement(mView);
         mCurrentLogin = mUserMangement.checkCurrentLogin();
     }
 

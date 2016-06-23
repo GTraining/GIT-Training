@@ -245,6 +245,12 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         mediaPlayer.stop();
         stopSelf();
         ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                timerComplete = false;
+            }
+        },200);
     }
 
     public void playPrevious(){

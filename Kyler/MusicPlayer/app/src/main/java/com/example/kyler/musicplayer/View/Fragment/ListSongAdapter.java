@@ -77,19 +77,27 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                 if(adapterPresenter.isFavoriteSong(song)) {
                     if(favoriteMode){
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setTitle("Do you want to Unfavorite "+song.getSongTitle()+" ?")
+                        builder.setMessage("Do you want to Unfavorite the song \n"+song.getSongTitle()+" ?")
                                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         songs.remove(song);
-                                        notifyDataSetChanged();
                                         adapterPresenter.unFavoriteSong(song);
+                                        notifyDataSetChanged();
                                     }
                                 }).setNegativeButton("NO",null);
                         builder.show();
                     }else{
-                        adapterPresenter.unFavoriteSong(song);
-                        viewHolder.favorite.setImageResource(R.drawable.unfavoritebutton);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setMessage("Do you want to Unfavorite the song \n"+song.getSongTitle()+" ?")
+                                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        adapterPresenter.unFavoriteSong(song);
+                                        viewHolder.favorite.setImageResource(R.drawable.unfavoritebutton);
+                                    }
+                                }).setNegativeButton("NO",null);
+                        builder.show();
                     }
                 }else{
                     adapterPresenter.setFavoriteSong(song);

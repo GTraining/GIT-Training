@@ -37,6 +37,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private int repeat = 0;
     MediaPlayer mediaPlayer;
     private BroadcastReceiver receiver;
+    Notification not;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
     }
@@ -55,7 +56,15 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             public void onReceive(Context context, Intent intent) {
                 switch (intent.getAction()){
                     case PLAY_ACTION:
-                        pauseSong();
+                        if(isPlaying()) {
+                            pauseSong();
+                            not = new MusicPlayerNotification(MyBindService.this, songs, currentPosition, isPlaying()).getNotification();
+                        }else{
+                            resumeSong();
+                            not = new MusicPlayerNotification(MyBindService.this, songs, currentPosition, isPlaying()).getNotification();
+                        }
+                        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+                        notificationManager.notify(NOTIFY_ID, not);
                         break;
                     case PREVIOUS_ACTION:
                         playPrevious();
@@ -103,7 +112,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 //                .setContentTitle("Playing")
 //                .setContentText(songTitle);
 //        Notification not = builder.build();
-        Notification not = new MusicPlayerNotification(this,songs,currentPosition).getNotification();
+        not = new MusicPlayerNotification(this,songs,currentPosition,isPlaying()).getNotification();
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFY_ID,not);
     }
@@ -170,14 +179,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void pauseSong(){
         mediaPlayer.pause();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(!isPlaying()){
-                    ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
-                }
-            }
-        },3000);
     }
 
     public void resumeSong(){
@@ -247,7 +248,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             case 2:
                 currentPosition++;
                 if(currentPosition>=songs.size()) {
-                    timerComplete = true;
                     stopMusic();
                 }
                 break;
@@ -255,6 +255,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     private void stopMusic(){
+        timerComplete = true;
         mediaPlayer.stop();
         stopSelf();
         ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
@@ -264,18 +265,16 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         switch (repeat){
             case 0:
                 currentPosition--;
-                if(currentPosition>=songs.size()) currentPosition = songs.size()-1;
-                playSong();
+                if(currentPosition<0) currentPosition = songs.size()-1;
                 break;
             case 1:
-                playSong();
                 break;
             case 2:
                 currentPosition--;
                 if(currentPosition<0) currentPosition++;
-                playSong();
                 break;
         }
+        playSong();
     }
 
     @Override
@@ -348,7 +347,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
         @Override
         public void onFinish() {
-            timerComplete = true;
             timerTime = 0;
             stopMusic();
         }

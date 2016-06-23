@@ -23,10 +23,13 @@ public class MusicPlayerNotification {
     Context context;
     ArrayList<Song> songs;
     int currentPosition;
-    public MusicPlayerNotification(Context context, ArrayList<Song> songs, int currentPosition){
+    boolean playing = false;
+
+    public MusicPlayerNotification(Context context, ArrayList<Song> songs, int currentPosition, boolean playing){
         this.context = context;
         this.songs = songs;
         this.currentPosition = currentPosition;
+        this.playing = playing;
     }
 
     public Notification getNotification(){
@@ -79,6 +82,11 @@ public class MusicPlayerNotification {
         remoteViews.setOnClickPendingIntent(R.id.notification_previous_icon,previousPendingIntent);
         remoteViews.setOnClickPendingIntent(R.id.notification_next_icon,nextPendingIntent);
         remoteViews.setOnClickPendingIntent(R.id.notification_close_icon,stopPendingIntent);
+        if(playing) {
+            remoteViews.setImageViewResource(R.id.notification_play_icon, R.drawable.notification_pauseicon);
+        }else{
+            remoteViews.setImageViewResource(R.id.notification_play_icon, R.drawable.notification_playicon);
+        }
         return remoteViews;
     }
 }

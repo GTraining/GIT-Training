@@ -33,7 +33,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     LinearLayout background;
     Dialog timerDialog;
 
-    boolean playStatus = false, shuffleStatus = false;
+    boolean playStatus = false, shuffleStatus = false, seeking=false;
     int repeatStatus = 0, currentID, timerTime=0;
     long currentTime = 0;
     Song song;
@@ -237,8 +237,14 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             if(!song.getSongPath().equals(detailPresenter.getCurrentPath())){
                 detailPresenter.getSong();
             }
-            if(detailPresenter.getTimerComplete())
+            if(detailPresenter.getTimerComplete()) {
                 finish();
+            }
+            if(detailPresenter.isPlaying()){
+                play.setImageResource(R.drawable.pausebutton);
+            }else{
+                play.setImageResource(R.drawable.playbutton);
+            }
             mHandler.postDelayed(this,100);
         }
     };
@@ -320,6 +326,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        seeking = false;
         if(currentTime == song.getSongDuration()){
             nextSong();
         }else {

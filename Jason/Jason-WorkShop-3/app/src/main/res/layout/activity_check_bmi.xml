@@ -108,11 +108,12 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/linearLayout2">
                 <LinearLayout
+                    android:layout_marginRight="5dp"
+                    android:background="#22000000"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
                     <RelativeLayout
-                        android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
 
@@ -127,6 +128,7 @@
                     </RelativeLayout>
                     <RelativeLayout
                         android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
                         android:padding="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
@@ -141,7 +143,6 @@
                             android:layout_gravity="center_vertical" />
                     </RelativeLayout>
                     <RelativeLayout
-                        android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
 
@@ -162,7 +163,6 @@
                     <RelativeLayout
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:layout_marginBottom="5dp"
                         android:background="#22c2c2c2"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
@@ -186,6 +186,7 @@
                     <RelativeLayout
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:background="#22c2c2c2"
                         android:layout_width="match_parent"
@@ -211,7 +212,6 @@
                     <RelativeLayout
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:layout_marginBottom="5dp"
                         android:background="#22c2c2c2"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
@@ -250,9 +250,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="(Year old)"
+                        android:text="Year old"
                         android:textSize="10dp"
-                        android:textColor="#000"
+                        android:textColor="#22000000"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical" />
@@ -269,9 +269,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="(Kilogram)"
+                        android:text="Kilogram"
                         android:textSize="10dp"
-                        android:textColor="#000"
+                        android:textColor="#22000000"
                         android:layout_gravity="center_vertical" />
                 </RelativeLayout>
                 <RelativeLayout
@@ -283,9 +283,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="(centimeter)"
+                        android:text="Centimeter"
                         android:textSize="10dp"
-                        android:textColor="#000"
+                        android:textColor="#22000000"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical" />
@@ -295,14 +295,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <RelativeLayout
+                android:background="@drawable/circle_image"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
                 <Button
+                    android:background="@drawable/circle_button_click_main"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:onClick="onclickCheckBMI"
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Check BMI"/>
+                    android:textColor="#FFF"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="Check"/>
+            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

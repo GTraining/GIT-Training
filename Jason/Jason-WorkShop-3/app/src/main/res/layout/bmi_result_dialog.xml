@@ -33,21 +33,21 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/relativeLayout">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:padding="30dp"
+                    android:padding="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
@@ -68,7 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RelativeLayout
-                    android:padding="30dp"
+                    android:background="#11000000"
+                    android:padding="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
@@ -101,7 +102,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="0 - 18.5 -> Underweight"
+                                    android:text="0 - 18.5 = Underweight"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -130,7 +131,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="18.5 - 24.9 -> Normal weight"
+                                    android:text="18.5 - 24.9 = Normal weight"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -159,7 +160,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="25 - 29.9 -> Overweight"
+                                    android:text="25 - 29.9 = Overweight"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -188,7 +189,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:text="BMI of 30 or greater -> Obesity"
+                                    android:text="BMI of 30 or greater = Obesity"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true" />
@@ -215,7 +216,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true" />
                     <RelativeLayout
-                        android:padding="30dp"
+                        android:padding="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerHorizontal="true">
@@ -234,17 +235,26 @@
         <RelativeLayout
             android:background="#FFF"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/relativeLayout">
-            <Button
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
+            <RelativeLayout
                 android:id="@+id/button_improve"
-                android:background="@drawable/button_none_color_click"
-                android:textColor="@color/Dialog_textcolor"
-                android:layout_width="match_parent"
+                android:background="@drawable/circle_image"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Let's Improve health"
-                android:onClick="startImproveYourHealth"/>
+                android:padding="20dp">
+                <Button
+                    android:background="@drawable/circle_button_click_main"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="startImproveYourHealth"
+                    android:textColor="#FFF"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:text="Improve"/>
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

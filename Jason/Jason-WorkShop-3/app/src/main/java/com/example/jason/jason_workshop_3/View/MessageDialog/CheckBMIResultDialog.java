@@ -3,6 +3,7 @@ package com.example.jason.jason_workshop_3.View.MessageDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
@@ -36,7 +37,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     private CurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
     private CurrentDate mCurrentDate = new CurrentDate();
-    private  String date = "00-00-0000";
+    private String date = "00-00-0000";
     private float BMI = 0;
 
     public CheckBMIResultDialog(MonthlyCheckBMIActivity mView) {
@@ -77,7 +78,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
 
         txv_checkBMI = (TextView) dialog.findViewById(R.id.textView_checkBMI);
         txv_BMI = (TextView) dialog.findViewById(R.id.textView_BMI);
-        Button btnImprove = (Button) dialog.findViewById(R.id.button_improve);
+        RelativeLayout btnImprove = (RelativeLayout) dialog.findViewById(R.id.button_improve);
         mList = mView.getUserHealth();
         mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0), mList.get(1), date);
         if (mView.checkIntentID() != 1){

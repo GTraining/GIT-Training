@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_DailyDrinkAdapter;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.Presenter_DailyDrinkAdapter;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 

@@ -10,11 +10,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
-import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresentSettingActionbar;
-import com.example.jason.jason_workshop_3.Presenter.PresentCustomClock.PresenterClockAdapter;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MClockDate;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MClockTime;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PresentSettingActionbar;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PresenterClockAdapter;
 import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
+import com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
@@ -63,7 +64,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     //Show current time on custom clock
     @Override
-    public void showClock(ClockTime mClockTime) {
+    public void showClock(MClockTime mClockTime) {
         int hour = 0, minute = 0, second = 0;
         String format_seconds = "%02d", AM_PM = "";
         AM_PM = mClockTime.getAM_PM();
@@ -81,7 +82,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     //Show current date on custom clock
     @Override
-    public void showDate(ClockDate mClockDate) {
+    public void showDate(MClockDate mClockDate) {
         txv_day.setText(mClockDate.getDay_of_Week());
         txv_date.setText(mClockDate.getDay());
         txv_month.setText(mClockDate.getMonth());
@@ -141,7 +142,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     // Open Daily Diet Management Activity
     public void onclickDailyDiet(View v){
-        Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
+        startActivitys(DailyDietActivity.class, "none");
     }
 
     // Open Statistic Chart Activity

@@ -3,12 +3,10 @@ package com.example.jason.jason_workshop_3.View.LoginView;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Login;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_Login;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;

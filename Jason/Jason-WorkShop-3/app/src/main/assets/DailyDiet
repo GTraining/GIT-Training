@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questionbank>
+    <Skill>
+        <Skillname>Vocabulary</Skillname>
+        <Topic>
+            <Topicname>Food</Topicname>
+            <Lesson>
+                <Lessonindex>1</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Quả táo</CorrectAnswer>
+                    <Answer1>Quả cam</Answer1>
+                    <Answer2>Quả quýt</Answer2>
+                    <Answer3>Quả bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Quả Cam</ContentQuestion>
+                    <CorrectAnswer>Orange</CorrectAnswer>
+                    <Answer1>Apple</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Grape</ContentQuestion>
+                    <CorrectAnswer>Quả nho</CorrectAnswer>
+                    <Answer1>Quả cà chua</Answer1>
+                    <Answer2>Quả thơm</Answer2>
+                    <Answer3>Quả táo</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Pear</ContentQuestion>
+                    <CorrectAnswer>Quả lê</CorrectAnswer>
+                    <Answer1>Quả đào</Answer1>
+                    <Answer2>Quả chuối</Answer2>
+                    <Answer3>Quả hồng</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>2</Lessonindex>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Gạo</CorrectAnswer>
+                    <Answer1>Thịt lợn</Answer1>
+                    <Answer2>Bánh mì</Answer2>
+                    <Answer3>Canh</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Meat</ContentQuestion>
+                    <CorrectAnswer>Thịt</CorrectAnswer>
+                    <Answer1>Cháo</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Lẩu</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Bread</ContentQuestion>
+                    <CorrectAnswer>Bánh mì</CorrectAnswer>
+                    <Answer1>Thịt bò</Answer1>
+                    <Answer2>Cá</Answer2>
+                    <Answer3>Cơm</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>3</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Táo</CorrectAnswer>
+                    <Answer1>Cam</Answer1>
+                    <Answer2>Quýt</Answer2>
+                    <Answer3>Bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Thịt</ContentQuestion>
+                    <CorrectAnswer>Meat</CorrectAnswer>
+                    <Answer1>Noodle</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Cơm</CorrectAnswer>
+                    <Answer1>Cá</Answer1>
+                    <Answer2>Thịt bò</Answer2>
+                    <Answer3>Sả</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>4</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Táo</CorrectAnswer>
+                    <Answer1>Cam</Answer1>
+                    <Answer2>Quýt</Answer2>
+                    <Answer3>Bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Thịt</ContentQuestion>
+                    <CorrectAnswer>Meat</CorrectAnswer>
+                    <Answer1>Noodle</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Cơm</CorrectAnswer>
+                    <Answer1>Cá</Answer1>
+                    <Answer2>Thịt bò</Answer2>
+                    <Answer3>Sả</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>5</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Táo</CorrectAnswer>
+                    <Answer1>Cam</Answer1>
+                    <Answer2>Quýt</Answer2>
+                    <Answer3>Bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Thịt</ContentQuestion>
+                    <CorrectAnswer>Meat</CorrectAnswer>
+                    <Answer1>Noodle</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Cơm</CorrectAnswer>
+                    <Answer1>Cá</Answer1>
+                    <Answer2>Thịt bò</Answer2>
+                    <Answer3>Sả</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+        </Topic>
+        <Topic>
+            <Topicname>Food</Topicname>
+            <Lesson>
+                <Lessonindex>1</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Quả táo</CorrectAnswer>
+                    <Answer1>Quả cam</Answer1>
+                    <Answer2>Quả quýt</Answer2>
+                    <Answer3>Quả bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Quả Cam</ContentQuestion>
+                    <CorrectAnswer>Orange</CorrectAnswer>
+                    <Answer1>Apple</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Grape</ContentQuestion>
+                    <CorrectAnswer>Quả nho</CorrectAnswer>
+                    <Answer1>Quả cà chua</Answer1>
+                    <Answer2>Quả thơm</Answer2>
+                    <Answer3>Quả táo</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Pear</ContentQuestion>
+                    <CorrectAnswer>Quả lê</CorrectAnswer>
+                    <Answer1>Quả đào</Answer1>
+                    <Answer2>Quả chuối</Answer2>
+                    <Answer3>Quả hồng</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>2</Lessonindex>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Gạo</CorrectAnswer>
+                    <Answer1>Thịt lợn</Answer1>
+                    <Answer2>Bánh mì</Answer2>
+                    <Answer3>Canh</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Meat</ContentQuestion>
+                    <CorrectAnswer>Thịt</CorrectAnswer>
+                    <Answer1>Cháo</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Lẩu</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Bread</ContentQuestion>
+                    <CorrectAnswer>Bánh mì</CorrectAnswer>
+                    <Answer1>Thịt bò</Answer1>
+                    <Answer2>Cá</Answer2>
+                    <Answer3>Cơm</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>3</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Táo</CorrectAnswer>
+                    <Answer1>Cam</Answer1>
+                    <Answer2>Quýt</Answer2>
+                    <Answer3>Bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Thịt</ContentQuestion>
+                    <CorrectAnswer>Meat</CorrectAnswer>
+                    <Answer1>Noodle</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Cơm</CorrectAnswer>
+                    <Answer1>Cá</Answer1>
+                    <Answer2>Thịt bò</Answer2>
+                    <Answer3>Sả</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>4</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Táo</CorrectAnswer>
+                    <Answer1>Cam</Answer1>
+                    <Answer2>Quýt</Answer2>
+                    <Answer3>Bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Thịt</ContentQuestion>
+                    <CorrectAnswer>Meat</CorrectAnswer>
+                    <Answer1>Noodle</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Cơm</CorrectAnswer>
+                    <Answer1>Cá</Answer1>
+                    <Answer2>Thịt bò</Answer2>
+                    <Answer3>Sả</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>5</Lessonindex>
+                <Question>
+                    <ContentQuestion>Apple</ContentQuestion>
+                    <CorrectAnswer>Táo</CorrectAnswer>
+                    <Answer1>Cam</Answer1>
+                    <Answer2>Quýt</Answer2>
+                    <Answer3>Bưởi</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Thịt</ContentQuestion>
+                    <CorrectAnswer>Meat</CorrectAnswer>
+                    <Answer1>Noodle</Answer1>
+                    <Answer2>Rice</Answer2>
+                    <Answer3>Candy</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Rice</ContentQuestion>
+                    <CorrectAnswer>Cơm</CorrectAnswer>
+                    <Answer1>Cá</Answer1>
+                    <Answer2>Thịt bò</Answer2>
+                    <Answer3>Sả</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>Candy</ContentQuestion>
+                    <CorrectAnswer>Kẹo</CorrectAnswer>
+                    <Answer1>Bánh</Answer1>
+                    <Answer2>Cơm</Answer2>
+                    <Answer3>Trà</Answer3>
+                </Question>
+            </Lesson>
+        </Topic>
+    </Skill>
+    <Skill>
+        <Skillname>Grammar</Skillname>
+        <Topic>
+            <Topicname>Food</Topicname>
+            <Lesson>
+                <Lessonindex>1</Lessonindex>
+                <Question>
+                    <ContentQuestion>I'm afraid it won't be possible to talk to the boss today because he's away ....... business till Tuesday.</ContentQuestion>
+                    <CorrectAnswer>on</CorrectAnswer>
+                    <Answer1>for</Answer1>
+                    <Answer2>off</Answer2>
+                    <Answer3>to</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>The circular will contain ....... financial information to help investors.</ContentQuestion>
+                    <CorrectAnswer>key</CorrectAnswer>
+                    <Answer1>obvious</Answer1>
+                    <Answer2>intelligent</Answer2>
+                    <Answer3>noted</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>The animal rights organisation has ....... a new campaign to make people aware of cruelty to animals.</ContentQuestion>
+                    <CorrectAnswer>launched</CorrectAnswer>
+                    <Answer1>pursued</Answer1>
+                    <Answer2>offered</Answer2>
+                    <Answer3>ejected</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>The ordinary person is again being asked to ....... to pay for dental treatment.</ContentQuestion>
+                    <CorrectAnswer>stump up</CorrectAnswer>
+                    <Answer1>throw up</Answer1>
+                    <Answer2>cheer up</Answer2>
+                    <Answer3>bring up</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>2</Lessonindex>
+                <Question>
+                    <ContentQuestion>She was very enthusiastic about her new job and was making rapid progress ....... nobody's business.</ContentQuestion>
+                    <CorrectAnswer>as</CorrectAnswer>
+                    <Answer1>with</Answer1>
+                    <Answer2>similar</Answer2>
+                    <Answer3>like</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>I am afraid it will not be possible to talk to the boss today because he's away ....... business till Tuesday.</ContentQuestion>
+                    <CorrectAnswer>off</CorrectAnswer>
+                    <Answer1>on</Answer1>
+                    <Answer2>for</Answer2>
+                    <Answer3>to</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>The report is ....... to show better than expected results.</ContentQuestion>
+                    <CorrectAnswer>necessary</CorrectAnswer>
+                    <Answer1>possibly</Answer1>
+                    <Answer2>clearly</Answer2>
+                    <Answer3>likely</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>I had only had my computer for three weeks when I had to have the hard drive .......</ContentQuestion>
+                    <CorrectAnswer>replaced</CorrectAnswer>
+                    <Answer1>restored</Answer1>
+                    <Answer2>retaken</Answer2>
+                    <Answer3>revived</Answer3>
+                </Question>
+            </Lesson>
+        </Topic>
+    </Skill>
+    <Skill>
+        <Skillname>Listening</Skillname>
+        <Topic>
+            <Topicname>Number</Topicname>
+            <Lesson>
+                <Lessonindex>1</Lessonindex>
+                <Question>
+                    <ContentQuestion>100</ContentQuestion>
+                    <CorrectAnswer>100</CorrectAnswer>
+                    <Answer1>101</Answer1>
+                    <Answer2>102</Answer2>
+                    <Answer3>103</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>103</ContentQuestion>
+                    <CorrectAnswer>103</CorrectAnswer>
+                    <Answer1>203</Answer1>
+                    <Answer2>303</Answer2>
+                    <Answer3>403</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>20</ContentQuestion>
+                    <CorrectAnswer>20</CorrectAnswer>
+                    <Answer1>30</Answer1>
+                    <Answer2>40</Answer2>
+                    <Answer3>50</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>The ordinary person is again being asked to ....... to pay for dental treatment.</ContentQuestion>
+                    <CorrectAnswer>stump up</CorrectAnswer>
+                    <Answer1>throw up</Answer1>
+                    <Answer2>cheer up</Answer2>
+                    <Answer3>bring up</Answer3>
+                </Question>
+            </Lesson>
+            <Lesson>
+                <Lessonindex>2</Lessonindex>
+                <Question>
+                    <ContentQuestion>1000</ContentQuestion>
+                    <CorrectAnswer>1000</CorrectAnswer>
+                    <Answer1>2000</Answer1>
+                    <Answer2>3000</Answer2>
+                    <Answer3>4000</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>1255</ContentQuestion>
+                    <CorrectAnswer>1255</CorrectAnswer>
+                    <Answer1>1245</Answer1>
+                    <Answer2>1235</Answer2>
+                    <Answer3>1225</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>1993</ContentQuestion>
+                    <CorrectAnswer>1993</CorrectAnswer>
+                    <Answer1>1992</Answer1>
+                    <Answer2>1991</Answer2>
+                    <Answer3>1990</Answer3>
+                </Question>
+                <Question>
+                    <ContentQuestion>3456</ContentQuestion>
+                    <CorrectAnswer>3456</CorrectAnswer>
+                    <Answer1>3465</Answer1>
+                    <Answer2>3564</Answer2>
+                    <Answer3>3645</Answer3>
+                </Question>
+            </Lesson>
+        </Topic>
+    </Skill>
+</questionbank>

@@ -26,6 +26,7 @@
 
         <activity android:name=".View.FeatureView.BMIChartActivity" />
         <activity android:name=".View.LoginView.LoginActivity" />
+        <activity android:name=".View.FeatureView.DietFoodActivity"></activity>
     </application>
 
 </manifest>

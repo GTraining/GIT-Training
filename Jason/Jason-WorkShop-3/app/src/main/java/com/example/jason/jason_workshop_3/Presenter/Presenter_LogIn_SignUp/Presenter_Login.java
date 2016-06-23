@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -72,7 +72,6 @@ public class Presenter_Login implements Presenter_LoginImpl {
                 mUserManagement.UpdateLoginStatus(mCheckLogin.getID(), "on");
                 if (mCheckLogin.getStatus().equals("new_user")) mView.OpenNewUserActivity();
                 else{
-                    mUserManagement.closeDatabase();
                     mView.OpenMainActivity();
                 }
                 mProgressDialog.dismiss();

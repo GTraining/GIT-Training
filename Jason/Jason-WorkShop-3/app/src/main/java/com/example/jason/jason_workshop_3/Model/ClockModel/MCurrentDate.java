@@ -1,8 +1,5 @@
 package com.example.jason.jason_workshop_3.Model.ClockModel;
 
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,11 +8,11 @@ import java.util.Date;
 /**
  * Created by jason on 16/06/2016.
  */
-public class CurrentDate {
-    private ClockDate mClockDate;
-    private ClockTime mClockTime;
+public class MCurrentDate {
+    private MClockDate mClockDate;
+    private MClockTime mClockTime;
     private long mCountMilliseconds;
-    public CurrentDate(){
+    public MCurrentDate(){
         getCurrentdate();
     }
     public long getmCountMilliseconds() {
@@ -26,19 +23,19 @@ public class CurrentDate {
         this.mCountMilliseconds = mCountMilliseconds;
     }
 
-    public ClockDate getmClockDate() {
+    public MClockDate getmClockDate() {
         return mClockDate;
     }
 
-    public void setmClockDate(ClockDate mClockDate) {
+    public void setmClockDate(MClockDate mClockDate) {
         this.mClockDate = mClockDate;
     }
 
-    public ClockTime getmClockTime() {
+    public MClockTime getmClockTime() {
         return mClockTime;
     }
 
-    public void setmClockTime(ClockTime mClockTime) {
+    public void setmClockTime(MClockTime mClockTime) {
         this.mClockTime = mClockTime;
     }
 
@@ -54,9 +51,9 @@ public class CurrentDate {
             String _month = String.valueOf(mCalendar.get(Calendar.MONTH));
             String _year = String.valueOf(mCalendar.get(Calendar.YEAR));
             String _day = String.valueOf(mCalendar.get(Calendar.DAY_OF_WEEK));
-            setmClockDate(new ClockDate(_day,_date,_month,_year));
+            setmClockDate(new MClockDate(_day,_date,_month,_year));
             long milliseconds = _hour * 60 * 60 + _minute * 60 + _second;
-            setmClockTime(new ClockTime(milliseconds, _second, _minute, _hour));
+            setmClockTime(new MClockTime(milliseconds, _second, _minute, _hour));
             setmCountMilliseconds(milliseconds);
         } catch (Exception e) {
             e.printStackTrace();

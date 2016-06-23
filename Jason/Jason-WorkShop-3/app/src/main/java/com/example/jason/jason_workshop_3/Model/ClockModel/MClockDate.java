@@ -3,7 +3,7 @@ package com.example.jason.jason_workshop_3.Model.ClockModel;
 /**
  * Created by jason on 10/06/2016.
  */
-public class ClockDate implements ClockDateImpl{
+public class MClockDate implements MClockDateImpl {
     public String Day_of_Week;
     public String Day;
     public String Month;
@@ -26,7 +26,7 @@ public class ClockDate implements ClockDateImpl{
         return convertDay(Day_of_Week);
     }
 
-    public ClockDate(String day_of_Week, String day, String month, String year) {
+    public MClockDate(String day_of_Week, String day, String month, String year) {
 
         Day_of_Week = day_of_Week;
         Day = day;

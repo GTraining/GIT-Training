@@ -7,7 +7,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Interface.UserBMIDatabaseImpl;
 
@@ -26,6 +25,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     private static final String TABLE_USER_HEALTH = "TABLE_USER_HEALTH";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_USERNAME = "username";
+    public static final String COLUMN_AGE = "age";
     public static final String COLUMN_HEIGHT = "height";
     public static final String COLUMN_WEIGHT = "weight";
     public static final String COLUMN_CHECKDATE = "checktime";
@@ -53,6 +53,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     public long INSERT(UserBMI userBMI) {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_USERNAME, userBMI.getUSERNAME());
+        cv.put(COLUMN_AGE, userBMI.getAGE());
         cv.put(COLUMN_HEIGHT, userBMI.getHEIGHT());
         cv.put(COLUMN_WEIGHT, userBMI.getWEIGHT());
         cv.put(COLUMN_CHECKDATE, userBMI.getCHECKTIME());
@@ -87,18 +88,21 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     public List<UserBMI> GETLIST(String Username) {
         Cursor c = SETUPCURSOR();
         int iusername = c.getColumnIndex(COLUMN_USERNAME);
+        int iage = c.getColumnIndex(COLUMN_AGE);
         int iheight = c.getColumnIndex(COLUMN_HEIGHT);
         int iweight = c.getColumnIndex(COLUMN_WEIGHT);
         int icheckDate = c.getColumnIndex(COLUMN_CHECKDATE);
         List<UserBMI> userBMIs = new ArrayList<>();
-        userBMIs.add(new UserBMI(Username, "174", "51",  "1/1/2016"));
-        userBMIs.add(new UserBMI(Username, "174", "52",  "1/2/2016"));
-        userBMIs.add(new UserBMI(Username, "174", "53",  "1/3/2016"));
-        userBMIs.add(new UserBMI(Username, "174", "53",  "1/4/2016"));
-        userBMIs.add(new UserBMI(Username, "174", "54",  "1/5/2016"));
+        userBMIs.add(new UserBMI(Username, "23", "174", "51",  "1/1/2016"));
+        userBMIs.add(new UserBMI(Username, "23", "174", "52",  "1/2/2016"));
+        userBMIs.add(new UserBMI(Username, "23", "174", "53",  "1/3/2016"));
+        userBMIs.add(new UserBMI(Username, "23", "174", "53",  "1/4/2016"));
+        userBMIs.add(new UserBMI(Username, "23", "174", "54",  "1/5/2016"));
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             if (Username.equals(c.getString(iusername))){
-                userBMIs.add(new UserBMI(Username, c.getString(iheight), c.getString(iweight), c.getString(icheckDate)));
+                userBMIs.add(new UserBMI(Username, c.getString(iage),
+                        c.getString(iheight), c.getString(iweight),
+                        c.getString(icheckDate)));
             }
         }
         c.close();
@@ -106,7 +110,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
     }
 
     public Cursor SETUPCURSOR(){
-        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_HEIGHT, COLUMN_WEIGHT, COLUMN_CHECKDATE};
+        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_AGE, COLUMN_HEIGHT, COLUMN_WEIGHT, COLUMN_CHECKDATE};
         Cursor c = db.query(TABLE_USER_HEALTH, columns, null, null, null, null, null, null);
         return c;
     }
@@ -121,6 +125,7 @@ public class UserBMIDatabase implements UserBMIDatabaseImpl {
             arg0.execSQL("CREATE TABLE " + TABLE_USER_HEALTH + " ("
                     + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_USERNAME + " TEXT NOT NULL, "
+                    + COLUMN_AGE + " TEXT NOT NULL, "
                     + COLUMN_HEIGHT + " TEXT NOT NULL, "
                     + COLUMN_WEIGHT + " TEXT NOT NULL, "
                     + COLUMN_CHECKDATE + " TEXT NOT NULL);");

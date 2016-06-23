@@ -1,10 +1,10 @@
-package com.example.jason.jason_workshop_3.Presenter.PresentMain;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main;
 
 import com.example.jason.jason_workshop_3.ChartLibrary.Score;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_UserManagement;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_UserManagement;
 import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
 
 import java.util.ArrayList;
@@ -13,14 +13,14 @@ import java.util.List;
 /**
  * Created by jason on 22/06/2016.
  */
-public class Presenter_BMI_Chart_Line {
+public class Presenter_BMIChartLine {
     private BMIChartActivity mView;
     private Presenter_UserManagement userManagement;
     private UserBMIDatabase userBMIDatabase;
     private CurrentLogin mCurrentLogin;
     private List<UserBMI> userBMIList = new ArrayList<>();
 
-    public Presenter_BMI_Chart_Line(BMIChartActivity mView) {
+    public Presenter_BMIChartLine(BMIChartActivity mView) {
         this.mView = mView;
         userBMIDatabase = new UserBMIDatabase(mView);
         userManagement = new Presenter_UserManagement(mView);

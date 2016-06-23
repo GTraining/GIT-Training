@@ -5,13 +5,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by jason on 10/06/2016.
  */
-public class ClockTime implements ClockTimeImpl {
+public class MClockTime implements MClockTimeImpl {
     public long Milliseconds;
     public int Second;
     public int Minute;
     public int Hour;
 
-    public ClockTime(long milliseconds, int second, int minute, int hour) {
+    public MClockTime(long milliseconds, int second, int minute, int hour) {
         Milliseconds = milliseconds;
         Second = second;
         Minute = minute;

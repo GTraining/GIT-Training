@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_MonthlyCheckBMI;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.Presenter_MonthlyCheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
@@ -54,6 +54,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
 
     public List<String> getUserHealth(){
         List<String> BMI = new ArrayList<>();
+        BMI.add(age);
         BMI.add(height);
         BMI.add(weight);
         return BMI;
@@ -138,4 +139,5 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         mIntent.putExtra("Intent", "1");
         startActivity(mIntent);
     }
+
 }

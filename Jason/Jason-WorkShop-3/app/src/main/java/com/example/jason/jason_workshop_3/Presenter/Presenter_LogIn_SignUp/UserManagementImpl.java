@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.User;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
@@ -9,7 +9,7 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserCheckInfo;
  */
 public interface UserManagementImpl {
     void createUser(User user);
-    void UpdateBMI(String id, String login);
+    void UpdateHealth(String id, String health);
     void UpdateLoginStatus(String id, String st);
     User getUser(String username);
     UserCheckInfo checkExisting(String username);

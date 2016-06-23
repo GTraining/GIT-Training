@@ -1,23 +1,18 @@
-package com.example.jason.jason_workshop_3.Presenter.PresentCustomClock;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_Clock;
 
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockTime;
-import com.example.jason.jason_workshop_3.Model.ClockModel.CurrentDate;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MClockDate;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MClockTime;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MCurrentDate;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by jason on 10/06/2016.
  */
 public class PresenterClockAdapter implements PresenterClockImpl {
 
-    private ClockTime mClockTime;
-    private ClockDate mClockDate;
-    private CurrentDate mCurrentDate = new CurrentDate();
+    private MClockTime mClockTime;
+    private MClockDate mClockDate;
+    private MCurrentDate mCurrentDate = new MCurrentDate();
     private long mCountMilliseconds = 0;
     private UserMainActivity mView;
 

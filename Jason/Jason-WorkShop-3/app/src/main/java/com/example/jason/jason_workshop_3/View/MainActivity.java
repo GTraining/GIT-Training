@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_LoadMain;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.Presenter_LoadMain;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;

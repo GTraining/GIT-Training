@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Presenter.PresentLogin;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp;
 
 import android.content.Context;
 
@@ -31,8 +31,8 @@ public class Presenter_UserManagement implements UserManagementImpl {
     }
 
     @Override
-    public void UpdateBMI(String id, String st) {
-        mUserDatabase.UpdateBMI(id, st);
+    public void UpdateHealth(String id, String st) {
+        mUserDatabase.UpdateHealthStatus(id, st);
     }
 
     @Override

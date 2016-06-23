@@ -7,7 +7,7 @@ import android.view.WindowManager;
 
 import com.example.jason.jason_workshop_3.ChartLibrary.RealmBaseActivity;
 import com.example.jason.jason_workshop_3.ChartLibrary.Score;
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_BMI_Chart_Line;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.Presenter_BMIChartLine;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 import com.github.mikephil.charting.animation.Easing;
@@ -24,7 +24,7 @@ import io.realm.RealmResults;
 
 public class BMIChartActivity extends RealmBaseActivity {
     private LineChart lineChart;
-    private Presenter_BMI_Chart_Line presenterBmiChartLine;
+    private Presenter_BMIChartLine presenterBmiChartLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class BMIChartActivity extends RealmBaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_bmi_chart);
-        presenterBmiChartLine = new Presenter_BMI_Chart_Line(this);
+        presenterBmiChartLine = new Presenter_BMIChartLine(this);
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
         setup(lineChart);

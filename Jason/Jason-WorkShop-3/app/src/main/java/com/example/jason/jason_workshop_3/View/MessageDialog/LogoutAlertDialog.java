@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_UserManagement;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_UserManagement;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 /**
@@ -32,6 +32,7 @@ public class LogoutAlertDialog {
                 .setPositiveButton("Yes",new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog,int id) {
                         mUserMangement.UpdateLoginStatus(mCurrentLogin.getID(), "off");
+                        mUserMangement.closeDatabase();
                         mView.LogoutIntent();
                     }
                 })

@@ -5,19 +5,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
 import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
 import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
-import com.example.jason.jason_workshop_3.Model.ClockModel.ClockDate;
-import com.example.jason.jason_workshop_3.Model.ClockModel.CurrentDate;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MClockDate;
+import com.example.jason.jason_workshop_3.Model.ClockModel.MCurrentDate;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
+import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_UserManagement;
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.DialogMessagaImpl;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_UserManagement;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
@@ -33,21 +35,22 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
     private List<String> mList;
     private UserBMI mUserBMI;
     private MonthlyCheckBMIActivity mView;
-    private Presenter_UserManagement mUsermanagement;
+    private UserDatabase userDatabase;
     private CurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
-    private CurrentDate mCurrentDate = new CurrentDate();
-    private String date = "00-00-0000";
-    private float BMI = 0;
+    private MCurrentDate mCurrentDate = new MCurrentDate();
+    private String currentdate = "00-00-0000";
+    private float mBMI = 0;
 
     public CheckBMIResultDialog(MonthlyCheckBMIActivity mView) {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
         mUserBMIDatabase.open();
-        mUsermanagement = new Presenter_UserManagement(mView);
-        mCurrentLogin =  mUsermanagement.checkCurrentLogin();
-        ClockDate mClockDate = mCurrentDate.getmClockDate();
-        date = mClockDate.getDay() + "/" + mClockDate.getMonthNumber() + "/" + mClockDate.getYear();
+        userDatabase = new UserDatabase(mView);
+        userDatabase.open();
+        mCurrentLogin =  userDatabase.CheckCurrentLogin();
+        MClockDate mClockDate = mCurrentDate.getmClockDate();
+        currentdate = mClockDate.getDay() + "/" + mClockDate.getMonthNumber() + "/" + mClockDate.getYear();
     }
 
     @Override
@@ -78,39 +81,49 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
 
         txv_checkBMI = (TextView) dialog.findViewById(R.id.textView_checkBMI);
         txv_BMI = (TextView) dialog.findViewById(R.id.textView_BMI);
-        RelativeLayout btnImprove = (RelativeLayout) dialog.findViewById(R.id.button_improve);
+        Button btnImprove = (Button) dialog.findViewById(R.id.button_improve);
+        RelativeLayout layout_improve  = (RelativeLayout) dialog.findViewById(R.id.layout_improve);
+
         mList = mView.getUserHealth();
-        mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0), mList.get(1), date);
+        mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0), mList.get(1), mList.get(2), currentdate);
+        mBMI = mUserBMI.getBMI();
+
+        //If user login, which is the first of user, button start improve healthy will be Visible.
         if (mView.checkIntentID() != 1){
-            btnImprove.setVisibility(View.INVISIBLE);
-        } else if (mView.checkIntentID() == 3) {
-            setAlarmCheckBMI();
+            layout_improve.setVisibility(View.INVISIBLE);
         }
+
+        //Create alarm ti remind User check their BMI every Month, and save their index into database
+        else if (mView.checkIntentID() == 3) {
+            mView.setCheckBMIAlarm();
+            mUserBMIDatabase.INSERT(mUserBMI);
+        }
+
+        txv_checkBMI.setText(mUserBMI.convertBMI(mBMI));
+        txv_BMI.setText("YOUR BMI: " + mBMI);
+
         btnImprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startImproveHealth();
+                startImproveHealth(mUserBMI, mBMI);
             }
         });
-        BMI = mUserBMI.getBMI();
-        txv_checkBMI.setText(mUserBMI.convertBMI(BMI));
-        txv_BMI.setText("YOUR BMI: " + BMI);
+
         dialog.show();
     }
-    public void startImproveHealth(){
-        setAlarmCheckBMI();
-        mUserBMIDatabase.INSERT(mUserBMI);
-        mUsermanagement.UpdateBMI(mCurrentLogin.getID(), mUserBMI.convertBMI(BMI));
+
+    public void startImproveHealth(UserBMI userBMI, float fBMI){
+        mView.setCheckBMIAlarm();
+        mUserBMIDatabase.INSERT(userBMI);
+        userDatabase.UpdateHealthStatus(mCurrentLogin.getID(), "Older");
+        userDatabase.close();
         Intent mIntent = new Intent(mView, UserMainActivity.class);
         mView.startActivity(mIntent);
     }
+
     public void dismissDialog(){
         dialog.dismiss();
     }
 
-    public void setAlarmCheckBMI(){
-        mUserBMIDatabase.INSERT(mUserBMI);
-        mView.setCheckBMIAlarm();
-    }
 
 }

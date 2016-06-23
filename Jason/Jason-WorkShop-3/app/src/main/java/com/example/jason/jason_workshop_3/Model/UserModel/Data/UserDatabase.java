@@ -23,7 +23,7 @@ public class UserDatabase {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_PASSWORD = "password";
-    public static final String COLUMN_BMI = "bmi";
+    public static final String COLUMN_HEALTH = "health_status";
     public static final String COLUMN_LOGIN_STATUS = "login_status";
     private static Context context;
     static SQLiteDatabase db;
@@ -43,23 +43,25 @@ public class UserDatabase {
         openHelper.close();
     }
 
-    public long InsertUSER(String us, String pw, String bmi, String login){
+    public long InsertUSER(String us, String pw, String health, String login){
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_USERNAME, us);
         cv.put(COLUMN_PASSWORD, pw);
-        cv.put(COLUMN_BMI, bmi);
+        cv.put(COLUMN_HEALTH, health);
         cv.put(COLUMN_LOGIN_STATUS, login);
         return db.insert(TABLE_USER_LOGIN, null, cv);
     }
 
-    public long UpdateBMI(String id, String bmi){
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_BMI, bmi);
-        return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
-    }
     public long UpdateLoginStatus(String id, String login){
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_LOGIN_STATUS, login);
+        return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
+
+    }
+
+    public long UpdateHealthStatus(String id, String health){
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_HEALTH, health);
         return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
 
     }
@@ -85,7 +87,7 @@ public class UserDatabase {
         int iRow = c.getColumnIndex(COLUMN_ID);
         int iUsername = c.getColumnIndex(COLUMN_USERNAME);
         int iPassword = c.getColumnIndex(COLUMN_PASSWORD);
-        int iStatus = c.getColumnIndex(COLUMN_BMI);
+        int iStatus = c.getColumnIndex(COLUMN_HEALTH);
         int iLogin = c.getColumnIndex(COLUMN_LOGIN_STATUS);
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             String user = c.getString(iUsername);
@@ -118,7 +120,7 @@ public class UserDatabase {
 
     }
     public Cursor SetupCursor(){
-        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_BMI, COLUMN_LOGIN_STATUS};
+        String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_HEALTH, COLUMN_LOGIN_STATUS};
         Cursor c = db.query(TABLE_USER_LOGIN, columns, null, null, null, null, null, null);
         return c;
     }
@@ -134,7 +136,7 @@ public class UserDatabase {
                     + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_USERNAME + " TEXT NOT NULL, "
                     + COLUMN_PASSWORD + " TEXT NOT NULL, "
-                    + COLUMN_BMI + " TEXT NOT NULL, "
+                    + COLUMN_HEALTH + " TEXT NOT NULL, "
                     + COLUMN_LOGIN_STATUS + " TEXT NOT NULL);");
         }
         @Override

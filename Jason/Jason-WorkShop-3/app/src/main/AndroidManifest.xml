@@ -25,7 +25,7 @@
         <receiver android:name=".Alarm.AlarmReceiver" />
 
         <activity android:name=".View.FeatureView.BMIChartActivity" />
-        <activity android:name=".View.LoginView.LoginActivity"></activity>
+        <activity android:name=".View.LoginView.LoginActivity" />
     </application>
 
 </manifest>

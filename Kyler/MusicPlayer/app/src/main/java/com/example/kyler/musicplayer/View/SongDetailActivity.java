@@ -234,6 +234,9 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             currentTime = detailPresenter.getCurrent();
             seekBar.setProgress((int) currentTime);
             currentTxt.setText(Helper.millisecondsToTimer(currentTime));
+            if(!song.getSongPath().equals(detailPresenter.getCurrentPath())){
+                detailPresenter.getSong();
+            }
             if(detailPresenter.getTimerComplete())
                 finish();
             mHandler.postDelayed(this,100);

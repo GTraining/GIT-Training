@@ -2,17 +2,17 @@ package com.example.kyler.musicplayer.Model;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
-import com.example.kyler.musicplayer.R;
-import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +20,10 @@ import java.util.Collections;
 import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
+    public static final String PLAY_ACTION="android.kyler.Play";
+    public static final String PREVIOUS_ACTION="android.kyler.Previous";
+    public static final String NEXT_ACTION="android.kyler.Next";
+    public static final String STOP_ACTION="android.kyler.Stop";
     public static int NOTIFY_ID = 0;
     private ArrayList<Song> songs, shuffleSongs, normalSongs;
     private String currentPath = "";
@@ -32,6 +36,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private CountDown countDownTimer;
     private int repeat = 0;
     MediaPlayer mediaPlayer;
+    private BroadcastReceiver receiver;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
     }
@@ -45,6 +50,29 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnPreparedListener(this);
         mediaPlayer.setOnErrorListener(this);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch (intent.getAction()){
+                    case PLAY_ACTION:
+                        pauseSong();
+                        break;
+                    case PREVIOUS_ACTION:
+                        playPrevious();
+                        break;
+                    case NEXT_ACTION:
+                        playNext();
+                        break;
+                    case STOP_ACTION:
+                        stopMusic();
+                        break;
+                }
+            }
+        };
+        registerReceiver(receiver,new IntentFilter(PLAY_ACTION));
+        registerReceiver(receiver,new IntentFilter(PREVIOUS_ACTION));
+        registerReceiver(receiver,new IntentFilter(NEXT_ACTION));
+        registerReceiver(receiver,new IntentFilter(STOP_ACTION));
     }
 
     @Override
@@ -53,28 +81,29 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     @Override
-    public void onPrepared(MediaPlayer mediaPlayer) {
+    public void onPrepared(final MediaPlayer mediaPlayer) {
         mediaPlayer.start();
         timerComplete = false;
-        Intent notIntent = new Intent(this, SongDetailActivity.class);
-        notIntent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
-        ArrayList<String> arrSongPaths = new ArrayList<>();
-        for(int j=0;j<songs.size();j++){
-            arrSongPaths.add(songs.get(j).getSongPath());
-        }
-        notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
-        notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
-        notIntent.putExtra(String.valueOf(R.string.repeatStatus),repeat);
-        PendingIntent pendInt = PendingIntent.getActivity(this, 0,
-                notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification.Builder builder = new Notification.Builder(this);
-        builder.setSmallIcon(R.drawable.play)
-                .setContentIntent(pendInt)
-                .setTicker(songTitle)
-                .setOngoing(true)
-                .setContentTitle("Playing")
-                .setContentText(songTitle);
-        Notification not = builder.build();
+//        Intent notIntent = new Intent(this, SongDetailActivity.class);
+//        notIntent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
+//        ArrayList<String> arrSongPaths = new ArrayList<>();
+//        for(int j=0;j<songs.size();j++){
+//            arrSongPaths.add(songs.get(j).getSongPath());
+//        }
+//        notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
+//        notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
+//        notIntent.putExtra(String.valueOf(R.string.repeatStatus),repeat);
+//        PendingIntent pendInt = PendingIntent.getActivity(this, 0,
+//                notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        Notification.Builder builder = new Notification.Builder(this);
+//        builder.setSmallIcon(R.drawable.play)
+//                .setContentIntent(pendInt)
+//                .setTicker(songTitle)
+//                .setOngoing(true)
+//                .setContentTitle("Playing")
+//                .setContentText(songTitle);
+//        Notification not = builder.build();
+        Notification not = new MusicPlayerNotification(this,songs,currentPosition).getNotification();
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFY_ID,not);
     }
@@ -202,8 +231,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                 currentPosition++;
                 if(currentPosition>=songs.size()) {
                     currentPosition = 0;
-                    shuffleSongs = songs;
                     if(shuffle){
+                        shuffleSongs = songs;
                         Collections.shuffle(shuffleSongs);
                         songs = shuffleSongs;
                     }else{
@@ -219,12 +248,16 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                 currentPosition++;
                 if(currentPosition>=songs.size()) {
                     timerComplete = true;
-                    mediaPlayer.stop();
-                    stopSelf();
-                    ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+                    stopMusic();
                 }
                 break;
         }
+    }
+
+    private void stopMusic(){
+        mediaPlayer.stop();
+        stopSelf();
+        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
     }
 
     public void playPrevious(){
@@ -317,8 +350,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         public void onFinish() {
             timerComplete = true;
             timerTime = 0;
-            mediaPlayer.stop();
-            ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+            stopMusic();
         }
     }
 }

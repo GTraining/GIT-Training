@@ -55,6 +55,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true" >
             <RelativeLayout
+                android:id="@+id/layout_add"
                 android:onClick="onclickAddCup"
                 android:background="@drawable/circle_button_click_main"
                 android:layout_margin="10dp"

@@ -235,24 +235,19 @@
         <RelativeLayout
             android:background="#FFF"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true">
+            android:layout_height="match_parent">
             <RelativeLayout
-                android:id="@+id/button_improve"
-                android:background="@drawable/circle_image"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/Dialog_textcolor"
+                android:id="@+id/layout_improve"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
+                android:layout_height="wrap_content">
                 <Button
-                    android:background="@drawable/circle_button_click_main"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:onClick="startImproveYourHealth"
+                    android:id="@+id/button_improve"
+                    android:background="@drawable/background_click_main"
                     android:textColor="#FFF"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Improve"/>
             </RelativeLayout>
         </RelativeLayout>

@@ -8,19 +8,24 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_DailyDrinkAdapter;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDaiLyDrinkUpdate;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrinkAdapter;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 public class DailyDrinkActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private Presenter_DailyDrinkAdapter mAdapter;
+    private PDailyDrinkAdapter mAdapter;
     private int cup = 0;
     private TextView txv_cupamount;
     private ImageView img_water;
+    private PDaiLyDrinkUpdate pDaiLyDrinkUpdate;
+    private RelativeLayout layout_add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +33,22 @@ public class DailyDrinkActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         txv_cupamount = (TextView) findViewById(R.id.textView_amount);
         img_water = (ImageView) findViewById(R.id.imageView_water);
+        layout_add = (RelativeLayout) findViewById(R.id.layout_add);
+
+        pDaiLyDrinkUpdate = new PDaiLyDrinkUpdate(this);
+        cup = pDaiLyDrinkUpdate.checkExisted();
+        if (cup == 10){
+            layout_add.setVisibility(View.INVISIBLE);
+            Toast.makeText(getApplicationContext(), "You've drink enough amount of water at today!", Toast.LENGTH_LONG).show();
+        }
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 10));
-        mAdapter = new Presenter_DailyDrinkAdapter(this, cup);
+        mAdapter = new PDailyDrinkAdapter(this, cup);
         txv_cupamount.setText("" + (cup * 30 / 3));
         img_water.getLayoutParams().height = coverheighttodp(cup * 30);
         img_water.requestLayout();
         mRecyclerView.setAdapter(mAdapter);
+
     }
     public void onclickAddCup(View v){
         if (cup < 10) {
@@ -41,7 +56,9 @@ public class DailyDrinkActivity extends AppCompatActivity {
             txv_cupamount.setText("" + cup * 10);
             img_water.getLayoutParams().height = coverheighttodp(cup * 30);
             img_water.requestLayout();
-            mAdapter = new Presenter_DailyDrinkAdapter(DailyDrinkActivity.this, cup);
+            pDaiLyDrinkUpdate.updateWaterCup();
+
+            mAdapter = new PDailyDrinkAdapter(DailyDrinkActivity.this, cup);
             mRecyclerView.setAdapter(mAdapter);
         }
     }

@@ -5,15 +5,25 @@ package com.example.jason.jason_workshop_3.Model.UserModel.Entity;
  */
 public class UserBMI {
     public String USERNAME;
+    public String AGE;
     public String HEIGHT;
     public String WEIGHT;
     public String CHECKTIME;
 
-    public UserBMI(String USERNAME, String HEIGHT, String WEIGHT, String CHECKTIME) {
+    public UserBMI(String USERNAME, String AGE, String HEIGHT, String WEIGHT, String CHECKTIME) {
         this.USERNAME = USERNAME;
+        this.AGE = AGE;
         this.HEIGHT = HEIGHT;
         this.WEIGHT = WEIGHT;
         this.CHECKTIME = CHECKTIME;
+    }
+
+    public String getAGE() {
+        return AGE;
+    }
+
+    public void setAGE(String AGE) {
+        this.AGE = AGE;
     }
 
     public String getUSERNAME() {

@@ -13,7 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
-import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_MonthlyCheckBMI;
+import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyCheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
@@ -33,7 +34,8 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
     private int intentID;
-    private Presenter_MonthlyCheckBMI mPresenter_checkBMI;
+    private UserDatabase mUserDatabase;
+    private PMonthlyCheckBMI mPresenterMonthlyCheckBMI;
     private RelativeLayout layoutBMIchart;
 
     @Override
@@ -47,13 +49,15 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         tvHello = (TextView) findViewById(R.id.textView_Hello);
         layoutBMIchart = (RelativeLayout) findViewById(R.id.layout_bmi_chart);
         mCheckBMIResultDialog = new CheckBMIResultDialog(this);
-        mPresenter_checkBMI = new Presenter_MonthlyCheckBMI(this);
+        mPresenterMonthlyCheckBMI = new PMonthlyCheckBMI(this);
+        mUserDatabase = new UserDatabase(this);
         setHelloUser();
     }
 
 
     public List<String> getUserHealth(){
         List<String> BMI = new ArrayList<>();
+        BMI.add(age);
         BMI.add(height);
         BMI.add(weight);
         return BMI;
@@ -61,7 +65,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
 
     public void setHelloUser(){
         if (intentID == 1) {
-            tvHello.setText(mPresenter_checkBMI.setCheckTitle());
+            tvHello.setText(mPresenterMonthlyCheckBMI.setCheckTitle());
         }else if (intentID == 2){
             tvHello.setText("CHECK BMI");
             layoutBMIchart.setVisibility(View.INVISIBLE);
@@ -101,15 +105,13 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         }
     }
 
-    //Fix Bug ID: JS_016(Set range for input value)
     public boolean check(float weight, float height, int age){
          if (weight > 1000 || height > 300 || age > 200){
              return true;
          }
         else return false;
     }
-    //Fix Bug ID: JS_018(Crash happens when clicking on “X” button on BMI result page)
-    //Because System can't find event onclickCloseDialog(View v) in this activity
+
     public void onclickCloseDialog(View v){
         mCheckBMIResultDialog.dismissDialog();
     }
@@ -138,4 +140,5 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         mIntent.putExtra("Intent", "1");
         startActivity(mIntent);
     }
+
 }

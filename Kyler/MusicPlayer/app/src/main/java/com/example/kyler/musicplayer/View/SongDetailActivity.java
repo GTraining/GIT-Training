@@ -33,7 +33,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     LinearLayout background;
     Dialog timerDialog;
 
-    boolean playStatus = false, shuffleStatus = false;
+    boolean playStatus = false, shuffleStatus = false, seeking=false;
     int repeatStatus = 0, currentID, timerTime=0;
     long currentTime = 0;
     Song song;
@@ -49,13 +49,14 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         arrSongPaths = intent.getStringArrayListExtra(String.valueOf(R.string.path));
         currentID = intent.getIntExtra(String.valueOf(R.string.currentID),0);
-        repeatStatus = intent.getIntExtra(String.valueOf(R.string.repeatStatus),0);
         detailPresenter = new SongDetailPresenter(getApplicationContext(),this);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(detailPresenter.isPlaying()){
+                if(detailPresenter.isPlaying() && arrSongPaths.get(currentID).equals(detailPresenter.getCurrentPath())){
                     currentTime = detailPresenter.getCurrent();
+                    repeatStatus = detailPresenter.getRepeatStatus();
+                    shuffleStatus = detailPresenter.getShuffleStatus();
                     detailPresenter.getSong();
                 }else {
                     detailPresenter.setSongs(arrSongPaths, currentID);
@@ -233,8 +234,17 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             currentTime = detailPresenter.getCurrent();
             seekBar.setProgress((int) currentTime);
             currentTxt.setText(Helper.millisecondsToTimer(currentTime));
-            if(detailPresenter.getTimerComplete())
+            if(!song.getSongPath().equals(detailPresenter.getCurrentPath())){
+                detailPresenter.getSong();
+            }
+            if(detailPresenter.getTimerComplete()) {
                 finish();
+            }
+            if(detailPresenter.isPlaying()){
+                play.setImageResource(R.drawable.pausebutton);
+            }else{
+                play.setImageResource(R.drawable.playbutton);
+            }
             mHandler.postDelayed(this,100);
         }
     };
@@ -316,6 +326,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        seeking = false;
         if(currentTime == song.getSongDuration()){
             nextSong();
         }else {

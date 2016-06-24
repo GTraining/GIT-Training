@@ -50,7 +50,7 @@ public class PExerciseRecyclerView extends RecyclerView.Adapter<MExerciseViewhol
 
     @Override
     public void onBindViewHolder(MExerciseViewholder holder, int position) {
-        Exercise exercise = exerciseList.get(position);
+        Exercise exercise = exerciseList.get(position + 1);
         holder.tvExercise_number.setText(exercise.getId());
         holder.tvExercise_name.setText(exercise.getName());
         holder.tvAmountOfStep.setText(exercise.getWeigh());

@@ -7,7 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PListFoodAdapter;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDiet.PListFoodAdapter;
 import com.example.jason.jason_workshop_3.R;
 
 public class FoodActivity extends AppCompatActivity {

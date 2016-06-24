@@ -13,6 +13,7 @@
     <color name="food">#33FFFFFF</color>
     <color name="water">#11FFFFFF</color>
     <color name="blend_black">#11000000</color>
+    <color name="blend_black_99">#99000000</color>
     <color name="login_main">#30839f</color>
     <color name="login_main_blend">#6630839f</color>
     <color name="white">#FFFFFF</color>

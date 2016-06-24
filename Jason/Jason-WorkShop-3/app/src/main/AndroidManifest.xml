@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.UserMainView.UserMainActivity" />
-        <activity android:name=".View.FeatureView.DailyFitnessActivity" />
+        <activity android:name=".View.FeatureView.WeeklyFitnessActivity" />
         <activity android:name=".View.FeatureView.DailyDrinkActivity" />
         <activity android:name=".View.FeatureView.DailyDietActivity" />
         <activity android:name=".View.LoginView.SignupActivity" />

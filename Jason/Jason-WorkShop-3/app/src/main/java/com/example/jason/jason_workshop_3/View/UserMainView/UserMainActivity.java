@@ -27,6 +27,7 @@ import com.example.jason.jason_workshop_3.View.FeatureView.DailyDrinkActivity;
  */
 public class UserMainActivity extends AppCompatActivity implements MainViewImpl {
 
+    private boolean doubleBackToExitPressedOnce = false;
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
     private PresenterClockAdapter mPresenterClockAdapter;
@@ -105,13 +106,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         mHandler.postDelayed(mRunnable, 1000);
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent startMain = new Intent(Intent.ACTION_MAIN);
-        startMain.addCategory(Intent.CATEGORY_HOME);
-        startActivity(startMain);
-    }
-
     // Start activity Login after run logout function
     @Override
     public void LogoutIntent() {
@@ -173,5 +167,26 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         startActivity(mIntent);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent startMain = new Intent(Intent.ACTION_MAIN);
+            startMain.addCategory(Intent.CATEGORY_HOME);
+            startActivity(startMain);
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
+    }
 }

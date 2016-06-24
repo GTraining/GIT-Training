@@ -1,5 +1,5 @@
 
-package com.example.jason.jason_workshop_3.Chart;
+package com.example.jason.jason_workshop_3.ChartLibrary;
 
 import android.support.v4.app.FragmentActivity;
 

@@ -1,6 +1,6 @@
 package com.example.jason.jason_workshop_3.Presenter.PresentMain;
 
-import com.example.jason.jason_workshop_3.Chart.Score;
+import com.example.jason.jason_workshop_3.ChartLibrary.Score;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;

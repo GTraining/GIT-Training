@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Chart;
+package com.example.jason.jason_workshop_3.ChartLibrary;
 
 
 import io.realm.RealmList;
@@ -15,6 +15,7 @@ public class RealmDemoData extends RealmObject {
     private float open, close, high, low;
 
     private float bubbleSize;
+
 
     private RealmList<RealmFloat> stackValues;
 

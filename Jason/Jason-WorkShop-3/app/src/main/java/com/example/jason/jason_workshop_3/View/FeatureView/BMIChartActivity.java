@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.jason.jason_workshop_3.Chart.RealmBaseActivity;
-import com.example.jason.jason_workshop_3.Chart.Score;
+import com.example.jason.jason_workshop_3.ChartLibrary.RealmBaseActivity;
+import com.example.jason.jason_workshop_3.ChartLibrary.Score;
 import com.example.jason.jason_workshop_3.Presenter.PresentMain.Presenter_BMI_Chart_Line;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;

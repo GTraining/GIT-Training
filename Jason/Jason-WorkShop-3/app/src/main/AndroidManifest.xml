@@ -11,7 +11,6 @@
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -21,12 +20,11 @@
         <activity android:name=".View.FeatureView.DailyDietActivity" />
         <activity android:name=".View.LoginView.SignupActivity" />
         <activity android:name=".View.FeatureView.MonthlyCheckBMIActivity" />
-
         <receiver android:name=".Alarm.AlarmReceiver" />
-
         <activity android:name=".View.FeatureView.BMIChartActivity" />
         <activity android:name=".View.LoginView.LoginActivity" />
-        <activity android:name=".View.FeatureView.DietFoodActivity"></activity>
+        <activity android:name=".View.FeatureView.DietFoodActivity" />
+        <!--<activity android:name=".Demo"></activity>-->
     </application>
 
 </manifest>

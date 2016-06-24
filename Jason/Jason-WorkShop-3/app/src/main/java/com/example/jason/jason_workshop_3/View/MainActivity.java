@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startUserMainActivity(){
-        startActivitys(UserMainActivity.class);
+        startActivities(UserMainActivity.class);
     }
 
     public void startLoginActivity(){
-        startActivitys(LoginActivity.class);
+        startActivities(LoginActivity.class);
     }
 
-    public void startActivitys(Class mClass){
+    public void startActivities(Class mClass){
         Intent mIntent = new Intent(this, mClass);
         startActivity(mIntent);
     }

@@ -33,7 +33,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
     private int intentID;
-    private Presenter_MonthlyCheckBMI mPresenter_checkBMI;
+    private Presenter_MonthlyCheckBMI mPresenterMonthlyCheckBMI;
     private RelativeLayout layoutBMIchart;
 
     @Override
@@ -47,7 +47,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         tvHello = (TextView) findViewById(R.id.textView_Hello);
         layoutBMIchart = (RelativeLayout) findViewById(R.id.layout_bmi_chart);
         mCheckBMIResultDialog = new CheckBMIResultDialog(this);
-        mPresenter_checkBMI = new Presenter_MonthlyCheckBMI(this);
+        mPresenterMonthlyCheckBMI = new Presenter_MonthlyCheckBMI(this);
         setHelloUser();
     }
 
@@ -62,7 +62,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
 
     public void setHelloUser(){
         if (intentID == 1) {
-            tvHello.setText(mPresenter_checkBMI.setCheckTitle());
+            tvHello.setText(mPresenterMonthlyCheckBMI.setCheckTitle());
         }else if (intentID == 2){
             tvHello.setText("CHECK BMI");
             layoutBMIchart.setVisibility(View.INVISIBLE);
@@ -102,15 +102,13 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         }
     }
 
-    //Fix Bug ID: JS_016(Set range for input value)
     public boolean check(float weight, float height, int age){
          if (weight > 1000 || height > 300 || age > 200){
              return true;
          }
         else return false;
     }
-    //Fix Bug ID: JS_018(Crash happens when clicking on “X” button on BMI result page)
-    //Because System can't find event onclickCloseDialog(View v) in this activity
+
     public void onclickCloseDialog(View v){
         mCheckBMIResultDialog.dismissDialog();
     }

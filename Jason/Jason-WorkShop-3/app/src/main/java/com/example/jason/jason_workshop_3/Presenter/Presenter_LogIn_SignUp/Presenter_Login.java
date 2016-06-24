@@ -52,6 +52,7 @@ public class Presenter_Login implements Presenter_LoginImpl {
         }
 
         ProgressDialog mProgressDialog = new ProgressDialog(mView);
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -72,6 +73,7 @@ public class Presenter_Login implements Presenter_LoginImpl {
                 mUserManagement.UpdateLoginStatus(mCheckLogin.getID(), "on");
                 if (mCheckLogin.getStatus().equals("new_user")) mView.OpenNewUserActivity();
                 else{
+                    mUserManagement.closeDatabase();
                     mView.OpenMainActivity();
                 }
                 mProgressDialog.dismiss();
@@ -82,6 +84,7 @@ public class Presenter_Login implements Presenter_LoginImpl {
             super.onPostExecute(aBoolean);
         }
     }
+
     public boolean Empty(){
         if (mView.getUserName().equals("") || mView.getPassword().equals("")){
             return true;

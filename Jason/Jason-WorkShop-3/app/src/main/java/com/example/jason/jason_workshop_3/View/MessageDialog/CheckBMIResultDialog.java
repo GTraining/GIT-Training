@@ -30,27 +30,27 @@ import java.util.List;
  * Created by jason on 14/06/2016.
  */
 public class CheckBMIResultDialog implements DialogMessagaImpl {
-    private TextView txv_checkBMI, txv_BMI;
+
     private DialogPlus dialog;
     private List<String> mList;
     private UserBMI mUserBMI;
     private MonthlyCheckBMIActivity mView;
-    private UserDatabase userDatabase;
+    private UserDatabase mUserDatabase;
     private CurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
     private MCurrentDate mCurrentDate = new MCurrentDate();
-    private String currentdate = "00-00-0000";
-    private float mBMI = 0;
+    private MClockDate mClockDate;
+    private String mDate = "00-00-0000";
 
     public CheckBMIResultDialog(MonthlyCheckBMIActivity mView) {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
         mUserBMIDatabase.open();
-        userDatabase = new UserDatabase(mView);
-        userDatabase.open();
-        mCurrentLogin =  userDatabase.CheckCurrentLogin();
-        MClockDate mClockDate = mCurrentDate.getmClockDate();
-        currentdate = mClockDate.getDay() + "/" + mClockDate.getMonthNumber() + "/" + mClockDate.getYear();
+        mUserDatabase = new UserDatabase(mView);
+        mUserDatabase.open();
+        mCurrentLogin =  mUserDatabase.CheckCurrentLogin();
+        mClockDate = mCurrentDate.getmClockDate();
+        mDate = mClockDate.getDay() + "/" + mClockDate.getMonthNumber() + "/" + mClockDate.getYear();
     }
 
     @Override
@@ -70,6 +70,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
         };
         DialogHandle(holder, gravity, dismissListener);
     }
+
     @Override
     public void DialogHandle(Holder holder, int gravity, OnDismissListener dismissListener) {
         dialog = DialogPlus.newDialog(mView)
@@ -79,51 +80,45 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
                 .setCancelable(true)
                 .create();
 
-        txv_checkBMI = (TextView) dialog.findViewById(R.id.textView_checkBMI);
-        txv_BMI = (TextView) dialog.findViewById(R.id.textView_BMI);
+        TextView txv_checkBMI = (TextView) dialog.findViewById(R.id.textView_checkBMI);
+        TextView txv_BMI = (TextView) dialog.findViewById(R.id.textView_BMI);
         Button btnImprove = (Button) dialog.findViewById(R.id.button_improve);
         RelativeLayout layout_improve  = (RelativeLayout) dialog.findViewById(R.id.layout_improve);
 
         mList = mView.getUserHealth();
-        mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0), mList.get(1), mList.get(2), currentdate);
-        mBMI = mUserBMI.getBMI();
+        mUserBMI = new UserBMI(mCurrentLogin.getUSERNAME(), mList.get(0), mList.get(1), mList.get(2), mDate);
 
-        //If user login, which is the first of user, button start improve healthy will be Visible.
-        if (mView.checkIntentID() != 1){
+        if (mView.checkIntentID() != 1){  //If user login, which is the first of user, button start improve healthy will be Visible.
             layout_improve.setVisibility(View.INVISIBLE);
-        }
-
-        //Create alarm ti remind User check their BMI every Month, and save their index into database
-        else if (mView.checkIntentID() == 3) {
+        } else if (mView.checkIntentID() == 3) { //Create alarm ti remind User check their BMI every Month, and save their index into database
             mView.setCheckBMIAlarm();
             mUserBMIDatabase.INSERT(mUserBMI);
         }
 
-        txv_checkBMI.setText(mUserBMI.convertBMI(mBMI));
-        txv_BMI.setText("YOUR BMI: " + mBMI);
+        txv_checkBMI.setText(mUserBMI.convertBMI(mUserBMI.getBMI()));
+        txv_BMI.setText("YOUR BMI: " + mUserBMI.getBMI());
 
         btnImprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startImproveHealth(mUserBMI, mBMI);
+                mView.setCheckBMIAlarm();
+
+                mUserBMIDatabase.INSERT(mUserBMI);
+                mUserBMIDatabase.close();
+
+                mUserDatabase.UpdateHealthStatus(mCurrentLogin.getID(), "Older");
+                mUserDatabase.close();
+
+                Intent mIntent = new Intent(mView, UserMainActivity.class);
+                mView.startActivity(mIntent);
             }
         });
 
         dialog.show();
     }
 
-    public void startImproveHealth(UserBMI userBMI, float fBMI){
-        mView.setCheckBMIAlarm();
-        mUserBMIDatabase.INSERT(userBMI);
-        userDatabase.UpdateHealthStatus(mCurrentLogin.getID(), "Older");
-        userDatabase.close();
-        Intent mIntent = new Intent(mView, UserMainActivity.class);
-        mView.startActivity(mIntent);
-    }
 
     public void dismissDialog(){
         dialog.dismiss();
     }
-
-
 }

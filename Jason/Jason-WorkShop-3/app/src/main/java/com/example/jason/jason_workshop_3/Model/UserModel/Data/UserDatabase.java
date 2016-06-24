@@ -63,7 +63,6 @@ public class UserDatabase {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_HEALTH, health);
         return db.update(TABLE_USER_LOGIN, cv, COLUMN_ID + "=" + id, null);
-
     }
     public User getUser(String username) {
         Cursor c = SetupCursor();

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,14 +68,17 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
         }
         viewHolder.title.setText(songs.get(i).getSongTitle());
         viewHolder.artist.setText(songs.get(i).getSongArtist());
-        if(adapterPresenter.isFavoriteSong(songs.get(i))){
+        final boolean isFavor = adapterPresenter.isFavoriteSong(songs.get(i));
+        if(isFavor){
             viewHolder.favorite.setImageResource(R.drawable.favoritebutton);
+        }else{
+            viewHolder.favorite.setImageResource(R.drawable.unfavoritebutton);
         }
         final Song song = songs.get(i);
         viewHolder.favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(adapterPresenter.isFavoriteSong(song)) {
+                if(isFavor) {
                     if(favoriteMode){
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setMessage("Do you want to Unfavorite the song \n"+song.getSongTitle()+" ?")

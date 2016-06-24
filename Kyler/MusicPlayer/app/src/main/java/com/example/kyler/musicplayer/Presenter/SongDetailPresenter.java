@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Handler;
 import android.os.IBinder;
 
 import com.example.kyler.musicplayer.Model.MyBindService;
@@ -144,7 +145,11 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public boolean getTimerComplete() {
-        return myBindService.getTimerComplete();
+        if(binded){
+            return myBindService.getTimerComplete();
+        }else{
+            return true;
+        }
     }
 
     @Override
@@ -154,7 +159,11 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public long getCurrent() {
-        return myBindService.getCurrent();
+        if(binded) {
+            return myBindService.getCurrent();
+        }else{
+            return 0;
+        }
     }
 
     @Override
@@ -170,6 +179,19 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     @Override
     public boolean getShuffleStatus() {
         return myBindService.getShuffle();
+    }
+
+    @Override
+    public void onFinish() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(binded) {
+                    context.unbindService(serviceConnection);
+                    binded = false;
+                }
+            }
+        },3000);
     }
 
 }

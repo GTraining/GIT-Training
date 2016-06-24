@@ -14,10 +14,13 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.example.kyler.musicplayer.R;
+import com.example.kyler.musicplayer.Utils.Helper;
+import com.example.kyler.musicplayer.Widget.MusicPlayerWidget;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
     public static final String PLAY_ACTION="android.kyler.Play";
@@ -38,6 +41,20 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     Notification not;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
+    }
+
+    private void sendUpdateWidgetBroadcast(){
+        Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
+        ArrayList<String> songPaths = Helper.getSongPaths(songs);
+        intent.putStringArrayListExtra(String.valueOf(R.string.path),songPaths);
+        intent.putExtra(String.valueOf(R.string.currentID),currentPosition);
+        intent.putExtra(MusicPlayerWidget.PLAYING_STATUS,isPlaying());
+        if(songs.size()>0) {
+            intent.putExtra(MusicPlayerWidget.SONG_IMAGE,songs.get(currentPosition).getSongImage());
+            intent.putExtra(MusicPlayerWidget.MUSIC_TITLE, songs.get(currentPosition).getSongTitle());
+            intent.putExtra(MusicPlayerWidget.MUSIC_ARTIST, songs.get(currentPosition).getSongArtist());
+        }
+        getApplicationContext().sendBroadcast(intent);
     }
 
     @Override
@@ -89,8 +106,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public void onPrepared(final MediaPlayer mediaPlayer) {
-        mediaPlayer.start();
         timerComplete = false;
+        mediaPlayer.start();
         showNotification();
     }
 
@@ -111,6 +128,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         not = new MusicPlayerNotification(this,songs,currentPosition,isPlaying()).getNotification();
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFY_ID,not);
+        sendUpdateWidgetBroadcast();
     }
 
 
@@ -234,8 +252,9 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                 currentPosition++;
                 if(currentPosition>=songs.size()) {
                     currentPosition = 0;
-                    timerComplete = true;
                     stopMusic();
+                }else{
+                    playSong();
                 }
                 break;
         }
@@ -273,6 +292,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public boolean onUnbind(Intent intent) {
         Log.e("MyBindService","onUnBind");
         mediaPlayer.stop();
+        songs = new ArrayList<>();
+        sendUpdateWidgetBroadcast();
         mediaPlayer.release();
         return true;
     }
@@ -280,6 +301,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public void onDestroy() {
         Log.e("MyBindService","onDestroy");
+        unregisterReceiver(receiver);
         super.onDestroy();
         stopForeground(true);
     }

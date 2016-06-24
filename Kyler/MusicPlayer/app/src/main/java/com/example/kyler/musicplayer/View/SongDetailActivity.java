@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -232,23 +233,25 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     private Runnable mUpdateSeekbarRunnable = new Runnable() {
         @Override
         public void run() {
-            currentTime = detailPresenter.getCurrent();
-            seekBar.setProgress((int) currentTime);
-            currentTxt.setText(Helper.millisecondsToTimer(currentTime));
-            if(!song.getSongPath().equals(detailPresenter.getCurrentPath())){
-                detailPresenter.getSong();
-            }
             if(detailPresenter.getTimerComplete()) {
+                detailPresenter.onFinish();
                 finish();
+            }else {
+                currentTime = detailPresenter.getCurrent();
+                seekBar.setProgress((int) currentTime);
+                currentTxt.setText(Helper.millisecondsToTimer(currentTime));
+                if (!song.getSongPath().equals(detailPresenter.getCurrentPath())) {
+                    detailPresenter.getSong();
+                }
+                if (detailPresenter.isPlaying()) {
+                    playStatus = true;
+                    play.setImageResource(R.drawable.pausebutton);
+                } else {
+                    playStatus = false;
+                    play.setImageResource(R.drawable.playbutton);
+                }
+                mHandler.postDelayed(this, 100);
             }
-            if(detailPresenter.isPlaying()){
-                playStatus = true;
-                play.setImageResource(R.drawable.pausebutton);
-            }else{
-                playStatus = false;
-                play.setImageResource(R.drawable.playbutton);
-            }
-            mHandler.postDelayed(this,100);
         }
     };
 
@@ -364,5 +367,6 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.e("OnDestroy","Kyler ================================================");
     }
 }

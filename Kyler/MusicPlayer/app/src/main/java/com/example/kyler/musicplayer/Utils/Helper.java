@@ -4,6 +4,8 @@ import android.media.MediaMetadataRetriever;
 
 import com.example.kyler.musicplayer.Model.Song;
 
+import java.util.ArrayList;
+
 /**
  * Created by kyler on 16/06/2016.
  */
@@ -74,5 +76,13 @@ public class Helper {
 
         // return timer string
         return finalTimerString;
+    }
+
+    public static ArrayList<String> getSongPaths(ArrayList<Song> songs){
+        ArrayList<String> arrSongPaths = new ArrayList<>();
+        for(int j=0;j<songs.size();j++){
+            arrSongPaths.add(songs.get(j).getSongPath());
+        }
+        return arrSongPaths;
     }
 }

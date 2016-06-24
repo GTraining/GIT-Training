@@ -42,7 +42,7 @@ public class MusicPlayerNotification {
         notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
         notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
         PendingIntent pendInt = PendingIntent.getActivity(context, 0,
-                notIntent, PendingIntent.FLAG_ONE_SHOT);
+                notIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         RemoteViews remoteViews = getNotificationRemote();
 

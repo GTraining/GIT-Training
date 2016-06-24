@@ -25,4 +25,5 @@ public interface ISongDetailPresenter {
     String getCurrentPath();
     int getRepeatStatus();
     boolean getShuffleStatus();
+    void onFinish();
 }

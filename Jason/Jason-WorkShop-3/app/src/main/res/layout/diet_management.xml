@@ -18,8 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <RelativeLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp">
+                android:onClick="onclickBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
                 <ImageView
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -31,8 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Daily Diet"
-                android:textColor="#55FFFFFF"
+                android:text="DAILY DIET"
+                android:textColor="#FFFFFF"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
 
@@ -43,16 +44,17 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <RelativeLayout
-                android:onClick="onclickstartCheckcalo"
+                android:onClick="onclickStartCheckCalo"
                 android:background="@drawable/diet_click_main"
                 android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Check Your Diet"
-                    android:textColor="#00fa00"
+                    android:text="Calories required"
+                    android:textColor="#fadd00"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
@@ -77,14 +79,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <RelativeLayout
-                        android:padding="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/diet_click_false"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent">
-
-                    </RelativeLayout>
-                    <RelativeLayout
                         android:background="@drawable/diet_click_false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -99,7 +93,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="BreakFast"
+                                android:text="Breakfast"
                                 android:textColor="#01ffbb"
                                 android:layout_gravity="center"/>
 
@@ -126,13 +120,6 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <RelativeLayout
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/diet_click_false"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent">
-
-                    </RelativeLayout>
                     <RelativeLayout
                         android:background="@drawable/diet_click_false"
                         android:layout_width="match_parent"
@@ -175,12 +162,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <RelativeLayout
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/diet_click_false"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent">
-                    </RelativeLayout>
-                    <RelativeLayout
                         android:background="@drawable/diet_click_false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -222,13 +203,7 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <RelativeLayout
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/diet_click_false"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent">
 
-                    </RelativeLayout>
                     <RelativeLayout
                         android:background="@drawable/diet_click_false"
                         android:layout_width="match_parent"

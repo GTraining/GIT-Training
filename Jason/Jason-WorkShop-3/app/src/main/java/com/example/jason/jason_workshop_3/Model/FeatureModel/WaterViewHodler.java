@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Model.WaterDrinkingModel;
+package com.example.jason.jason_workshop_3.Model.FeatureModel;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

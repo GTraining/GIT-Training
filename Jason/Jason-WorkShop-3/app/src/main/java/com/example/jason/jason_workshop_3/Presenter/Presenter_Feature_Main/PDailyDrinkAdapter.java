@@ -7,15 +7,15 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.example.jason.jason_workshop_3.Model.WaterDrinkingModel.WaterDrinkingDatabase;
-import com.example.jason.jason_workshop_3.Model.WaterDrinkingModel.WaterViewHodler;
+import com.example.jason.jason_workshop_3.Model.FeatureModel.WaterDrinkingDatabase;
+import com.example.jason.jason_workshop_3.Model.FeatureModel.WaterViewHodler;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.DailyDrinkActivity;
 
 /**
  * Created by jason on 15/06/2016.
  */
-public class Presenter_DailyDrinkAdapter extends RecyclerView.Adapter<WaterViewHodler> {
+public class PDailyDrinkAdapter extends RecyclerView.Adapter<WaterViewHodler> {
 
 //    private List<CupImage> cupImages;
     private WaterDrinkingDatabase mDrinkingDatabase;
@@ -23,7 +23,7 @@ public class Presenter_DailyDrinkAdapter extends RecyclerView.Adapter<WaterViewH
     private WaterViewHodler mWaterViewHodler;
     private int lastPosition = - 1;
     private int cup;
-    public Presenter_DailyDrinkAdapter(DailyDrinkActivity mView, int cup) {
+    public PDailyDrinkAdapter(DailyDrinkActivity mView, int cup) {
         this.mView = mView;
         this.cup = cup;
         mDrinkingDatabase = new WaterDrinkingDatabase(mView);
@@ -50,6 +50,7 @@ public class Presenter_DailyDrinkAdapter extends RecyclerView.Adapter<WaterViewH
     public int getItemCount() {
         return 10;
     }
+
     private void setAnimation(View viewToAnimate, int position)
     {
         // If the bound view wasn't previously displayed on screen, it's animated

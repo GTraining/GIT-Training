@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Model.WaterDrinkingModel;
+package com.example.jason.jason_workshop_3.Model.FeatureModel;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -99,20 +99,37 @@ public class WaterDrinkingDatabase implements WaterDrinkingDatabaseImpl {
     }
 
     @Override
-    public WaterCup GETOWN(WaterCup waterCup) {
+    public WaterCup GETOWN(String username, String date) {
         Cursor c = SETUPCURSOR();
         int _username = c.getColumnIndex(COLUMN_USERNAME);
         int _amount = c.getColumnIndex(COLUMN_AMOUNT_CUP_WATER);
         int _date = c.getColumnIndex(COLUMN_DATE);
         WaterCup mWaterCup = new WaterCup("", "", "");
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            if (waterCup.getUSERNAME().equals(c.getString(_username)) && waterCup.getDATE().equals(c.getString(_date))){
+            if (username.equals(c.getString(_username)) && date.equals(c.getString(_date))){
                 mWaterCup = new WaterCup(c.getString(_username), c.getString(_amount), c.getString(_date));
             }
         }
         c.close();
         return mWaterCup;
     }
+
+    @Override
+    public boolean CHECKEXISTED(String username, String date) {
+        Cursor c = SETUPCURSOR();
+        boolean check = false;
+        int _username = c.getColumnIndex(COLUMN_USERNAME);
+        int _date = c.getColumnIndex(COLUMN_DATE);
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            if (username.equals(c.getString(_username)) && date.equals(c.getString(_date))){
+                check = true;
+                break;
+            }
+        }
+        c.close();
+        return check;
+    }
+
 
     public Cursor SETUPCURSOR(){
         String[] columns = new String[] {COLUMN_ID, COLUMN_USERNAME, COLUMN_AMOUNT_CUP_WATER, COLUMN_DATE};

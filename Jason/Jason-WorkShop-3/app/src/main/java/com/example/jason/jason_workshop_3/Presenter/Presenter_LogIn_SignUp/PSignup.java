@@ -16,17 +16,17 @@ import java.util.List;
 /**
  * Created by jason on 20/06/2016.
  */
-public class Presenter_Signup implements SignupImpl{
+public class PSignup implements PSignUpImpl {
 
     private String Username, password, cf_password;
     private SignupActivity mView;
-    private Presenter_UserManagement mUserManagement;
+    private PUserManagement mUserManagement;
     private UserSetUpDatabase mUserSetUpDatabase;
     private List<String> list = new ArrayList<>();
     private UserSetUp mUserSetUp;
-    public Presenter_Signup(SignupActivity mView) {
+    public PSignup(SignupActivity mView) {
         this.mView = mView;
-        mUserManagement = new Presenter_UserManagement(mView);
+        mUserManagement = new PUserManagement(mView);
         mUserSetUpDatabase = new UserSetUpDatabase(mView);
         mUserSetUpDatabase.open();
     }

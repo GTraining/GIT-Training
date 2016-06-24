@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Model.ClockModel.MClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.MClockTime;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PresentSettingActionbar;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PresenterClockAdapter;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PSettingActionbar;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PClockAdapter;
 import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
@@ -31,11 +31,11 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     private boolean doubleBackToExitPressedOnce = false;
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
-    private PresenterClockAdapter mPresenterClockAdapter;
+    private PClockAdapter mPresenterClockAdapter;
     private long mCountMillisecond;
     private ProgressBar progressBar_second, progressBar_minute, progressBar_hour;
     private TextView txv_time, txv_Second, txv_date, txv_month, txv_year, txv_day, txv_AP;
-    private PresentSettingActionbar mSettingActionbar;
+    private PSettingActionbar mSettingActionbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         txv_day = (TextView) findViewById(R.id.textView_day);
         txv_AP = (TextView) findViewById(R.id.textView_Ap);
 
-        mPresenterClockAdapter = new PresenterClockAdapter(this);
-        mSettingActionbar = new PresentSettingActionbar(this);
+        mPresenterClockAdapter = new PClockAdapter(this);
+        mSettingActionbar = new PSettingActionbar(this);
 
         mCountMillisecond = mPresenterClockAdapter.getCountMilliseconds();
         setClockRunnable();

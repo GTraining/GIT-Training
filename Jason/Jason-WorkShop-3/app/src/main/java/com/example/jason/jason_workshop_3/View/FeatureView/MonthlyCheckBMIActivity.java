@@ -13,7 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.Presenter_MonthlyCheckBMI;
+import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyCheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;
@@ -33,7 +34,8 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     private CheckBMIResultDialog mCheckBMIResultDialog;
     private CheckBMIAlertDialog checkBMIAlertDialog = new CheckBMIAlertDialog(this);
     private int intentID;
-    private Presenter_MonthlyCheckBMI mPresenterMonthlyCheckBMI;
+    private UserDatabase mUserDatabase;
+    private PMonthlyCheckBMI mPresenterMonthlyCheckBMI;
     private RelativeLayout layoutBMIchart;
 
     @Override
@@ -47,7 +49,8 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         tvHello = (TextView) findViewById(R.id.textView_Hello);
         layoutBMIchart = (RelativeLayout) findViewById(R.id.layout_bmi_chart);
         mCheckBMIResultDialog = new CheckBMIResultDialog(this);
-        mPresenterMonthlyCheckBMI = new Presenter_MonthlyCheckBMI(this);
+        mPresenterMonthlyCheckBMI = new PMonthlyCheckBMI(this);
+        mUserDatabase = new UserDatabase(this);
         setHelloUser();
     }
 

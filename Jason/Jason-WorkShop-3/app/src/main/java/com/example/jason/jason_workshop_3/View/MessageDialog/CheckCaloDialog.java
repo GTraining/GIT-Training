@@ -15,7 +15,7 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.DialogMessagaImpl;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_UserManagement;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PUserManagement;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity;
 
@@ -29,7 +29,7 @@ public class CheckCaloDialog implements DialogMessagaImpl {
     private DialogPlus dialog;
     private List<UserBMI> userBMIList;
     private DailyDietActivity mView;
-    private Presenter_UserManagement mUsermanagement;
+    private PUserManagement mUsermanagement;
     private CurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
     private String[] Sex = {"Male", "Female"};
@@ -41,7 +41,7 @@ public class CheckCaloDialog implements DialogMessagaImpl {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
         mUserBMIDatabase.open();
-        mUsermanagement = new Presenter_UserManagement(mView);
+        mUsermanagement = new PUserManagement(mView);
         mCurrentLogin =  mUsermanagement.checkCurrentLogin();
         userBMIList = mUserBMIDatabase.GETLIST(mCurrentLogin.getUSERNAME());
         age = Double.parseDouble(userBMIList.get(userBMIList.size()-1).getAGE());

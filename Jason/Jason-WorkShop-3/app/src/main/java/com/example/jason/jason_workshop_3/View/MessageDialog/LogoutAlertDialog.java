@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_UserManagement;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PUserManagement;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 /**
@@ -12,11 +12,11 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
  */
 public class LogoutAlertDialog {
     private UserMainActivity mView;
-    private Presenter_UserManagement mUserMangement;
+    private PUserManagement mUserMangement;
     private CurrentLogin mCurrentLogin;
     public LogoutAlertDialog(UserMainActivity mView) {
         this.mView = mView;
-        mUserMangement = new Presenter_UserManagement(mView);
+        mUserMangement = new PUserManagement(mView);
         mCurrentLogin = mUserMangement.checkCurrentLogin();
     }
 

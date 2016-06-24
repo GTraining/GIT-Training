@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jason.jason_workshop_3">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/heart_pulse"
@@ -23,7 +24,7 @@
         <receiver android:name=".Alarm.AlarmReceiver" />
         <activity android:name=".View.FeatureView.BMIChartActivity" />
         <activity android:name=".View.LoginView.LoginActivity" />
-        <activity android:name=".View.FeatureView.DietFoodActivity" />
+        <activity android:name=".View.FeatureView.FoodActivity" />
         <!--<activity android:name=".Demo"></activity>-->
     </application>
 

@@ -11,16 +11,16 @@ import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
 /**
  * Created by jason on 13/06/2016.
  */
-public class Presenter_Login implements Presenter_LoginImpl {
+public class PLogin implements PLoginImpl {
 
     private User mUser;
-    private Presenter_UserManagement mUserManagement;
+    private PUserManagement mUserManagement;
     private LoginActivity mView;
     private UserCheckInfo mCheckLogin;
 
-    public Presenter_Login(LoginActivity mViews) {
+    public PLogin(LoginActivity mViews) {
         this.mView = mViews;
-        mUserManagement = new Presenter_UserManagement(mView);
+        mUserManagement = new PUserManagement(mView);
     }
 
     @Override
@@ -71,7 +71,10 @@ public class Presenter_Login implements Presenter_LoginImpl {
             if (aBoolean){
                 mCheckLogin = mUserManagement.checkExisting(mUser.getUserName());
                 mUserManagement.UpdateLoginStatus(mCheckLogin.getID(), "on");
-                if (mCheckLogin.getStatus().equals("new_user")) mView.OpenNewUserActivity();
+                if (mCheckLogin.getStatus().equals("new_user")) {
+                    mUserManagement.UpdateHealth(mCheckLogin.getID(), "Older_User");
+                    mView.OpenNewUserActivity();
+                }
                 else{
                     mUserManagement.closeDatabase();
                     mView.OpenMainActivity();

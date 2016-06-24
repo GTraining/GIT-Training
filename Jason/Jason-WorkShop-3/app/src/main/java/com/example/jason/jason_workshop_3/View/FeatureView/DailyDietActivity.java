@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckCaloDialog;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 public class DailyDietActivity extends AppCompatActivity {
 
@@ -20,28 +21,38 @@ public class DailyDietActivity extends AppCompatActivity {
     }
 
     public void onclickStartBreakfast(View v){
-        startActivitys(DietFoodActivity.class, "Breakfast");
+        startActivities(FoodActivity.class, "Breakfast");
     }
 
     public void onclickStartLunch(View v){
-        startActivitys(DietFoodActivity.class, "Lunch");
+        startActivities(FoodActivity.class, "Lunch");
     }
 
     public void onclickStartDinner(View v){
-        startActivitys(DietFoodActivity.class, "Dinner");
+        startActivities(FoodActivity.class, "Dinner");
     }
 
     public void onclickStartSupper(View v){
-        startActivitys(DietFoodActivity.class, "Supper");
+        startActivities(FoodActivity.class, "Supper");
     }
 
-    public void onclickstartCheckcalo(View v){
+    public void onclickStartCheckCalo(View v){
         checkCaloDialog.show(1, Gravity.TOP);
     }
 
-    public void startActivitys(Class mClass, String contentItent){
+    public void onclickBack(View v){
+        startActivities(UserMainActivity.class, "none");
+    }
+
+    public void onclickCloseDialog(View v){
+        checkCaloDialog.dismissDialog();
+    }
+
+    public void startActivities(Class mClass, String contentItent){
         Intent mIntent = new Intent(this, mClass);
         mIntent.putExtra("ContentInten", contentItent);
         startActivity(mIntent);
     }
+
+
 }

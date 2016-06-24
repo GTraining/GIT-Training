@@ -8,7 +8,7 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 /**
  * Created by jason on 10/06/2016.
  */
-public class PresenterClockAdapter implements PresenterClockImpl {
+public class PClockAdapter implements PClockImpl {
 
     private MClockTime mClockTime;
     private MClockDate mClockDate;
@@ -16,7 +16,7 @@ public class PresenterClockAdapter implements PresenterClockImpl {
     private long mCountMilliseconds = 0;
     private UserMainActivity mView;
 
-    public PresenterClockAdapter(UserMainActivity mView) {
+    public PClockAdapter(UserMainActivity mView) {
         this.mView = mView;
         mClockDate = mCurrentDate.getmClockDate();
         mClockTime = mCurrentDate.getmClockTime();

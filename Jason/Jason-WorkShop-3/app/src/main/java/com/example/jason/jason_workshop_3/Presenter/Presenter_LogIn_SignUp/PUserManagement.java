@@ -10,11 +10,11 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
 /**
  * Created by jason on 13/06/2016.
  */
-public class Presenter_UserManagement implements UserManagementImpl {
+public class PUserManagement implements PUserManagementImpl {
     Context mContext;
     UserDatabase mUserDatabase;
 
-    public Presenter_UserManagement(Context mContext) {
+    public PUserManagement(Context mContext) {
         this.mContext = mContext;
         mUserDatabase = new UserDatabase(mContext);
         mUserDatabase.open();

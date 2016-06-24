@@ -24,7 +24,7 @@
 
         <RelativeLayout
             android:background="@drawable/background_click_main"
-            android:onClick="onclickCloseActivity"
+            android:onClick="onclickCloseDialog"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"

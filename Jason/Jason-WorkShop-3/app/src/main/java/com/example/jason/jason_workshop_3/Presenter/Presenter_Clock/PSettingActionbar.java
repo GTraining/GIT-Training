@@ -12,10 +12,10 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 /**
  * Created by jason on 15/06/2016.
  */
-public class PresentSettingActionbar implements DialogMessagaImpl {
+public class PSettingActionbar implements DialogMessagaImpl {
     private DialogPlus dialogPlus;
     private UserMainActivity mView;
-    public PresentSettingActionbar(UserMainActivity mView) {
+    public PSettingActionbar(UserMainActivity mView) {
         this.mView = mView;
     }
 

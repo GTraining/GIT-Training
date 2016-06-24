@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Model.WaterDrinkingModel;
+package com.example.jason.jason_workshop_3.Model.FeatureModel;
 
 /**
  * Created by jason on 15/06/2016.

@@ -88,4 +88,8 @@ public class MClockDate implements MClockDateImpl {
         }
         return _dd;
     }
+
+    public String getDate(){
+        return getDay() + "/" + getMonthNumber() + "/" + getYear();
+    }
 }

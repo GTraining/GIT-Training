@@ -9,7 +9,7 @@ import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserBMIDatabase;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserSetUp;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.UserBMI;
 import com.example.jason.jason_workshop_3.Model.UserModel.Entity.CurrentLogin;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.Presenter_UserManagement;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PUserManagement;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
@@ -31,13 +31,13 @@ public class UserBMIChartBar implements DialogMessagaImpl {
     private UserMainActivity mView;
     private UserBMIDatabase mUserBMIDatabase;
     private List<UserBMI> mUserBMIs = new ArrayList<>();
-    private Presenter_UserManagement mUserManagement;
+    private PUserManagement mUserManagement;
     private UserSetUp mSetUp;
 
     public UserBMIChartBar(UserMainActivity view) {
         this.mView = view;
         mUserBMIDatabase = new UserBMIDatabase(mView);
-        mUserManagement = new Presenter_UserManagement(mView);
+        mUserManagement = new PUserManagement(mView);
         mUserBMIDatabase.open();
         CurrentLogin mCurrentLogin = mUserManagement.checkCurrentLogin();
         mUserBMIs = mUserBMIDatabase.GETLIST(mCurrentLogin.USERNAME);

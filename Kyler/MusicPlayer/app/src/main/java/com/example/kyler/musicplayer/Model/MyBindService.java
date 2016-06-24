@@ -168,8 +168,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public void playSong(){
-        mediaPlayer.reset();
         complete = false;
+        mediaPlayer.reset();
         try {
             mediaPlayer.setDataSource(songs.get(currentPosition).getSongPath());
         } catch (IOException e) {

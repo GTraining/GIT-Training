@@ -133,6 +133,7 @@ public class MusicPlayerWidget extends AppWidgetProvider {
             Intent openAppIntent = new Intent(context, MainActivity.class);
             openAppIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             openAppPendingIntent = PendingIntent.getActivity(context,0,openAppIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+            remoteView.setImageViewResource(R.id.widget_image,R.drawable.defaultpic);
             remoteView.setTextViewText(R.id.widget_title,"Music Player");
             remoteView.setTextViewText(R.id.widget_artist,"Designed by Kyler");
         }

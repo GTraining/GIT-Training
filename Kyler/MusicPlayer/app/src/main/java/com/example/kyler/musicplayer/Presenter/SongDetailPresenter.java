@@ -159,11 +159,7 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public long getCurrent() {
-        if(binded) {
-            return myBindService.getCurrent();
-        }else{
-            return 0;
-        }
+        return myBindService.getCurrent();
     }
 
     @Override

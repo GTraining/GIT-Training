@@ -367,6 +367,5 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("OnDestroy","Kyler ================================================");
     }
 }

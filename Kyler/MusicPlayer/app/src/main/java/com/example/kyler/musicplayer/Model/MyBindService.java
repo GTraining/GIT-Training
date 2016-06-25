@@ -101,7 +101,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
-        complete = true;
+        playNext();
     }
 
     @Override
@@ -114,8 +114,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
         Log.v("MUSIC PLAYER", "Playback Error");
-        mediaPlayer.reset();
-        return false;
+//        mediaPlayer.reset();
+        return true;
     }
 
     public class MyBinder extends Binder {
@@ -168,7 +168,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public void playSong(){
-        complete = false;
         mediaPlayer.reset();
         try {
             mediaPlayer.setDataSource(songs.get(currentPosition).getSongPath());
@@ -193,13 +192,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public long getCurrent(){
-        long result = 0;
-        if(complete) {
-            result = songs.get(currentPosition).getSongDuration();
-        } else {
-            result = mediaPlayer.getCurrentPosition();
-        }
-        return result;
+        return mediaPlayer.getCurrentPosition();
     }
 
     public Song getSong(){

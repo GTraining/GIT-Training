@@ -318,7 +318,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         if(currentTime == song.getSongDuration()){
-            nextSong();
+//            nextSong();
         }else {
             currentTime = seekBar.getProgress();
             currentTxt.setText(Helper.millisecondsToTimer(currentTime));
@@ -333,7 +333,6 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         if(currentTime == song.getSongDuration()){
-            nextSong();
         }else {
             seekTo(currentTime);
         }

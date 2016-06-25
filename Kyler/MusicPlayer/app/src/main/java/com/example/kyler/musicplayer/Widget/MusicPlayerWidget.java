@@ -50,9 +50,13 @@ public class MusicPlayerWidget extends AppWidgetProvider {
         PendingIntent previousPendingIntent = PendingIntent.getBroadcast(context,0,previousIntent,0);
         Intent nextIntent = new Intent(MyBindService.NEXT_ACTION);
         PendingIntent nextPendingIntent = PendingIntent.getBroadcast(context,0,nextIntent,0);
+        Intent openAppIntent = new Intent(context, MainActivity.class);
+        openAppIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent openAppPendingIntent = PendingIntent.getActivity(context,0,openAppIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.widget_play,playPendingIntent);
         remoteViews.setOnClickPendingIntent(R.id.widget_previous,previousPendingIntent);
         remoteViews.setOnClickPendingIntent(R.id.widget_next,nextPendingIntent);
+        remoteViews.setOnClickPendingIntent(R.id.widget_background,openAppPendingIntent);
         return remoteViews;
     }
 

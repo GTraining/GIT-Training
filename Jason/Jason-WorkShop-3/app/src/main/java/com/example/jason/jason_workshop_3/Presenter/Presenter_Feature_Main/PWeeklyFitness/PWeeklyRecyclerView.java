@@ -73,7 +73,7 @@ public class PWeeklyRecyclerView extends RecyclerView.Adapter<MWeeklyViewHolder>
     }
 
     public int getDayofweek() {
-        return dayofweek;
+        return dayofweek - 1;
     }
 
     public void setDayofweek(int dayofweek) {

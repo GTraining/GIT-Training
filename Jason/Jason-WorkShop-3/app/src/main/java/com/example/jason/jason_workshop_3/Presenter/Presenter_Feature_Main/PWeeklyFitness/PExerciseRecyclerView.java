@@ -50,12 +50,12 @@ public class PExerciseRecyclerView extends RecyclerView.Adapter<MExerciseViewhol
 
     @Override
     public void onBindViewHolder(MExerciseViewholder holder, int position) {
-        Exercise exercise = exerciseList.get(position + 1);
-        holder.tvExercise_number.setText(exercise.getId());
+        Exercise exercise = exerciseList.get(position);
+        holder.tvExercise_number.setText("EXERCISE " + exercise.getId());
         holder.tvExercise_name.setText(exercise.getName());
-        holder.tvAmountOfStep.setText(exercise.getWeigh());
-        holder.tvWeigh.setText(exercise.getId());
-        if (position > 1) {
+        holder.tvAmountOfStep.setText(exercise.getAmountofStep());
+        holder.tvWeigh.setText(exercise.getWeigh());
+        if (position > 3) {
             holder.lWorkoutBlend.setBackgroundResource(R.color.blend_black_99);
         }
         setAnimation(holder.itemView, position);
@@ -63,7 +63,7 @@ public class PExerciseRecyclerView extends RecyclerView.Adapter<MExerciseViewhol
 
     @Override
     public int getItemCount() {
-        return 5;
+        return exerciseList.size();
     }
 
     private void setAnimation(View viewToAnimate, int position)

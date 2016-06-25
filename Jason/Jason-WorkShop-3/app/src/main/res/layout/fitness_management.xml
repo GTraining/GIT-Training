@@ -37,10 +37,9 @@
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
         <android.support.v7.widget.RecyclerView
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
@@ -67,7 +66,7 @@
                 <LinearLayout
                     android:background="#000"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:orientation="vertical">
                     <RelativeLayout
                         android:background="#141b20"
@@ -89,14 +88,14 @@
                 <RelativeLayout
                     android:background="@drawable/customize_background_border"
                     android:layout_width="200dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="ACTIVITY"
                         android:textColor="#FFFFFF"
                         android:layout_centerVertical="true"

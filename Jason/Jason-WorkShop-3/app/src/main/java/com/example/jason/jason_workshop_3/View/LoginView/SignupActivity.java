@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.jason.jason_workshop_3.Presenter.PresentLogin.Presenter_Signup;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PSignup;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 
@@ -23,7 +23,7 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
 
     private EditText editText_username, editText_password, editText_cfpassword;
     private String Username, password, cf_password;
-    private Presenter_Signup mPresenter_signup;
+    private PSignup mPresenter_signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
         editText_username = (EditText) findViewById(R.id.editText_username);
         editText_password = (EditText) findViewById(R.id.editText_password);
         editText_cfpassword = (EditText) findViewById(R.id.editText_cfpassword);
-        mPresenter_signup = new Presenter_Signup(this);
+        mPresenter_signup = new PSignup(this);
     }
 
     @Override

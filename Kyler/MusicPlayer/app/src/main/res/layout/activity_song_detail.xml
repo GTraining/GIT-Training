@@ -27,6 +27,7 @@
 
         <ImageView
             android:id="@+id/activity_song_detail_image"
+            android:src="@drawable/defaultpic"
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="200dp"/>

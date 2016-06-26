@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
 import android.provider.MediaStore;
 
+import com.example.kyler.musicplayer.Model.Database.DatabaseHandler;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.Fragment.IListSongView;

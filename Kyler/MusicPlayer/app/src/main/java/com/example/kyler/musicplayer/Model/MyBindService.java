@@ -14,10 +14,13 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.example.kyler.musicplayer.R;
+import com.example.kyler.musicplayer.Utils.Helper;
+import com.example.kyler.musicplayer.Widget.MusicPlayerWidget;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class MyBindService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
     public static final String PLAY_ACTION="android.kyler.Play";
@@ -30,8 +33,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private int currentPosition = 0;
     private int timerTime = 0;
     private boolean shuffle = false;
-    private String songTitle = "";
-    private Random random;
     private boolean timerComplete = false, complete = false;
     private CountDown countDownTimer;
     private int repeat = 0;
@@ -42,12 +43,25 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public MyBindService() {
     }
 
+    private void sendUpdateWidgetBroadcast(){
+        Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
+        ArrayList<String> songPaths = Helper.getSongPaths(songs);
+        intent.putStringArrayListExtra(String.valueOf(R.string.path),songPaths);
+        intent.putExtra(String.valueOf(R.string.currentID),currentPosition);
+        intent.putExtra(MusicPlayerWidget.PLAYING_STATUS,isPlaying());
+        if(songs.size()>0) {
+            intent.putExtra(MusicPlayerWidget.SONG_IMAGE,songs.get(currentPosition).getSongImage());
+            intent.putExtra(MusicPlayerWidget.MUSIC_TITLE, songs.get(currentPosition).getSongTitle());
+            intent.putExtra(MusicPlayerWidget.MUSIC_ARTIST, songs.get(currentPosition).getSongArtist());
+        }
+        getApplicationContext().sendBroadcast(intent);
+    }
+
     @Override
     public void onCreate() {
         Log.e("MyBindService","onCreate");
         super.onCreate();
         mediaPlayer = new MediaPlayer();
-        random = new Random();
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnPreparedListener(this);
         mediaPlayer.setOnErrorListener(this);
@@ -73,6 +87,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                         playNext();
                         break;
                     case STOP_ACTION:
+                        timerComplete = true;
                         stopMusic();
                         break;
                 }
@@ -86,42 +101,21 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
-        complete = true;
+        playNext();
     }
 
     @Override
     public void onPrepared(final MediaPlayer mediaPlayer) {
-        mediaPlayer.start();
         timerComplete = false;
-//        Intent notIntent = new Intent(this, SongDetailActivity.class);
-//        notIntent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
-//        ArrayList<String> arrSongPaths = new ArrayList<>();
-//        for(int j=0;j<songs.size();j++){
-//            arrSongPaths.add(songs.get(j).getSongPath());
-//        }
-//        notIntent.putStringArrayListExtra(String.valueOf(R.string.path),arrSongPaths);
-//        notIntent.putExtra(String.valueOf(R.string.currentID),currentPosition);
-//        notIntent.putExtra(String.valueOf(R.string.repeatStatus),repeat);
-//        PendingIntent pendInt = PendingIntent.getActivity(this, 0,
-//                notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        Notification.Builder builder = new Notification.Builder(this);
-//        builder.setSmallIcon(R.drawable.play)
-//                .setContentIntent(pendInt)
-//                .setTicker(songTitle)
-//                .setOngoing(true)
-//                .setContentTitle("Playing")
-//                .setContentText(songTitle);
-//        Notification not = builder.build();
-        not = new MusicPlayerNotification(this,songs,currentPosition,isPlaying()).getNotification();
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFY_ID,not);
+        mediaPlayer.start();
+        showNotification();
     }
 
     @Override
     public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
         Log.v("MUSIC PLAYER", "Playback Error");
-        mediaPlayer.reset();
-        return false;
+//        mediaPlayer.reset();
+        return true;
     }
 
     public class MyBinder extends Binder {
@@ -129,6 +123,14 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             return MyBindService.this;
         }
     }
+
+    private void showNotification(){
+        not = new MusicPlayerNotification(this,songs,currentPosition,isPlaying()).getNotification();
+        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFY_ID,not);
+        sendUpdateWidgetBroadcast();
+    }
+
 
     public String getCurrentPath(){
         return songs.get(currentPosition).getSongPath();
@@ -143,7 +145,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public Song getCurrentSong(){
-        if(currentPosition>2 || currentPosition<0){
+        if(currentPosition>songs.size() || currentPosition<0){
             return songs.get(0);
         }
         return songs.get(currentPosition);
@@ -167,10 +169,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void playSong(){
         mediaPlayer.reset();
-        complete = false;
         try {
             mediaPlayer.setDataSource(songs.get(currentPosition).getSongPath());
-            songTitle = songs.get(currentPosition).getSongTitle();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -179,10 +179,12 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public void pauseSong(){
         mediaPlayer.pause();
+        showNotification();
     }
 
     public void resumeSong(){
         mediaPlayer.start();
+        showNotification();
     }
 
     public void setCurrentPosition(int currentID){
@@ -190,13 +192,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public long getCurrent(){
-        long result = 0;
-        if(complete) {
-            result = songs.get(currentPosition).getSongDuration();
-        } else {
-            result = mediaPlayer.getCurrentPosition();
-        }
-        return result;
+        return mediaPlayer.getCurrentPosition();
     }
 
     public Song getSong(){
@@ -248,17 +244,25 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             case 2:
                 currentPosition++;
                 if(currentPosition>=songs.size()) {
+                    currentPosition = 0;
                     stopMusic();
+                }else{
+                    playSong();
                 }
                 break;
         }
     }
 
     private void stopMusic(){
-        timerComplete = true;
         mediaPlayer.stop();
         stopSelf();
         ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                timerComplete = false;
+            }
+        },200);
     }
 
     public void playPrevious(){
@@ -281,6 +285,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public boolean onUnbind(Intent intent) {
         Log.e("MyBindService","onUnBind");
         mediaPlayer.stop();
+        songs = new ArrayList<>();
+        sendUpdateWidgetBroadcast();
         mediaPlayer.release();
         return true;
     }
@@ -288,6 +294,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public void onDestroy() {
         Log.e("MyBindService","onDestroy");
+        unregisterReceiver(receiver);
         super.onDestroy();
         stopForeground(true);
     }
@@ -348,6 +355,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         @Override
         public void onFinish() {
             timerTime = 0;
+            timerComplete = true;
             stopMusic();
         }
     }

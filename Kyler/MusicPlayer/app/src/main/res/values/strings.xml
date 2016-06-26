@@ -7,4 +7,6 @@
     <string name="currentID">SONG_CURRENTID</string>
     <string name="shuffleStatus">SONG_REPEAT_STATUS</string>
     <string name="repeatStatus">SONG_REPEAT_STATUS</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

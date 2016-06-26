@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public interface ISongDetailPresenter {
     void setSongs(ArrayList<String> arrStringPaths, int currentID);
+    void setSongs(ArrayList<String> arrStringPaths);
     void resumeSong();
     void getSong();
     void pauseSong();
@@ -24,4 +25,5 @@ public interface ISongDetailPresenter {
     String getCurrentPath();
     int getRepeatStatus();
     boolean getShuffleStatus();
+    void onFinish();
 }

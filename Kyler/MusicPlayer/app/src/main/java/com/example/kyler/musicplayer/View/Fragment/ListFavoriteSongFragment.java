@@ -5,7 +5,7 @@ import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +13,22 @@ import android.widget.AdapterView;
 
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
+import com.example.kyler.musicplayer.Presenter.ListFavoriteSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongPresenter;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.SongDetailActivity;
 
 import java.util.ArrayList;
 
-public class ListSongFragment extends ListFragment implements AdapterView.OnItemClickListener, IListSongView{
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ListFavoriteSongFragment extends ListFragment implements AdapterView.OnItemClickListener,IListSongView {
 
-    IListSongPresenter listSongPresenter;
+    IListSongPresenter listFavoriteSongPresenter;
     ArrayList<Song> songs;
 
-    public ListSongFragment() {
+    public ListFavoriteSongFragment() {
         // Required empty public constructor
     }
 
@@ -33,9 +37,9 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_list_song,container,false);
-        listSongPresenter = new ListSongPresenter(getActivity().getApplicationContext(),this);
-        listSongPresenter.getSong();
+        View view = inflater.inflate(R.layout.fragment_list_favorite_song,container,false);
+        listFavoriteSongPresenter = new ListFavoriteSongPresenter(getActivity().getApplicationContext(),this);
+        listFavoriteSongPresenter.getSong();
         return view;
     }
 
@@ -58,14 +62,9 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
     public void loadSong(ArrayList<Song> songs) {
         this.songs = songs;
-        ListSongAdapter adapter = new ListSongAdapter(getActivity(),songs,false);
+        ListSongAdapter adapter = new ListSongAdapter(getActivity(),songs,true);
         this.setListAdapter(adapter);
     }
 }

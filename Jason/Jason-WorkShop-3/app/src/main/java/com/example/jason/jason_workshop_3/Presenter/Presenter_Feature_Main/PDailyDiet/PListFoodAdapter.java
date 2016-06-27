@@ -53,7 +53,8 @@ public class PListFoodAdapter extends RecyclerView.Adapter<FoodViewHolder>{
         } catch (Exception e){
             e.printStackTrace();
         }
-        holder.tvFoodName.setText(food.getFName() + "("+ food.getFCalo() + ")");
+        holder.tvFoodName.setText(food.getFName());
+        holder.tvCalories.setText(food.getFCalo() +" calo");
         setAnimation(holder.itemView, position);
     }
 

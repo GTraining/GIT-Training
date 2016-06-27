@@ -13,11 +13,13 @@ import com.example.jason.jason_workshop_3.R;
 public class FoodViewHolder extends RecyclerView.ViewHolder {
 
     public TextView tvFoodName;
+    public TextView tvCalories;
     public ImageView imgFood;
 
     public FoodViewHolder(View itemView) {
         super(itemView);
         this.tvFoodName = (TextView) itemView.findViewById(R.id.textView_foodName);
+        this.tvCalories = (TextView) itemView.findViewById(R.id.textView_calories);
         this.imgFood = (ImageView) itemView.findViewById(R.id.image_food);
     }
 }

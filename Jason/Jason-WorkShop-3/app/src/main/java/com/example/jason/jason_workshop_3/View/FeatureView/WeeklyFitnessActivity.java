@@ -1,13 +1,16 @@
 package com.example.jason.jason_workshop_3.View.FeatureView;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PWeeklyFitness.PExerciseRecyclerView;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PWeeklyFitness.PWeeklyRecyclerView;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 public class WeeklyFitnessActivity extends AppCompatActivity {
 
@@ -30,5 +33,15 @@ public class WeeklyFitnessActivity extends AppCompatActivity {
 
         recyclerView_week.setAdapter(weeklyRecyclerView);
         recyclerView_exercise.setAdapter(exerciseRecyclerView);
+    }
+
+    public void onclickBack(View v){
+        startActivities(UserMainActivity.class, "none");
+    }
+
+    public void startActivities(Class mClass, String intent){
+        Intent mIntent = new Intent(this, mClass);
+        mIntent.putExtra("Intent", intent);
+        startActivity(mIntent);
     }
 }

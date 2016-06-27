@@ -15,11 +15,11 @@
             android:layout_marginBottom="10dp"
             android:background="#22FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="40dp">
             <RelativeLayout
                 android:onClick="onclickBack"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
+                android:layout_width="40dp"
+                android:layout_height="40dp">
                 <ImageView
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -44,7 +44,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/diet_click_false"
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="40dp">
                 <RelativeLayout
                     android:onClick="onclickStartCheckCalo"
                     android:background="@drawable/diet_click_main"
@@ -62,6 +62,8 @@
                 </RelativeLayout>
             </RelativeLayout>
         <RelativeLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView

@@ -55,9 +55,6 @@ public class PExerciseRecyclerView extends RecyclerView.Adapter<MExerciseViewhol
         holder.tvExercise_name.setText(exercise.getName());
         holder.tvAmountOfStep.setText(exercise.getAmountofStep());
         holder.tvWeigh.setText(exercise.getWeigh());
-        if (position > 3) {
-            holder.lWorkoutBlend.setBackgroundResource(R.color.blend_black_99);
-        }
         setAnimation(holder.itemView, position);
     }
 

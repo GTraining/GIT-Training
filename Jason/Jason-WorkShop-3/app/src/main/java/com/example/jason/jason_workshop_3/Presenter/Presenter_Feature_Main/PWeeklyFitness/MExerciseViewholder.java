@@ -27,6 +27,5 @@ public class MExerciseViewholder extends RecyclerView.ViewHolder{
         this.tvAmountOfStep = (TextView) itemView.findViewById(R.id.textView_amountofStep);
         this.tvWeigh = (TextView) itemView.findViewById(R.id.textView_weigh);
         this.imgFinish = (ImageView) itemView.findViewById(R.id.imageView_workout_check);
-        this.lWorkoutBlend = (RelativeLayout) itemView.findViewById(R.id.layout_workout_blend);
     }
 }

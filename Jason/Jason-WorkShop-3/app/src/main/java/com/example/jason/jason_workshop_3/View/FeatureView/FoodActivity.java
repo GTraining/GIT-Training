@@ -17,7 +17,7 @@ public class FoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diet_food);
+        setContentView(R.layout.list_food);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         pListFood = new PListFoodAdapter(this);

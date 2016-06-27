@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PLoadMain;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
+import com.example.jason.jason_workshop_3.View.LoginView.TwitterLoginActivity;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,15 +21,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startUserMainActivity(){
-        startActivities(UserMainActivity.class);
+        startActivities(UserMainActivity.class, "none");
     }
 
     public void startLoginActivity(){
-        startActivities(LoginActivity.class);
+        startActivities(LoginActivity.class, "none");
     }
 
-    public void startActivities(Class mClass){
+    public void startTwitter(){
+        startActivities(TwitterLoginActivity.class, "none");
+    }
+
+    public void startActivities(Class mClass, String intent){
         Intent mIntent = new Intent(this, mClass);
+        mIntent.putExtra("Intent", intent);
         startActivity(mIntent);
     }
 }

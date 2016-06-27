@@ -101,6 +101,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         startActivity(startMain);
         } else {
             Intent mIntent = new Intent(MonthlyCheckBMIActivity.this, UserMainActivity.class);
+            mIntent.putExtra("Intent", "none");
             startActivity(mIntent);
         }
     }

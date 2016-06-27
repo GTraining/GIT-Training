@@ -1,28 +1,14 @@
 package com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
 import com.example.jason.jason_workshop_3.DialogLibrary.Holder;
 import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
-import com.example.jason.jason_workshop_3.View.SettingFragment.Calendar_fragment;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  * Created by jason on 15/06/2016.

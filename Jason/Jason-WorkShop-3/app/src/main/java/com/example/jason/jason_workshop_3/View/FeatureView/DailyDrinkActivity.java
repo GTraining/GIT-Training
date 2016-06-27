@@ -69,6 +69,7 @@ public class DailyDrinkActivity extends AppCompatActivity {
 
     public void onclickback(View v){
         Intent mIntent = new Intent(this, UserMainActivity.class);
+        mIntent.putExtra("Intent", "none");
         startActivity(mIntent);
     }
 }

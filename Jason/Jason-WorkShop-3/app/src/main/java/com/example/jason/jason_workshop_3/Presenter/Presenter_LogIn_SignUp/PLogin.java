@@ -73,6 +73,7 @@ public class PLogin implements PLoginImpl {
                 mUserManagement.UpdateLoginStatus(mCheckLogin.getID(), "on");
                 if (mCheckLogin.getStatus().equals("new_user")) {
                     mUserManagement.UpdateHealth(mCheckLogin.getID(), "Older_User");
+                    mUserManagement.closeDatabase();
                     mView.OpenNewUserActivity();
                 }
                 else{

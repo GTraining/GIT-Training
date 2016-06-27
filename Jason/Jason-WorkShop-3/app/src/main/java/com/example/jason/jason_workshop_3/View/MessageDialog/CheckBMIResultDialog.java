@@ -105,6 +105,7 @@ public class CheckBMIResultDialog implements DialogMessagaImpl {
         setAlarmCheckBMI();
         mUserBMIDatabase.INSERT(mUserBMI);
         Intent mIntent = new Intent(mView, UserMainActivity.class);
+        mIntent.putExtra("Intent", "none");
         mView.startActivity(mIntent);
     }
     public void dismissDialog(){

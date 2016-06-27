@@ -197,10 +197,11 @@
                                     android:layout_centerHorizontal="true"/>
                             </RelativeLayout>
                             <RelativeLayout
+                                android:onClick="onclickTwitterLogin"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
                                 android:padding="10dp"
-                                android:background="@drawable/circle_main_login"
+                                android:background="@drawable/circle_login_main_click"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
                                 <ImageView

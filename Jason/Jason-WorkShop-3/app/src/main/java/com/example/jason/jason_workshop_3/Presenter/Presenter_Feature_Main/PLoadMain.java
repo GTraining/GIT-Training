@@ -12,7 +12,7 @@ import com.example.jason.jason_workshop_3.View.MainActivity;
 public class PLoadMain {
     private MainActivity mView;
     private PUserManagement userManagement;
-    private CurrentLogin lastLogin;
+
 
     public PLoadMain(MainActivity mView) {
         this.mView = mView;
@@ -20,21 +20,24 @@ public class PLoadMain {
         new LoadActivity().execute();
     }
 
-    public class LoadActivity extends AsyncTask<Void, Void, Boolean>{
-        boolean check = false;
+    public class LoadActivity extends AsyncTask<Void, Void, CurrentLogin>{
+        private CurrentLogin lastLogin;
+
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected CurrentLogin doInBackground(Void... params) {
             lastLogin = userManagement.checkCurrentLogin();
-            check = lastLogin.isCHECK();
-            return check;
+            return lastLogin;
         }
+
         @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            userManagement.closeDatabase();
-            if (aBoolean){
-                mView.startUserMainActivity();
-            }else mView.startLoginActivity();
+        protected void onPostExecute(CurrentLogin currentLogin) {
+            super.onPostExecute(currentLogin);
+            if (currentLogin.isCHECK()) {
+                String username = currentLogin.getUSERNAME();
+                if (username.substring(0,1).equals("@")){
+                   mView.startTwitter();
+                }else mView.startUserMainActivity();
+            } else mView.startLoginActivity();
         }
     }
 }

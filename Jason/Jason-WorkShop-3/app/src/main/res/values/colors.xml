@@ -21,4 +21,6 @@
     <color name="Dialog_background">#efebe3</color>
     <color name="Dialog_textcolor">#445460</color>
     <color name="main_blend">#99445460</color>
+    <color name="twitter_click_false">#0975c7</color>
+    <color name="twitter_click_true">#b7e7ef</color>
 </resources>

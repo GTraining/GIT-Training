@@ -1,0 +1,52 @@
+{
+  "CategoryFood": [
+    {
+      "id": 1,
+      "name": "Egg",
+      "image": "http://icons.veryicon.com/png/Food%20%26%20Drinks/Food%20%26%20Drinks/egg%203.png",
+      "Calo": 100
+    },
+    {
+      "id": 2,
+      "name": "Bread",
+      "image": "http://www.iconeasy.com/icon/png/Food%20%26%20Drinks/Cocktails/Negroni.png",
+      "Calo": 100
+    },
+    {
+      "id": 3,
+      "name": "IceCream",
+      "image": "http://icons.iconarchive.com/icons/graphicloads/food-drink/256/icecream-icon.png",
+      "Calo": 100
+    },
+    {
+      "id": 4,
+      "name": "Rice",
+      "image": "http://download.seaicons.com/icons/graphicloads/food-drink/256/sweet-icon.png",
+      "Calo": 100
+    },
+    {
+      "id": 5,
+      "name": "Meet",
+      "image": "http://keworganics.com.au/wp-content/uploads/2014/11/icon-meat.png",
+      "Calo": 100
+    },
+    {
+      "id": 6,
+      "name": "Apple",
+      "image": "http://www.icon2s.com/wp-content/uploads/2014/06/FoodDrink-apple-icon.png",
+      "Calo": 100
+    },
+    {
+      "id": 7,
+      "name": "Ogrin",
+      "image": "http://www.iconeasy.com/icon/png/Food%20%26%20Drinks/Cocktails/Negroni.png",
+      "Calo": 100
+    },
+    {
+      "id": 8,
+      "name": "Pea",
+      "image": "http://icons.iconarchive.com/icons/graphicloads/food-drink/256/guava-icon.png",
+      "Calo": 100
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/blend_black"
+        android:state_pressed="true" />
+    <item android:drawable="@color/button_none_color_false"
+        android:state_focused="false" />
+    <item android:drawable="@color/blend_black"/>
+</selector>

@@ -6,11 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:id="@+id/layout_setting"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c2c2c2">
+        <LinearLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Dialog_background">
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mcv_showOtherDates="all"
+                app:mcv_selectionColor="#00F" />
+        </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="75dp">
+
         <LinearLayout
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -18,72 +41,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
-                <ImageView
-                    android:background="@drawable/settings"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="System Setting"
-                    android:textSize="10dp"
-                    android:textColor="@color/Dialog_textcolor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageView
-                    android:background="@drawable/alarm_plus"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    <ImageView
+                        android:background="@drawable/alarm_plus"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Alarm Setting"
-                    android:textSize="10dp"
-                    android:textColor="@color/Dialog_textcolor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
+                    <TextView
 
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Alarm setting"
+                        android:textSize="10dp"
+                        android:textColor="@color/Dialog_textcolor"
+                        android:layout_gravity="center" />
+                </LinearLayout>
 
-                <ImageView
-                    android:background="@drawable/calendar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Calendar"
-                    android:textSize="10dp"
-                    android:textColor="@color/Dialog_textcolor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
             <RelativeLayout
                 android:onClick="onclickLogout"
@@ -91,32 +71,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-                <ImageView
-                    android:background="@drawable/logout"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Log out"
-                    android:textSize="10dp"
-                    android:textColor="@color/Dialog_textcolor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
+                    <ImageView
+                        android:background="@drawable/logout"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Logout"
+                        android:textSize="10dp"
+                        android:textColor="@color/Dialog_textcolor"
+                        android:layout_gravity="center" />
+                </LinearLayout>
 
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_gravity="right"
         android:onClick="onClickCloseSetting"
         android:background="@drawable/background_click_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">

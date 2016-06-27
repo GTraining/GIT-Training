@@ -1,0 +1,184 @@
+{
+  "Workout": [
+    {
+      "id": 1,
+      "name": "Monday",
+      "excercise": [
+        {
+          "id": 1,
+          "name": "FULL SQUAT",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 2,
+          "name": "PREACHER CURL",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 3,
+          "name": "INCLINE BENCH PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 4,
+          "name": "LEG PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Tuesday",
+      "excercise": [
+        {
+          "id": 1,
+          "name": "FULL SQUAT",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 2,
+          "name": "PREACHER CURL",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 3,
+          "name": "INCLINE BENCH PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 4,
+          "name": "LEG PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Wednesday",
+      "excercise": [
+        {
+          "id": 1,
+          "name": "FULL SQUAT",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 2,
+          "name": "PREACHER CURL",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 3,
+          "name": "INCLINE BENCH PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 4,
+          "name": "LEG PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Thursday",
+      "excercise": [
+        {
+          "id": 1,
+          "name": "FULL SQUAT",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 2,
+          "name": "PREACHER CURL",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 3,
+          "name": "INCLINE BENCH PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 4,
+          "name": "LEG PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Friday",
+      "excercise": [
+        {
+          "id": 1,
+          "name": "FULL SQUAT",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 2,
+          "name": "PREACHER CURL",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 3,
+          "name": "INCLINE BENCH PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 4,
+          "name": "LEG PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Saturday",
+      "excercise": [
+        {
+          "id": 1,
+          "name": "FULL SQUAT",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 2,
+          "name": "PREACHER CURL",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 3,
+          "name": "INCLINE BENCH PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        },
+        {
+          "id": 4,
+          "name": "LEG PRESS",
+          "amountofstep": "3x10",
+          "weigh": "30"
+        }
+      ]
+    }
+  ]
+}

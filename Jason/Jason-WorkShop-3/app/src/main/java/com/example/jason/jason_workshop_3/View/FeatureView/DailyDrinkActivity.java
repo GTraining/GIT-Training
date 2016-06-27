@@ -12,8 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDaiLyDrinkUpdate;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrinkAdapter;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrink.PDaiLyDrinkUpdate;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrink.PDailyDrinkAdapter;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 

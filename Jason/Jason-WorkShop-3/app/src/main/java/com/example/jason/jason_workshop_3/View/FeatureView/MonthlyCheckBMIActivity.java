@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyCheckBMI;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyBMI.PMonthlyCheckBMI;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIAlertDialog;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckBMIResultDialog;

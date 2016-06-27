@@ -1,4 +1,4 @@
-package com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDiet;
 
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
@@ -53,7 +53,8 @@ public class PListFoodAdapter extends RecyclerView.Adapter<FoodViewHolder>{
         } catch (Exception e){
             e.printStackTrace();
         }
-        holder.tvFoodName.setText(food.getFName() + "("+ food.getFCalo() + ")");
+        holder.tvFoodName.setText(food.getFName());
+        holder.tvCalories.setText(food.getFCalo() +" calo");
         setAnimation(holder.itemView, position);
     }
 

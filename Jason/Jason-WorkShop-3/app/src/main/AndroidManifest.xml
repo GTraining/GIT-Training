@@ -33,7 +33,8 @@
         <!-- <activity android:name=".Demo"></activity> -->
         <activity android:name=".View.LoginView.TwitterLoginActivity" />
         <activity android:name=".View.LoginView.TwitterAuthenticationActivity" />
-        <!--<activity android:name=".Demo"></activity>-->
+        <!-- <activity android:name=".Demo"></activity> -->
+        <activity android:name=".View.FeatureView.DrinkAlarmActivity"></activity>
     </application>
 
 </manifest>

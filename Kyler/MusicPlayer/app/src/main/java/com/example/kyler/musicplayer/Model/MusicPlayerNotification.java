@@ -45,15 +45,17 @@ public class MusicPlayerNotification {
                 notIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         RemoteViews remoteViews = getNotificationRemote();
+        RemoteViews smallRemoteViews = getNotificationSmallRemote();
 
-        Notification.Builder builder = new Notification.Builder(context);
+                Notification.Builder builder = new Notification.Builder(context);
         builder.setSmallIcon(R.drawable.play)
                 .setContentIntent(pendInt)
                 .setTicker(songs.get(currentPosition).getSongTitle())
-                .setOngoing(true)
-                .setContentTitle(songs.get(currentPosition).getSongTitle())
-                .setContentText(songs.get(currentPosition).getSongArtist());
+                .setOngoing(true);
+//                .setContentTitle(songs.get(currentPosition).getSongTitle())
+//                .setContentText(songs.get(currentPosition).getSongArtist());
         Notification notification = builder.build();
+        notification.contentView = smallRemoteViews;
         notification.bigContentView = remoteViews;
         return notification;
     }
@@ -88,5 +90,31 @@ public class MusicPlayerNotification {
             remoteViews.setImageViewResource(R.id.notification_play_icon, R.drawable.notification_playicon);
         }
         return remoteViews;
+    }
+
+    private RemoteViews getNotificationSmallRemote(){
+        RemoteViews smallRemoteViews = new RemoteViews(context.getPackageName(), R.layout.notification_remote_small);
+        smallRemoteViews.setTextViewText(R.id.notification_small_title,songs.get(currentPosition).getSongTitle());
+        smallRemoteViews.setTextViewText(R.id.notification_small_artist,songs.get(currentPosition).getSongArtist());
+        byte[] img = songs.get(currentPosition).getSongImage();
+        if(img != null){
+            InputStream is = new ByteArrayInputStream(img);
+            Bitmap bm = BitmapFactory.decodeStream(is);
+            smallRemoteViews.setImageViewBitmap(R.id.notification_small_image,bm);
+        }else{
+            smallRemoteViews.setImageViewResource(R.id.notification_small_image,R.drawable.defaultpic);
+        }
+        Intent playIntent = new Intent(MyBindService.PLAY_ACTION);
+        PendingIntent playPendingIntent = PendingIntent.getBroadcast(context,0,playIntent,0);
+        Intent nextIntent = new Intent(MyBindService.NEXT_ACTION);
+        PendingIntent nextPendingIntent = PendingIntent.getBroadcast(context,0,nextIntent,0);
+        smallRemoteViews.setOnClickPendingIntent(R.id.notification_small_play,playPendingIntent);
+        smallRemoteViews.setOnClickPendingIntent(R.id.notification_small_next,nextPendingIntent);
+        if(playing) {
+            smallRemoteViews.setImageViewResource(R.id.notification_small_play, R.drawable.notification_pauseicon);
+        }else{
+            smallRemoteViews.setImageViewResource(R.id.notification_small_play, R.drawable.notification_playicon);
+        }
+        return smallRemoteViews;
     }
 }

@@ -5,5 +5,5 @@ package com.example.kyler.musicplayer.Presenter;
  */
 public interface IListSongPresenter {
     void getSong();
-    void playSong(String path);
+    void getSong(String album);
 }

@@ -192,6 +192,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public long getCurrent(){
+//        sendUpdateWidgetBroadcast();
         return mediaPlayer.getCurrentPosition();
     }
 
@@ -254,6 +255,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     private void stopMusic(){
+        Log.e("Stop Music", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         mediaPlayer.stop();
         stopSelf();
         ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();

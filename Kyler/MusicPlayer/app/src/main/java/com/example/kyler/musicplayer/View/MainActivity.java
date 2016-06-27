@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.kyler.musicplayer.Model.MyBindService;
+import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.View.Fragment.ListAlbumFragment;

@@ -98,6 +98,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         adapterPresenter.unFavoriteSong(song);
+                                        notifyDataSetChanged();
                                         viewHolder.favorite.setImageResource(R.drawable.unfavoritebutton);
                                     }
                                 }).setNegativeButton("NO",null);
@@ -105,6 +106,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                     }
                 }else{
                     adapterPresenter.setFavoriteSong(song);
+                    notifyDataSetChanged();
                     viewHolder.favorite.setImageResource(R.drawable.favoritebutton);
                 }
             }

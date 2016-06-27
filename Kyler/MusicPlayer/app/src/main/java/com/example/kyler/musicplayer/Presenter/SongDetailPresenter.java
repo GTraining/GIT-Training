@@ -87,52 +87,70 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public void resumeSong() {
-        myBindService.resumeSong();
+        if(binded) {
+            myBindService.resumeSong();
+        }
     }
 
     @Override
     public void getSong() {
-        detailView.loadSong(myBindService.getCurrentSong());
+        if(binded) {
+            detailView.loadSong(myBindService.getCurrentSong());
+        }
     }
 
     @Override
     public void pauseSong() {
-        myBindService.pauseSong();
+        if(binded) {
+            myBindService.pauseSong();
+        }
     }
 
     @Override
     public void seekTo(long time) {
-        myBindService.seekTo(time);
+        if(binded) {
+            myBindService.seekTo(time);
+        }
     }
 
     @Override
     public void setShuffle(boolean shuffle) {
-        myBindService.setShuffle(shuffle);
+        if(binded) {
+            myBindService.setShuffle(shuffle);
+        }
     }
 
     @Override
     public void playNext() {
-        detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
-        myBindService.playNext();
-        getSong();
+        if(binded) {
+            detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
+            myBindService.playNext();
+            getSong();
+        }
     }
 
     @Override
     public void playPrevious() {
-        detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
-        myBindService.playPrevious();
-        getSong();
+        if(binded) {
+            detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
+            myBindService.playPrevious();
+            getSong();
+        }
     }
 
     @Override
     public void setTimer(int minute) {
-        long time = minute * 60 * 1000;
-        myBindService.setTimer(time);
+        if(binded) {
+            long time = minute * 60 * 1000;
+            myBindService.setTimer(time);
+        }
     }
 
     @Override
     public void setRepeat(int repeat) {
-        myBindService.setRepeat(repeat);
+        if(binded) {
+            myBindService.setRepeat(repeat);
+        }
     }
 
     @Override

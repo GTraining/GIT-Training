@@ -19,19 +19,28 @@ import java.util.ArrayList;
 public class ListSongPresenter implements IListSongPresenter {
     private Context context;
     private IListSongView view;
+    private ArrayList<Song> songs;
 
     public ListSongPresenter(Context context, IListSongView view) {
         this.context = context;
         this.view = view;
+        songs = getSongs();
     }
 
     @Override
     public void getSong() {
-        view.loadSong(getSongs());
+        view.loadSong(songs);
     }
 
     @Override
-    public void playSong(String path) {
+    public void getSong(String album) {
+        ArrayList<Song> albumSelected = new ArrayList<>();
+        for (int i = 0;i<songs.size();i++){
+            if(songs.get(i).getSongAlbum().equals(album)){
+                albumSelected.add(songs.get(i));
+            }
+        }
+        view.loadSong(albumSelected);
     }
 
     /**

@@ -5,43 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:weightSum="3"
+    android:weightSum="12"
     android:orientation="vertical"
     tools:context=".View.MainActivity">
 
     <LinearLayout
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="3">
         <Button
+            android:theme="@style/Button_main_menu"
             android:id="@+id/activity_main_bt_list_song"
-            android:layout_weight="1"
             android:textSize="@dimen/text_normal"
             android:text="List"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/activity_main_bt_favorite_song"
+            android:layout_width="0dp"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/listmusicicon"
+            android:layout_height="match_parent"/>
+        <Button
+            android:theme="@style/Button_main_menu"
+            android:id="@+id/activity_main_bt_favorite_song"
             android:textSize="@dimen/text_normal"
             android:text="Favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/activity_main_bt_filter"
+            android:drawableLeft="@drawable/favoritemusicicon"
+            android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        <Button
+            android:theme="@style/Button_main_menu"
+            android:id="@+id/activity_main_bt_filter"
             android:textSize="@dimen/text_normal"
+            android:drawableLeft="@drawable/albummusicicon"
             android:text="Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
     </LinearLayout>
     <FrameLayout
         android:background="@color/white"
         android:id="@+id/main_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="11">
 
     </FrameLayout>
 </LinearLayout>

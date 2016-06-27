@@ -7,8 +7,7 @@
     android:background="@drawable/bg_diet"
     tools:context=".View.FeatureView.DailyDietActivity">
     <LinearLayout
-        android:padding="10dp"
-        android:background="#99000000"
+        android:background="#55000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,11 +15,11 @@
             android:layout_marginBottom="10dp"
             android:background="#22FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="40dp">
             <RelativeLayout
                 android:onClick="onclickBack"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
+                android:layout_width="40dp"
+                android:layout_height="40dp">
                 <ImageView
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -38,41 +37,56 @@
                 android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
-        <RelativeLayout
-            android:background="@drawable/diet_click_false"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+
             <RelativeLayout
-                android:onClick="onclickStartCheckCalo"
-                android:background="@drawable/diet_click_main"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/diet_click_false"
                 android:layout_width="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Calories required"
-                    android:textColor="#fadd00"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                android:layout_height="40dp">
+                <RelativeLayout
+                    android:onClick="onclickStartCheckCalo"
+                    android:background="@drawable/diet_click_main"
+                    android:layout_width="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Calories required"
+                        android:textColor="#fadd00"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
             </RelativeLayout>
-
+        <RelativeLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="-------------- LIST DIET --------------"
+                android:textColor="#FFF"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
-
         <LinearLayout
+            android:padding="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal">
             <RelativeLayout
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <LinearLayout
+                    android:layout_marginBottom="5dp"
                     android:onClick="onclickStartBreakfast"
                     android:background="@drawable/diet_click_main"
                     android:orientation="horizontal"

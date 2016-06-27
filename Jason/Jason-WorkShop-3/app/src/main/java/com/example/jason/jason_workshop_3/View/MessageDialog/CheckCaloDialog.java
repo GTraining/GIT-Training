@@ -32,11 +32,8 @@ public class CheckCaloDialog implements DialogMessagaImpl {
     private PUserManagement mUsermanagement;
     private CurrentLogin mCurrentLogin;
     private UserBMIDatabase mUserBMIDatabase;
-    private String[] Sex = {"Male", "Female"};
-    private String[] LevelofExercise = {"Little/Not","Light(1-3/week)",
-            "Medium(3-5/week)", "Lot(5-6/week)", "Strong(7/week)"};
-    private String[] WeightChange = {"Weight gain", "Weight reduction", "Maintain"};
     double dSex = 0, dLevelofexercise = 0, dWeightChange = 0, age = 0, height = 0, weight = 0;
+
     public CheckCaloDialog(DailyDietActivity mView) {
         this.mView = mView;
         mUserBMIDatabase = new UserBMIDatabase(mView);
@@ -87,7 +84,7 @@ public class CheckCaloDialog implements DialogMessagaImpl {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 dSex = CheckSEX(position);
-                tvCalo.setText(String.format("Daily Calo: %.0f Calo",dSex * dLevelofexercise + dWeightChange));
+                tvCalo.setText(String.format("%.0f calo",dSex * dLevelofexercise + dWeightChange));
             }
 
             @Override
@@ -101,7 +98,7 @@ public class CheckCaloDialog implements DialogMessagaImpl {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 dLevelofexercise = CheckLevelofExercise(position);
-                tvCalo.setText(String.format("Daily Calo: %.0f Calo",dSex * dLevelofexercise + dWeightChange));
+                tvCalo.setText(String.format("%.0f calories",dSex * dLevelofexercise + dWeightChange));
             }
 
             @Override
@@ -113,7 +110,7 @@ public class CheckCaloDialog implements DialogMessagaImpl {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 dWeightChange = CheckWeightChange(position);
-                tvCalo.setText(String.format("Daily Calo: %.0f Calo", dSex * dLevelofexercise + dWeightChange));
+                tvCalo.setText(String.format("%.0f calories", dSex * dLevelofexercise + dWeightChange));
             }
 
             @Override

@@ -1,4 +1,11 @@
-package com.example.jason.jason_workshop_3.Presenter.Presenter_Clock;
+package com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main;
+
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.DialogLibrary.DialogPlus;
 import com.example.jason.jason_workshop_3.DialogLibrary.GridHolder;
@@ -7,7 +14,15 @@ import com.example.jason.jason_workshop_3.DialogLibrary.OnDismissListener;
 import com.example.jason.jason_workshop_3.DialogLibrary.ViewHolder;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.DialogMessagaImpl;
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.SettingFragment.Calendar_fragment;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by jason on 15/06/2016.
@@ -15,6 +30,8 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 public class PSettingActionbar implements DialogMessagaImpl {
     private DialogPlus dialogPlus;
     private UserMainActivity mView;
+    private MaterialCalendarView calendarView;
+
     public PSettingActionbar(UserMainActivity mView) {
         this.mView = mView;
     }
@@ -45,6 +62,10 @@ public class PSettingActionbar implements DialogMessagaImpl {
                 .setOnDismissListener(dismissListener)
                 .setCancelable(true)
                 .create();
+        calendarView = (MaterialCalendarView) dialogPlus.findViewById(R.id.calendarView);
+        CalendarDay calendarDay = new CalendarDay();
+        calendarView.setDateSelected(calendarDay, true);
+        calendarView.setSelectionColor(R.color.login_main);
         dialogPlus.show();
     }
 
@@ -52,4 +73,5 @@ public class PSettingActionbar implements DialogMessagaImpl {
     public void dismissDialog() {
         dialogPlus.dismiss();
     }
+
 }

@@ -7,7 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PListFoodAdapter;
+import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDiet.PListFoodAdapter;
 import com.example.jason.jason_workshop_3.R;
 
 public class FoodActivity extends AppCompatActivity {
@@ -17,7 +17,7 @@ public class FoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diet_food);
+        setContentView(R.layout.list_food);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         pListFood = new PListFoodAdapter(this);

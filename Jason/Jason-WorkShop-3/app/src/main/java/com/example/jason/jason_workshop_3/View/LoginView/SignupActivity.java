@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
     // back to login activity
     @Override
     public void onclickBack(View v){
-        doOpenNewActivity(LoginActivity.class);
+        startActitivities(LoginActivity.class, "none");
     }
 
     // Sign up
@@ -76,15 +76,14 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl{
     //open new user activity
     @Override
     public void OpenNewUserActivity() {
-        Intent mIntent = new Intent(SignupActivity.this, MonthlyCheckBMIActivity.class);
-        mIntent.putExtra("Intent", "1");
-        startActivity(mIntent);
+        startActitivities(MonthlyCheckBMIActivity.class, "1");
     }
 
     //open new new activity
     @Override
-    public void doOpenNewActivity(Class mClass){
-        Intent intent = new Intent(SignupActivity.this, mClass);
-        startActivity(intent);
+    public void startActitivities(Class mClass, String intent){
+        Intent mIntent = new Intent(SignupActivity.this, mClass);
+        mIntent.putExtra("Intent", intent);
+        startActivity(mIntent);
     }
 }

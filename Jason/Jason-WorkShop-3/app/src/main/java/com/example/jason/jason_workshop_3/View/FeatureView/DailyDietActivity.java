@@ -48,9 +48,9 @@ public class DailyDietActivity extends AppCompatActivity {
         checkCaloDialog.dismissDialog();
     }
 
-    public void startActivities(Class mClass, String contentItent){
+    public void startActivities(Class mClass, String intent){
         Intent mIntent = new Intent(this, mClass);
-        mIntent.putExtra("ContentInten", contentItent);
+        mIntent.putExtra("Intent", intent);
         startActivity(mIntent);
     }
 

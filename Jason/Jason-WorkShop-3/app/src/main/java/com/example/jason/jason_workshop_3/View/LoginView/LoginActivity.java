@@ -45,19 +45,17 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
     @Override
     public void onClickUserRegister(View view) {
         resetEditText();
-        doOpenNewActivity(SignupActivity.class);
+        startActivities(SignupActivity.class, "none");
     }
 
     @Override
     public void OpenMainActivity() {
-        doOpenNewActivity(UserMainActivity.class);
+        startActivities(UserMainActivity.class, "none");
     }
 
     @Override
     public void OpenNewUserActivity() {
-        Intent mIntent = new Intent(LoginActivity.this, MonthlyCheckBMIActivity.class);
-        mIntent.putExtra("Intent", "1");
-        startActivity(mIntent);
+        startActivities(MonthlyCheckBMIActivity.class, "1");
     }
 
     @Override
@@ -66,14 +64,19 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
         editText_password.setText("");
     }
     @Override
-    public void doOpenNewActivity(Class mClass){
-        Intent intent = new Intent(LoginActivity.this, mClass);
-        startActivity(intent);
+    public void startActivities(Class mClass, String intent){
+        Intent mIntent = new Intent(LoginActivity.this, mClass);
+        mIntent.putExtra("Intent", intent);
+        startActivity(mIntent);
     }
     @Override
     public void onBackPressed() {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
+    }
+
+    public void onclickTwitterLogin(View v){
+        startActivities(TwitterLoginActivity.class, "login");
     }
 }

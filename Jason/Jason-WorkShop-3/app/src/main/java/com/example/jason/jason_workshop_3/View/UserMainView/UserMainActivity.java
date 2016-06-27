@@ -18,6 +18,7 @@ import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.WeeklyFitnessActivity;
+import com.example.jason.jason_workshop_3.View.LoginView.TwitterLoginActivity;
 import com.example.jason.jason_workshop_3.View.MessageDialog.LogoutAlertDialog;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.LoginView.LoginActivity;
@@ -118,7 +119,9 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     @Override
     public void onclickLogout(View view){
         LogoutAlertDialog mAlertDialog = new LogoutAlertDialog(UserMainActivity.this);
-        mAlertDialog.show();
+        if (checkIntent()) {
+            startActivities(TwitterLoginActivity.class, "none");
+        }else mAlertDialog.show();
     }
 
     // Open setting actionbar
@@ -190,5 +193,12 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
                 doubleBackToExitPressedOnce = false;
             }
         }, 1000);
+    }
+
+    public boolean checkIntent(){
+        String intent = getIntent().getStringExtra("Intent");
+        if (intent.equals("Twitter")){
+            return true;
+        } else return false;
     }
 }

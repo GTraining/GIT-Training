@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">HealthCare</string>
     <string name="hello">Hello</string>
+    <string name="twitter_consumer_key">WK9Gc2lUoOJkjgP7E9JYSlnPp</string>
+    <string name="twitter_consumer_secret">M8eDVgdS0qTDv3PqT9p9ABoXLAl2j3kCkz2AZ9Kj2auHAN4NAw</string>
 </resources>

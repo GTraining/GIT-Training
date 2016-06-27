@@ -29,7 +29,7 @@ public class ListFavoriteSongPresenter implements IListSongPresenter{
     }
 
     @Override
-    public void playSong(String path) {
+    public void getSong(String album) {
 
     }
 

@@ -63,6 +63,7 @@
                 android:weightSum="9"
                 android:layout_height="0dp">
                 <ImageButton
+                    android:visibility="invisible"
                     android:theme="@style/Button_widget"
                     android:id="@+id/widget_previous"
                     android:src="@drawable/widget_previousicon"
@@ -70,6 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <ImageButton
+                    android:visibility="invisible"
                     android:theme="@style/Button_widget"
                     android:id="@+id/widget_play"
                     android:src="@drawable/widget_playicon"
@@ -77,6 +79,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <ImageButton
+                    android:visibility="invisible"
                     android:theme="@style/Button_widget"
                     android:id="@+id/widget_next"
                     android:src="@drawable/widget_nexticon"

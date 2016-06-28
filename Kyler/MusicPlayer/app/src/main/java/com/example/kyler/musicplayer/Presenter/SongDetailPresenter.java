@@ -172,27 +172,47 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public int getTimerTime() {
-        return myBindService.getTimerTime();
+        if (binded){
+            return myBindService.getTimerTime();
+        }else{
+            return 0;
+        }
     }
 
     @Override
     public long getCurrent() {
-        return myBindService.getCurrent();
+        if(binded) {
+            return myBindService.getCurrent();
+        }else{
+            return 0;
+        }
     }
 
     @Override
     public String getCurrentPath() {
-        return myBindService.getCurrentPath();
+        if(binded) {
+            return myBindService.getCurrentPath();
+        }else{
+            return null;
+        }
     }
 
     @Override
     public int getRepeatStatus() {
-        return myBindService.getRepeat();
+        if(binded) {
+            return myBindService.getRepeat();
+        }else{
+            return 0;
+        }
     }
 
     @Override
     public boolean getShuffleStatus() {
-        return myBindService.getShuffle();
+        if(binded) {
+            return myBindService.getShuffle();
+        }else{
+            return false;
+        }
     }
 
     @Override

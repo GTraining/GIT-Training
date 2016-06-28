@@ -87,52 +87,70 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public void resumeSong() {
-        myBindService.resumeSong();
+        if(binded) {
+            myBindService.resumeSong();
+        }
     }
 
     @Override
     public void getSong() {
-        detailView.loadSong(myBindService.getCurrentSong());
+        if(binded) {
+            detailView.loadSong(myBindService.getCurrentSong());
+        }
     }
 
     @Override
     public void pauseSong() {
-        myBindService.pauseSong();
+        if(binded) {
+            myBindService.pauseSong();
+        }
     }
 
     @Override
     public void seekTo(long time) {
-        myBindService.seekTo(time);
+        if(binded) {
+            myBindService.seekTo(time);
+        }
     }
 
     @Override
     public void setShuffle(boolean shuffle) {
-        myBindService.setShuffle(shuffle);
+        if(binded) {
+            myBindService.setShuffle(shuffle);
+        }
     }
 
     @Override
     public void playNext() {
-        detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
-        myBindService.playNext();
-        getSong();
+        if(binded) {
+            detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
+            myBindService.playNext();
+            getSong();
+        }
     }
 
     @Override
     public void playPrevious() {
-        detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
-        myBindService.playPrevious();
-        getSong();
+        if(binded) {
+            detailView.updateBackground(backgrounds.get(new Random().nextInt(3)));
+            myBindService.playPrevious();
+            getSong();
+        }
     }
 
     @Override
     public void setTimer(int minute) {
-        long time = minute * 60 * 1000;
-        myBindService.setTimer(time);
+        if(binded) {
+            long time = minute * 60 * 1000;
+            myBindService.setTimer(time);
+        }
     }
 
     @Override
     public void setRepeat(int repeat) {
-        myBindService.setRepeat(repeat);
+        if(binded) {
+            myBindService.setRepeat(repeat);
+        }
     }
 
     @Override
@@ -154,27 +172,47 @@ public class SongDetailPresenter implements ISongDetailPresenter{
 
     @Override
     public int getTimerTime() {
-        return myBindService.getTimerTime();
+        if (binded){
+            return myBindService.getTimerTime();
+        }else{
+            return 0;
+        }
     }
 
     @Override
     public long getCurrent() {
-        return myBindService.getCurrent();
+        if(binded) {
+            return myBindService.getCurrent();
+        }else{
+            return 0;
+        }
     }
 
     @Override
     public String getCurrentPath() {
-        return myBindService.getCurrentPath();
+        if(binded) {
+            return myBindService.getCurrentPath();
+        }else{
+            return null;
+        }
     }
 
     @Override
     public int getRepeatStatus() {
-        return myBindService.getRepeat();
+        if(binded) {
+            return myBindService.getRepeat();
+        }else{
+            return 0;
+        }
     }
 
     @Override
     public boolean getShuffleStatus() {
-        return myBindService.getShuffle();
+        if(binded) {
+            return myBindService.getShuffle();
+        }else{
+            return false;
+        }
     }
 
     @Override
@@ -189,5 +227,6 @@ public class SongDetailPresenter implements ISongDetailPresenter{
             }
         },3000);
     }
+
 
 }

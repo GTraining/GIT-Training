@@ -33,7 +33,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private int currentPosition = 0;
     private int timerTime = 0;
     private boolean shuffle = false;
-    private boolean timerComplete = false, complete = false;
+    private boolean timerComplete = false;
     private CountDown countDownTimer;
     private int repeat = 0;
     MediaPlayer mediaPlayer;
@@ -41,6 +41,17 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     Notification not;
     IBinder iBinder = new MyBinder();
     public MyBindService() {
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+//        timerComplete=true;
+//        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+//        Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
+//        intent.putStringArrayListExtra(String.valueOf(R.string.path),new ArrayList<String>());
+//        sendBroadcast(intent);
+        timerComplete = true;
+        stopMusic();
     }
 
     private void sendUpdateWidgetBroadcast(){
@@ -87,8 +98,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                         playNext();
                         break;
                     case STOP_ACTION:
-                        timerComplete = true;
-                        stopMusic();
+                        pauseSong();
+                        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
                         break;
                 }
             }
@@ -113,8 +124,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
-        Log.v("MUSIC PLAYER", "Playback Error");
-//        mediaPlayer.reset();
         return true;
     }
 
@@ -192,6 +201,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public long getCurrent(){
+        sendUpdateWidgetBroadcast();
         return mediaPlayer.getCurrentPosition();
     }
 
@@ -245,7 +255,13 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                 currentPosition++;
                 if(currentPosition>=songs.size()) {
                     currentPosition = 0;
-                    stopMusic();
+                    playSong();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            pauseSong();
+                        }
+                    },300);
                 }else{
                     playSong();
                 }
@@ -262,7 +278,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             public void run() {
                 timerComplete = false;
             }
-        },200);
+        },800);
     }
 
     public void playPrevious(){

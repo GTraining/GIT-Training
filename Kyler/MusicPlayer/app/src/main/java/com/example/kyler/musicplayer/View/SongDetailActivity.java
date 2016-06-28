@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -26,7 +26,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class SongDetailActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, ISongDetailView{
+public class SongDetailActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, ISongDetailView, View.OnTouchListener{
     ImageButton timer, shuffle, repeat, previous, backward, play ,forward, next;
     TextView currentTxt, durationTxt, title, artist, album, author;
     SeekBar seekBar;
@@ -98,11 +98,11 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         shuffle.setOnClickListener(this);
         repeat.setOnClickListener(this);
         previous.setOnClickListener(this);
-        backward.setOnClickListener(this);
         play.setOnClickListener(this);
-        forward.setOnClickListener(this);
         next.setOnClickListener(this);
         seekBar.setOnSeekBarChangeListener(this);
+        backward.setOnTouchListener(this);
+        forward.setOnTouchListener(this);
     }
 
     /**
@@ -250,7 +250,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                     playStatus = false;
                     play.setImageResource(R.drawable.playbutton);
                 }
-                mHandler.postDelayed(this, 100);
+                mHandler.postDelayed(this, 500);
             }
         }
     };
@@ -299,13 +299,6 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.activity_song_detail_play:
                 playSong();
                 break;
-            case R.id.activity_song_detail_forward:
-                if(currentTime + 5000 > song.getSongDuration())
-                    currentTime = song.getSongDuration();
-                else
-                    currentTime = currentTime + 5000;
-                seekTo(currentTime);
-                break;
             case R.id.activity_song_detail_next:
                 nextSong();
                 break;
@@ -317,12 +310,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if(currentTime == song.getSongDuration()){
-//            nextSong();
-        }else {
-            currentTime = seekBar.getProgress();
-            currentTxt.setText(Helper.millisecondsToTimer(currentTime));
-        }
+        currentTime = seekBar.getProgress();
+        currentTxt.setText(Helper.millisecondsToTimer(currentTime));
     }
 
     @Override
@@ -332,10 +321,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        if(currentTime == song.getSongDuration()){
-        }else {
-            seekTo(currentTime);
-        }
+        seekTo(currentTime);
         updateSeekbar();
     }
 
@@ -363,8 +349,79 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         background.setBackgroundResource(resource);
     }
 
+    public static int LONG_PRESS_TIME = 500;
+    boolean hoding = false;
+    Runnable longForwardPressed = new Runnable() {
+        public void run() {
+            if(hoding) {
+                setForward();
+                mHandler.postDelayed(this,200);
+            }
+        }
+    };
+    Runnable longBackwardPressed = new Runnable() {
+        public void run() {
+            if(hoding) {
+                setBackward();
+                mHandler.postDelayed(this,200);
+            }
+        }
+    };
+
+    private void setForward(){
+        if(currentTime + 5000 > song.getSongDuration())
+            currentTime = song.getSongDuration();
+        else
+            currentTime = currentTime + 5000;
+        seekTo(currentTime);
+    }
+
+    private void setBackward(){
+        if(currentTime - 5000 < 0)
+            currentTime = 0;
+        else
+            currentTime = currentTime - 5000;
+        seekTo(currentTime);
+    }
+
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if(view.getId() == R.id.activity_song_detail_forward) {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    hoding = true;
+                    mHandler.postDelayed(longForwardPressed, LONG_PRESS_TIME);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    setForward();
+                    hoding = false;
+                    mHandler.removeCallbacks(longForwardPressed);
+                    break;
+            }
+        }else if(view.getId() == R.id.activity_song_detail_backward){
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    hoding = true;
+                    mHandler.postDelayed(longBackwardPressed, LONG_PRESS_TIME);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    setBackward();
+                    hoding = false;
+                    mHandler.removeCallbacks(longBackwardPressed);
+                    break;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(MainActivity.active){
+            super.onBackPressed();
+        }else{
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
     }
 }

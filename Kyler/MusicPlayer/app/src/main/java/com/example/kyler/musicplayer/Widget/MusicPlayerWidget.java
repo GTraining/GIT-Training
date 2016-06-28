@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -36,7 +37,6 @@ public class MusicPlayerWidget extends AppWidgetProvider {
                                 int appWidgetId) {
         // Construct the RemoteViews object
         RemoteViews views = createRemoteView(context);
-//        views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -103,7 +103,7 @@ public class MusicPlayerWidget extends AppWidgetProvider {
     }
 
     private void onUpdateWidget(Context context, Intent intent, AppWidgetManager appWidgetManager, int appWidgetId){
-        Log.e("Update Widget","Kyler ---------------------------------------------------");
+//        Log.e("Update Widget","Tracking update widget");
         boolean playing = intent.getBooleanExtra(PLAYING_STATUS,false);
         ArrayList<String> songPaths = intent.getStringArrayListExtra(String.valueOf(R.string.path));
         int currentID = intent.getIntExtra(String.valueOf(R.string.currentID),0);
@@ -132,7 +132,9 @@ public class MusicPlayerWidget extends AppWidgetProvider {
             openAppIntent.putStringArrayListExtra(String.valueOf(R.string.path),songPaths);
             openAppIntent.putExtra(String.valueOf(R.string.currentID),currentID);
             openAppPendingIntent = PendingIntent.getActivity(context,0,openAppIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-            remoteView.setOnClickPendingIntent(R.id.widget_background,openAppPendingIntent);
+            remoteView.setViewVisibility(R.id.widget_previous, View.VISIBLE);
+            remoteView.setViewVisibility(R.id.widget_play, View.VISIBLE);
+            remoteView.setViewVisibility(R.id.widget_next, View.VISIBLE);
         }else{
             Intent openAppIntent = new Intent(context, MainActivity.class);
             openAppIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -140,6 +142,9 @@ public class MusicPlayerWidget extends AppWidgetProvider {
             remoteView.setImageViewResource(R.id.widget_image,R.drawable.defaultpic);
             remoteView.setTextViewText(R.id.widget_title,"Music Player");
             remoteView.setTextViewText(R.id.widget_artist,"Designed by Kyler");
+            remoteView.setViewVisibility(R.id.widget_previous, View.GONE);
+            remoteView.setViewVisibility(R.id.widget_play, View.GONE);
+            remoteView.setViewVisibility(R.id.widget_next, View.GONE);
         }
         remoteView.setOnClickPendingIntent(R.id.widget_background,openAppPendingIntent);
         appWidgetManager.updateAppWidget(appWidgetId, remoteView);

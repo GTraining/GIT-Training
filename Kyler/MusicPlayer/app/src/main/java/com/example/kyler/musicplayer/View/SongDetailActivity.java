@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.example.kyler.musicplayer.Model.Song;
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.ISongDetailPresenter;
 import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
 import com.example.kyler.musicplayer.R;
@@ -68,6 +69,12 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 setStatus();
             }
         }, 500);
+    }
+
+    @Override
+    protected void onResume() {
+        MyApplication.getInstance().trackScreenView("Song Detail Activity");
+        super.onResume();
     }
 
     /**

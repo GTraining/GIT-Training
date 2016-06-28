@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <integer name="ga_sessionTimeout">300</integer>
-    <screenName name="com.blabla.project">Main ScreenView</screenName>
-    <string name="ga_trackingId">UA-79975842-1</string>
-    <bool name="ga_reportUncaughtExceptions">true</bool>
-</resources>

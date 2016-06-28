@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kyler.musicplayer.Model.Album;
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.IListAlbumPresenter;
 import com.example.kyler.musicplayer.Presenter.ListAlbumPresenter;
 import com.example.kyler.musicplayer.R;
@@ -43,5 +44,11 @@ public class ListAlbumFragment extends Fragment implements IListAlbumView {
     public void loadAlbum(ArrayList<Album> albums) {
         adapter = new ListAlbumAdapter(getActivity(),albums);
         listAlbumRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        MyApplication.getInstance().trackScreenView("List Album Fragment");
+        super.onResume();
     }
 }

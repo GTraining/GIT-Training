@@ -98,8 +98,8 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                         playNext();
                         break;
                     case STOP_ACTION:
-                        timerComplete = true;
-                        stopMusic();
+                        pauseSong();
+                        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
                         break;
                 }
             }

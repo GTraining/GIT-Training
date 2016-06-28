@@ -41,7 +41,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:background="@drawable/calendar"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Calendar"
+                        android:textSize="10dp"
+                        android:textColor="#55445460"
+                        android:layout_gravity="center" />
+                </LinearLayout>
 
             </RelativeLayout>
             <RelativeLayout
@@ -69,7 +90,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Logout"
                         android:textSize="10dp"
-                        android:textColor="@color/Dialog_textcolor"
+                        android:textColor="#55445460"
                         android:layout_gravity="center" />
                 </LinearLayout>
 

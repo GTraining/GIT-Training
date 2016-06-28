@@ -10,6 +10,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +22,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.jason.jason_workshop_3.View.MainActivity" >
+        <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +45,12 @@
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.TwitterLoginActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.TwitterAuthenticationActivity" />
         <!-- <activity android:name=".Demo"></activity> -->
+        <!-- <activity android:name=".View.FeatureView.DrinkAlarmActivity"></activity> -->
+
+        <receiver
+            android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.AlarmReceiver"
+            android:enabled="true" >
+        </receiver>
     </application>
 
 </manifest>

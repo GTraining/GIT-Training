@@ -27,8 +27,8 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
     static {
         Set<Class<? extends RealmObject>> modelClasses = new HashSet<Class<? extends RealmObject>>();
         modelClasses.add(Score.class);
-        modelClasses.add(RealmFloat.class);
         modelClasses.add(RealmDemoData.class);
+        modelClasses.add(RealmFloat.class);
         MODEL_CLASSES = Collections.unmodifiableSet(modelClasses);
     }
 
@@ -38,10 +38,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return ScoreRealmProxy.initTable(transaction);
-        } else if (clazz.equals(RealmFloat.class)) {
-            return RealmFloatRealmProxy.initTable(transaction);
         } else if (clazz.equals(RealmDemoData.class)) {
             return RealmDemoDataRealmProxy.initTable(transaction);
+        } else if (clazz.equals(RealmFloat.class)) {
+            return RealmFloatRealmProxy.initTable(transaction);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -53,10 +53,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return ScoreRealmProxy.validateTable(transaction);
-        } else if (clazz.equals(RealmFloat.class)) {
-            return RealmFloatRealmProxy.validateTable(transaction);
         } else if (clazz.equals(RealmDemoData.class)) {
             return RealmDemoDataRealmProxy.validateTable(transaction);
+        } else if (clazz.equals(RealmFloat.class)) {
+            return RealmFloatRealmProxy.validateTable(transaction);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -68,10 +68,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return ScoreRealmProxy.getFieldNames();
-        } else if (clazz.equals(RealmFloat.class)) {
-            return RealmFloatRealmProxy.getFieldNames();
         } else if (clazz.equals(RealmDemoData.class)) {
             return RealmDemoDataRealmProxy.getFieldNames();
+        } else if (clazz.equals(RealmFloat.class)) {
+            return RealmFloatRealmProxy.getFieldNames();
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -83,10 +83,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return ScoreRealmProxy.getTableName();
-        } else if (clazz.equals(RealmFloat.class)) {
-            return RealmFloatRealmProxy.getTableName();
         } else if (clazz.equals(RealmDemoData.class)) {
             return RealmDemoDataRealmProxy.getTableName();
+        } else if (clazz.equals(RealmFloat.class)) {
+            return RealmFloatRealmProxy.getTableName();
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -98,10 +98,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return clazz.cast(new ScoreRealmProxy(columnInfo));
-        } else if (clazz.equals(RealmFloat.class)) {
-            return clazz.cast(new RealmFloatRealmProxy(columnInfo));
         } else if (clazz.equals(RealmDemoData.class)) {
             return clazz.cast(new RealmDemoDataRealmProxy(columnInfo));
+        } else if (clazz.equals(RealmFloat.class)) {
+            return clazz.cast(new RealmFloatRealmProxy(columnInfo));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -120,10 +120,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return clazz.cast(ScoreRealmProxy.copyOrUpdate(realm, (Score) obj, update, cache));
-        } else if (clazz.equals(RealmFloat.class)) {
-            return clazz.cast(RealmFloatRealmProxy.copyOrUpdate(realm, (RealmFloat) obj, update, cache));
         } else if (clazz.equals(RealmDemoData.class)) {
             return clazz.cast(RealmDemoDataRealmProxy.copyOrUpdate(realm, (RealmDemoData) obj, update, cache));
+        } else if (clazz.equals(RealmFloat.class)) {
+            return clazz.cast(RealmFloatRealmProxy.copyOrUpdate(realm, (RealmFloat) obj, update, cache));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -136,10 +136,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return clazz.cast(ScoreRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
-        } else if (clazz.equals(RealmFloat.class)) {
-            return clazz.cast(RealmFloatRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         } else if (clazz.equals(RealmDemoData.class)) {
             return clazz.cast(RealmDemoDataRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
+        } else if (clazz.equals(RealmFloat.class)) {
+            return clazz.cast(RealmFloatRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -152,10 +152,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return clazz.cast(ScoreRealmProxy.createUsingJsonStream(realm, reader));
-        } else if (clazz.equals(RealmFloat.class)) {
-            return clazz.cast(RealmFloatRealmProxy.createUsingJsonStream(realm, reader));
         } else if (clazz.equals(RealmDemoData.class)) {
             return clazz.cast(RealmDemoDataRealmProxy.createUsingJsonStream(realm, reader));
+        } else if (clazz.equals(RealmFloat.class)) {
+            return clazz.cast(RealmFloatRealmProxy.createUsingJsonStream(realm, reader));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -169,10 +169,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(Score.class)) {
             return clazz.cast(ScoreRealmProxy.createDetachedCopy((Score) realmObject, 0, maxDepth, cache));
-        } else if (clazz.equals(RealmFloat.class)) {
-            return clazz.cast(RealmFloatRealmProxy.createDetachedCopy((RealmFloat) realmObject, 0, maxDepth, cache));
         } else if (clazz.equals(RealmDemoData.class)) {
             return clazz.cast(RealmDemoDataRealmProxy.createDetachedCopy((RealmDemoData) realmObject, 0, maxDepth, cache));
+        } else if (clazz.equals(RealmFloat.class)) {
+            return clazz.cast(RealmFloatRealmProxy.createDetachedCopy((RealmFloat) realmObject, 0, maxDepth, cache));
         } else {
             throw getMissingProxyClassException(clazz);
         }

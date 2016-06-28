@@ -114,7 +114,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
         Log.v("MUSIC PLAYER", "Playback Error");
-//        mediaPlayer.reset();
         return true;
     }
 
@@ -192,7 +191,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     public long getCurrent(){
-//        sendUpdateWidgetBroadcast();
+        sendUpdateWidgetBroadcast();
         return mediaPlayer.getCurrentPosition();
     }
 
@@ -264,7 +263,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             public void run() {
                 timerComplete = false;
             }
-        },200);
+        },800);
     }
 
     public void playPrevious(){

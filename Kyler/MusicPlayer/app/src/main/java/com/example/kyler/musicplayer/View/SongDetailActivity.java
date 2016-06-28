@@ -250,7 +250,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                     playStatus = false;
                     play.setImageResource(R.drawable.playbutton);
                 }
-                mHandler.postDelayed(this, 100);
+                mHandler.postDelayed(this, 500);
             }
         }
     };

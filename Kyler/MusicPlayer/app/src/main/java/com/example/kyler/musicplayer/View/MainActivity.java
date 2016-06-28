@@ -7,15 +7,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.kyler.musicplayer.GoogleAnalyticTracking;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.Fragment.ListAlbumFragment;
 import com.example.kyler.musicplayer.View.Fragment.ListFavoriteSongFragment;
 import com.example.kyler.musicplayer.View.Fragment.ListSongFragment;
+import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     static boolean active = false;
     Button mButtonListSong,mButtonFavoriteSong,mButtonFilter;
     final int LISTSONGID = 0, FAVORITESONGID = 1, FILTER = 2;
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

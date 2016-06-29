@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.Widget.MusicPlayerWidget;
@@ -28,6 +29,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public static final String NEXT_ACTION="android.kyler.Next";
     public static final String STOP_ACTION="android.kyler.Stop";
     public static int NOTIFY_ID = 0;
+    public static String NOTIFICATION_TAG = "com.example.kyler.musicplayer.NotificationTag";
     private ArrayList<Song> songs, shuffleSongs, normalSongs;
     private String currentPath = "";
     private int currentPosition = 0;
@@ -45,13 +47,10 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-//        timerComplete=true;
-//        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
-//        Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
-//        intent.putStringArrayListExtra(String.valueOf(R.string.path),new ArrayList<String>());
-//        sendBroadcast(intent);
-        timerComplete = true;
         stopMusic();
+        Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
+        intent.putStringArrayListExtra(String.valueOf(R.string.path),new ArrayList<String>());
+        sendBroadcast(intent);
     }
 
     private void sendUpdateWidgetBroadcast(){
@@ -81,6 +80,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
             public void onReceive(Context context, Intent intent) {
                 switch (intent.getAction()){
                     case PLAY_ACTION:
+                        MyApplication.getInstance().trackEvent("Notification Widget", "Play/pause click", "Play/pause music by Notification Widget");
                         if(isPlaying()) {
                             pauseSong();
                             not = new MusicPlayerNotification(MyBindService.this, songs, currentPosition, isPlaying()).getNotification();
@@ -89,17 +89,20 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                             not = new MusicPlayerNotification(MyBindService.this, songs, currentPosition, isPlaying()).getNotification();
                         }
                         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-                        notificationManager.notify(NOTIFY_ID, not);
+                        notificationManager.notify(NOTIFICATION_TAG,NOTIFY_ID, not);
                         break;
                     case PREVIOUS_ACTION:
+                        MyApplication.getInstance().trackEvent("Notification Widget", "Previous click", "Play previous song by Notification Widget");
                         playPrevious();
                         break;
                     case NEXT_ACTION:
+                        MyApplication.getInstance().trackEvent("Notification Widget", "Next click", "Play next song by Notification Widget");
                         playNext();
                         break;
                     case STOP_ACTION:
+                        MyApplication.getInstance().trackEvent("Notification Widget", "Pause click", "Pause music and hide notification");
                         pauseSong();
-                        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+                        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFICATION_TAG,NOTIFY_ID);
                         break;
                 }
             }
@@ -136,7 +139,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private void showNotification(){
         not = new MusicPlayerNotification(this,songs,currentPosition,isPlaying()).getNotification();
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFY_ID,not);
+        notificationManager.notify(NOTIFICATION_TAG,NOTIFY_ID,not);
         sendUpdateWidgetBroadcast();
     }
 
@@ -181,6 +184,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         try {
             mediaPlayer.setDataSource(songs.get(currentPosition).getSongPath());
         } catch (IOException e) {
+            MyApplication.getInstance().trackException(e);
             e.printStackTrace();
         }
         mediaPlayer.prepareAsync();
@@ -270,9 +274,10 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     }
 
     private void stopMusic(){
+        timerComplete = true;
         mediaPlayer.stop();
         stopSelf();
-        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancelAll();
+        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFICATION_TAG,NOTIFY_ID);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -371,7 +376,6 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         @Override
         public void onFinish() {
             timerTime = 0;
-            timerComplete = true;
             stopMusic();
         }
     }

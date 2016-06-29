@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public interface ISongDetailPresenter {
     void setSongs(ArrayList<String> arrStringPaths, int currentID);
-    void setSongs(ArrayList<String> arrStringPaths);
+    void setOnPlayingSongs(ArrayList<String> arrStringPaths, int currentID);
     void resumeSong();
     void getSong();
     void pauseSong();

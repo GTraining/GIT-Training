@@ -41,6 +41,34 @@ public class Helper {
         long duration = Long.parseLong(dur);
         byte[] image = mmr.getEmbeddedPicture();
         return new Song(title,artist,album,author,duration,image,path);
+//        String title = "";
+//        String artist = "";
+//        String album = "";
+//        String author = "";
+//        if(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE) != null){
+//            title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+//        }else{
+//            title = "no name";
+//        }
+//        if(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST) != null){
+//            artist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+//        }else{
+//            artist = "not available";
+//        }
+//        if( mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM) != null){
+//            album = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+//        }else{
+//            album = "not available";
+//        }
+//        if(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR) != null){
+//            author = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR);
+//        }else{
+//            author = "not available";
+//        }
+//        String dur = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+//        long duration = Long.parseLong(dur);
+//        byte[] image = mmr.getEmbeddedPicture();
+//        return new Song(title,artist,album,author,duration,image,path);
     }
 
     public static String millisecondsToTimer(long milliseconds){

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.Fragment.ListAlbumFragment;
 import com.example.kyler.musicplayer.View.Fragment.ListFavoriteSongFragment;
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onResume() {
+        MyApplication.getInstance().trackScreenView("Main Activity");
+        super.onResume();
+    }
+
+    @Override
     protected void onStart() {
         active = true;
         super.onStart();
@@ -40,12 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.activity_main_bt_list_song:
+                MyApplication.getInstance().trackEvent("Menu", "List Song", "Show all songs from SD into List song Fragment");
                 openFragment(LISTSONGID);
                 break;
             case R.id.activity_main_bt_favorite_song:
+                MyApplication.getInstance().trackEvent("Menu", "List Favorite Song", "Show all favorite songs into List song Fragment");
                 openFragment(FAVORITESONGID);
                 break;
             case R.id.activity_main_bt_filter:
+                MyApplication.getInstance().trackEvent("Menu", "List Album Song", "Show all albums from SD into List song Fragment");
                 openFragment(FILTER);
                 break;
         }

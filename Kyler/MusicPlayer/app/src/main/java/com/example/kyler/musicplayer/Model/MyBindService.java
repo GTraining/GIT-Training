@@ -12,6 +12,7 @@ import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.kyler.musicplayer.MyApplication;
@@ -51,6 +52,11 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
         intent.putStringArrayListExtra(String.valueOf(R.string.path),new ArrayList<String>());
         sendBroadcast(intent);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return(START_NOT_STICKY);
     }
 
     private void sendUpdateWidgetBroadcast(){
@@ -140,6 +146,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         not = new MusicPlayerNotification(this,songs,currentPosition,isPlaying()).getNotification();
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_TAG,NOTIFY_ID,not);
+        startForeground(NOTIFY_ID,not);
         sendUpdateWidgetBroadcast();
     }
 
@@ -276,6 +283,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private void stopMusic(){
         timerComplete = true;
         mediaPlayer.stop();
+        stopForeground(true);
         stopSelf();
         ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFICATION_TAG,NOTIFY_ID);
         new Handler().postDelayed(new Runnable() {

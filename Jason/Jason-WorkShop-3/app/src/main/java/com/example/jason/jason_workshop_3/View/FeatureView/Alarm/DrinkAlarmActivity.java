@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class DrinkAlarmActivity extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class DrinkAlarmActivity extends AppCompatActivity {
     private long startTime = 0, endTime = 0, period = 0;
     private Switch enableSwitch;
     private PAlarmSetting alarmSetting;
+    private boolean alarmEnable = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,14 +132,20 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         String enableAlarm = null;
         if (enableSwitch.isChecked()){
             enableAlarm = "1";
-        } else enableAlarm = "0";
+            alarmEnable = true;
+        } else {
+            alarmEnable = false;
+            enableAlarm = "0";
+        }
 
-        startTime = (1000 * alarmHourStart * alarmMinuteStart * 60);
-        endTime = (1000 * (alarmHourEnd + 12) * alarmMinuteEnd * 60);
+        startTime = convertMilliseconds(String.format("%02d:%02d", alarmHourStart, alarmMinuteStart));
+        endTime = convertMilliseconds(String.format("%02d:%02d", alarmHourEnd, alarmMinuteEnd));
         period = (endTime - startTime) / 10;
+
         Alarm alarm = new Alarm(String.valueOf(startTime), String.valueOf(endTime),
                 String.valueOf(period), enableAlarm);
         alarmSetting.SettingAlarm(getAlarm(alarm));
+
         Toast.makeText(getApplicationContext(), "Completed!", Toast.LENGTH_LONG).show();
         setAlarm();
     }
@@ -168,11 +178,11 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         startActivity(mIntent);
     }
 
-    public void setupTextView(String startHour, String startMinute, String endHour, String endMinute, String status){
-        tvAlarmHour_Start.setText(startHour);
-        tvAlarmMinute_Start.setText(startMinute);
-        tvAlarmHour_End.setText(endHour);
-        tvAlarmMinute_End.setText(endMinute);
+    public void setupTextView(int startHour, int startMinute, int endHour, int endMinute, String status){
+        tvAlarmHour_Start.setText(String.format("%02d", startHour));
+        tvAlarmMinute_Start.setText(String.format("%02d", startMinute));
+        tvAlarmHour_End.setText(String.format("%02d", endHour));
+        tvAlarmMinute_End.setText(String.format("%02d", endMinute));
         if (status.equals("1")) enableSwitch.setChecked(true);
         else enableSwitch.setChecked(false);
     }
@@ -188,6 +198,21 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         mIntent.putExtra("END", String.valueOf(endTime));
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, mIntent, 0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), period, pendingIntent);
+        if (alarmEnable) {
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), period, pendingIntent);
+        }else alarmManager.cancel(pendingIntent);
+    }
+
+    public long convertMilliseconds(String time){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
+        try {
+            date = dateFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        calendar.setTime(date);
+        return calendar.getTimeInMillis();
     }
 }

@@ -24,4 +24,8 @@
     <color name="twitter_click_false">#0975c7</color>
     <color name="twitter_click_true">#b7e7ef</color>
     <color name="Red">#ff0000</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <!--<color name="colorAccent">#FFD180</color>-->
+    <color name="btnBackground">#e7e7e7</color>
 </resources>

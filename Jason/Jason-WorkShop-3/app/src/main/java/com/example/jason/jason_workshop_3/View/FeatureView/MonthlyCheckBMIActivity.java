@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyBMI.PMonthlyCheckBMI;
 import com.example.jason.jason_workshop_3.R;
@@ -54,6 +55,11 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
         setHelloUser();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Monthly Check BMI Screen");
+    }
 
     public List<String> getUserHealth(){
         List<String> BMI = new ArrayList<>();
@@ -73,6 +79,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     }
 
     public void onclickCheckBMI(View v){
+        MyApplication.getInstance().trackEvent("MonthlyCheckBMI", "onclick", "On click check BMI");
         height = edt_height.getText().toString();
         weight = edt_weight.getText().toString();
         age = edt_age.getText().toString();
@@ -95,6 +102,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        MyApplication.getInstance().trackEvent("MonthlyCheckBMI", "onclick", "On click back");
         if (intentID == 1){
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
@@ -114,6 +122,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     }
 
     public void onclickCloseDialog(View v){
+        MyApplication.getInstance().trackEvent("MonthlyCheckBMI", "onclick", "On click show BMI result Dialog");
         mCheckBMIResultDialog.dismissDialog();
     }
 
@@ -137,6 +146,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     }
 
     public void onclickstartBMIchart(View v){
+        MyApplication.getInstance().trackEvent("MonthlyCheckBMI", "onclick", "On click start BMI chart");
         Intent mIntent = new Intent(this, BMIChartActivity.class);
         mIntent.putExtra("Intent", "1");
         startActivity(mIntent);

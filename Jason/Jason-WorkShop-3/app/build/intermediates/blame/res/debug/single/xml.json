@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/xml/app_tracker.xml",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/xml/app_tracker.xml"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/xml/global_tracker.xml",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/google-services/debug/xml/global_tracker.xml"
+    }
+]

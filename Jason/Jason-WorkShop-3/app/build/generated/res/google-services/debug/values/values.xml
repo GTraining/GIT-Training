@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_trackingId" translatable="false">UA-80061006-1</string>
+    <string name="gcm_defaultSenderId" translatable="false">430596307283</string>
+    <string name="google_api_key" translatable="false">AIzaSyDX1bvssNQoG50bpz2502DbEwXHwXFvuwY</string>
+    <string name="google_app_id" translatable="false">1:430596307283:android:714aa204079363f1</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDX1bvssNQoG50bpz2502DbEwXHwXFvuwY</string>
+</resources>

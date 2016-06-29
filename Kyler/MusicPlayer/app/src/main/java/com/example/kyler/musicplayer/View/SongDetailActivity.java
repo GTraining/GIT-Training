@@ -61,7 +61,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                     repeatStatus = detailPresenter.getRepeatStatus();
                     shuffleStatus = detailPresenter.getShuffleStatus();
                     detailPresenter.getSong();
-                    detailPresenter.setSongs(arrSongPaths);
+                    detailPresenter.setOnPlayingSongs(arrSongPaths, currentID);
                 }else {
                     detailPresenter.setSongs(arrSongPaths, currentID);
                 }

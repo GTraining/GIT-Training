@@ -76,13 +76,14 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
-    public void setSongs(ArrayList<String> arrStringPaths) {
+    public void setOnPlayingSongs(ArrayList<String> arrStringPaths, int currentID) {
         if(binded){
             ArrayList<Song> songs = new ArrayList<>();
             for(int i=0;i<arrStringPaths.size();i++){
                 songs.add(Helper.getSong(arrStringPaths.get(i)));
             }
             myBindService.setSongs(songs);
+            myBindService.setCurrentPosition(currentID);
         }
     }
 

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.example.kyler.musicplayer.Model.Song;
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListFavoriteSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongPresenter;
@@ -51,6 +52,7 @@ public class ListFavoriteSongFragment extends ListFragment implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        MyApplication.getInstance().trackEvent("Choose song", "Choose from list favorite song", "Choose song to play");
         Intent intent = new Intent(getActivity(), SongDetailActivity.class);
         ArrayList<String> arrSongPaths = new ArrayList<>();
         for(int j=0;j<songs.size();j++){
@@ -66,5 +68,11 @@ public class ListFavoriteSongFragment extends ListFragment implements AdapterVie
         this.songs = songs;
         ListSongAdapter adapter = new ListSongAdapter(getActivity(),songs,true);
         this.setListAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        MyApplication.getInstance().trackScreenView("List Favorite Song Fragment");
+        super.onResume();
     }
 }

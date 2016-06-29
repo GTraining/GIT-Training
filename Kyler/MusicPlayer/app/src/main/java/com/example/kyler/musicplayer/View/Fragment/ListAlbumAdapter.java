@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kyler.musicplayer.Model.Album;
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.AlbumSelectedActivity;
 
@@ -53,6 +54,7 @@ public class ListAlbumAdapter extends RecyclerView.Adapter<ListAlbumAdapter.Albu
         holder.albumImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MyApplication.getInstance().trackEvent("Choose Album", "Choose Album from list album", "Choose album to show songs");
                 Intent intent = new Intent(context, AlbumSelectedActivity.class);
                 intent.putExtra(String.valueOf(R.string.albumSelected),albums.get(position).getAlbumName());
                 context.startActivity(intent);

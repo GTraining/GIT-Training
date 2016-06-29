@@ -53,8 +53,9 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     private void startService(){
+        Intent intent = new Intent(context, MyBindService.class);
+        context.startService(intent);
         if(!binded){
-            Intent intent = new Intent(context, MyBindService.class);
             context.bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
             binded = true;
         }

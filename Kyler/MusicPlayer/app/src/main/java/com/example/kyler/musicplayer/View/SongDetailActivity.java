@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -216,6 +217,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                MyApplication.getInstance().trackEvent("Timer music", "Set time", "Set time to stop music");
                 detailPresenter.setTimer(timerTime);
             }
         });
@@ -283,33 +285,30 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_song_detail_timer:
+                MyApplication.getInstance().trackEvent("Playing song", "Timer music", "Timer for stop music");
                 showTimerDialog();
                 break;
             case R.id.activity_song_detail_shuffle:
+                MyApplication.getInstance().trackEvent("Playing song", "Shuffle music", "Set shuffle for music");
                 shuffleStatus = !shuffleStatus;
                 detailPresenter.setShuffle(shuffleStatus);
                 setStatus();
                 break;
             case R.id.activity_song_detail_repeat:
+                MyApplication.getInstance().trackEvent("Playing song", "Repeat click", "Set repeat for music");
                 setRepeat();
                 break;
             case R.id.activity_song_detail_previous:
+                MyApplication.getInstance().trackEvent("Playing song", "Previous click", "Play previous song");
                 previousSong();
                 break;
-            case R.id.activity_song_detail_backward:
-                if(currentTime - 5000 < 0)
-                    currentTime = 0;
-                else
-                    currentTime = currentTime - 5000;
-                seekTo(currentTime);
-                break;
             case R.id.activity_song_detail_play:
+                MyApplication.getInstance().trackEvent("Playing song", "Play/pause click", "Play/pause music");
                 playSong();
                 break;
             case R.id.activity_song_detail_next:
+                MyApplication.getInstance().trackEvent("Playing song", "Next click", "Play next song");
                 nextSong();
-                break;
-            case R.id.activity_song_detail_seek:
                 break;
         }
         setStatus();
@@ -328,6 +327,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        MyApplication.getInstance().trackEvent("Seek music", "Set progress", "Set backward or forward music by progress bar");
         seekTo(currentTime);
         updateSeekbar();
     }
@@ -371,6 +371,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             if(hoding) {
                 setBackward();
                 mHandler.postDelayed(this,200);
+            }else{
+
             }
         }
     };
@@ -401,6 +403,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                     break;
                 case MotionEvent.ACTION_UP:
                     setForward();
+                    MyApplication.getInstance().trackEvent("Playing song", "Forward click", "Forward music 5 secs");
                     hoding = false;
                     mHandler.removeCallbacks(longForwardPressed);
                     break;
@@ -409,10 +412,12 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     hoding = true;
+                    MyApplication.getInstance().trackEvent("Playing song", "Backward long press", "Backward music by long press");
                     mHandler.postDelayed(longBackwardPressed, LONG_PRESS_TIME);
                     break;
                 case MotionEvent.ACTION_UP:
                     setBackward();
+                    MyApplication.getInstance().trackEvent("Playing song", "Backward click", "Backward music 5 secs");
                     hoding = false;
                     mHandler.removeCallbacks(longBackwardPressed);
                     break;

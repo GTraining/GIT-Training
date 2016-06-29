@@ -48,6 +48,7 @@ public class ListSongFragment extends ListFragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        MyApplication.getInstance().trackEvent("Choose song", "Choose from list song", "Choose song to play");
         Intent intent = new Intent(getActivity(), SongDetailActivity.class);
         ArrayList<String> arrSongPaths = new ArrayList<>();
         for(int j=0;j<songs.size();j++){

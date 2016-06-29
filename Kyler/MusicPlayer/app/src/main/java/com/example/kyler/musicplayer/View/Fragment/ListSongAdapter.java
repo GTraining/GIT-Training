@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.kyler.musicplayer.Model.Database.DatabaseHandler;
 import com.example.kyler.musicplayer.Model.Song;
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.IListSongAdapterPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongAdapterPresenter;
 import com.example.kyler.musicplayer.R;
@@ -77,14 +78,14 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
         final Song song = songs.get(i);
         viewHolder.favorite.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(isFavor) {
+            public void onClick(View view) {if(isFavor) {
                     if(favoriteMode){
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setMessage("Do you want to Unfavorite the song \n"+song.getSongTitle()+" ?")
                                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+                                        MyApplication.getInstance().trackEvent("Favorite", "Unfavorite Songs", "Unfavorite songs and update to database");
                                         songs.remove(song);
                                         adapterPresenter.unFavoriteSong(song);
                                         notifyDataSetChanged();
@@ -97,6 +98,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+                                        MyApplication.getInstance().trackEvent("Favorite", "Unfavorite Songs", "Unfavorite songs and update to database");
                                         adapterPresenter.unFavoriteSong(song);
                                         notifyDataSetChanged();
                                     }
@@ -104,6 +106,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                         builder.show();
                     }
                 }else{
+                MyApplication.getInstance().trackEvent("Favorite", "Favorite Songs", "Favorite songs and update to database");
                     adapterPresenter.setFavoriteSong(song);
                     notifyDataSetChanged();
                 }

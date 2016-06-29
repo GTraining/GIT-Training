@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kyler.musicplayer.Model.Song;
+import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
 import com.example.kyler.musicplayer.Presenter.ListSongPresenter;
 import com.example.kyler.musicplayer.R;
@@ -55,6 +56,7 @@ public class AlbumSelectedActivity extends AppCompatActivity implements IListSon
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        MyApplication.getInstance().trackEvent("Choose song", "Choose from album selected", "Choose song to play");
         Intent intent = new Intent(this, SongDetailActivity.class);
         ArrayList<String> arrSongPaths = new ArrayList<>();
         for(int j=0;j<songs.size();j++){

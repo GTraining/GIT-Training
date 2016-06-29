@@ -17,6 +17,7 @@
       See Project Structure -> Analytics -> Google Analytics -> Learn More
       to learn more about configuring this file.
     -->
-    <screenName name="com.example.kyler.musicplayer.View.MainActivity">Home Screen</screenName>
-    <screenName name="com.example.kyler.musicplayer.View.MainActivity">Home Screen</screenName>
+    <screenName name="com.example.kyler.musicplayer.View.MainActivity">Main Activity</screenName>
+    <screenName name="com.example.kyler.musicplayer.View.SongDetailActivity">Song Detail Activity</screenName>
+    <screenName name="com.example.kyler.musicplayer.View.AlbumSelectedActivity">Album Selected Activity</screenName>
 </resources>

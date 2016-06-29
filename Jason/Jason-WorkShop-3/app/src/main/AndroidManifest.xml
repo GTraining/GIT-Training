@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.FeatureView.Alarm.DrinkAlarmActivity">
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,17 +28,12 @@
         <activity android:name=".View.FeatureView.DailyDietActivity" />
         <activity android:name=".View.LoginView.SignupActivity" />
         <activity android:name=".View.FeatureView.MonthlyCheckBMIActivity" />
-
-        <receiver android:name=".Alarm.AlarmReceiver" />
-
         <activity android:name=".View.FeatureView.BMIChartActivity" />
         <activity android:name=".View.LoginView.LoginActivity" />
         <activity android:name=".View.FeatureView.FoodActivity" />
-        <!-- <activity android:name=".Demo"></activity> -->
         <activity android:name=".View.LoginView.TwitterLoginActivity" />
         <activity android:name=".View.LoginView.TwitterAuthenticationActivity" />
-        <!-- <activity android:name=".Demo"></activity> -->
-        <!--<activity android:name=".View.FeatureView.DrinkAlarmActivity"></activity>-->
+        <activity android:name=".View.FeatureView.Alarm.DrinkAlarmActivity"></activity>
 
         <receiver android:name=".View.FeatureView.Alarm.AlarmReceiver"
             android:enabled="true">

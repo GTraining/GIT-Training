@@ -39,21 +39,21 @@ public class AlarmReceiver extends BroadcastReceiver {
         PowerManager.WakeLock wakeLock = pm.newWakeLock((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
 
         //Set calendar
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-
-        //Check Period of Alarm
-        int currentHour = calendar.get(Calendar.HOUR);
-        int currentMinute = calendar.get(Calendar.MINUTE);
-        long currentTime = 1000 * 60 * currentHour * currentMinute;
-        long startTime = Long.parseLong(intent.getStringExtra("START"));
-        long endTime = Long.parseLong(intent.getStringExtra("END"));
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(System.currentTimeMillis());
+//
+//        //Check Period of Alarm
+//        int currentHour = calendar.get(Calendar.HOUR);
+//        int currentMinute = calendar.get(Calendar.MINUTE);
+//        long currentTime = 1000 * 60 * currentHour * currentMinute;
+//        long startTime = Long.parseLong(intent.getStringExtra("START"));
+//        long endTime = Long.parseLong(intent.getStringExtra("END"));
 
         //Start Alarm
-        if (currentTime > startTime && currentTime < endTime){
+//        if (currentTime > startTime && currentTime < endTime){
             notificationManager.notify(1, notif.build());
             wakeLock.acquire();
-        }
+//        }
 
 
     }

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:2:1-49:12
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:2:1-44:12
 	package
 		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:3:5-49
 		INJECTED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml
@@ -38,7 +38,7 @@ ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidM
 	android:name
 		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:10:19-57
 application
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:12:5-47:19
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:12:5-42:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
@@ -54,10 +54,10 @@ MERGED from [com.android.support:support-v4:23.4.0] /home/jason/GIT-Training/Jas
 		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:14:9-45
 	android:theme
 		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:17:9-40
-activity#com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity
+activity#com.example.jason.jason_workshop_3.View.MainActivity
 ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:18:9-24:20
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:18:19-76
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:18:19-52
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
@@ -92,36 +92,36 @@ activity#com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActi
 ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:30:9-78
 	android:name
 		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:30:19-75
-receiver#com.example.jason.jason_workshop_3.Alarm.AlarmReceiver
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:32:9-57
-	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:32:19-54
 activity#com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:34:9-71
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:31:9-71
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:34:19-68
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:31:19-68
 activity#com.example.jason.jason_workshop_3.View.LoginView.LoginActivity
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:35:9-66
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:32:9-66
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:35:19-63
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:32:19-63
 activity#com.example.jason.jason_workshop_3.View.FeatureView.FoodActivity
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:36:9-67
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:33:9-67
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:36:19-64
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:33:19-64
 activity#com.example.jason.jason_workshop_3.View.LoginView.TwitterLoginActivity
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:38:9-73
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:34:9-73
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:38:19-70
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:34:19-70
 activity#com.example.jason.jason_workshop_3.View.LoginView.TwitterAuthenticationActivity
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:39:9-82
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:35:9-82
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:39:19-79
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:35:19-79
+activity#com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:36:9-88
+	android:name
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:36:19-76
 receiver#com.example.jason.jason_workshop_3.View.FeatureView.Alarm.AlarmReceiver
-ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:43:9-46:20
+ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:38:9-41:20
 	android:enabled
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:44:13-35
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:39:13-35
 	android:name
-		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:43:19-71
+		ADDED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml:38:19-71
 uses-sdk
 INJECTED from /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43

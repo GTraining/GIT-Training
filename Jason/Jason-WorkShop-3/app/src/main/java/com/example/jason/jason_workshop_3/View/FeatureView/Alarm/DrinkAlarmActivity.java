@@ -21,8 +21,8 @@ public class DrinkAlarmActivity extends AppCompatActivity {
 
     private TextView tvAlarmHour_Start, tvAlarmMinute_Start;
     private TextView tvAlarmHour_End, tvAlarmMinute_End;
-    private int alarmHourStart = 0, alarmMinuteStart = 0;
-    private int alarmHourEnd = 0, alarmMinuteEnd = 0;
+    private int alarmHourStart = 6, alarmMinuteStart = 0, minStartHour = 6, maxStartHour = 11;
+    private int alarmHourEnd = 0, alarmMinuteEnd = 0, minEndHour = 0, maxEndHour = 11;
     private long startTime = 0, endTime = 0, period = 0;
     private Switch enableSwitch;
     private PAlarmSetting alarmSetting;
@@ -36,20 +36,30 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         tvAlarmHour_End = (TextView) findViewById(R.id.textView_hour_end);
         tvAlarmMinute_End = (TextView) findViewById(R.id.textView_minute_end);
         enableSwitch = (Switch) findViewById(R.id.switch_enableAlarm);
+        alarmSetting = new PAlarmSetting(this);
+        alarmSetting.SetupView();
     }
 
+    /**
+     *
+     * Set start time onclick
+     * @param v
+     */
+
     public void onclickStartHourDown(View v){
-        if (alarmHourStart != 0) alarmHourStart --;
+        if (alarmHourStart > minStartHour) alarmHourStart --;
         setTvAlarmHour_Start();
     }
+
     public void onclickStartHourUp(View v){
-        if (alarmHourStart != 23) alarmHourStart ++;
+        if (alarmHourStart < maxStartHour) alarmHourStart ++;
         setTvAlarmHour_Start();
     }
+
     public void onclickStartMinuteDown(View v){
         if (alarmMinuteStart > 0 ) alarmMinuteStart --;
         else {
-            if (alarmHourStart > 0) {
+            if (alarmHourStart > minStartHour) {
                 alarmHourStart --;
                 alarmMinuteStart = 59;
             }
@@ -57,10 +67,11 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         setTvAlarmMinute_Start();
         setTvAlarmHour_Start();
     }
+
     public void onclickStartMinuteUp(View v){
         if (alarmMinuteStart < 59) alarmMinuteStart ++;
         else {
-            if (alarmHourStart < 23) {
+            if (alarmHourStart < maxStartHour) {
                 alarmHourStart ++;
                 alarmMinuteStart = 0;
             }
@@ -70,22 +81,24 @@ public class DrinkAlarmActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Set end time onclick
      * @param v
      */
 
     public void onclickEndHourDown(View v){
-        if (alarmHourEnd != 0) alarmHourEnd --;
+        if (alarmHourEnd > minEndHour) alarmHourEnd --;
         setTvAlarmHour_End();
     }
+
     public void onclickEndHourUp(View v){
-        if (alarmHourEnd != 23) alarmHourEnd ++;
+        if (alarmHourEnd < maxEndHour) alarmHourEnd ++;
         setTvAlarmHour_End();
     }
+
     public void onclickEndMinuteDown(View v){
         if (alarmMinuteEnd > 0 ) alarmMinuteEnd --;
         else {
-            if (alarmHourEnd > 0) {
+            if (alarmHourEnd > minEndHour) {
                 alarmHourEnd --;
                 alarmMinuteEnd = 59;
             }
@@ -93,10 +106,11 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         setTvAlarmMinute_End();
         setTvAlarmHour_End();
     }
+
     public void onclickEndMinuteUp(View v){
         if (alarmMinuteEnd < 59 ) alarmMinuteEnd ++;
         else {
-            if (alarmHourEnd < 23) {
+            if (alarmHourEnd < maxEndHour) {
                 alarmHourEnd ++;
                 alarmMinuteEnd = 0;
             }
@@ -105,25 +119,25 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         setTvAlarmHour_End();
     }
 
+    /**
+     * Save Alarm
+     * @param v
+     */
+
     public void onclickSaveAlarm(View v){
         String enableAlarm = null;
         if (enableSwitch.isChecked()){
             enableAlarm = "1";
         } else enableAlarm = "0";
 
-        if (alarmHourEnd < alarmHourStart){
-            Toast.makeText(getApplicationContext(), "Please! Start(time) must be greater than End(time)!", Toast.LENGTH_LONG).show();
-        }else {
-            startTime = (1000 * alarmHourStart * alarmMinuteStart * 60);
-            endTime = (1000 * alarmHourEnd * alarmMinuteEnd * 60);
-            period = (endTime - startTime) / 10;
-//            Alarm alarm = new Alarm(String.valueOf(startTime), String.valueOf(endTime),
-//                    String.valueOf(period), enableAlarm);
-//            alarmSetting = new PAlarmSetting(this, alarm);
-//            alarmSetting.SettingAlarm();
-            Toast.makeText(getApplicationContext(), "Completed!", Toast.LENGTH_LONG).show();
-            setAlarm();
-        }
+        startTime = (1000 * alarmHourStart * alarmMinuteStart * 60);
+        endTime = (1000 * (alarmHourEnd + 12) * alarmMinuteEnd * 60);
+        period = (endTime - startTime) / 10;
+        Alarm alarm = new Alarm(String.valueOf(startTime), String.valueOf(endTime),
+                String.valueOf(period), enableAlarm);
+        alarmSetting.SettingAlarm(getAlarm(alarm));
+        Toast.makeText(getApplicationContext(), "Completed!", Toast.LENGTH_LONG).show();
+        setAlarm();
     }
 
 
@@ -147,11 +161,24 @@ public class DrinkAlarmActivity extends AppCompatActivity {
     public void setTvAlarmMinute_End() {
         tvAlarmMinute_End.setText(String.format("%02d", alarmMinuteEnd));
     }
-
+// Start activities
     public void startActivities(Class mClass, String intent){
         Intent mIntent = new Intent(this, mClass);
         mIntent.putExtra("Intent", intent);
         startActivity(mIntent);
+    }
+
+    public void setupTextView(String startHour, String startMinute, String endHour, String endMinute, String status){
+        tvAlarmHour_Start.setText(startHour);
+        tvAlarmMinute_Start.setText(startMinute);
+        tvAlarmHour_End.setText(endHour);
+        tvAlarmMinute_End.setText(endMinute);
+        if (status.equals("1")) enableSwitch.setChecked(true);
+        else enableSwitch.setChecked(false);
+    }
+
+    public Alarm getAlarm(Alarm alarm){
+        return alarm;
     }
 
     public void setAlarm(){

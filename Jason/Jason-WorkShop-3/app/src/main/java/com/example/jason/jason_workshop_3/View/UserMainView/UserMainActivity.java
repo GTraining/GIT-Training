@@ -14,6 +14,7 @@ import com.example.jason.jason_workshop_3.Model.ClockModel.MClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.MClockTime;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PSettingActionbar;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Clock.PClockAdapter;
+import com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
@@ -149,9 +150,9 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         startActivities(DailyDietActivity.class, "none");
     }
 
-    // Open Statistic Chart Activity
-    public void onclickStatisticChart(View v){
-        Toast.makeText(UserMainActivity.this, "Developing!", Toast.LENGTH_SHORT).show();
+    // Open Drink alarm setting
+    public void onclickStartDrinkAlarm(View v){
+        startActivities(DrinkAlarmActivity.class, "none");
     }
 
     // Open Check BMI activity

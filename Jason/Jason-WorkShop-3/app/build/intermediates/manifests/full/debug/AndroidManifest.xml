@@ -22,7 +22,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity" >
+        <activity android:name="com.example.jason.jason_workshop_3.View.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,17 +35,12 @@
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.SignupActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity" />
-
-        <receiver android:name="com.example.jason.jason_workshop_3.Alarm.AlarmReceiver" />
-
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.LoginActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.FoodActivity" />
-        <!-- <activity android:name=".Demo"></activity> -->
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.TwitterLoginActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.TwitterAuthenticationActivity" />
-        <!-- <activity android:name=".Demo"></activity> -->
-        <!-- <activity android:name=".View.FeatureView.DrinkAlarmActivity"></activity> -->
+        <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity" />
 
         <receiver
             android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.AlarmReceiver"

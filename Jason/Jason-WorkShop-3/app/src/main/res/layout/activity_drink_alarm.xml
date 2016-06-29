@@ -43,16 +43,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:padding="20dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/linearLayout3">
                 <LinearLayout
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="START"
+                            android:textColor="#55FFFFFF"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"></RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="END"
+                            android:textColor="#55FFFFFF"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
                     <LinearLayout
 
                         android:orientation="horizontal"
@@ -95,7 +134,6 @@
                                         android:layout_height="wrap_content"
                                         android:textAppearance="?android:attr/textAppearanceLarge"
                                         android:text="00"
-                                        android:textSize="40dp"
                                         android:textColor="#FFF"
                                         android:id="@+id/textView_hour_start"
                                         android:layout_centerVertical="true"
@@ -124,7 +162,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:text=":"
+                                android:text=" "
                                 android:textColor="#FFF"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentLeft="true"
@@ -161,7 +199,6 @@
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:text="00"
-                                    android:textSize="40dp"
                                     android:textColor="#FFF"
                                     android:id="@+id/textView_minute_start"
                                     android:layout_centerVertical="true"
@@ -183,7 +220,7 @@
                         </LinearLayout>
                     </LinearLayout>
                     <RelativeLayout
-                        android:layout_width="20dp"
+                        android:layout_width="30dp"
                         android:layout_height="match_parent">
                     </RelativeLayout>
                     <LinearLayout
@@ -228,7 +265,6 @@
                                         android:layout_height="wrap_content"
                                         android:textAppearance="?android:attr/textAppearanceLarge"
                                         android:text="00"
-                                        android:textSize="40dp"
                                         android:textColor="#FFF"
                                         android:id="@+id/textView_hour_end"
                                         android:layout_centerVertical="true"
@@ -257,7 +293,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:text=":"
+                                android:text=" "
                                 android:textColor="#FFF"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentLeft="true"
@@ -294,7 +330,6 @@
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:text="00"
-                                    android:textSize="40dp"
                                     android:textColor="#FFF"
                                     android:id="@+id/textView_minute_end"
                                     android:layout_centerVertical="true"
@@ -318,9 +353,10 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:paddingTop="10dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal">
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -331,7 +367,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="START"
+                            android:text="AM"
                             android:textColor="#FFF"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true" />
@@ -348,7 +384,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="END"
+                            android:text="PM"
                             android:textColor="#FFF"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true" />

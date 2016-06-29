@@ -23,4 +23,5 @@
     <color name="main_blend">#99445460</color>
     <color name="twitter_click_false">#0975c7</color>
     <color name="twitter_click_true">#b7e7ef</color>
+    <color name="Red">#ff0000</color>
 </resources>

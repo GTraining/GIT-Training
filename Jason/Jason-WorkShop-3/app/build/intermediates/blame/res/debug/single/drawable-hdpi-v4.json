@@ -48,6 +48,10 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_down_true.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/menu_down_true.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_default_mtrl_alpha.9.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_textfield_default_mtrl_alpha.9.png"
     },
@@ -106,6 +110,10 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/emoticon.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/emoticon.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chevron_down.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/chevron_down.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/alert_octagon.png",
@@ -176,6 +184,10 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-hdpi/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_up_true.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/menu_up_true.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/food_light.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/food_light.png"
     },
@@ -240,6 +252,10 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/check_circle.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_down.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/menu_down.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/twitter.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/twitter.png"
     },
@@ -258,6 +274,14 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/alarm_plus.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/alarm_plus.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_up.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/menu_up.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chevron_up.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-hdpi/chevron_up.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_selector_disabled_holo_light.9.png",

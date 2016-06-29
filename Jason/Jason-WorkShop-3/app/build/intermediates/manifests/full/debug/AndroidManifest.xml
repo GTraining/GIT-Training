@@ -10,6 +10,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -30,16 +35,17 @@
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.SignupActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity" />
-
-        <receiver android:name="com.example.jason.jason_workshop_3.Alarm.AlarmReceiver" />
-
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.LoginActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.FoodActivity" />
-        <!-- <activity android:name=".Demo"></activity> -->
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.TwitterLoginActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.TwitterAuthenticationActivity" />
-        <!-- <activity android:name=".Demo"></activity> -->
+        <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.DrinkAlarmActivity" />
+
+        <receiver
+            android:name="com.example.jason.jason_workshop_3.View.FeatureView.Alarm.AlarmReceiver"
+            android:enabled="true" >
+        </receiver>
     </application>
 
 </manifest>

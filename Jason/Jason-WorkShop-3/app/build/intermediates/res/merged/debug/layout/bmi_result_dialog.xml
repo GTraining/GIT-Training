@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:background="@color/login_main"
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <RelativeLayout
@@ -19,7 +20,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/close"
+                android:background="@drawable/close_light"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
@@ -28,8 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="BODY MASS INDEX"
-            android:textStyle="bold"
-            android:textColor="#455663"
+            android:textColor="#FFF"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
@@ -210,12 +210,12 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="YOUR BMI"
                         android:id="@+id/textView_BMI"
-                        android:textStyle="bold"
-                        android:textColor="#455663"
+                        android:textColor="@color/login_main"
                         android:layout_marginTop="10dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true" />
                     <RelativeLayout
+                        android:background="#11000000"
                         android:padding="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -226,6 +226,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:id="@+id/textView_checkBMI"
+                            android:textColor="#8830839f"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true" />
                     </RelativeLayout>
@@ -238,7 +239,7 @@
             android:layout_height="match_parent">
             <RelativeLayout
                 android:layout_alignParentBottom="true"
-                android:background="@color/Dialog_textcolor"
+                android:background="@color/login_main"
                 android:id="@+id/layout_improve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

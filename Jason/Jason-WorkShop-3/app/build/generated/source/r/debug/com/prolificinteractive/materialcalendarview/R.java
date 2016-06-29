@@ -30,8 +30,8 @@ public final class R {
 		public static final int mcv_text_date_light = 0x7f0d007f;
 	}
 	public static final class drawable {
-		public static final int mcv_action_next = 0x7f0200bd;
-		public static final int mcv_action_previous = 0x7f0200be;
+		public static final int mcv_action_next = 0x7f0200bf;
+		public static final int mcv_action_previous = 0x7f0200c0;
 	}
 	public static final class id {
 		public static final int all = 0x7f0e001f;
@@ -52,9 +52,9 @@ public final class R {
 		public static final int week = 0x7f0e002c;
 	}
 	public static final class string {
-		public static final int calendar = 0x7f080080;
-		public static final int next = 0x7f08008a;
-		public static final int previous = 0x7f08008b;
+		public static final int calendar = 0x7f080081;
+		public static final int next = 0x7f08008b;
+		public static final int previous = 0x7f08008c;
 	}
 	public static final class style {
 		public static final int TextAppearance_MaterialCalendarWidget_Date = 0x7f0b00dd;

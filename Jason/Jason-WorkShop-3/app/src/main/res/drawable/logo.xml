@@ -6,7 +6,9 @@
         android:topLeftRadius="50dp"
         android:bottomRightRadius="50dp"
         android:bottomLeftRadius="50dp" />
-
-    <solid android:color="#1c2a35" />
+    <stroke
+        android:width="2dp"
+        android:color="#FFFFFF" />
+    <solid android:color="@color/login_main" />
 
 </shape>

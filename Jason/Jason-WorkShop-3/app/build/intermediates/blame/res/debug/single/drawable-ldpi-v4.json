@@ -60,6 +60,10 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-ldpi/menu_down_true.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/chart_line_light.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-ldpi/chart_line_light.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/menu_up.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-ldpi/menu_up.png"
     },
@@ -178,5 +182,9 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/plus.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-ldpi/plus.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/close_light.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-ldpi/close_light.png"
     }
 ]

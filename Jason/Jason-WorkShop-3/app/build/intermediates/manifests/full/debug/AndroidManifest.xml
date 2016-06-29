@@ -71,7 +71,10 @@
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.WeeklyFitnessActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.DailyDrinkActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.DailyDietActivity" />
-        <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.SignupActivity" />
+        <activity
+            android:name="com.example.jason.jason_workshop_3.View.LoginView.SignupActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.FeatureView.BMIChartActivity" />
         <activity android:name="com.example.jason.jason_workshop_3.View.LoginView.LoginActivity" />

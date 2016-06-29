@@ -257,6 +257,7 @@
     <item name="document_lines" type="integer">4</item>
     <integer name="google_play_services_version">9080000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="HockeyID">d4395d0724924ebf89618841afa9266d</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

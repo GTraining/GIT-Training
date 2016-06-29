@@ -3,6 +3,8 @@ package com.example.jason.jason_workshop_3.Application;
 import android.app.Activity;
 import android.content.Context;
 
+import com.example.jason.jason_workshop_3.R;
+
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.CrashManagerListener;
 import net.hockeyapp.android.UpdateManager;
@@ -18,7 +20,7 @@ public class HockeyAppManager {
     }
 
     public void checkForCrashes() {
-        CrashManager.register(activity);
+        CrashManager.register(activity, "d4395d0724924ebf89618841afa9266d", new MyCustomCrashManagerListener());
     }
 
     public void checkForUpdates() {

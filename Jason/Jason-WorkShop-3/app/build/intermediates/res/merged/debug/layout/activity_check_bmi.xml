@@ -7,6 +7,7 @@
     tools:context=".View.FeatureView.MonthlyCheckBMIActivity">
 
     <RelativeLayout
+        android:background="@color/login_main"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/relativeLayout3">
@@ -17,7 +18,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/hello"
             android:textStyle="bold"
-            android:textColor="@color/Dialog_textcolor"
+            android:textColor="#FFF"
             android:id="@+id/textView_Hello"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
@@ -33,7 +34,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/chevron_left_dark"
+                android:background="@drawable/chevron_left"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
@@ -49,7 +50,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/chart_bar_dark"
+                android:background="@drawable/chart_line_light"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
@@ -82,6 +83,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Check your body condition!"
                         android:textStyle="bold"
+                        android:textColor="@color/login_main"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/textView2" />
@@ -92,14 +94,14 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Please check BMI!"
-                        android:layout_below="@+id/textView2"
+                        android:textColor="#5530839f"
                         android:layout_centerHorizontal="true" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
         <RelativeLayout
             android:background="#11000000"
-            android:padding="20dp"
+            android:padding="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -109,7 +111,7 @@
                 android:layout_toLeftOf="@+id/linearLayout2">
                 <LinearLayout
                     android:layout_marginRight="5dp"
-                    android:background="#22000000"
+                    android:background="#30839f"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
@@ -122,6 +124,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Age"
+                            android:textColor="#FFF"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical" />
@@ -140,6 +143,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Weight"
+                            android:textColor="#FFF"
                             android:layout_gravity="center_vertical" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -151,6 +155,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Height"
+                            android:textColor="#FFF"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical" />
@@ -163,7 +168,7 @@
                     <RelativeLayout
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:background="#22c2c2c2"
+                        android:background="#FFF"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
 
@@ -188,7 +193,7 @@
                         android:paddingRight="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:background="#22c2c2c2"
+                        android:background="#FFF"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
 
@@ -212,7 +217,7 @@
                     <RelativeLayout
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:background="#22c2c2c2"
+                        android:background="#FFF"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
 
@@ -242,6 +247,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/linearLayout2">
                 <RelativeLayout
+                    android:background="#FFF"
                     android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -258,6 +264,7 @@
                         android:layout_gravity="center_vertical" />
                 </RelativeLayout>
                 <RelativeLayout
+                    android:background="#FFF"
                     android:layout_marginBottom="5dp"
                     android:padding="10dp"
                     android:layout_width="match_parent"
@@ -275,6 +282,7 @@
                         android:layout_gravity="center_vertical" />
                 </RelativeLayout>
                 <RelativeLayout
+                    android:background="#FFF"
                     android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -296,7 +304,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
-                android:background="@color/Dialog_textcolor"
+                android:background="@color/login_main"
                 android:layout_alignParentBottom="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

@@ -14,4 +14,5 @@
     <string name="btn_exception_tracking">Track Exception</string>
     <string name="btn_app_crash">Track App Crash</string>
     <string name="btn_load_fragment">Fragment Tracking</string>
+    <string name="HockeyID">d4395d0724924ebf89618841afa9266d</string>
 </resources>

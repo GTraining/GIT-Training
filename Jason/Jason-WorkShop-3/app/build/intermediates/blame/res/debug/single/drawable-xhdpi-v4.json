@@ -36,12 +36,12 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xhdpi/alarm_plus.png"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/chevron_left.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xhdpi/chevron_left.png"
-    },
-    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xhdpi/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/chevron_left.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xhdpi/chevron_left.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/bell_ring.png",
@@ -200,6 +200,10 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xhdpi/abc_list_longpressed_holo.9.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/chart_line_light.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xhdpi/chart_line_light.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xhdpi/abc_btn_check_to_on_mtrl_000.png"
     },
@@ -226,6 +230,10 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/menu_up_true.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xhdpi/menu_up_true.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/close_light.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xhdpi/close_light.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/check_circle.png",

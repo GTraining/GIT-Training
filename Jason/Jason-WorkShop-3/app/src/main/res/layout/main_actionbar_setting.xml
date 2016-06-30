@@ -60,14 +60,14 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Calendar"
                         android:textSize="10dp"
-                        android:textColor="#55445460"
+                        android:textColor="#445460"
                         android:layout_gravity="center" />
                 </LinearLayout>
 
             </RelativeLayout>
             <RelativeLayout
                 android:onClick="onclickLogout"
-                android:background="@drawable/button_none_color_click"
+                android:background="@drawable/background_click_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -90,7 +90,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Logout"
                         android:textSize="10dp"
-                        android:textColor="#55445460"
+                        android:textColor="#445460"
                         android:layout_gravity="center" />
                 </LinearLayout>
 

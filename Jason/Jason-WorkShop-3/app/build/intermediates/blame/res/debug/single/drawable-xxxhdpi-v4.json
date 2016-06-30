@@ -16,6 +16,10 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/close_light.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_yelow.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_yelow.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/plus.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/plus.png"
     },
@@ -56,20 +60,20 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/alert_octagon.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/alert_octagon.png"
-    },
-    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/logout.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/logout.png"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/facebook.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/facebook.png"
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_white.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_white.png"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse.png"
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_red.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_red.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/facebook.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/facebook.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/close.png",
@@ -90,6 +94,10 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/menu_down.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/menu_down.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_gray.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_gray.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
@@ -118,10 +126,6 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/anchor.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/anchor.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/chevron_down.png",
@@ -156,8 +160,20 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/settings.png"
     },
     {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_blue.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_blue.png"
+    },
+    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_green.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_green.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_black.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_black.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/chart_line.png",
@@ -194,6 +210,10 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/mcv_action_previous.png",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.0/res/drawable-xxxhdpi-v4/mcv_action_previous.png"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/heart_pulse_purple.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/generated/res/pngs/debug/drawable-xxxhdpi/heart_pulse_purple.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/chevron_left.png",

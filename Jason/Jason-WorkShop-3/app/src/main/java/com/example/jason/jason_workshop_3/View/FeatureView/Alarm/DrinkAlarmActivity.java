@@ -13,6 +13,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
@@ -31,7 +33,7 @@ public class DrinkAlarmActivity extends AppCompatActivity {
     private Switch enableSwitch;
     private PAlarmSetting alarmSetting;
     private boolean alarmEnable = false;
-
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +174,7 @@ public class DrinkAlarmActivity extends AppCompatActivity {
     public void setTvAlarmMinute_End() {
         tvAlarmMinute_End.setText(String.format("%02d", alarmMinuteEnd));
     }
+
 // Start activities
     public void startActivities(Class mClass, String intent){
         Intent mIntent = new Intent(this, mClass);
@@ -217,9 +220,20 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         return calendar.getTimeInMillis();
     }
 
+    public void onclickBack(View v){
+        onBackPressed();
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         startActivities(UserMainActivity.class, "none");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hockeyAppManager.checkForCrashes();
+        MyApplication.getInstance().trackScreenView("Alarm setting screen");
     }
 }

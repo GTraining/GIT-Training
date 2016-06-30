@@ -6,6 +6,6 @@
     android:thickness="10dp"
     android:useLevel="false">
 
-    <solid android:color="#FFF" />
+    <solid android:color="@color/login_main" />
 
 </shape>

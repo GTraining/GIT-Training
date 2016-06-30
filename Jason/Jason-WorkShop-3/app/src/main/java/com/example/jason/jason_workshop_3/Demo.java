@@ -1,33 +1,49 @@
 package com.example.jason.jason_workshop_3;
 
-import android.app.Activity;
-import android.app.ListActivity;
-import android.app.Service;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.graphics.Rect;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.List;
+public class Demo extends AppCompatActivity {
 
-
-/**
- * Created by jason on 29/06/2016.
- */
-public class Demo extends Activity{
-
+    private static final String PREF_NAME = "demo";
+    private static final String TEXT_DEMO = "text_demo";
+    private static final String TEXT_SAVE = "text_save";
+    private SharedPreferences sharedPreferences = null;
+    private EditText mEditText = null;
+    Button mButton = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_demo);
+        mEditText = (EditText) findViewById(R.id.editText);
+        mButton = (Button) findViewById(R.id.button_save);
+        Init();
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save();
+            }
+        });
+    }
+    protected boolean isAuthenticated() {
+        return sharedPreferences.getBoolean(TEXT_SAVE, false);
+    }
+
+    public void save(){
+        SharedPreferences.Editor e = sharedPreferences.edit();
+        e.putString(TEXT_DEMO, mEditText.getText().toString());
+        e.putBoolean(TEXT_SAVE, true);
+        e.commit();
+    }
+
+    public void Init(){
+        sharedPreferences = getSharedPreferences(PREF_NAME, 0);
+        if (isAuthenticated()){
+            mEditText.setText(sharedPreferences.getString(TEXT_DEMO, ""));
+        }
     }
 }

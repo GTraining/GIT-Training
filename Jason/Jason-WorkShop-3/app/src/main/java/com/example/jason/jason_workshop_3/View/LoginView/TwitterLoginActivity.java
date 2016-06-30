@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PTwitterLogin;
 import com.example.jason.jason_workshop_3.R;
@@ -61,6 +62,8 @@ public class TwitterLoginActivity extends AppCompatActivity implements View.OnCl
     private SharedPreferences mSharedPreferences = null;
     private PTwitterLogin twitterLogin;
     private boolean logout = false;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,7 @@ public class TwitterLoginActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("Twitter Login Screen");
     }
 

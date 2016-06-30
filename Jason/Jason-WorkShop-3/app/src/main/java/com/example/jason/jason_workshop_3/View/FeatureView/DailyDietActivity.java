@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.MessageDialog.CheckCaloDialog;
@@ -14,6 +15,8 @@ import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 public class DailyDietActivity extends AppCompatActivity {
 
     CheckCaloDialog checkCaloDialog;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +68,7 @@ public class DailyDietActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        hockeyAppManager.checkForCrashes();
         startActivities(UserMainActivity.class, "none");
     }
 }

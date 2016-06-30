@@ -414,7 +414,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Drink Water Remind"
-                        android:textColor="#FFF"
+                        android:textColor="@color/login_main"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>

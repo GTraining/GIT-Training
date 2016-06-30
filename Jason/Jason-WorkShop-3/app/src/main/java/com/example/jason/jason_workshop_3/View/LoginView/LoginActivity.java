@@ -1,11 +1,13 @@
 package com.example.jason.jason_workshop_3.View.LoginView;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PLogin;
 import com.example.jason.jason_workshop_3.R;
@@ -19,12 +21,20 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
 
     private EditText editText_username, editText_password;
     private PLogin mLoginAdapter;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Typeface mTypeface = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
+
         editText_password = (EditText) findViewById(R.id.editText_password);
         editText_username = (EditText) findViewById(R.id.editText_username);
+
+        editText_password.setTypeface(mTypeface);
+        editText_username.setTypeface(mTypeface);
+
         mLoginAdapter = new PLogin(LoginActivity.this);
     }
 
@@ -78,12 +88,13 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
     }
 
     public void onclickTwitterLogin(View v){
-        startActivities(TwitterLoginActivity.class, "login");
+        startActivities(TwitterLoginActivity.class, "Login");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("Login Screen");
     }
 }

@@ -42,5 +42,5 @@ dependencies {
 //    compile files('libs/twitter4j-4.0.4.zip')
     compile 'org.twitter4j:twitter4j-core:4.0.3'
     compile 'com.google.android.gms:play-services-analytics:9.0.0'
-    compile 'net.hockeyapp.android:HockeySDK:4.0.1'
+    compile 'net.hockeyapp.android:HockeySDK:4.1.0-beta.2'
 }

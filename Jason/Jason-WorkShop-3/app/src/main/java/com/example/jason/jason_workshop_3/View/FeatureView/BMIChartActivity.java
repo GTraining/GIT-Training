@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.ChartLibrary.RealmBaseActivity;
 import com.example.jason.jason_workshop_3.ChartLibrary.Score;
@@ -26,6 +27,7 @@ import io.realm.RealmResults;
 public class BMIChartActivity extends RealmBaseActivity {
     private LineChart lineChart;
     private PBMIChartLine presenterBmiChartLine;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class BMIChartActivity extends RealmBaseActivity {
     @Override
     protected void onResume() {
         super.onResume(); // setup realm
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("BMI Chart Screen");
         mRealm.beginTransaction();
         List<Score> scoreList = presenterBmiChartLine.setScore();

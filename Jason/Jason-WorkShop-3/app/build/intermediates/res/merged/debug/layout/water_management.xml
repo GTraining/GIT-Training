@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
+        android:background="#667cd6ff"
         android:layout_width="match_parent"
         android:layout_height="45dp">
 
@@ -69,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="50"
-                    android:textColor="#55000000"
+                    android:textColor="#88000000"
                     android:textSize="80dp"
                     android:id="@+id/textView_amount"
                     android:layout_alignParentBottom="true"
@@ -104,6 +105,7 @@
                     android:layout_alignParentBottom="true"
                     android:background="#667cd6ff"
                     android:id="@+id/imageView_water" />
+
             </RelativeLayout>
             <LinearLayout
                 android:id="@+id/water"
@@ -124,6 +126,29 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="-   50%"
                     android:textColor="#55FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Try to add a cup when you drink each!"
+                    android:textColor="#88FFFFFF"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Water is good for your health."
+                    android:textColor="#88FFFFFF"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Don't for get it."
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
             <RelativeLayout

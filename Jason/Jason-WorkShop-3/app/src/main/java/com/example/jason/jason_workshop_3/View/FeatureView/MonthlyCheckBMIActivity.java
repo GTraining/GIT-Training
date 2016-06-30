@@ -12,7 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jason.jason_workshop_3.Alarm.AlarmReceiver;
+import com.example.jason.jason_workshop_3.Receiver.AlarmReceiver;
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Model.UserModel.Data.UserDatabase;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyBMI.PMonthlyCheckBMI;
@@ -39,6 +40,8 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     private PMonthlyCheckBMI mPresenterMonthlyCheckBMI;
     private RelativeLayout layoutBMIchart;
 
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,7 @@ public class MonthlyCheckBMIActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("Monthly Check BMI Screen");
     }
 

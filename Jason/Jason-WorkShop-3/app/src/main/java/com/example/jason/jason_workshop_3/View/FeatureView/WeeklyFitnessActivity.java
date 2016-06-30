@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PWeeklyFitness.PExerciseRecyclerView;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PWeeklyFitness.PWeeklyRecyclerView;
@@ -19,6 +20,8 @@ public class WeeklyFitnessActivity extends AppCompatActivity {
     private PWeeklyRecyclerView weeklyRecyclerView;
     private RecyclerView recyclerView_week;
     private RecyclerView recyclerView_exercise;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,7 @@ public class WeeklyFitnessActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("Weekly Fitness Screen");
     }
 

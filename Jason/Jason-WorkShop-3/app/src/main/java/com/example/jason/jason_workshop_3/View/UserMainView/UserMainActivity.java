@@ -62,7 +62,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         hockeyAppManager = new HockeyAppManager(this);
         mPresenterClockAdapter = new PClockAdapter(this);
         mSettingActionbar = new PSettingActionbar(this);
-
         mCountMillisecond = mPresenterClockAdapter.getCountMilliseconds();
         setClockRunnable();
         runClockCount();

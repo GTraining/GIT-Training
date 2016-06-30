@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDiet.PListFoodAdapter;
 import com.example.jason.jason_workshop_3.R;
@@ -15,6 +16,8 @@ public class FoodActivity extends AppCompatActivity {
 
     private PListFoodAdapter pListFood;
     private RecyclerView recyclerView;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class FoodActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("List Food Screen");
     }
 

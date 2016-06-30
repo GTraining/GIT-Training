@@ -3,6 +3,7 @@ package com.example.jason.jason_workshop_3.View.LoginView;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PSignup;
 import com.example.jason.jason_workshop_3.R;
@@ -28,14 +30,19 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl,
     private EditText editText_username, editText_password, editText_cfpassword;
     private String Username, password, cf_password;
     private PSignup mPresenter_signup;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        Typeface mTypeface = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         editText_username = (EditText) findViewById(R.id.editText_username);
         editText_password = (EditText) findViewById(R.id.editText_password);
         editText_cfpassword = (EditText) findViewById(R.id.editText_cfpassword);
+        editText_username.setTypeface(mTypeface);
+        editText_password.setTypeface(mTypeface);
+        editText_cfpassword.setTypeface(mTypeface);
         editText_cfpassword.setOnKeyListener(this);
         mPresenter_signup = new PSignup(this);
     }
@@ -95,26 +102,16 @@ public class SignupActivity extends AppCompatActivity implements SignUpViewImpl,
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("Sign up Screen");
     }
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-            Toast.makeText(SignupActivity.this, "SIGN UP", Toast.LENGTH_SHORT).show();
+            onclickSignUp(v);
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        if (newConfig.keyboard == Configuration.KEYBOARDHIDDEN_NO) {
-            Toast.makeText(this, "keyboard visible", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.keyboard == Configuration.KEYBOARDHIDDEN_YES) {
-            Toast.makeText(this, "keyboard hidden", Toast.LENGTH_SHORT).show();
-        }
     }
 }

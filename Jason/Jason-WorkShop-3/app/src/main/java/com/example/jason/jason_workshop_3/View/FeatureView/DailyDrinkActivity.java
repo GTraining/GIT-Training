@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
 import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrink.PDaiLyDrinkUpdate;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrink.PDailyDrinkAdapter;
@@ -27,6 +28,8 @@ public class DailyDrinkActivity extends AppCompatActivity {
     private ImageView img_water;
     private PDaiLyDrinkUpdate pDaiLyDrinkUpdate;
     private RelativeLayout layout_add;
+    private HockeyAppManager hockeyAppManager = new HockeyAppManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,7 @@ public class DailyDrinkActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        hockeyAppManager.checkForCrashes();
         MyApplication.getInstance().trackScreenView("Daily Drink Screen");
     }
 

@@ -97,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="ACTIVITY"
-                        android:textColor="#000"
+                        android:textColor="@color/login_main"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>

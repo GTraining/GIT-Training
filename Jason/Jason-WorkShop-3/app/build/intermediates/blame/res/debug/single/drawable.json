@@ -8,24 +8,20 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/circle_shape_second.xml"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/exercise_oval.xml",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/exercise_oval.xml"
-    },
-    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_seekbar_track_material.xml"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_btn_check_material.xml"
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/exercise_oval.xml",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/exercise_oval.xml"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/twitter_login_click.xml",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/twitter_login_click.xml"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/bg_food.jpg",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/bg_food.jpg"
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_btn_check_material.xml"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
@@ -72,16 +68,16 @@
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/diet_click_true.xml"
     },
     {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/clock.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/clock.png"
-    },
-    {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/circle_button_click_main.xml",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/circle_button_click_main.xml"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/ic.png",
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/ic.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
@@ -149,7 +145,7 @@
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/hockeyapp_btn_background.xml",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/net.hockeyapp.android/HockeySDK/4.0.1/res/drawable/hockeyapp_btn_background.xml"
+        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/exploded-aar/net.hockeyapp.android/HockeySDK/4.1.0-beta.2/res/drawable/hockeyapp_btn_background.xml"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/common_plus_signin_btn_text_dark.xml",
@@ -298,10 +294,6 @@
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/circle_white_blend.xml",
         "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/circle_white_blend.xml"
-    },
-    {
-        "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/background_two.png",
-        "source": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/src/main/res/drawable/background_two.png"
     },
     {
         "merged": "/home/jason/GIT-Training/Jason/Jason-WorkShop-3/app/build/intermediates/res/merged/debug/drawable/circle_shape_hour.xml",

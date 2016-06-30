@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true" />
 
         <RelativeLayout
-            android:background="@drawable/background_click_main"
+            android:background="@drawable/button_none_color_click"
             android:onClick="onclickBack"
             android:layout_width="45dp"
             android:layout_height="match_parent"

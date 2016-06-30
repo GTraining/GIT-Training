@@ -56,14 +56,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+            <TextView
+                android:id="@+id/widget_nosong"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_title"
+                android:text="No songs selected"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"/>
             <LinearLayout
+                android:id="@+id/widget_controlholder"
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="9"
                 android:layout_height="0dp">
                 <ImageButton
-                    android:visibility="invisible"
                     android:theme="@style/Button_widget"
                     android:id="@+id/widget_previous"
                     android:src="@drawable/widget_previousicon"
@@ -71,7 +81,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <ImageButton
-                    android:visibility="invisible"
                     android:theme="@style/Button_widget"
                     android:id="@+id/widget_play"
                     android:src="@drawable/widget_playicon"
@@ -79,7 +88,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <ImageButton
-                    android:visibility="invisible"
                     android:theme="@style/Button_widget"
                     android:id="@+id/widget_next"
                     android:src="@drawable/widget_nexticon"

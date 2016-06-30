@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PWeeklyFitness.PExerciseRecyclerView;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PWeeklyFitness.PWeeklyRecyclerView;
 import com.example.jason.jason_workshop_3.R;
@@ -33,6 +34,12 @@ public class WeeklyFitnessActivity extends AppCompatActivity {
 
         recyclerView_week.setAdapter(weeklyRecyclerView);
         recyclerView_exercise.setAdapter(exerciseRecyclerView);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Weekly Fitness Screen");
     }
 
     public void onclickBack(View v){

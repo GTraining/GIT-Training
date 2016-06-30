@@ -11,6 +11,7 @@ import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.R;
 
 public class TwitterAuthenticationActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class TwitterAuthenticationActivity extends AppCompatActivity {
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.loadUrl(url);
     }
+
 
     @Override
     protected void onStop() {
@@ -57,6 +59,7 @@ public class TwitterAuthenticationActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         this.onRestart();
+        MyApplication.getInstance().trackScreenView("Twitter Web View");
     }
 
     private class MyWebViewClient extends WebViewClient {

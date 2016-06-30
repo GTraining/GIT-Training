@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrink.PDaiLyDrinkUpdate;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PDailyDrink.PDailyDrinkAdapter;
 import com.example.jason.jason_workshop_3.R;
@@ -50,7 +51,15 @@ public class DailyDrinkActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Daily Drink Screen");
+    }
+
     public void onclickAddCup(View v){
+        MyApplication.getInstance().trackEvent("DailyDrink", "onclick", "On click add water cup");
         if (cup < 10) {
             cup ++;
             txv_cupamount.setText("" + cup * 10);
@@ -68,6 +77,7 @@ public class DailyDrinkActivity extends AppCompatActivity {
     }
 
     public void onclickback(View v){
+        MyApplication.getInstance().trackEvent("DailyDrink", "onclick", "On click back");
         Intent mIntent = new Intent(this, UserMainActivity.class);
         mIntent.putExtra("Intent", "none");
         startActivity(mIntent);

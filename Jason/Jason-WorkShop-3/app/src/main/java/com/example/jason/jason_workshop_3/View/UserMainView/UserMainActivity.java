@@ -10,6 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.HockeyAppManager;
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Model.ClockModel.MClockDate;
 import com.example.jason.jason_workshop_3.Model.ClockModel.MClockTime;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PSettingActionbar;
@@ -39,6 +41,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
     private ProgressBar progressBar_second, progressBar_minute, progressBar_hour;
     private TextView txv_time, txv_Second, txv_date, txv_month, txv_year, txv_day, txv_AP;
     private PSettingActionbar mSettingActionbar;
+    private HockeyAppManager hockeyAppManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +59,36 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         txv_day = (TextView) findViewById(R.id.textView_day);
         txv_AP = (TextView) findViewById(R.id.textView_Ap);
 
+        hockeyAppManager = new HockeyAppManager(this);
         mPresenterClockAdapter = new PClockAdapter(this);
         mSettingActionbar = new PSettingActionbar(this);
 
         mCountMillisecond = mPresenterClockAdapter.getCountMilliseconds();
         setClockRunnable();
         runClockCount();
+        hockeyAppManager.checkForUpdates();
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hockeyAppManager.checkForCrashes();
+        MyApplication.getInstance().trackScreenView("User Main Home Screen");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        hockeyAppManager.unregisterManagers();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        hockeyAppManager.unregisterManagers();
+
+    }
     //Show current time on custom clock
     @Override
     public void showClock(MClockTime mClockTime) {
@@ -173,10 +197,6 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
         startActivity(mIntent);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 
     @Override
     public void onBackPressed() {

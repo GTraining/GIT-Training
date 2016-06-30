@@ -10,23 +10,54 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
+        android:name=".Application.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/heart_pulse"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.MainActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="${HOCKEYAPP_APP_ID}" />
+
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
         <activity android:name=".View.UserMainView.UserMainActivity" />
         <activity android:name=".View.FeatureView.WeeklyFitnessActivity" />
         <activity android:name=".View.FeatureView.DailyDrinkActivity" />
         <activity android:name=".View.FeatureView.DailyDietActivity" />
-        <activity android:name=".View.LoginView.SignupActivity" />
+        <activity android:name=".View.LoginView.SignupActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation"/>
         <activity android:name=".View.FeatureView.MonthlyCheckBMIActivity" />
         <activity android:name=".View.FeatureView.BMIChartActivity" />
         <activity android:name=".View.LoginView.LoginActivity" />

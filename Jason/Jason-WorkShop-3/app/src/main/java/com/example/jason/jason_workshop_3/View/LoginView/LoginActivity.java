@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PLogin;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
@@ -78,5 +79,11 @@ public class LoginActivity extends AppCompatActivity implements LoginViewImpl {
 
     public void onclickTwitterLogin(View v){
         startActivities(TwitterLoginActivity.class, "login");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Login Screen");
     }
 }

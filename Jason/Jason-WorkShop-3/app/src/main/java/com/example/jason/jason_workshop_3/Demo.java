@@ -1,37 +1,33 @@
 package com.example.jason.jason_workshop_3;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.app.Service;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
+
 
 /**
  * Created by jason on 29/06/2016.
  */
-public class Demo extends Activity {
+public class Demo extends Activity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        Calendar calendar = Calendar.getInstance();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        String time = String.format("%02d:%02d", 6, 59);
-        Date date = new Date();
-        try {
-            date = dateFormat.parse(time);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        calendar.setTime(date);
-
-        int Hour = calendar.get(Calendar.HOUR);
-        int Minute = calendar.get(Calendar.MINUTE);
-
-        Toast.makeText(Demo.this, "" + Hour + " : " + Minute, Toast.LENGTH_SHORT).show();
+        setContentView(R.layout.activity_signup);
     }
 }

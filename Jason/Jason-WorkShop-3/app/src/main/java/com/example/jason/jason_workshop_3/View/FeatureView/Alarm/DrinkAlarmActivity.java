@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.jason_workshop_3.R;
+import com.example.jason.jason_workshop_3.View.UserMainView.UserMainActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -214,5 +215,11 @@ public class DrinkAlarmActivity extends AppCompatActivity {
         }
         calendar.setTime(date);
         return calendar.getTimeInMillis();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivities(UserMainActivity.class, "none");
     }
 }

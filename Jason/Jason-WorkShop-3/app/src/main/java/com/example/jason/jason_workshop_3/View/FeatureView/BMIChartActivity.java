@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.ChartLibrary.RealmBaseActivity;
 import com.example.jason.jason_workshop_3.ChartLibrary.Score;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_Feature_Main.PMonthlyBMI.PBMIChartLine;
@@ -44,6 +45,7 @@ public class BMIChartActivity extends RealmBaseActivity {
     @Override
     protected void onResume() {
         super.onResume(); // setup realm
+        MyApplication.getInstance().trackScreenView("BMI Chart Screen");
         mRealm.beginTransaction();
         List<Score> scoreList = presenterBmiChartLine.setScore();
         for (int i = 0; i < scoreList.size(); i ++){
@@ -51,7 +53,9 @@ public class BMIChartActivity extends RealmBaseActivity {
         }
         mRealm.commitTransaction();
         setData();
+
     }
+
 
     private void setData() {
 
@@ -91,6 +95,7 @@ public class BMIChartActivity extends RealmBaseActivity {
         Intent mIntent = new Intent(this, mClass);
         mIntent.putExtra("Intent", intent);
         startActivity(mIntent);
+        MyApplication.getInstance().trackEvent("BMI chart", "startActivities", "startActivities");
     }
 
     public void backEvent(){
@@ -98,5 +103,6 @@ public class BMIChartActivity extends RealmBaseActivity {
         if (intent.equals("1")){
             startActivitys(MonthlyCheckBMIActivity.class, "3");
         }else startActivitys(UserMainActivity.class, "None");
+        MyApplication.getInstance().trackEvent("BMI chart", "Back", "onclickBack");
     }
 }

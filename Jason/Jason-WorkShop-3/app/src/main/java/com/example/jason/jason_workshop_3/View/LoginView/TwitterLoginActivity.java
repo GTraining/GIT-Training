@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jason.jason_workshop_3.Application.MyApplication;
 import com.example.jason.jason_workshop_3.Presenter.Presenter_LogIn_SignUp.PTwitterLogin;
 import com.example.jason.jason_workshop_3.R;
 import com.example.jason.jason_workshop_3.View.FeatureView.MonthlyCheckBMIActivity;
@@ -78,6 +79,12 @@ public class TwitterLoginActivity extends AppCompatActivity implements View.OnCl
         start_main_btn.setOnClickListener(this);
 
         if (getIntent().getStringExtra("Intent").equals("Login")) logout = true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Twitter Login Screen");
     }
 
     @Override

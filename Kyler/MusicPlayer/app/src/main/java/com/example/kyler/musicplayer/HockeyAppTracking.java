@@ -9,22 +9,17 @@ import net.hockeyapp.android.UpdateManager;
  * Created by kyler on 29/06/2016.
  */
 public class HockeyAppTracking {
-    Activity activity;
 
-    public HockeyAppTracking(Activity activity) {
-        this.activity = activity;
-    }
-
-    public void checkForCrashes() {
+    public static void checkForCrashes(Activity activity) {
         CrashManager.register(activity);
     }
 
-    public void checkForUpdates() {
+    public static void checkForUpdates(Activity activity) {
         // Remove this for store builds!
         UpdateManager.register(activity);
     }
 
-    public void unregisterManagers() {
+    public static void unregisterManagers(Activity activity) {
         UpdateManager.unregister();
     }
 

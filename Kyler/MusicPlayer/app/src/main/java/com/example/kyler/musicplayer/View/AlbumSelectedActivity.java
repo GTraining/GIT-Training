@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.kyler.musicplayer.AnalyticsTrackers;
+import com.example.kyler.musicplayer.HockeyAppTracking;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.IListSongPresenter;
@@ -32,6 +34,7 @@ public class AlbumSelectedActivity extends AppCompatActivity implements IListSon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HockeyAppTracking.checkForUpdates(this);
         setContentView(R.layout.activity_album_selected);
         album = getIntent().getStringExtra(String.valueOf(R.string.albumSelected));
         setUpToolbar();
@@ -39,6 +42,12 @@ public class AlbumSelectedActivity extends AppCompatActivity implements IListSon
         selectedAlbum.setOnItemClickListener(this);
         presenter = new ListSongPresenter(this,this);
         presenter.getSong(album);
+    }
+
+    @Override
+    protected void onResume() {
+        HockeyAppTracking.checkForCrashes(this);
+        super.onResume();
     }
 
     /**
@@ -56,7 +65,7 @@ public class AlbumSelectedActivity extends AppCompatActivity implements IListSon
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        MyApplication.getInstance().trackEvent("Choose song", "Choose from album selected", "Choose song to play");
+        MyApplication.getInstance().trackEvent(AnalyticsTrackers.CHOOSESONG_CATEGORY, "Songs from album selected", "Choose song to play");
         Intent intent = new Intent(this, SongDetailActivity.class);
         ArrayList<String> arrSongPaths = new ArrayList<>();
         for(int j=0;j<songs.size();j++){
@@ -83,5 +92,17 @@ public class AlbumSelectedActivity extends AppCompatActivity implements IListSon
             default: super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        HockeyAppTracking.unregisterManagers(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        HockeyAppTracking.unregisterManagers(this);
+        super.onDestroy();
     }
 }

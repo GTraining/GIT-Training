@@ -17,12 +17,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.example.kyler.musicplayer.AnalyticsTrackers;
+import com.example.kyler.musicplayer.HockeyAppTracking;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.Presenter.ISongDetailPresenter;
 import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.Utils.Helper;
+
+import net.hockeyapp.android.metrics.MetricsManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -47,6 +52,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HockeyAppTracking.checkForUpdates(this);
+        MetricsManager.register(this, getApplication());
         setContentView(R.layout.activity_song_detail);
         init();
         Intent intent = getIntent();
@@ -75,6 +82,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         MyApplication.getInstance().trackScreenView("Song Detail Activity");
+        HockeyAppTracking.checkForCrashes(this);
         super.onResume();
     }
 
@@ -217,7 +225,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                MyApplication.getInstance().trackEvent("Timer music", "Set time", "Set time to stop music");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Set timer", "Set time to stop music");
+                MetricsManager.trackEvent("Set timer");
                 detailPresenter.setTimer(timerTime);
             }
         });
@@ -285,29 +294,35 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_song_detail_timer:
-                MyApplication.getInstance().trackEvent("Playing song", "Timer music", "Timer for stop music");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Timer music", "Timer for stop music");
+                MetricsManager.trackEvent("Timer music");
                 showTimerDialog();
                 break;
             case R.id.activity_song_detail_shuffle:
-                MyApplication.getInstance().trackEvent("Playing song", "Shuffle music", "Set shuffle for music");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Shuffle music", "Set shuffle for music");
+                MetricsManager.trackEvent("Shuffle music");
                 shuffleStatus = !shuffleStatus;
                 detailPresenter.setShuffle(shuffleStatus);
                 setStatus();
                 break;
             case R.id.activity_song_detail_repeat:
-                MyApplication.getInstance().trackEvent("Playing song", "Repeat click", "Set repeat for music");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Repeat click", "Set repeat for music");
+                MetricsManager.trackEvent("Repeat click");
                 setRepeat();
                 break;
             case R.id.activity_song_detail_previous:
-                MyApplication.getInstance().trackEvent("Playing song", "Previous click", "Play previous song");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Previous click", "Play previous song");
+                MetricsManager.trackEvent("Previous click");
                 previousSong();
                 break;
             case R.id.activity_song_detail_play:
-                MyApplication.getInstance().trackEvent("Playing song", "Play/pause click", "Play/pause music");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Play/pause click", "Play/pause music");
+                MetricsManager.trackEvent("Play/pause click");
                 playSong();
                 break;
             case R.id.activity_song_detail_next:
-                MyApplication.getInstance().trackEvent("Playing song", "Next click", "Play next song");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Next click", "Play next song");
+                MetricsManager.trackEvent("Next click");
                 nextSong();
                 break;
         }
@@ -327,7 +342,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        MyApplication.getInstance().trackEvent("Seek music", "Set progress", "Set backward or forward music by progress bar");
+        MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Seek Music", "Set backward or forward music by progress bar");
+        MetricsManager.trackEvent("Seek Music");
         seekTo(currentTime);
         updateSeekbar();
     }
@@ -363,6 +379,9 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             if(hoding) {
                 setForward();
                 mHandler.postDelayed(this,200);
+            }else{
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Forward long press", "Backward music by long press");
+                MetricsManager.trackEvent("Forward long press");
             }
         }
     };
@@ -372,7 +391,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 setBackward();
                 mHandler.postDelayed(this,200);
             }else{
-
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Backward long press", "Backward music by long press");
+                MetricsManager.trackEvent("Backward long press");
             }
         }
     };
@@ -403,7 +423,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                     break;
                 case MotionEvent.ACTION_UP:
                     setForward();
-                    MyApplication.getInstance().trackEvent("Playing song", "Forward click", "Forward music 5 secs");
+                    MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Forward click", "Forward music 5 secs");
+                    MetricsManager.trackEvent("Forward click");
                     hoding = false;
                     mHandler.removeCallbacks(longForwardPressed);
                     break;
@@ -412,12 +433,12 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     hoding = true;
-                    MyApplication.getInstance().trackEvent("Playing song", "Backward long press", "Backward music by long press");
                     mHandler.postDelayed(longBackwardPressed, LONG_PRESS_TIME);
                     break;
                 case MotionEvent.ACTION_UP:
                     setBackward();
-                    MyApplication.getInstance().trackEvent("Playing song", "Backward click", "Backward music 5 secs");
+                    MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Backward click", "Backward music 5 secs");
+                    MetricsManager.trackEvent("Backward click");
                     hoding = false;
                     mHandler.removeCallbacks(longBackwardPressed);
                     break;
@@ -435,5 +456,17 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
             startActivity(intent);
             this.finish();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        HockeyAppTracking.unregisterManagers(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        HockeyAppTracking.unregisterManagers(this);
+        super.onDestroy();
     }
 }

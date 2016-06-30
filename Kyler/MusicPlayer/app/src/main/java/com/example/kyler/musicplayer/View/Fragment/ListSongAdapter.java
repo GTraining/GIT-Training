@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kyler.musicplayer.AnalyticsTrackers;
 import com.example.kyler.musicplayer.Model.Database.DatabaseHandler;
 import com.example.kyler.musicplayer.Model.Song;
 import com.example.kyler.musicplayer.MyApplication;
@@ -85,7 +86,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        MyApplication.getInstance().trackEvent("Favorite", "Unfavorite Songs", "Unfavorite songs and update to database");
+                                        MyApplication.getInstance().trackEvent(AnalyticsTrackers.FAVORITE_CATEGORY, "Unfavorite Songs", "Unfavorite songs and update to database");
                                         songs.remove(song);
                                         adapterPresenter.unFavoriteSong(song);
                                         notifyDataSetChanged();
@@ -98,7 +99,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        MyApplication.getInstance().trackEvent("Favorite", "Unfavorite Songs", "Unfavorite songs and update to database");
+                                        MyApplication.getInstance().trackEvent(AnalyticsTrackers.FAVORITE_CATEGORY, "Unfavorite Songs", "Unfavorite songs and update to database");
                                         adapterPresenter.unFavoriteSong(song);
                                         notifyDataSetChanged();
                                     }
@@ -106,7 +107,7 @@ public class ListSongAdapter extends BaseAdapter implements IListSongAdapter {
                         builder.show();
                     }
                 }else{
-                MyApplication.getInstance().trackEvent("Favorite", "Favorite Songs", "Favorite songs and update to database");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.FAVORITE_CATEGORY, "Favorite Songs", "Favorite songs and update to database");
                     adapterPresenter.setFavoriteSong(song);
                     notifyDataSetChanged();
                 }

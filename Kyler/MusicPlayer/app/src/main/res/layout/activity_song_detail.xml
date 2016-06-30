@@ -125,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:weightSum="3"
+            android:weightSum="4"
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageButton
@@ -140,7 +140,7 @@
                 android:theme="@style/Button"
                 android:id="@+id/activity_song_detail_shuffle"
                 android:padding="10dp"
-                android:src="@drawable/shufflebutton"
+                android:src="@drawable/shuffledisablebutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>
@@ -149,6 +149,14 @@
                 android:id="@+id/activity_song_detail_repeat"
                 android:padding="10dp"
                 android:src="@drawable/repeatbutton"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+            <ImageButton
+                android:theme="@style/Button"
+                android:id="@+id/activity_song_detail_shake"
+                android:padding="10dp"
+                android:src="@drawable/shakedisablebutton"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"/>

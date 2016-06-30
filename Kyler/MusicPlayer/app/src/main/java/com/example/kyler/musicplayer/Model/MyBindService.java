@@ -7,17 +7,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
-import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.Utils.Helper;
+import com.example.kyler.musicplayer.Utils.ShakeDetector;
 import com.example.kyler.musicplayer.Widget.MusicPlayerWidget;
 
 import java.io.IOException;
@@ -31,12 +33,16 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public static final String STOP_ACTION="android.kyler.Stop";
     public static int NOTIFY_ID = 0;
     public static String NOTIFICATION_TAG = "com.example.kyler.musicplayer.NotificationTag";
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
     private ArrayList<Song> songs, shuffleSongs, normalSongs;
     private String currentPath = "";
     private int currentPosition = 0;
     private int timerTime = 0;
     private boolean shuffle = false;
     private boolean timerComplete = false;
+    private boolean shake = false;
     private CountDown countDownTimer;
     private int repeat = 0;
     MediaPlayer mediaPlayer;
@@ -48,6 +54,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
+        mSensorManager.unregisterListener(mShakeDetector);
         stopMusic();
         Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
         intent.putStringArrayListExtra(String.valueOf(R.string.path),new ArrayList<String>());
@@ -117,6 +124,34 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         registerReceiver(receiver,new IntentFilter(PREVIOUS_ACTION));
         registerReceiver(receiver,new IntentFilter(NEXT_ACTION));
         registerReceiver(receiver,new IntentFilter(STOP_ACTION));
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
+
+            @Override
+            public void onShake(int count) {
+                if(shake) {
+                    switch (count) {
+                        case 2:
+                            playNext();
+                            break;
+                        case 1:
+                            if (isPlaying()) {
+                                pauseSong();
+                            } else {
+                                resumeSong();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        });
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
@@ -157,6 +192,10 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
     public int getRepeat(){
         return repeat;
+    }
+
+    public boolean getShake(){
+        return shake;
     }
 
     public boolean getShuffle(){
@@ -243,6 +282,10 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         this.repeat = repeat;
     }
 
+    public void setShake(boolean shake){
+        this.shake = shake;
+    }
+
     public void playNext(){
         switch (repeat){
             case 0:
@@ -324,6 +367,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public void onDestroy() {
         Log.e("MyBindService","onDestroy");
         unregisterReceiver(receiver);
+        mSensorManager.unregisterListener(mShakeDetector);
         super.onDestroy();
         stopForeground(true);
     }

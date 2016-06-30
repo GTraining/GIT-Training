@@ -25,7 +25,9 @@
         </activity>
         <activity android:name=".View.SongDetailActivity" >
         </activity>
-
+        <uses-feature
+            android:name="android.hardware.sensor.accelerometer"
+            android:required="true" />
         <service
             android:name=".Model.MyBindService"
             android:stopWithTask="false">

@@ -18,12 +18,15 @@ public interface ISongDetailPresenter {
     void playPrevious();
     void setTimer(int minute);
     void setRepeat(int repeat);
+    void setShake(boolean shake);
     boolean isPlaying();
     boolean getTimerComplete();
     int getTimerTime();
     long getCurrent();
     String getCurrentPath();
     int getRepeatStatus();
+    boolean getShakeStatus();
     boolean getShuffleStatus();
     void onFinish();
+    boolean isBinding();
 }

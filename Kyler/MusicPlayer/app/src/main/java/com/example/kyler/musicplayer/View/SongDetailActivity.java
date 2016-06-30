@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -17,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kyler.musicplayer.AnalyticsTrackers;
 import com.example.kyler.musicplayer.HockeyAppTracking;
@@ -34,14 +34,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class SongDetailActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, ISongDetailView, View.OnTouchListener{
-    ImageButton timer, shuffle, repeat, previous, backward, play ,forward, next;
+    ImageButton timer, shuffle, repeat, shake, previous, backward, play ,forward, next;
     TextView currentTxt, durationTxt, title, artist, album, author;
     SeekBar seekBar;
     ImageView image;
     LinearLayout background;
     Dialog timerDialog;
 
-    boolean playStatus = false, shuffleStatus = false;
+    boolean playStatus = false, shuffleStatus = false, shakeStatus = false;
     int repeatStatus = 0, currentID, timerTime=0;
     long currentTime = 0;
     Song song;
@@ -63,16 +63,20 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(detailPresenter.isPlaying() && arrSongPaths.get(currentID).equals(detailPresenter.getCurrentPath())){
+                if(detailPresenter.isPlaying()){
                     currentTime = detailPresenter.getCurrent();
                     repeatStatus = detailPresenter.getRepeatStatus();
                     shuffleStatus = detailPresenter.getShuffleStatus();
-                    detailPresenter.getSong();
-                    detailPresenter.setOnPlayingSongs(arrSongPaths, currentID);
+                    shakeStatus = detailPresenter.getShakeStatus();
+                    if(arrSongPaths.get(currentID).equals(detailPresenter.getCurrentPath())) {
+                        detailPresenter.getSong();
+                        detailPresenter.setOnPlayingSongs(arrSongPaths, currentID);
+                    }else {
+                        detailPresenter.setSongs(arrSongPaths, currentID);
+                    }
                 }else {
                     detailPresenter.setSongs(arrSongPaths, currentID);
                 }
-                detailPresenter.setRepeat(repeatStatus);
                 playSong();
                 setStatus();
             }
@@ -94,6 +98,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         timer = (ImageButton) findViewById(R.id.activity_song_detail_timer);
         shuffle = (ImageButton) findViewById(R.id.activity_song_detail_shuffle);
         repeat = (ImageButton) findViewById(R.id.activity_song_detail_repeat);
+        shake = (ImageButton) findViewById(R.id.activity_song_detail_shake);
         previous = (ImageButton) findViewById(R.id.activity_song_detail_previous);
         backward = (ImageButton) findViewById(R.id.activity_song_detail_backward);
         play = (ImageButton) findViewById(R.id.activity_song_detail_play);
@@ -113,6 +118,7 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         timer.setOnClickListener(this);
         shuffle.setOnClickListener(this);
         repeat.setOnClickListener(this);
+        shake.setOnClickListener(this);
         previous.setOnClickListener(this);
         play.setOnClickListener(this);
         next.setOnClickListener(this);
@@ -148,6 +154,12 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 repeat.setImageResource(R.drawable.repeatdisablebutton);
                 break;
             default:break;
+        }
+
+        if(shakeStatus){
+            shake.setImageResource(R.drawable.shakebutton);
+        }else{
+            shake.setImageResource(R.drawable.shakedisablebutton);
         }
     }
 
@@ -290,6 +302,16 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         setStatus();
     }
 
+    private void setShake(){
+        shakeStatus = !shakeStatus;
+        detailPresenter.setShake(shakeStatus);
+        if(shakeStatus){
+            Toast.makeText(getApplicationContext(),"Shaking for control music : On",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(),"Shaking for control music : Off",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -309,6 +331,11 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
                 MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Repeat click", "Set repeat for music");
                 MetricsManager.trackEvent("Repeat click");
                 setRepeat();
+                break;
+            case R.id.activity_song_detail_shake:
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Shake click", "Set shaking for control music");
+                MetricsManager.trackEvent("Shake click");
+                setShake();
                 break;
             case R.id.activity_song_detail_previous:
                 MyApplication.getInstance().trackEvent(AnalyticsTrackers.PLAYING_CATEGORY, "Previous click", "Play previous song");

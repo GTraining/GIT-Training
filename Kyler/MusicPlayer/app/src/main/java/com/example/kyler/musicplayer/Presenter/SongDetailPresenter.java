@@ -156,6 +156,13 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public void setShake(boolean shake) {
+        if(binded) {
+            myBindService.setShake(shake);
+        }
+    }
+
+    @Override
     public boolean isPlaying() {
         if(binded)
             return myBindService.isPlaying();
@@ -209,6 +216,18 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     }
 
     @Override
+    public boolean getShakeStatus() {
+        if(binded) {
+            return myBindService.getShake();
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+    @Override
     public boolean getShuffleStatus() {
         if(binded) {
             return myBindService.getShuffle();
@@ -230,5 +249,9 @@ public class SongDetailPresenter implements ISongDetailPresenter{
         },3000);
     }
 
+    @Override
+    public boolean isBinding() {
+        return binded;
+    }
 
 }

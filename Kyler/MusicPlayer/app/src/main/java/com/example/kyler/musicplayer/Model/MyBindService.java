@@ -45,6 +45,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     private boolean shake = false;
     private CountDown countDownTimer;
     private int repeat = 0;
+    private Handler mHandler;
     MediaPlayer mediaPlayer;
     private BroadcastReceiver receiver;
     Notification not;
@@ -84,6 +85,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public void onCreate() {
         Log.e("MyBindService","onCreate");
         super.onCreate();
+        mHandler = new Handler();
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnPreparedListener(this);
@@ -310,7 +312,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
                 if(currentPosition>=songs.size()) {
                     currentPosition = 0;
                     playSong();
-                    new Handler().postDelayed(new Runnable() {
+                    mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             pauseSong();
@@ -329,7 +331,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         stopForeground(true);
         stopSelf();
         ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFICATION_TAG,NOTIFY_ID);
-        new Handler().postDelayed(new Runnable() {
+        mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 timerComplete = false;
@@ -416,7 +418,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
 
             //Because of not being called on Tick in last time. Using handle to decrease timerTime
             if(timerTime == 2){
-                new Handler().postDelayed(new Runnable() {
+                mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         timerTime--;

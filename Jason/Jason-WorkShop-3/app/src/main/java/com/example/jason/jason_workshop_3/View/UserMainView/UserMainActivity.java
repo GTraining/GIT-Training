@@ -181,9 +181,7 @@ public class UserMainActivity extends AppCompatActivity implements MainViewImpl 
 
     // Open Check BMI activity
     public void onclickCheckBMI(View view){
-//        startActivities(MonthlyCheckBMIActivity.class, "2");
-        int i = 91/0;
-        Toast.makeText(getApplicationContext(), i, Toast.LENGTH_LONG).show();
+        startActivities(MonthlyCheckBMIActivity.class, "2");
     }
 
     //Open history's check BMI Chart dialog

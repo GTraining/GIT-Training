@@ -8,11 +8,11 @@
     <RelativeLayout
         android:background="@color/login_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="45dp">
         <RelativeLayout
-            android:background="@drawable/background_click_main"
+            android:background="@drawable/button_none_color_click"
             android:onClick="onclickCloseDialog"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true">
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="BODY MASS INDEX"
             android:textColor="#FFF"
             android:layout_centerVertical="true"

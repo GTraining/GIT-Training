@@ -51,7 +51,6 @@ public class PSettingActionbar implements DialogMessagaImpl {
         calendarView = (MaterialCalendarView) dialogPlus.findViewById(R.id.calendarView);
         CalendarDay calendarDay = new CalendarDay();
         calendarView.setDateSelected(calendarDay, true);
-        calendarView.setSelectionColor(R.color.login_main);
         dialogPlus.show();
     }
 

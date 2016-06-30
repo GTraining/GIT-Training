@@ -2069,7 +2069,7 @@ containing a value of this type.
         public static final int watercircle=0x7f0200cf;
     }
     public static final class id {
-        public static final int Test_layout_vocabulary_onclick=0x7f0e00d1;
+        public static final int Test_layout_vocabulary_onclick=0x7f0e00d0;
         public static final int action0=0x7f0e00c1;
         public static final int action_bar=0x7f0e005d;
         public static final int action_bar_activity_content=0x7f0e0000;
@@ -2140,8 +2140,8 @@ containing a value of this type.
         public static final int icon_only=0x7f0e0032;
         public static final int ifRoom=0x7f0e002f;
         public static final int image=0x7f0e0042;
-        public static final int imageView_cup=0x7f0e00dd;
-        public static final int imageView_water=0x7f0e00e1;
+        public static final int imageView_cup=0x7f0e00dc;
+        public static final int imageView_water=0x7f0e00e0;
         public static final int imageView_workout_check=0x7f0e009b;
         public static final int image_food=0x7f0e00a0;
         public static final int info=0x7f0e00cc;
@@ -2158,7 +2158,7 @@ containing a value of this type.
         public static final int label_text=0x7f0e00bd;
         public static final int label_title=0x7f0e00b7;
         public static final int label_version=0x7f0e00b8;
-        public static final int layout_add=0x7f0e00de;
+        public static final int layout_add=0x7f0e00dd;
         public static final int layout_bmi_chart=0x7f0e006f;
         public static final int layout_center=0x7f0e007d;
         public static final int layout_dayofweek=0x7f0e0097;
@@ -2171,7 +2171,7 @@ containing a value of this type.
         public static final int line1=0x7f0e00c6;
         public static final int line3=0x7f0e00ca;
         public static final int lineChart=0x7f0e006c;
-        public static final int linearLayout=0x7f0e00d0;
+        public static final int linearLayout=0x7f0e00cf;
         public static final int linearLayout2=0x7f0e0071;
         public static final int linearLayout3=0x7f0e0075;
         public static final int linearLayout4=0x7f0e007e;
@@ -2193,10 +2193,10 @@ containing a value of this type.
         public static final int other_months=0x7f0e0022;
         public static final int out_of_range=0x7f0e0023;
         public static final int parentPanel=0x7f0e0049;
-        public static final int progressBar_Hours=0x7f0e00d2;
-        public static final int progressBar_Minute=0x7f0e00d3;
-        public static final int progressBar_Seconds=0x7f0e00d4;
-        public static final int progressBar_date=0x7f0e00d6;
+        public static final int progressBar_Hours=0x7f0e00d1;
+        public static final int progressBar_Minute=0x7f0e00d2;
+        public static final int progressBar_Seconds=0x7f0e00d3;
+        public static final int progressBar_date=0x7f0e00d5;
         public static final int progress_circular=0x7f0e0007;
         public static final int progress_horizontal=0x7f0e0008;
         public static final int radio=0x7f0e0057;
@@ -2247,17 +2247,16 @@ containing a value of this type.
         public static final int textView=0x7f0e0088;
         public static final int textView2=0x7f0e0070;
         public static final int textView3=0x7f0e0089;
-        public static final int textView_Ap=0x7f0e00da;
+        public static final int textView_Ap=0x7f0e00d9;
         public static final int textView_BMI=0x7f0e008a;
         public static final int textView_Hello=0x7f0e006e;
-        public static final int textView_amount=0x7f0e00e0;
+        public static final int textView_amount=0x7f0e00df;
         public static final int textView_amountofStep=0x7f0e009e;
         public static final int textView_calo=0x7f0e0092;
         public static final int textView_calories=0x7f0e00a2;
         public static final int textView_checkBMI=0x7f0e008b;
-        public static final int textView_content=0x7f0e00ce;
-        public static final int textView_date=0x7f0e00d8;
-        public static final int textView_day=0x7f0e00dc;
+        public static final int textView_date=0x7f0e00d7;
+        public static final int textView_day=0x7f0e00db;
         public static final int textView_dayofweek=0x7f0e0098;
         public static final int textView_exerciseName=0x7f0e009d;
         public static final int textView_exercise_number=0x7f0e009c;
@@ -2266,12 +2265,12 @@ containing a value of this type.
         public static final int textView_hour_start=0x7f0e0076;
         public static final int textView_minute_end=0x7f0e0079;
         public static final int textView_minute_start=0x7f0e0077;
-        public static final int textView_month=0x7f0e00d7;
-        public static final int textView_second=0x7f0e00d5;
-        public static final int textView_time=0x7f0e00db;
+        public static final int textView_month=0x7f0e00d6;
+        public static final int textView_second=0x7f0e00d4;
+        public static final int textView_time=0x7f0e00da;
         public static final int textView_username=0x7f0e0082;
         public static final int textView_weigh=0x7f0e009f;
-        public static final int textView_year=0x7f0e00d9;
+        public static final int textView_year=0x7f0e00d8;
         public static final int text_headline=0x7f0e00b3;
         public static final int thursday=0x7f0e0028;
         public static final int time=0x7f0e00c7;
@@ -2282,9 +2281,9 @@ containing a value of this type.
         public static final int up=0x7f0e000a;
         public static final int useLogo=0x7f0e0014;
         public static final int view_header=0x7f0e00b6;
-        public static final int water=0x7f0e00df;
+        public static final int water=0x7f0e00de;
         public static final int web_update_details=0x7f0e00ba;
-        public static final int webview=0x7f0e00cf;
+        public static final int webview=0x7f0e00ce;
         public static final int wednesday=0x7f0e002a;
         public static final int week=0x7f0e002c;
         public static final int wide=0x7f0e0034;

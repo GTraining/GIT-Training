@@ -9,7 +9,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
-        android:id="@+id/textView_content"
+        android:textColor="@color/login_main"
+        android:id="@android:id/text1"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:ellipsize="marquee"
+        android:textAlignment="inherit"/>
 </RelativeLayout>

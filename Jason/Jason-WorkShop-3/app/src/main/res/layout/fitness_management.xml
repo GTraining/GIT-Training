@@ -7,24 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".View.FeatureView.WeeklyFitnessActivity">
     <RelativeLayout
-        android:background="#11FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="45dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="FITNESS"
-            android:textStyle="bold"
             android:textColor="#FFF"
             android:id="@+id/textView_Hello"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
         <RelativeLayout
-            android:background="@drawable/background_click_main"
+            android:background="@drawable/button_none_color_click"
             android:onClick="onclickBack"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true">
@@ -38,6 +36,7 @@
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -78,7 +77,7 @@
 
                     </RelativeLayout>
                     <RelativeLayout
-                        android:background="#141b20"
+                        android:background="@color/login_main"
                         android:layout_marginTop="0.5dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -98,12 +97,13 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="ACTIVITY"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#000"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <LinearLayout
+                android:background="@color/login_main"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

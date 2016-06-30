@@ -62,6 +62,9 @@ public class DailyDietActivity extends AppCompatActivity {
         startActivity(mIntent);
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivities(UserMainActivity.class, "none");
+    }
 }

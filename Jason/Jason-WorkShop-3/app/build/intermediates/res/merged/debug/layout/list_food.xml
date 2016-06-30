@@ -12,9 +12,9 @@
         android:layout_height="match_parent"
         android:background="#55000000">
         <RelativeLayout
-            android:background="#22FFFFFF"
+            android:background="#11FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:id="@+id/relativeLayout3">
 
             <TextView
@@ -29,9 +29,9 @@
                 android:layout_centerHorizontal="true" />
 
             <RelativeLayout
-                android:background="@drawable/background_click_main"
+                android:background="@drawable/button_none_color_click"
                 android:onClick="onclickBack"
-                android:layout_width="50dp"
+                android:layout_width="45dp"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true">

@@ -4,9 +4,11 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
@@ -17,6 +19,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.example.kyler.musicplayer.MyApplication;
+import com.example.kyler.musicplayer.Presenter.SongDetailPresenter;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.Utils.Helper;
 import com.example.kyler.musicplayer.Utils.ShakeDetector;
@@ -57,14 +60,11 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     public void onTaskRemoved(Intent rootIntent) {
         mSensorManager.unregisterListener(mShakeDetector);
         stopMusic();
-        Intent intent = new Intent(MusicPlayerWidget.UPDATE_WIDGET);
-        intent.putStringArrayListExtra(String.valueOf(R.string.path),new ArrayList<String>());
-        sendBroadcast(intent);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return(START_NOT_STICKY);
+        return(START_STICKY);
     }
 
     private void sendUpdateWidgetBroadcast(){
@@ -325,18 +325,19 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         }
     }
 
-    private void stopMusic(){
+    private void stopMusic() {
         timerComplete = true;
         mediaPlayer.stop();
         stopForeground(true);
         stopSelf();
-        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFICATION_TAG,NOTIFY_ID);
+        getApplicationContext().unbindService(SongDetailPresenter.serviceConnection);
+        ((NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE)).cancel(NOTIFICATION_TAG, NOTIFY_ID);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 timerComplete = false;
             }
-        },800);
+        }, 800);
     }
 
     public void playPrevious(){
@@ -368,10 +369,10 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
     @Override
     public void onDestroy() {
         Log.e("MyBindService","onDestroy");
+        stopForeground(true);
         unregisterReceiver(receiver);
         mSensorManager.unregisterListener(mShakeDetector);
         super.onDestroy();
-        stopForeground(true);
     }
 
     public boolean isPlaying(){
@@ -416,7 +417,7 @@ public class MyBindService extends Service implements MediaPlayer.OnCompletionLi
         public void onTick(long l) {
             timerTime = (int) ((l + 60000) / 60000);
 
-            //Because of not being called on Tick in last time. Using handle to decrease timerTime
+            //Because of not being called onTick in last time. Using handle to decrease timerTime
             if(timerTime == 2){
                 mHandler.postDelayed(new Runnable() {
                     @Override

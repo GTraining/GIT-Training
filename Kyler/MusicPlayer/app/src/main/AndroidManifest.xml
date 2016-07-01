@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kyler.musicplayer" >
+          package="com.example.kyler.musicplayer" >
 
     <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -23,7 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SongDetailActivity" >
+        <activity android:name=".View.SongDetailActivity"
+                  android:launchMode="singleTop">
         </activity>
         <uses-feature
             android:name="android.hardware.sensor.accelerometer"

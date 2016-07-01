@@ -24,10 +24,10 @@ public class SongDetailPresenter implements ISongDetailPresenter{
     private ISongDetailView detailView;
     private ArrayList<Integer> backgrounds;
 
-    boolean binded = false;
-    MyBindService myBindService;
+    static boolean binded = false;
+    static MyBindService myBindService;
 
-    ServiceConnection serviceConnection = new ServiceConnection() {
+    public static ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             MyBindService.MyBinder myIBinder = (MyBindService.MyBinder) iBinder;
@@ -56,7 +56,8 @@ public class SongDetailPresenter implements ISongDetailPresenter{
         Intent intent = new Intent(context, MyBindService.class);
         context.startService(intent);
         if(!binded){
-            context.bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
+            context.getApplicationContext().bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
+//            context.bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
             binded = true;
         }
     }
@@ -242,7 +243,7 @@ public class SongDetailPresenter implements ISongDetailPresenter{
             @Override
             public void run() {
                 if(binded) {
-                    context.unbindService(serviceConnection);
+                    context.getApplicationContext().unbindService(serviceConnection);
                     binded = false;
                 }
             }

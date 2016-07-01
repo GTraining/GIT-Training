@@ -47,7 +47,7 @@ public class MusicPlayerNotification {
         RemoteViews remoteViews = getNotificationRemote();
         RemoteViews smallRemoteViews = getNotificationSmallRemote();
 
-                Notification.Builder builder = new Notification.Builder(context);
+        Notification.Builder builder = new Notification.Builder(context);
         builder.setSmallIcon(R.drawable.play)
                 .setContentIntent(pendInt)
                 .setTicker(songs.get(currentPosition).getSongTitle())

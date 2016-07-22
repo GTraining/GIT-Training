@@ -257,6 +257,8 @@ public class SongDetailActivity extends AppCompatActivity implements View.OnClic
         finish();
     }
 
+
+
     /**
      * runnable of update seekbar
      */

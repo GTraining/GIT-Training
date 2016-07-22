@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "441188535570",
+    "firebase_url": "https://project-4310446093146169427.firebaseio.com",
+    "project_id": "project--4310446093146169427",
+    "storage_bucket": "project--4310446093146169427.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441188535570:android:ef62f0a76c8f1500",
+        "android_client_info": {
+          "package_name": "com.example.kyler.googleplaceapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441188535570-k47k5ii82g48pdepmnr64a18nvgvdqe7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvcw09asE7zYT11slvqA9e5olbhVpwwXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441188535570:android:2e015a588bb2938c",
+        "android_client_info": {
+          "package_name": "com.example.kyler.trackinglocationfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441188535570-k47k5ii82g48pdepmnr64a18nvgvdqe7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvcw09asE7zYT11slvqA9e5olbhVpwwXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -132,9 +132,8 @@ public class MusicPlayerWidget extends AppWidgetProvider {
             openAppIntent.putStringArrayListExtra(String.valueOf(R.string.path),songPaths);
             openAppIntent.putExtra(String.valueOf(R.string.currentID),currentID);
             openAppPendingIntent = PendingIntent.getActivity(context,0,openAppIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-            remoteView.setViewVisibility(R.id.widget_previous, View.VISIBLE);
-            remoteView.setViewVisibility(R.id.widget_play, View.VISIBLE);
-            remoteView.setViewVisibility(R.id.widget_next, View.VISIBLE);
+            remoteView.setViewVisibility(R.id.widget_controlholder, View.VISIBLE);
+            remoteView.setViewVisibility(R.id.widget_nosong,View.GONE);
         }else{
             Intent openAppIntent = new Intent(context, MainActivity.class);
             openAppIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -142,9 +141,8 @@ public class MusicPlayerWidget extends AppWidgetProvider {
             remoteView.setImageViewResource(R.id.widget_image,R.drawable.defaultpic);
             remoteView.setTextViewText(R.id.widget_title,"Music Player");
             remoteView.setTextViewText(R.id.widget_artist,"Designed by Kyler");
-            remoteView.setViewVisibility(R.id.widget_previous, View.GONE);
-            remoteView.setViewVisibility(R.id.widget_play, View.GONE);
-            remoteView.setViewVisibility(R.id.widget_next, View.GONE);
+            remoteView.setViewVisibility(R.id.widget_controlholder, View.GONE);
+            remoteView.setViewVisibility(R.id.widget_nosong,View.VISIBLE);
         }
         remoteView.setOnClickPendingIntent(R.id.widget_background,openAppPendingIntent);
         appWidgetManager.updateAppWidget(appWidgetId, remoteView);

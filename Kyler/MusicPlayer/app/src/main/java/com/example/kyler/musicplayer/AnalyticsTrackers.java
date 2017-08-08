@@ -13,6 +13,12 @@ import java.util.Map;
  * Created by kyler on 28/06/2016.
  */
 public class AnalyticsTrackers extends Application {
+    public static final String MENU_CATEGORY = "Menu";
+    public static final String CHOOSESONG_CATEGORY = "Choose song";
+    public static final String FAVORITE_CATEGORY = "Favorite";
+    public static final String ALBUM_CATEGORY = "Choose Album";
+    public static final String PLAYING_CATEGORY = "Playing song";
+
     public enum Target {
         APP,
         // Add more trackers here if you need, and update the code in #get(Target) below

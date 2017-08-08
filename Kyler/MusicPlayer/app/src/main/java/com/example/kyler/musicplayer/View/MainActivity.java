@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.kyler.musicplayer.AnalyticsTrackers;
+import com.example.kyler.musicplayer.HockeyAppTracking;
 import com.example.kyler.musicplayer.MyApplication;
 import com.example.kyler.musicplayer.R;
 import com.example.kyler.musicplayer.View.Fragment.ListAlbumFragment;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HockeyAppTracking.checkForUpdates(this);
         setContentView(R.layout.activity_main);
         mButtonListSong = (Button) findViewById(R.id.activity_main_bt_list_song);
         mButtonFavoriteSong = (Button) findViewById(R.id.activity_main_bt_favorite_song);
@@ -33,8 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onPause() {
+        HockeyAppTracking.unregisterManagers(this);
+        super.onPause();
+    }
+
+    @Override
     protected void onResume() {
         MyApplication.getInstance().trackScreenView("Main Activity");
+        HockeyAppTracking.checkForCrashes(this);
         super.onResume();
     }
 
@@ -48,15 +58,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.activity_main_bt_list_song:
-                MyApplication.getInstance().trackEvent("Menu", "List Song", "Show all songs from SD into List song Fragment");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.MENU_CATEGORY, "List Song", "Show all songs from SD into List song Fragment");
                 openFragment(LISTSONGID);
                 break;
             case R.id.activity_main_bt_favorite_song:
-                MyApplication.getInstance().trackEvent("Menu", "List Favorite Song", "Show all favorite songs into List song Fragment");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.MENU_CATEGORY, "List Favorite Song", "Show all favorite songs into List song Fragment");
                 openFragment(FAVORITESONGID);
                 break;
             case R.id.activity_main_bt_filter:
-                MyApplication.getInstance().trackEvent("Menu", "List Album Song", "Show all albums from SD into List song Fragment");
+                MyApplication.getInstance().trackEvent(AnalyticsTrackers.MENU_CATEGORY, "List Album Song", "Show all albums from SD into List song Fragment");
                 openFragment(FILTER);
                 break;
         }
@@ -87,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         active = false;
+        HockeyAppTracking.unregisterManagers(this);
         super.onDestroy();
     }
 
